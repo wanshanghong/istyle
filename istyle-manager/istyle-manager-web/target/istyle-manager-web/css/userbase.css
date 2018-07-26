@@ -1,0 +1,525 @@
+.line{
+	border-top: 1px solid #333;
+	margin-top: 50px;
+}
+
+/*纵向导航条*/
+.verticalNav .box1{
+	width: 1000px;
+	height: 890px;
+	margin: 0 auto;
+	position: relative;
+	background: #FFFFFF;
+	margin-top: 80px;
+	cursor: pointer;
+}
+.verticalNav .box2{
+	width: 150px;
+	height: 890px;
+	background: #FFFFFF;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 99;
+}
+.verticalNav .box2 ul{
+	list-style: none;
+	height: 805px;
+}
+.verticalNav .box2>ul>span{
+	display: block;
+	width: 150px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	border-bottom: 1px solid #777777;
+}
+.verticalNav .box2 ul li.active {
+	background: #000;
+	cursor: pointer;
+	color: #FFFFFF;
+}
+.verticalNav .box2 li{
+	width: 150px;
+	height: 43px;
+	line-height: 43px;
+	text-align: center;
+	cursor: pointer;
+
+}
+.verticalNav .box2 .left{
+	width: 150px;
+	height: 80px;
+	overflow: hidden;
+}
+.verticalNav .box2 .right {
+	width: 835px;
+	height: 890px;
+	background: #fff;
+	position: absolute;
+	top: 0;
+	left: 150px;
+	color: #000;
+	display: none;
+	z-index: 2;
+	border-left: 1px solid #777777;
+}
+.verticalNav .box2 .rightTop{
+	width: 835px;
+	height: 50px;
+	padding-left: 15px;
+	border-bottom: 1px solid #777777;
+}
+.verticalNav .tit.nb{
+	border-bottom: none;   
+} 
+.verticalNav .tit span{
+	float: left;
+	display: block;
+	font-weight: normal;
+	position: relative;
+	padding-left: 20px;
+	padding-top: 5px;	
+}
+.verticalNav .tit span::before{
+	content: "";
+	width: 5px;
+	height: 16px;
+	background: #d8505c;
+	position: absolute;
+	left: 5px;
+	top: 18px;
+}
+
+.right{
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+.rightBottomInformation .addContent p:first-child{
+	margin-top: 30px;
+	margin-left: 340px;
+}
+.rightBottomInformation .addContent p{
+	float: left;
+}
+.rightBottomInformation .addContent span{
+	float: left;
+	margin-left: 270px;
+}
+
+.rightBottomInformation .addContent img{
+	display: inline-block;
+	width: 120px;
+	height: 120px;
+}
+.rightBottomInformation #editorBtn{
+	width: 12%;
+	/*display: block;*/
+	margin: 0 auto;
+	margin-top: 30px;
+	color: #fff;
+	height: 32px;
+	background-color: #0000FF;
+	font-size: 14px;
+	border-radius: 5px;
+	border: none;
+	transition: .5s;   /*把鼠标指针悬停在 div 元素上，它的外观会逐渐改变*/
+	cursor: pointer;
+	box-shadow: 0 0 3px #0000FF;
+}
+
+
+.rightBottomInformation #form{
+	display: none;
+}
+
+.rightBottomInformation form #headPortrait{
+	display: inline-block;
+	margin-left: 330px;
+	margin-top: 40px;
+	width: 70px;
+	height: 70px;
+	float: left;
+}
+.rightBottomInformation form #changeheadPortrait{
+	display: inline-block;
+	background: #FFFFFF;
+	color: #000000;
+	float: left;
+	margin-left: 18px;
+	margin-top: 62px;
+	width: 100px;
+	/*display: block;*/
+	height: 30px;
+	font-size: 14px;
+	border-radius: 5px;
+	border: none;
+	transition: .5s;   /*把鼠标指针悬停在 div 元素上，它的外观会逐渐改变*/
+	cursor: pointer;
+	box-shadow: 0 0 3px #999999;
+	
+}
+.rightBottomInformation form .sex{
+	/*padding: 0 20px 0 10px ;*/
+}
+.rightBottomInformation form p{
+/*	padding:  10px 0 10px 100px;*/
+	margin: 15px 0;
+}
+.rightBottomInformation form span {
+	display: inline-block;
+	margin-left: 5px;
+	margin-right: 5px;
+	color: #000;
+	font-size: 15px;
+	text-align: right;
+
+}
+.rightBottomInformation form label {
+	display: inline-block;
+	/*margin-left: 0.5%;*/
+	width: 11%;
+	text-align: right;
+	/*vertical-align: middle;*/
+	margin-right: 5px;
+}
+.rightBottomInformation .submit{
+	width: 12%;
+	/*display: block;*/
+	margin: 0 auto;
+	margin-top: 30px;
+	color: #fff;
+	height: 32px;
+	background-color: #0000FF;
+	font-size: 14px;
+	border-radius: 5px;
+	border: none;
+	transition: .5s;   /*把鼠标指针悬停在 div 元素上，它的外观会逐渐改变*/
+	cursor: pointer;
+	box-shadow: 0 0 3px #0000FF;
+}
+/*我的主页收藏*/
+.rightBottomCollect .stylingDesigner, .rightBottomCollect .hairSalon{
+	border-bottom: 1px solid #999999;
+}
+.rightBottomCollect .stylingDesigner>span, .rightBottomCollect .hairSalon>span, .rightBottomCollect .evaluation1>span{
+	display: inline-block;
+	float: left;
+	margin: 10px 0 10px 50px;
+}
+.rightBottomCollect .stylingDesigner .box, .rightBottomCollect .hairSalon .box{
+	width: 200px;
+	height: 140px;
+	float: left;
+	margin-bottom: 20px;
+}
+.rightBottomCollect .stylingDesigner img, .rightBottomCollect .hairSalon img{
+	width: 140px;
+	height: 100px;
+	margin-left: 20px;
+}
+.rightBottomCollect .stylingDesigner .box span, .rightBottomCollect .hairSalon .box span{
+	display: inline-block;
+}
+.rightBottomCollect .evaluation .box1{
+	width: 700px;
+	height: 200px;
+	margin: 0 auto;
+	border: 1px solid #999999;
+	margin-top: 20px;
+}
+.rightBottomCollect .evaluation img{
+    float: left;
+	width: 200px;
+	height: 150px;
+	margin: 20px 20px 20px 20px;
+}
+.rightBottomCollect .evaluation .box1 .box1_1{
+	float: left;
+	position: relative;
+}
+.rightBottomCollect .evaluation .box1 span{
+	display: inline-block;
+	float: left;
+	margin-top: 10px;
+	/*text-autospace: 40;*/
+}
+
+
+
+/*精灵图*/
+
+@font-face {
+  font-family: 'iconfont';  /* project id 640258 */
+  src: url('//at.alicdn.com/t/font_640258_2hryzc2bwvghw7b9.eot');
+  src: url('//at.alicdn.com/t/font_640258_2hryzc2bwvghw7b9.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_640258_2hryzc2bwvghw7b9.woff') format('woff'),
+  url('//at.alicdn.com/t/font_640258_2hryzc2bwvghw7b9.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_640258_2hryzc2bwvghw7b9.svg#iconfont') format('svg');
+}
+.iconfont {  
+  font-family:"iconfont" !important;  
+  font-size:16px;  
+  font-style:normal;  
+  -webkit-font-smoothing: antialiased;  
+  -moz-osx-font-smoothing: grayscale;  
+} 
+
+/*我的收藏里的icon*/ 
+.icon-fenxiang{
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	top: 115px;
+	left: 0;
+}
+.rightBottomCollect .icon-shanchu{
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	top: 115px;
+	left: 67px;
+}
+.rightBottomCollect .icon-fenxiangSpan{
+	margin-left: 18px;
+}
+.rightBottomCollect .icon-shanchuSpan{
+	margin-left: 40px;
+}
+/*我的投稿里全部稿件里的icon*/
+.icon-bofang{
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	top: 85px;
+	left: 0;
+}
+.icon-comments{
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	top: 85px;
+	left: 100px;
+}
+.icon-favoritesfilling{
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	top: 85px;
+	left: 190px;
+}
+.icon-viewSpan{
+	margin-left: 18px;
+}
+.icon-commentSpan{
+	margin-left: 45px;
+}
+.icon-collectSpan{
+	margin-left: 45px;
+}
+/*我的投稿里进行中里的icon*/
+ .icon-shalou{
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	top: 42px;
+	left: 0;
+}
+.icon-icon-pencil{
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	top: 55px;
+	left: 223px;
+}
+ .icon-shanchu{
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	top: 55px;
+	left: 315px;
+}
+.contributeContentOngoing .icon-underReviewSpan{
+	margin-left: 18px;
+	margin-right: 18px;
+}
+/*我的投稿里已通过里的icon*/
+.icon-gouhao{
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	top: 42px;
+	left: 0;
+}
+.icon-passSpan{
+	margin-left: 18px;
+	margin-right: 18px;
+}
+/*我的投稿里未通过里的icon*/
+.icon-zhuyi{
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	top: 84px;
+	left: 0;
+}
+.icon-warningSpan{
+	margin-left: 18px;
+}
+.contributeContentNotpass .icon-shanchu{
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	top: 140px;
+	left: 343px;
+}
+
+
+/*我的主页关注和粉丝*/
+
+.rightBottomSubscribe .subscribeContent1 ,.rightBottomMyfan .myfanContent1{
+	width: 800px;
+	height: 150px;
+	border-bottom: 1px solid #999999;
+	margin: 0 auto;
+}
+.rightBottomSubscribe img ,.rightBottomMyfan img{
+	float: left;
+	width: 80px;
+	height: 80px;
+	margin: 40px 0 20px 100px;
+}
+.rightBottomSubscribe p ,.rightBottomMyfan p{
+	float: left;	
+	width: 200px;
+	margin: 40px 0 20px 20px;
+}
+.rightBottomSubscribe span ,.rightBottomMyfan span{
+	float: left;
+}
+.rightBottomSubscribe  button.privateChat ,.rightBottomMyfan button.privateChat{
+	float: left;
+	display: block;
+	margin-left: 190px;
+	margin-top: 65px;
+}
+.rightBottomSubscribe  button.privateChat a ,.rightBottomMyfan button.privateChat a{
+	display: inline-block;
+	padding: 0 20px;
+	color: #000000;
+}
+.rightBottomSubscribe select.subscribeOrNot ,.rightBottomMyfan select.subscribeOrNot{
+	float: left;
+	display: block;
+	margin-left: 40px;
+	margin-top: 65px;
+}
+
+/*我的主页预约    这里的样式改编自我的收藏，可进行代码优化*/
+
+.rightBottomOrder .stylingDesigner, .rightBottomOrder .myOrder{
+	border-bottom: 1px solid #999999;
+}
+.rightBottomOrder .stylingDesigner>span, .rightBottomOrder .myOrder>span, .rightBottomCollect .evaluation>span{
+	display: inline-block;
+	float: left;
+	margin: 10px 0 10px 50px;
+}
+.rightBottomOrder .stylingDesigner .box, .rightBottomOrder .myOrder .box{
+	width: 200px;
+	height: 140px;
+	float: left;
+	margin-bottom: 20px;
+}
+.rightBottomOrder .stylingDesigner img, .rightBottomOrder .myOrder img{
+	width: 140px;
+	height: 100px;
+	margin-left: 20px;
+}
+.rightBottomOrder .stylingDesigner .box span, .rightBottomOrder .myOrder .box span{
+	display: inline-block;
+}
+ 
+.rightBottomOrder .stylingDesigner>span, .rightBottomOrder .myOrder>span{
+	display: inline-block;
+	float: left;
+	margin: 10px 0 10px 50px;
+}
+
+/*我的主页的我的投稿 这里的代码也可以进行优化*/	
+	
+.rightBottomContribute .contributeTop{
+	height: 32px;
+}
+.rightBottomContribute .contributeTop ul{
+	list-style: none;
+}
+.rightBottomContribute .contributeTop ul li{
+	float: left;
+	width: 120px;
+	color: #000000;
+	line-height: 32px;
+	height: 32px;
+	text-align: center;
+	border-radius: 5px;
+	margin: 20px 10px 20px 40px;
+}
+.right .rightBottomContribute .contributeTop .active{
+	background: #C5EBF0;
+	cursor: pointer;
+	color: #000000;
+}
+.rightBottomContribute .contributeBottomContent{
+	display: none;
+}
+.contributeContentAll ,.contributeContentOngoing ,.contributeContentPass ,.contributeContentNotpass{
+	display: inline-block;
+	width: 800px;
+	height: 200px;
+	margin-bottom: 20px;
+	/*margin: 0 auto;*/
+	border: 1px solid #999999;
+	
+}
+.rightBottomContribute .contributeBottom img{
+    float: left;
+	width: 200px;
+	height: 160px;
+	margin: 20px 40px 20px 20px;
+}
+.rightBottomContribute .contributeBottom .box1_1{
+	float: left;
+	margin-top: 30px;
+	position: relative;
+}
+.rightBottomContribute .contributeBottom span{
+	display: inline-block;
+	float: left;
+	
+}
+.rightBottomContribute .contributeBottom p{
+	margin-left: 200px;
+}
+.rightBottomContribute button.privateChat{
+	float: left;
+	display: inline-block;
+	margin-left: 20px;
+	margin-top: 10px;
+}
+.rightBottomContribute button.privateChat a{
+	display: inline-block;
+	padding: 0 20px;
+	color: #000000;
+}
+

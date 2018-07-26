@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.istyle.mapper.TbUserMapper">
+
+    <!--注册用户-->
+    <insert id="insertUser" parameterType="com.istyle.pojo.TbUser">
+        insert into
+        tb_user(userName,userPassword,userPhone,userAge,userSex,userPhoto)
+        VALUES (#{userName}, #{userPassword},#{userPhone},#{userAge},#{userSex},#{userPhoto})
+    </insert>
+
+    <!--查询用户名是否存在,并返回数量-->
+    <select id="isUserName" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from tb_user where userPhone = #{userPhone}
+    </select>
+
+    <!--检查账号和密码是否正确-->
+    <select id="isNameAndPassword" parameterType="com.istyle.pojo.TbUser" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM tb_user
+        WHERE userPhone = #{userPhone} and userPassword = #{userPassword}
+    </select>
+
+    <!--用户登录-->
+    <select id="loginUser" parameterType="com.istyle.pojo.TbUser" resultType="java.lang.Long">
+        select userId
+        from tb_user
+        where userPhone = #{userPhone} and userPassword = #{userPassword}
+    </select>
+
+    <!--根据号码返回ID-->
+    <select id="selectIdByPhone" parameterType="java.lang.String" resultType="java.lang.Long">
+        SELECT userId
+        FROM tb_user
+        WHERE userPhone = #{userPhone}
+    </select>
+
+    <!--通过id修改信息-->
+    <update id="updateById" parameterType="com.istyle.pojo.TbUser">
+        UPDATE tb_user
+        SET userPhoto = #{userPhoto}, userName = #{userName}, userWord = #{userWord}, userSex = #{userSex}
+        WHERE userId = #{userId}
+    </update>
+
+    <!--通过id获取用户资料-->
+    <select id="selectUserById" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbUser">
+        SELECT userPhoto, userName, userWord, userSex
+        FROM tb_user
+        WHERE userId = #{userId}
+    </select>
+
+</mapper>
