@@ -53,40 +53,42 @@ function information(){
 /*    let fm=document.getElementById('form');
 
     let fd=new FormData(fm);*/
-    alert("1");
+    console.log("1");
     let information="";
-    alert("2");
+    console.log("2");
     let inputs=document.getElementsByClassName("updateInfo")[0].getElementsByTagName("input");
-    alert("3");
+    console.log("3");
     let arr = ["userPhoto","userName","userWord","userSex"];
 
     let xhr=new XMLHttpRequest();
-    alert("4");
+    console.log("4");
     xhr.onreadystatechange=function(){
         if (xhr.readyState===4){
             if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
-                alert("5");
-                var info = JSON.parse(xhr.responseText);
+                console.log("5");
+                /*var info = JSON.parse(xhr.responseText);*/
+                var info = xhr.responseText;
                 if (info.isOpen === 1){
-                alert("保存成功"+xhr.status);
+                console.log("保存成功"+xhr.status);
                 }else{
-                    alert("保存失败");
+                    console.log("保存失败");
                 }
                 /*eval("var info="+xhr.responseText);*/
-                alert("6")
+                console.log("6")
             }else{
-                alert("发生错误"+xhr.status);
+                console.log("发生错误"+xhr.status);
             }
         }
     }
-    alert("7");
+    console.log("7");
     xhr.open('post','');
-    alert("8");
+    xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    console.log("8");
     for(var i=0; i<inputs.length-1; i++) {
         information += ( arr[i] + "=" + inputs[i].value +"&" );
     }
     xhr.send(information);
-    alert("9");
+    console.log("9");
 }
 
 //我的收藏start
