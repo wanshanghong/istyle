@@ -38,7 +38,7 @@
     <!--通过id修改信息-->
     <update id="updateById" parameterType="com.istyle.pojo.TbUser">
         UPDATE tb_user
-        SET userPhoto = #{userPhoto}, userName = #{userName}, userWord = #{userWord}, userSex = #{userSex}
+        SET userName = #{userName}, userWord = #{userWord}, userSex = #{userSex}
         WHERE userId = #{userId}
     </update>
 
