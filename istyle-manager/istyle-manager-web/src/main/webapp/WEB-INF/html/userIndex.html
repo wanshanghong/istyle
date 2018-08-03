@@ -84,24 +84,24 @@
 									</div>
 									<div class="updateInfo">
 										<form action="" method="post" id="form">
-											<p>
-												<img src="/img/headphoto.png" id="headPortrait"/>
-												<!--<input type="file" id="changeheadPortrait" name="changeheadPortrait" value="更换头像"/>-->
-												<input type="button" id="changeheadPortrait" onclick="changeHead.click()" value="更换头像">
-												<input type="file" id="changeHead" style="display: none" onchange="input1.value=this.value" name="userPhoto">
-												<input type="text" id="input1" style="float: left; margin-top: 62px; margin-left: 18px; width: 200px; height: 30px; border: none;">
+											<!--<p>
+											<img src="/img/headphoto.png" id="headPortrait"/>
+											&lt;!&ndash;<input type="file" id="changeheadPortrait" name="changeheadPortrait" value="更换头像"/>&ndash;&gt;
+											<input type="button" id="changeheadPortrait" onclick="changeHead.click()" value="更换头像">
+											<input type="file" id="changeHead" style="display: none" onchange="input1.value=this.value" name="userPhoto">
+											<input type="text" id="input1" style="float: left; margin-top: 62px; margin-left: 18px; width: 200px; height: 30px; border: none;">
 
-											</p>
+										</p>-->
 											<div class="clear"></div>
 											<p><label for="nickname">昵称：</label><input type="text" class="input" id="nickname" name="userName" placeholder="请输入你的昵称" /></p>
 											<p><label for="personalizedSignature">我的签名：</label><input type="text" class="input" id="personalizedSignature" name="userWord" placeholder="请输入你的个性签名" /></p>
 											<p>
-												<span class="sex" name="userSex">性别</span>
-												<label for="man">男</label><input type="radio" name="sex" id="man" checked="checked" />
-												<label for="woman">女</label><input type="radio" name="sex" id="woman" />
-												<label for="secret">保密</label><input type="radio" name="sex" id="secret" />
+												<span class="sex">性别</span>
+                                                <label for="man">男</label><input  name="userSex" type="radio"  id="man" checked="checked" value="男"/>
+                                                <label for="woman">女</label><input type="radio"  id="woman" name="userSex" value="女"/>
+                                                <label for="secret">保密</label><input type="radio"  id="secret" name="userSex" value="保密"/>
 											</p>
-											<p><input type="button" onclick="success();information()" class="submit" value="保存"/>
+											<p><input type="button" onclick="success();information();showInformation()" class="submit" value="保存"/>
 
 										</form>
 									</div>

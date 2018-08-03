@@ -26,12 +26,10 @@ public class LoginUser {
         user.setUserPassword(request.getParameter("password"));
 
         if (userService.loginUser(user) == Long.valueOf(-1)){
-            System.out.println("2");
             return "error";
         }
         else{
             request.getSession().setAttribute("userId", userService.loginUser(user));
-            System.out.println("1");
             return "success";
         }
     }

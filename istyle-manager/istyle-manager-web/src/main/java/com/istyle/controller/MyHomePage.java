@@ -36,6 +36,7 @@ public class MyHomePage {
         users.put("userSex", user.getUserSex());
         json = JSONUtils.toJSONString(users);
 
+        System.out.println("前端请求用户数据成功");
         return json;
     }
 
@@ -44,28 +45,36 @@ public class MyHomePage {
     @RequestMapping("/myHome/updateMessage")
     public String updateUser(HttpServletRequest request){
         TbUser user = new TbUser();
-        Map<String, Integer> map = new HashMap<>();
+        Map<String, String> map = new HashMap<>();
         String json;
 
         user.setUserId((Long) request.getSession().getAttribute("userId"));
 
         if (request.getSession().getAttribute("userId") != null) {
-            user.setUserPhoto(request.getParameter("userPhoto"));
+//            user.setUserPhoto(request.getParameter("userPhoto"));
             user.setUserName(request.getParameter("userName"));
             user.setUserWord(request.getParameter("userWord"));
             user.setUserSex(request.getParameter("userSex"));
 
-            System.out.println(request.getParameter("userPhoto"));
+//            System.out.println(request.getParameter("userPhoto"));
+            System.out.println("test1");
             System.out.println(request.getParameter("userName"));
+            System.out.println("test2");
             System.out.println(request.getParameter("userWord"));
+            System.out.println("test3");
             System.out.println(request.getParameter("userSex"));
-//            userService.updateUser(user);
-            map.put("isOpen", 1);
+
+            userService.updateUser(user);
+
+            map.put("isOpen", "1");
+            System.out.println("test5");
             json = JSONUtils.toJSONString(map);
+            System.out.println("test6");
             return json;
         }
         else {
-            map.put("isOpen", 0);
+            map.put("isOpen", "0");
+            System.out.println("test4");
             json = JSONUtils.toJSONString(map);
             return json;
         }

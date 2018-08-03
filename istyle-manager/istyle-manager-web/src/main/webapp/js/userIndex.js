@@ -13,6 +13,7 @@ function success(){
 
     let obj=document.getElementById('showInformation');
     obj.style.display="block";
+
 }
   //我的信息编辑隐藏弹出end
 function showInformation(){
@@ -34,7 +35,7 @@ function showInformation(){
                             "<p><span class=\"sex\">性别:" + info.userSex + "</span></p><div class=\"clear\"></div>";
                         alert("成功2"+showInform);
 
-                        document.getElementsByClassName('showInformation')[0].innerHTML = showInform;
+                        document.getElementsByClassName('addContent')[0].innerHTML = showInform;
                         alert("成功");
                     }else{
                         alert("用户没有登录");
@@ -58,7 +59,7 @@ function information(){
     console.log("2");
     let inputs=document.getElementsByClassName("updateInfo")[0].getElementsByTagName("input");
     console.log("3");
-    let arr = ["userPhoto","userName","userWord","userSex"];
+    let arr = ["userName","userWord","userSex"];
 
     let xhr=new XMLHttpRequest();
     console.log("4");
@@ -66,9 +67,9 @@ function information(){
         if (xhr.readyState===4){
             if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
                 console.log("5");
-                /*var info = JSON.parse(xhr.responseText);*/
-                var info = xhr.responseText;
-                if (info.isOpen === 1){
+                 var info = JSON.parse(xhr.responseText);
+                // var info = xhr.responseText;
+                if (info.isOpen === "1"){
                 console.log("保存成功"+xhr.status);
                 }else{
                     console.log("保存失败");
@@ -81,7 +82,7 @@ function information(){
         }
     }
     console.log("7");
-    xhr.open('post','');
+    xhr.open('post','/myHome/updateMessage');
     xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     console.log("8");
     for(var i=0; i<inputs.length-1; i++) {
@@ -89,6 +90,7 @@ function information(){
     }
     xhr.send(information);
     console.log("9");
+    console.log(information);
 }
 
 //我的收藏start
