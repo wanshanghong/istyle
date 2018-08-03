@@ -325,24 +325,25 @@ let collectBtn=document.getElementById('collectBtn');
 collectBtn.onclick=collect;
 //解绑：collectBtn.onclick=null;*/
 
-let collectBtn=document.getElementById('collectBtn');
-collectBtn.addEventListener('click',collect,false);
-//collectBtn.removeEventListener('click',collect,false);
 
-let subscribeBtn=document.getElementById('subscribeBtn');
-subscribeBtn.addEventListener('click',subscribe,false);
-
-let fansBtn=document.getElementById('fansBtn');
-fansBtn.addEventListener('click',fans,false);
-
-let myOrderBtn=document.getElementById('myOrderBtn');
-myOrderBtn.addEventListener('click',myOrder,false);
-console.log(collectBtn);
 //事件绑定end
 
 
 
 window.onload=function(){
     showInformation();
+    let collectBtn=document.getElementById('collectBtn');
+    collectBtn.addEventListener('click',collect,false);
+//collectBtn.removeEventListener('click',collect,false);
+
+    let subscribeBtn=document.getElementById('subscribeBtn');
+    subscribeBtn.addEventListener('click',subscribe,false);
+
+    let fansBtn=document.getElementById('fansBtn');
+    fansBtn.addEventListener('click',fans,false);
+
+    let myOrderBtn=document.getElementById('myOrderBtn');
+    myOrderBtn.addEventListener('click',myOrder,false);
+    console.log(collectBtn);
 
 }
