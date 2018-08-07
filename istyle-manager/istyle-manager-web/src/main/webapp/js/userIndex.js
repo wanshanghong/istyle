@@ -28,15 +28,15 @@ function showInformation(){
                     if (info.isOpen === "1") {
 
                         let showInform = "";
-                        alert("成功1");
+                        /*alert("成功1");*/
                         showInform += "<p><img src='" + info.userPhoto + "'></p><div class=\"clear\"></div>" +
                             "<p><span class=\"nickname\">昵称：" + info.userName + "</span></p><div class=\"clear\"></div>" +
                             "<p><span class=\"personalizedSignature\">我的签名：" + info.userWord + "</span></p><div class=\"clear\"></div>" +
                             "<p><span class=\"sex\">性别:" + info.userSex + "</span></p><div class=\"clear\"></div>";
-                        alert("成功2"+showInform);
+                        /*alert("成功2"+showInform);*/
 
                         document.getElementsByClassName('addContent')[0].innerHTML = showInform;
-                        alert("成功");
+                        /*alert("成功");*/
                     }else{
                         alert("用户没有登录");
                     }
@@ -57,7 +57,17 @@ function information(){
     console.log("1");
     let information="";
     console.log("2");
-    let inputs=document.getElementsByClassName("updateInfo")[0].getElementsByTagName("input");
+    /*let inputs=document.getElementsByClassName("updateInfo")[0].getElementsByTagName("input");*/
+    let username=document.getElementById('nickname').value;
+    let userword=document.getElementById('personalizedSignature').value;
+    let sex=document.getElementById('sex');
+    let userSex=null;
+    for(let i=0;i<sex.length;i++){
+        if(sex[i].checked==true){
+            userSex=sex[i].value;
+            break;
+        }
+    }
     console.log("3");
     let arr = ["userName","userWord","userSex"];
 
@@ -85,9 +95,9 @@ function information(){
     xhr.open('post','/myHome/updateMessage');
     xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     console.log("8");
-    for(var i=0; i<inputs.length-1; i++) {
-        information += ( arr[i] + "=" + inputs[i].value +"&" );
-    }
+    /*for(var i=0; i<inputs.length-1; i++) {*/
+        information += ( arr[0] + "=" + username +"&" +arr[1]+ "=" +userword+ "&" +arr[2]+ "=" +userSex );
+    /*}*/
     xhr.send(information);
     console.log("9");
     console.log(information);
