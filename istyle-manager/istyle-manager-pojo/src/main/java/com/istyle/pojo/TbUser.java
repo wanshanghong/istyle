@@ -1,8 +1,5 @@
 package com.istyle.pojo;
 
-
-import java.util.List;
-
 public class TbUser {
     private Long userId; //用户id
     private String userName; //昵称
