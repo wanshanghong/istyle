@@ -26,6 +26,11 @@ public class registerUser {
         tbUser.setUserSex(request.getParameter("sex"));
         tbUser.setUserAge(Integer.valueOf(request.getParameter("age")));
         tbUser.setUserPhoto("/img/headphoto.png");
+        System.out.println(request.getParameter("fakename"));
+        System.out.println(request.getParameter("password1"));
+        System.out.println(request.getParameter("tel"));
+        System.out.println(request.getParameter("sex"));
+        System.out.println(request.getParameter("age"));
 
 //        判断号码是否存在
         if (userService.isUserName(request.getParameter("tel"))){

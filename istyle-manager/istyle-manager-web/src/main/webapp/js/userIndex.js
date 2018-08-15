@@ -13,6 +13,7 @@ function success(){
 
     let obj=document.getElementById('showInformation');
     obj.style.display="block";
+    showInformation();
 
 }
   //我的信息编辑隐藏弹出end
@@ -55,19 +56,21 @@ function information(){
 
     let fd=new FormData(fm);*/
     console.log("1");
-    let information="";
+    let information1="";
     console.log("2");
     /*let inputs=document.getElementsByClassName("updateInfo")[0].getElementsByTagName("input");*/
     let username=document.getElementById('nickname').value;
     let userword=document.getElementById('personalizedSignature').value;
-    let sex=document.getElementById('sex');
+    let sex=document.getElementsByName('sex');
     let userSex=null;
     for(let i=0;i<sex.length;i++){
-        if(sex[i].checked==true){
+        if(sex[i].checked){
             userSex=sex[i].value;
+            console.log("5646");
             break;
         }
     }
+
     console.log("3");
     let arr = ["userName","userWord","userSex"];
 
@@ -81,6 +84,7 @@ function information(){
                 // var info = xhr.responseText;
                 if (info.isOpen === "1"){
                 console.log("保存成功"+xhr.status);
+                showInformation();
                 }else{
                     console.log("保存失败");
                 }
@@ -96,11 +100,11 @@ function information(){
     xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     console.log("8");
     /*for(var i=0; i<inputs.length-1; i++) {*/
-        information += ( arr[0] + "=" + username +"&" +arr[1]+ "=" +userword+ "&" +arr[2]+ "=" +userSex );
+        information1 += ( arr[0] + "=" + username +"&" +arr[1]+ "=" +userword+ "&" +arr[2]+ "=" +userSex );
     /*}*/
-    xhr.send(information);
+    xhr.send(information1);
     console.log("9");
-    console.log(information);
+    console.log(information1);
 }
 
 //我的收藏start
