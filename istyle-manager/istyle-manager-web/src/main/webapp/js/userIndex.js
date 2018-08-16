@@ -1,5 +1,38 @@
+//用promise封装ajax
+function ajax(method, url, data){
+    let xhr;
+    if(window.XMLHttpRequest){
+        xhr=new XMLHttpRequest();
+    }else{
+        xhr=new ActiveXObject("Microsoft XMLHTTP");
+    }
+
+    return new Promise(function(resolve, reject){
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState===4){
+                if(xhr.status>=200 && xhr.status<300 || xhr.status===304){
+                    resolve(xhr.responseText);
+                }else{
+                    reject(xhr.status);
+                }
+            }
+        };
+        //判断GET和POST方法
+        if(method.toUpperCase()==="GET"){
+            xhr.open("GET", url, true);
+            xhr.send(null);
+        }else if(method.toUpperCase()==="POST"){
+            xhr.open("OPST", url, true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=utf-8');
+            xhr.send(data);
+
+        }
+    });
+}
+
+
 //我的信息start
-  //我的信息编辑隐藏弹出start
+//我的信息编辑隐藏弹出start
 function editor() {
     let hidden=document.getElementById('showInformation');
     hidden.style.display="none";
@@ -10,13 +43,13 @@ function editor() {
 function success(){
     let hidden=document.getElementById('form');
     hidden.style.display="none";
-
+    showInformation();
     let obj=document.getElementById('showInformation');
     obj.style.display="block";
-    showInformation();
 
 }
-  //我的信息编辑隐藏弹出end
+//我的信息编辑隐藏弹出end
+//我的信息展示
 function showInformation(){
         let xhr=new XMLHttpRequest();
 
@@ -50,7 +83,7 @@ function showInformation(){
         xhr.send(null);
 
 }
-
+//我的信息编辑
 function information(){
 /*    let fm=document.getElementById('form');
 
@@ -66,11 +99,9 @@ function information(){
     for(let i=0;i<sex.length;i++){
         if(sex[i].checked){
             userSex=sex[i].value;
-            console.log("5646");
             break;
         }
     }
-
     console.log("3");
     let arr = ["userName","userWord","userSex"];
 
@@ -112,66 +143,46 @@ function collect(){
     let xhr=new XMLHttpRequest();
     xhr.onreadystatechange=function(){
         if (xhr.readyState===4){
-            if (xhr.status===200){
+            if (xhr.status>=200 && xhr.status<300 ||xhr.status===304){
+                /*var info=JSON.parse(xhr.responseText);*/
                 var info=xhr.responseText;
-
                 //造型师、造型屋、测评的收藏数
                 let numDesigner="";
-                //<span class="stylingDesignerSpan">造型师（收藏数）</span>
-                numDesigner+="<span class='stylingDesignerSpan'>造型师（"+info.designerNum+")</span>";
-
+                numDesigner+="<span class='stylingDesignerSpan'>造型师（"+info.styCount+")</span>";
                 let numSalon="";
-                //<span class="hairSalonSpan">造型屋（收藏数）</span>
-                numSalon+="<span class='hairSalonSpan'>造型屋（"+info.salonNum+")</span>";
-
+                numSalon+="<span class='hairSalonSpan'>造型屋（"+info.stylistCount+")</span>";
                 let numEvaluate="";
-                //<span class="evaluationCollection">测评（收藏数）</span>
-                numEvaluate+="<span class='evaluationCollection'>测评（"+info.evaluateNum+")</span>";
-
+                numEvaluate+="<span class='evaluationCollection'>测评（"+info.evalCount+")</span>";
                 //造型师、造型屋、测评的添加内容
                 let designerBox="";
-                for (let i=0;i<info.length;i++){
-                    //<div class="box"><img src="../img/designerphoto2.jpg"/><span>XX造型师</span></div>
-                    designerBox += "<div class='box'><a href='"+info[i].designerUrl+"'><img src='"+info[i].designerPic+"'/><span>"+info[i].designer+"造型师</span></a></div>";
+                for (let i=0;i<info.stylist.length;i++){
+                    designerBox += "<div class='box'><a href='"+info.stylist[i].designerUrl+"'><img src='"+info.stylist[i].styPhoto+"'/><span>"+info.stylist[i].styName+"造型师</span></a></div>";
                 }
-
                 let salonBox="";
-                for (let i=0;i<info.length;i++){
-                    //<div class="box"><img src="../img/salaonpho1.jpg"/><span>XX造型屋</span></div>
-                    salonBox += "<div class='box'><a href='"+info[i].salonUrl+"'><img src='"+info[i].salonPic+"'/><span>"+info[i].salon+"造型屋</span></a></div>";
+                for (let i=0;i<info.styHouse.length;i++){
+                    salonBox += "<div class='box'><a href='"+info.styHouse[i].salonUrl+"'><img src='"+info.styHouse[i].styHousePhoto+"'/><span>"+info.styHouse[i].styHouseName+"造型屋</span></a></div>";
                 }
-
                 let evaluateBox="";
-                for (let i=0;i<info.length;i++){
-                //<div class="clear"></div>
-                //<div class="box1">
-                //       <img src="../img/投稿/evaluation.jpeg"/>
-                //        <div class="box1_1">
-                //        <span>名字</span><br />
-                //        <span>简介：xxxxxxxxxxxxxxxxxxxxx</span><br />
-                //    <i class="iconfont icon-fenxiang"> </i><span class="icon-fenxiangSpan">分享</span>
-                //    <i class="iconfont icon-shanchu"></i><span class="icon-shanchuSpan">删除收藏</span>
-                //        </div>
-                //</div>
+                for (let i=0;i<info.evaluation.length;i++){
                     evaluateBox += "<div class='clear'></div>" +
-                                       "<div class='box1'><a href='"+info[i].evaluateUrl+"'>"    +
-                                           "<img src='"+info[i].evaluatePic+"'/>"  +
+                                       "<div class='box1'><a href='"+info.evaluation[i].evaluateUrl+"'>"    +
+                                           "<img src='"+info.evaluation[i].evalPhoto+"'/>"  +
                                            "<div class='box1_1'>"   +
-                                               "<span>"+info[i].evaluateName+"</span><br/>"  +
-                                               "<span>简介："+info[i].evaluateSummary+"</span><br/>"  +
+                                               "<span>"+info.evaluation[i].evalName+"</span><br/>"  +
+                                               "<span>简介："+info.evaluation[i].evalWord+"</span><br/>"  +
                                                "<i class='iconfont icon-fenxiang'></i><span class='icon-fenxiangSpan'>分享</span>" +
                                                "<i class=\"iconfont icon-shanchu\"></i><span class=\"icon-shanchuSpan\">删除收藏</span>" +
                                            "</div>"  +
                                        "</a></div>";
                 }
 
-                document.getElementsByClassName('stylingDesignerSpan').innerHTML=numDesigner;
-                document.getElementsByClassName('hairSalonSpan').innerHTML=numSalon;
-                document.getElementsByClassName('evaluationCollection').innerHTML=numEvaluate;
+                document.getElementsByClassName('stylingDesignerSpan')[0].innerHTML=numDesigner;
+                document.getElementsByClassName('hairSalonSpan')[0].innerHTML=numSalon;
+                document.getElementsByClassName('evaluationCollection')[0].innerHTML=numEvaluate;
 
-                document.getElementsByClassName('stylingDesigner').innerHTML+=designerBox;
-                document.getElementsByClassName('hairSalon').innerHTML+=salonBox;
-                document.getElementsByClassName('evaluation').innerHTML+=evaluateBox;
+                document.getElementsByClassName('stylingDesigner')[0].innerHTML+=designerBox;
+                document.getElementsByClassName('hairSalon')[0].innerHTML+=salonBox;
+                document.getElementsByClassName('evaluation')[0].innerHTML+=evaluateBox;
                 alert("收藏成功");
             }else{
                 alert("发生错误"+xhr.status);
@@ -181,6 +192,61 @@ function collect(){
     xhr.open('get','');
     xhr.send(null);
 }
+
+
+/*
+function collect() {
+    ajax('get', '').then(function(data){
+       /!* let info=JSON.parse(data);*!/
+       let info=data;
+        //造型师、造型屋、测评的收藏数
+        let numDesigner="";
+        numDesigner+="<span class='stylingDesignerSpan'>造型师（"+info.designerNum+")</span>";
+        let numSalon="";
+        numSalon+="<span class='hairSalonSpan'>造型屋（"+info.salonNum+")</span>";
+        let numEvaluate="";
+        numEvaluate+="<span class='evaluationCollection'>测评（"+info.evaluateNum+")</span>";
+        //造型师、造型屋、测评的添加内容
+        let designerBox="";
+        for (let i=0;i<info.length;i++){
+            //<div class="box"><img src="../img/designerphoto2.jpg"/><span>XX造型师</span></div>
+            designerBox += "<div class='box'><a href='"+info[i].designerUrl+"'><img src='"+info[i].designerPic+"'/><span>"+info[i].designer+"造型师</span></a></div>";
+        }
+        let salonBox="";
+        for (let i=0;i<info.length;i++){
+            //<div class="box"><img src="../img/salaonpho1.jpg"/><span>XX造型屋</span></div>
+            salonBox += "<div class='box'><a href='"+info[i].salonUrl+"'><img src='"+info[i].salonPic+"'/><span>"+info[i].salon+"造型屋</span></a></div>";
+        }
+        let evaluateBox="";
+        for (let i=0;i<info.length;i++){
+            evaluateBox += "<div class='clear'></div>" +
+                "<div class='box1'><a href='"+info[i].evaluateUrl+"'>"    +
+                "<img src='"+info[i].evaluatePic+"'/>"  +
+                "<div class='box1_1'>"   +
+                "<span>"+info[i].evaluateName+"</span><br/>"  +
+                "<span>简介："+info[i].evaluateSummary+"</span><br/>"  +
+                "<i class='iconfont icon-fenxiang'></i><span class='icon-fenxiangSpan'>分享</span>" +
+                "<i class=\"iconfont icon-shanchu\"></i><span class=\"icon-shanchuSpan\">删除收藏</span>" +
+                "</div>"  +
+                "</a></div>";
+        }
+
+        document.getElementsByClassName('stylingDesignerSpan')[0].innerHTML=numDesigner;
+        document.getElementsByClassName('hairSalonSpan')[0].innerHTML=numSalon;
+        document.getElementsByClassName('evaluationCollection')[0].innerHTML=numEvaluate;
+
+        document.getElementsByClassName('stylingDesigner')[0].innerHTML+=designerBox;
+        document.getElementsByClassName('hairSalon')[0].innerHTML+=salonBox;
+        document.getElementsByClassName('evaluation')[0].innerHTML+=evaluateBox;
+        alert("收藏成功");
+    }).catch(function (err) {
+        console.error(err);
+    });
+}
+*/
+
+
+
 //我的收藏end
 
 //我的关注start
@@ -352,7 +418,7 @@ window.onload=function(){
     showInformation();
     let collectBtn=document.getElementById('collectBtn');
     collectBtn.addEventListener('click',collect,false);
-//collectBtn.removeEventListener('click',collect,false);
+//collectBtn.removeEventListener('click',collect,false); 这个false是阻止冒泡的意思
 
     let subscribeBtn=document.getElementById('subscribeBtn');
     subscribeBtn.addEventListener('click',subscribe,false);
