@@ -150,7 +150,7 @@ function collect(){
                 let numDesigner="";
                 numDesigner+="<span class='stylingDesignerSpan'>造型师（"+info.styCount+")</span>";
                 let numSalon="";
-                numSalon+="<span class='hairSalonSpan'>造型屋（"+info.stylistCount+")</span>";
+                numSalon+="<span class='hairSalonSpan'>造型屋（"+info.styHouseCount+")</span>";
                 let numEvaluate="";
                 numEvaluate+="<span class='evaluationCollection'>测评（"+info.evalCount+")</span>";
                 //造型师、造型屋、测评的添加内容
@@ -189,7 +189,7 @@ function collect(){
             }
         }
     }
-    xhr.open('get','');
+    xhr.open('get','/myHome/userCollection');
     xhr.send(null);
 }
 

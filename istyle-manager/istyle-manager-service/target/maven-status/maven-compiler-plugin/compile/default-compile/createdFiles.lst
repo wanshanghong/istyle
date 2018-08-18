@@ -1,2 +1,8 @@
+com\istyle\service\impl\StyHouseServiceImpl.class
+com\istyle\service\impl\StylistServiceImpl.class
 com\istyle\service\UserService.class
+com\istyle\service\EvaluationService.class
 com\istyle\service\impl\UserServiceImpl.class
+com\istyle\service\StyHouseService.class
+com\istyle\service\StylistService.class
+com\istyle\service\impl\EvaluationServiceImpl.class
