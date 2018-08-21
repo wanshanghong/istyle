@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.istyle.mapper.TbEvaluationMapper">
+
+    <select id="selectStyHouseCountByUserId" parameterType="java.lang.Long" resultType="java.lang.Long">
+        SELECT count(*)
+        FROM tb_user_evaluation
+        where userId=#{userId};
+    </select>
+
+    <select id="selectEvalByUserId" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbEvaluation">
+        SELECT evalPhoto, evalName, evalWord
+        FROM tb_evaluation
+        WHERE evalId
+          IN (SELECT evalId
+          FROM tb_user_evaluation
+          where userId = #{userId});
+    </select>
+</mapper>

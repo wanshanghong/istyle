@@ -156,7 +156,9 @@ function collect(){
 
                 let numSalon="";
                 numSalon+="<span class='hairSalonSpan'>造型屋（"+info.styHouseCount+")</span>";
+
                 console.log("3");
+
                 let numEvaluate="";
                 numEvaluate+="<span class='evaluationCollection'>测评（"+info.evalCount+")</span>";
                 console.log(info.styHouseCount);
@@ -205,7 +207,7 @@ function collect(){
             }
         }
     }
-    xhr.open('get','');
+    xhr.open('get','/myHome/userCollection');
     xhr.send(null);
 }
 

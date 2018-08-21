@@ -1,9 +1,6 @@
 package com.istyle.mapper;
 
 import com.istyle.pojo.TbUser;
-import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
 
 public interface TbUserMapper {
     //注册用户
