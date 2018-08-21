@@ -144,24 +144,37 @@ function collect(){
     xhr.onreadystatechange=function(){
         if (xhr.readyState===4){
             if (xhr.status>=200 && xhr.status<300 ||xhr.status===304){
-                /*var info=JSON.parse(xhr.responseText);*/
-                var info=xhr.responseText;
+                var info=JSON.parse(xhr.responseText);
+                /*var info=xhr.responseText;*/
                 //造型师、造型屋、测评的收藏数
+                console.log("1");
                 let numDesigner="";
                 numDesigner+="<span class='stylingDesignerSpan'>造型师（"+info.styCount+")</span>";
+                console.log("2");
+                console.log(info.styCount);
+                console.log(info);
+
                 let numSalon="";
-                numSalon+="<span class='hairSalonSpan'>造型屋（"+info.stylistCount+")</span>";
+                numSalon+="<span class='hairSalonSpan'>造型屋（"+info.styHouseCount+")</span>";
+                console.log("3");
                 let numEvaluate="";
                 numEvaluate+="<span class='evaluationCollection'>测评（"+info.evalCount+")</span>";
+                console.log(info.styHouseCount);
+                console.log(info.evalCount);
+
                 //造型师、造型屋、测评的添加内容
+                console.log("4");
+                console.log(info.stylist);
                 let designerBox="";
                 for (let i=0;i<info.stylist.length;i++){
                     designerBox += "<div class='box'><a href='"+info.stylist[i].designerUrl+"'><img src='"+info.stylist[i].styPhoto+"'/><span>"+info.stylist[i].styName+"造型师</span></a></div>";
                 }
+                console.log("5");
                 let salonBox="";
                 for (let i=0;i<info.styHouse.length;i++){
                     salonBox += "<div class='box'><a href='"+info.styHouse[i].salonUrl+"'><img src='"+info.styHouse[i].styHousePhoto+"'/><span>"+info.styHouse[i].styHouseName+"造型屋</span></a></div>";
                 }
+                console.log("6");
                 let evaluateBox="";
                 for (let i=0;i<info.evaluation.length;i++){
                     evaluateBox += "<div class='clear'></div>" +
@@ -175,17 +188,20 @@ function collect(){
                                            "</div>"  +
                                        "</a></div>";
                 }
+                console.log("7");
 
                 document.getElementsByClassName('stylingDesignerSpan')[0].innerHTML=numDesigner;
                 document.getElementsByClassName('hairSalonSpan')[0].innerHTML=numSalon;
                 document.getElementsByClassName('evaluationCollection')[0].innerHTML=numEvaluate;
-
-                document.getElementsByClassName('stylingDesigner')[0].innerHTML+=designerBox;
-                document.getElementsByClassName('hairSalon')[0].innerHTML+=salonBox;
+                console.log("8");
+                document.getElementsByClassName('stylingDesignerIn')[0].innerHTML+=designerBox;
+                document.getElementsByClassName('hairSalonIn')[0].innerHTML+=salonBox;
                 document.getElementsByClassName('evaluation')[0].innerHTML+=evaluateBox;
                 alert("收藏成功");
+                console.log("succ");
             }else{
                 alert("发生错误"+xhr.status);
+                console.log("err"+xhr.status);
             }
         }
     }
