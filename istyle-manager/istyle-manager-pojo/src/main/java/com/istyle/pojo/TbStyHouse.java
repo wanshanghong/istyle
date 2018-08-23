@@ -1,18 +1,18 @@
 package com.istyle.pojo;
 
 public class TbStyHouse {
-    private Long styHouesId;
+    private Long styHouseId;
     private String styHouseName;
     private String styHouseWord;
     private String styHousePhoto;
     private String styHouseAddr;
 
-    public Long getStyHouesId() {
-        return styHouesId;
+    public Long getStyHouseId() {
+        return styHouseId;
     }
 
-    public void setStyHouesId(Long styHouesId) {
-        this.styHouesId = styHouesId;
+    public void setStyHouseId(Long styHouseId) {
+        this.styHouseId = styHouseId;
     }
 
     public String getStyHouseName() {

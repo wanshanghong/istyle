@@ -15,10 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.*;
 
 @Controller
@@ -36,9 +33,9 @@ public class MyHomePage {
 //    打开编辑页面发送用户数据
     @ResponseBody
     @RequestMapping(value="/updateUserPage", method= RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
-    public String updatePage(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+    public String updatePage(HttpServletRequest request){
         Long userId;
-        Map<String, String> users = new HashMap<String, String>();
+        Map<String, String> users = new HashMap<>();
         String json;
         userId = (Long) request.getSession().getAttribute("userId");
         TbUser user = userService.selectUserById(userId);
@@ -84,7 +81,8 @@ public class MyHomePage {
 //    我的主页跳转至我的信息
     @ResponseBody
     @RequestMapping(value="/index", method= RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
-    public String myHomePage(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+    public String myHomePage(HttpServletRequest request){
+        System.out.println("message page success");
         Long userId = (Long) request.getSession().getAttribute("userId");
         Map<String, String> users = new HashMap<String, String>();
         String json;
@@ -104,18 +102,11 @@ public class MyHomePage {
         return json;
     }
 
-//    展示我的信息
-    @RequestMapping("/myMessage")
-    @ResponseBody
-    public TbUser userPageShoe(HttpServletRequest request){
-        TbUser user = userService.selectUserById((Long) request.getSession().getAttribute("userId"));
-        return user;
-    }
-
 //    我的收藏
     @ResponseBody
     @RequestMapping(value="/userCollection", method= RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
-    public String myCollection(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException{
+    public String myCollection(HttpServletRequest request){
+        System.out.println("连接成功");
         Long userId = (Long) request.getSession().getAttribute("userId");
         Map<String, List> map = new HashMap<>();
         String json;
@@ -125,6 +116,7 @@ public class MyHomePage {
         List<TbStylist> stylists; //造型师
         List<TbStyHouse> styHouses; //造型屋
         List<TbEvaluation> evaluations; //测评
+
         if (userId != null){
             styCount = stylistService.selectStylistCountByUserId(userId);
             stylists = stylistService.selectStylistByUserId(userId);
@@ -144,12 +136,13 @@ public class MyHomePage {
             map.put("isOpen", Collections.singletonList("1"));
 
             json = JSONUtils.toJSONString(map);
-
         }
         else {
             map.put("isOpen", Collections.singletonList("0"));
             json = JSONUtils.toJSONString(map);
         }
+
+        System.out.println("发送成功");
         return json;
     }
 }
