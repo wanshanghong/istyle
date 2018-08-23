@@ -1,2 +1,5 @@
 com\istyle\mapper\TbUserMapper.class
 com\istyle\mapper\TbSubmissionMapper.class
+com\istyle\mapper\TbStyHouseMapper.class
+com\istyle\mapper\TbEvaluationMapper.class
+com\istyle\mapper\TbStylistMapper.class
