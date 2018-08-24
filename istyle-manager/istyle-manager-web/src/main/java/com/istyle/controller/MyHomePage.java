@@ -105,25 +105,22 @@ public class MyHomePage {
 //    我的收藏
     @ResponseBody
     @RequestMapping(value="/userCollection", method= RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
-    public String myCollection(HttpServletRequest request){
+    public Map myCollection(HttpServletRequest request){
         System.out.println("连接成功");
         Long userId = (Long) request.getSession().getAttribute("userId");
         Map<String, List> map = new HashMap<>();
-        String json;
+//        String json;
         Long styCount; //造型师收藏数
         Long styHouseCount; //造型师收藏数
         Long evalCount; //测评数
         List<TbStylist> stylists; //造型师
         List<TbStyHouse> styHouses; //造型屋
         List<TbEvaluation> evaluations; //测评
-
         if (userId != null){
             styCount = stylistService.selectStylistCountByUserId(userId);
             stylists = stylistService.selectStylistByUserId(userId);
-
             styHouseCount = styHouseService.selectStyHouseCountByUserId(userId);
             styHouses = styHouseService.selectStyHouseByUserId(userId);
-
             evalCount = evaluationService.selectEvaluationCountByUserId(userId);
             evaluations = evaluationService.selectEvaluationByUserId(userId);
 
@@ -133,16 +130,14 @@ public class MyHomePage {
             map.put("styHouse", styHouses);
             map.put("evalCount", Collections.singletonList(evalCount));
             map.put("evaluation", evaluations);
-            map.put("isOpen", Collections.singletonList("1"));
 
-            json = JSONUtils.toJSONString(map);
+//            json = JSONUtils.toJSONString(map);
         }
         else {
-            map.put("isOpen", Collections.singletonList("0"));
-            json = JSONUtils.toJSONString(map);
+            System.out.println("没有该成员");
         }
 
         System.out.println("发送成功");
-        return json;
+        return map;
     }
 }

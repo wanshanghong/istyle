@@ -207,7 +207,7 @@ function collect(){
             }
         }
     }
-    xhr.open('get','/myHome/collection');
+    xhr.open('get','/myHome/userCollection');
     xhr.send(null);
 }
 
@@ -434,8 +434,9 @@ collectBtn.onclick=collect;
 
 window.onload=function(){
     showInformation();
-    let collectBtn=document.getElementById('collectBtn');
-    collectBtn.addEventListener('click',collect,false);
+    collect();
+   /* let collectBtn=document.getElementById('collectBtn');
+    collectBtn.addEventListener('click',collect,false);*/
 //collectBtn.removeEventListener('click',collect,false); 这个false是阻止冒泡的意思
 
     let subscribeBtn=document.getElementById('subscribeBtn');

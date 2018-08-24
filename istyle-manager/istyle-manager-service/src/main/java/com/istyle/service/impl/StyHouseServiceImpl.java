@@ -15,7 +15,7 @@ public class StyHouseServiceImpl implements StyHouseService {
 
     @Override
     public Long selectStyHouseCountByUserId(Long userId) {
-        return tbStyHouseMapper.selectStylistCountByUserId(userId);
+        return tbStyHouseMapper.selectStyHouseCountByUserId(userId);
     }
 
     @Override
