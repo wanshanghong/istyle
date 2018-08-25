@@ -5,6 +5,6 @@ import com.istyle.pojo.TbStyHouse;
 import java.util.List;
 
 public interface TbStyHouseMapper {
-    Long selectStylistCountByUserId(Long userId);
+    Long selectStyHouseCountByUserId(Long userId);
     List<TbStyHouse> selectStyHouseByUserId(Long userId);
 }

@@ -169,7 +169,7 @@ function collect(){
                 console.log(info.stylist);
                 let designerBox="";
                 for (let i=0;i<info.stylist.length;i++){
-                    designerBox += "<div class='box'><a href='"+info.stylist[i].designerUrl+"'><img src='"+info.stylist[i].styPhoto+"'/><span>"+info.stylist[i].styName+"造型师</span></a></div>";
+                    designerBox += "<div class='box'><a href='"+info.stylist[i].designerUrl+"'><img src='"+info.stylist[i].stylistPhoto+"'/><span>"+info.stylist[i].stylistName+"造型师</span></a></div>";
                 }
                 console.log("5");
                 let salonBox="";

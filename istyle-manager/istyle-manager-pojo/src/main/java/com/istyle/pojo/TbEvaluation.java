@@ -4,7 +4,7 @@ public class TbEvaluation {
     private Long evalId;
     private String evalPhoto;
     private String evalName;
-    private String evalWoed;
+    private String evalWord;
 
     public Long getEvalId() {
         return evalId;
@@ -30,11 +30,11 @@ public class TbEvaluation {
         this.evalName = evalName;
     }
 
-    public String getEvalWoed() {
-        return evalWoed;
+    public String evalWord() {
+        return evalWord;
     }
 
-    public void setEvalWoed(String evalWoed) {
-        this.evalWoed = evalWoed;
+    public void evalWord(String evalWord) {
+        this.evalWord = evalWord;
     }
 }
