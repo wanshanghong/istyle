@@ -4,6 +4,7 @@ public class TbEvaluation {
     private Long evalId;
     private String evalPhoto;
     private String evalName;
+//    private String evalWord;
     private String evalWord;
 
     public Long getEvalId() {
@@ -30,11 +31,11 @@ public class TbEvaluation {
         this.evalName = evalName;
     }
 
-    public String evalWord() {
+    public String getEvalWord() {
         return evalWord;
     }
 
-    public void evalWord(String evalWord) {
+    public void setEvalWord(String evalWord) {
         this.evalWord = evalWord;
     }
 }

@@ -156,9 +156,7 @@ function collect(){
 
                 let numSalon="";
                 numSalon+="<span class='hairSalonSpan'>造型屋（"+info.styHouseCount+")</span>";
-
                 console.log("3");
-
                 let numEvaluate="";
                 numEvaluate+="<span class='evaluationCollection'>测评（"+info.evalCount+")</span>";
                 console.log(info.styHouseCount);
@@ -169,18 +167,19 @@ function collect(){
                 console.log(info.stylist);
                 let designerBox="";
                 for (let i=0;i<info.stylist.length;i++){
-                    designerBox += "<div class='box'><a href='"+info.stylist[i].designerUrl+"'><img src='"+info.stylist[i].styPhoto+"'/><span>"+info.stylist[i].styName+"造型师</span></a></div>";
+                    designerBox += "<div class='box'><!--<a href='+/*info.stylist[i].designerUrl--><img src='"+info.stylist[i].stylistPhoto+"'/><span>"+info.stylist[i].styNameName+"造型师</span><!--</a>--></div>";
                 }
                 console.log("5");
                 let salonBox="";
-                for (let i=0;i<info.styHouse.length;i++){
-                    salonBox += "<div class='box'><a href='"+info.styHouse[i].salonUrl+"'><img src='"+info.styHouse[i].styHousePhoto+"'/><span>"+info.styHouse[i].styHouseName+"造型屋</span></a></div>";
+                for (let j=0;j<info.styHouse.length;j++){
+                    salonBox += "<div class='box'><!--<a href='+info.styHouse[j].salonUrl+'>--><img src='"+info.styHouse[j].styHousePhoto+"'/><span>"+info.styHouse[j].styHouseName+"造型屋</span><!--</a>--></div>";
                 }
                 console.log("6");
+                console.log(info.styHouse);
                 let evaluateBox="";
                 for (let i=0;i<info.evaluation.length;i++){
                     evaluateBox += "<div class='clear'></div>" +
-                                       "<div class='box1'><a href='"+info.evaluation[i].evaluateUrl+"'>"    +
+                                       "<div class='box1'><!--<a href='+info.evaluation[i].evaluateUrl+'>-->"    +
                                            "<img src='"+info.evaluation[i].evalPhoto+"'/>"  +
                                            "<div class='box1_1'>"   +
                                                "<span>"+info.evaluation[i].evalName+"</span><br/>"  +
@@ -188,9 +187,11 @@ function collect(){
                                                "<i class='iconfont icon-fenxiang'></i><span class='icon-fenxiangSpan'>分享</span>" +
                                                "<i class=\"iconfont icon-shanchu\"></i><span class=\"icon-shanchuSpan\">删除收藏</span>" +
                                            "</div>"  +
-                                       "</a></div>";
+                                       "<!--</a>--></div>";
                 }
                 console.log("7");
+                console.log(info.evaluation);
+                console.log(evaluateBox);
 
                 document.getElementsByClassName('stylingDesignerSpan')[0].innerHTML=numDesigner;
                 document.getElementsByClassName('hairSalonSpan')[0].innerHTML=numSalon;

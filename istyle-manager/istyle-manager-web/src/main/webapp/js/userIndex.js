@@ -208,7 +208,7 @@ function collect(){
             }
         }
     }
-    xhr.open('get','');
+    xhr.open('get','/myHome/userCollection');
     xhr.send(null);
 }
 
