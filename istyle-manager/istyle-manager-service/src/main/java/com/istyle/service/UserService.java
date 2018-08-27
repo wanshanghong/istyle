@@ -16,4 +16,6 @@ public interface UserService {
     void updateUser(TbUser user);
 //    查询用户信息
     TbUser selectUserById(Long userId);
+//    查询我的关注
+    TbUser selectFollerById(Long userId);
 }

@@ -25,28 +25,39 @@
     <select id="loginUser" parameterType="com.istyle.pojo.TbUser" resultType="java.lang.Long">
         select userId
         from tb_user
-        where userPhone = #{userPhone} and userPassword = #{userPassword}
+        where userPhone = #{userPhone} and userPassword = #{userPassword};
     </select>
 
     <!--根据号码返回ID-->
     <select id="selectIdByPhone" parameterType="java.lang.String" resultType="java.lang.Long">
         SELECT userId
         FROM tb_user
-        WHERE userPhone = #{userPhone}
+        WHERE userPhone = #{userPhone};
     </select>
 
     <!--通过id修改信息-->
     <update id="updateById" parameterType="com.istyle.pojo.TbUser">
         UPDATE tb_user
         SET userName = #{userName}, userWord = #{userWord}, userSex = #{userSex}
-        WHERE userId = #{userId}
+        WHERE userId = #{userId};
     </update>
 
     <!--通过id获取用户资料-->
     <select id="selectUserById" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbUser">
         SELECT userPhoto, userName, userWord, userSex
         FROM tb_user
-        WHERE userId = #{userId}
+        WHERE userId = #{userId};
+    </select>
+
+    <!--通过id获取图片、昵称、签名-->
+    <select id="selectPhotoNameWordById" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbUser">
+        select userPhoto, userName, userWord
+        from tb_user
+        where userId in (
+        select userId2
+        from tb_user_user
+        where userId = #{userId}
+        );
     </select>
 
 </mapper>

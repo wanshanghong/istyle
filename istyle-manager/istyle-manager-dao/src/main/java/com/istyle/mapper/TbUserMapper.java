@@ -17,5 +17,6 @@ public interface TbUserMapper {
     void updateById(TbUser user);
 //    通过id获取用户资料
     TbUser selectUserById(Long userId);
-
+//    通过id获取图片、昵称、签名
+    TbUser selectPhotoNameWordById(Long userId);
 }

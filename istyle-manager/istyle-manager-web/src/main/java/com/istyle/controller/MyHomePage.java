@@ -106,7 +106,7 @@ public class MyHomePage {
     @ResponseBody
     @RequestMapping(value="/userCollection", method= RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     public Map myCollection(HttpServletRequest request){
-        System.out.println("连接成功");
+        System.out.println("my collection");
         Long userId = (Long) request.getSession().getAttribute("userId");
         Map<String, List> map = new HashMap<>();
 //        String json;
@@ -137,7 +137,25 @@ public class MyHomePage {
             System.out.println("没有该成员");
         }
 
-        System.out.println("发送成功");
         return map;
+    }
+
+//    我的关注
+    @ResponseBody
+    @RequestMapping(value="/userFoller", method= RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    public List<TbUser> myFoller(HttpServletRequest request){
+        System.out.println("my foller");
+        Long userId = (Long) request.getSession().getAttribute("userId");
+//        Map<String, List> follers = new HashMap<>();
+        List<TbUser> follers = new ArrayList<>();
+
+        if (userId != null){
+            follers.add(userService.selectFollerById(userId));
+//            follers = userService.selectFollerById(userId);
+        }
+        else {
+            System.out.println("失败");
+        }
+        return follers;
     }
 }
