@@ -143,19 +143,26 @@ public class MyHomePage {
 //    我的关注
     @ResponseBody
     @RequestMapping(value="/userFoller", method= RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
-    public List<TbUser> myFoller(HttpServletRequest request){
+    public Map<String, List> myFoller(HttpServletRequest request){
         System.out.println("my foller");
         Long userId = (Long) request.getSession().getAttribute("userId");
-//        Map<String, List> follers = new HashMap<>();
-        List<TbUser> follers = new ArrayList<>();
+        Map<String, List> map = new HashMap<>();
+        List<TbUser> follers;
+        Long follerCount;
+//        String json = null;
 
         if (userId != null){
-            follers.add(userService.selectFollerById(userId));
-//            follers = userService.selectFollerById(userId);
+            follerCount = userService.selectUserCountById(userId);
+            follers = userService.selectFollersById(userId);
+
+            map.put("follerCount", Collections.singletonList(follerCount));
+            map.put("follers", follers);
+
+//            json = JSONUtils.toJSONString(map);
         }
         else {
             System.out.println("失败");
         }
-        return follers;
+        return map;
     }
 }

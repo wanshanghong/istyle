@@ -52,7 +52,13 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public TbUser selectFollerById(Long userId) {
-        return tbUserMapper.selectPhotoNameWordById(userId);
+    public List<TbUser> selectFollersById(Long userId) {
+        List<TbUser> users = tbUserMapper.selectPhotoNameWordById(userId);
+        return users;
+    }
+
+    @Override
+    public Long selectUserCountById(Long userId) {
+        return tbUserMapper.selectUserCountById(userId);
     }
 }

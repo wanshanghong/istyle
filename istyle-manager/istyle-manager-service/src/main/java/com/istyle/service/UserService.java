@@ -17,5 +17,7 @@ public interface UserService {
 //    查询用户信息
     TbUser selectUserById(Long userId);
 //    查询我的关注
-    TbUser selectFollerById(Long userId);
+    List<TbUser> selectFollersById(Long userId);
+
+    Long selectUserCountById(Long userId);
 }

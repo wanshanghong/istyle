@@ -60,4 +60,10 @@
         );
     </select>
 
+    <select id="selectUserCountById" parameterType="java.lang.Long" resultType="java.lang.Long">
+        select count(userId2)
+        from tb_user_user
+        where userId = #{userId}
+    </select>
+
 </mapper>

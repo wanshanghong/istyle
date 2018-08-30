@@ -285,10 +285,12 @@ function subscribe(){
                 let numsubscribe="";
                 //<span class="subscribeNum">关注(关注数)</span>
                 numsubscribe+="<span class='subscribeNum'>关注（"+info.follerCount+")</span>";
+                console.log("666");
+                console.log(info.follerCount);
 
                 let s="";
                 for(let i=0;i<info.follers.length;i++){
-
+                    console.log("成功");
                     s+= "<div class='subscribeContent1'>"+
                             "<img src='"+info.follers[i].userPhoto+"'/>"+
                             "<p>"+
@@ -303,13 +305,18 @@ function subscribe(){
                                 "</select>"+
                             "</form>"+
                         "</div>";
+                    console.log(info.follerCount);
+                    console.log(info.follers);
                 }
+
 
             document.getElementsByClassName('subscribeNum').innerHTML=numsubscribe;
             document.getElementsByClassName('rightBottomSubscribe').innerHTML+=s;
             alert("关注连接成功");
+            console.log("成功");
             }else{
                 alert("发生错误"+xmlhttp.status);
+                console.log("'发生错误'+xmlhttp.status");
             }
         }
     }
@@ -430,7 +437,7 @@ collectBtn.onclick=collect;
 
 
 //事件绑定end
-
+/*
 let subscribeBtn=document.getElementById('subscribeBtn');
 subscribeBtn.addEventListener('click',subscribe,false);
 
@@ -439,12 +446,13 @@ fansBtn.addEventListener('click',fans,false);
 
 let myOrderBtn=document.getElementById('myOrderBtn');
 myOrderBtn.addEventListener('click',myOrder,false);
-console.log(collectBtn);
+console.log(collectBtn);*/
 
 
 window.onload=function(){
     showInformation();
     collect();
+    subscribe();
    /* let collectBtn=document.getElementById('collectBtn');
     collectBtn.addEventListener('click',collect,false);*/
 //collectBtn.removeEventListener('click',collect,false); 这个false是阻止冒泡的意思

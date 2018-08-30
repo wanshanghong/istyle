@@ -288,7 +288,7 @@ function subscribe(){
 
                 let s="";
                 for(let i=0;i<info.follers.length;i++){
-
+                    console.log("成功");
                     s+= "<div class='subscribeContent1'>"+
                             "<img src='"+info.follers[i].userPhoto+"'/>"+
                             "<p>"+
@@ -304,6 +304,7 @@ function subscribe(){
                             "</form>"+
                         "</div>";
                 }
+
 
             document.getElementsByClassName('subscribeNum').innerHTML=numsubscribe;
             document.getElementsByClassName('rightBottomSubscribe').innerHTML+=s;
