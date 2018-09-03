@@ -2,6 +2,8 @@ package com.istyle.mapper;
 
 import com.istyle.pojo.TbUser;
 
+import java.util.List;
+
 public interface TbUserMapper {
     //注册用户
     void insertUser(TbUser user);
@@ -17,5 +19,8 @@ public interface TbUserMapper {
     void updateById(TbUser user);
 //    通过id获取用户资料
     TbUser selectUserById(Long userId);
-
+//    通过id获取图片、昵称、签名
+    List<TbUser> selectPhotoNameWordById(Long userId);
+//    根据ID返回数目
+    Long selectUserCountById(Long userId);
 }

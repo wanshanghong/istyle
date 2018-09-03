@@ -50,4 +50,15 @@ public class UserServiceImpl implements UserService{
     public TbUser selectUserById(Long userId) {
         return tbUserMapper.selectUserById(userId);
     }
+
+    @Override
+    public List<TbUser> selectFollersById(Long userId) {
+        List<TbUser> users = tbUserMapper.selectPhotoNameWordById(userId);
+        return users;
+    }
+
+    @Override
+    public Long selectUserCountById(Long userId) {
+        return tbUserMapper.selectUserCountById(userId);
+    }
 }

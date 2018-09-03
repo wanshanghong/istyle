@@ -288,7 +288,9 @@ function subscribe(){
 
                 console.log(info.follerCount);
                 let s="";
+
                 for(let i=0;i<info.follerCount;i++){
+
 
                     s+= "<div class='subscribeContent1'>"+
                             "<img src='"+info.follers[i].userPhoto+"'/>"+
@@ -309,6 +311,7 @@ function subscribe(){
              console.log(info.follers);
             document.getElementsByClassName('subscribeNum')[0].innerHTML=numsubscribe;
             document.getElementsByClassName('rightBottomSubscribe')[0].innerHTML+=s;
+
             alert("关注连接成功");
             console.log("成功");
             }else{

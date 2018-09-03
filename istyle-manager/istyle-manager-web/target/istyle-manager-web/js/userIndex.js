@@ -143,7 +143,7 @@ function collect(){
     let xhr=new XMLHttpRequest();
     xhr.onreadystatechange=function(){
         if (xhr.readyState===4){
-            if (xhr.status>=200 && xhr.status<300 ||xhr.status===304){
+            if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
                 var info=JSON.parse(xhr.responseText);
                 /*var info=xhr.responseText;*/
                 //造型师、造型屋、测评的收藏数
@@ -167,7 +167,7 @@ function collect(){
                 console.log(info.stylist);
                 let designerBox="";
                 for (let i=0;i<info.stylist.length;i++){
-                    designerBox += "<div class='box'><!--<a href='+/*info.stylist[i].designerUrl--><img src='"+info.stylist[i].stylistPhoto+"'/><span>"+info.stylist[i].styNameName+"造型师</span><!--</a>--></div>";
+                    designerBox += "<div class='box'><!--<a href='+/*info.stylist[i].designerUrl--><img src='"+info.stylist[i].stylistPhoto+"'/><span>"+info.stylist[i].stylistName+"造型师</span><!--</a>--></div>";
                 }
                 console.log("5");
                 let salonBox="";
@@ -279,21 +279,23 @@ function subscribe(){
 
     xmlhttp.onreadystatechange=function(){
         if(xmlhttp.readyState===4){
-            if (xmlhttp.status===200){
+            if (xmlhttp.status>=200 && xmlhttp.status<300 || xmlhttp.status===304 ){
                 var info=xmlhttp.responseText;
 
                 let numsubscribe="";
                 //<span class="subscribeNum">关注(关注数)</span>
-                numsubscribe+="<span class='subscribeNum'>关注（"+info.subscribeNum+")</span>";
+                numsubscribe+="<span class='subscribeNum'>关注（"+info.follerCount+")</span>";
+                console.log("666");
+                console.log(info.follerCount);
 
                 let s="";
-                for(let i=0;i<info.length;i++){
-
+                for(let i=0;i<info.follers.length;i++){
+                    console.log("成功");
                     s+= "<div class='subscribeContent1'>"+
-                            "<img src='"+info[i].subscribePic+"'/>"+
+                            "<img src='"+info.follers[i].userPhoto+"'/>"+
                             "<p>"+
-                            "<span>"+info[i].subscribeNickname+"</span><br/>"+
-                            "<span>"+info[i].subscribeSignature+"</span>"+
+                            "<span>"+info.follers[i].userName+"</span><br/>"+
+                            "<span>"+info.follers[i].userWord+"</span>"+
                             "</p>"+
                             "<button class='privateChat'><a href=''>私信</a></button>"+
                             "<form action='' method='post'>"+
@@ -303,17 +305,22 @@ function subscribe(){
                                 "</select>"+
                             "</form>"+
                         "</div>";
+                    console.log(info.follerCount);
+                    console.log(info.follers);
                 }
+
 
             document.getElementsByClassName('subscribeNum').innerHTML=numsubscribe;
             document.getElementsByClassName('rightBottomSubscribe').innerHTML+=s;
             alert("关注连接成功");
+            console.log("成功");
             }else{
                 alert("发生错误"+xmlhttp.status);
+                console.log("'发生错误'+xmlhttp.status");
             }
         }
     }
-    xmlhttp.open('get','');
+    xmlhttp.open('get','/myHome/userFoller');
     xmlhttp.send(null);
 }
 //我的关注end
@@ -430,24 +437,26 @@ collectBtn.onclick=collect;
 
 
 //事件绑定end
+/*
+let subscribeBtn=document.getElementById('subscribeBtn');
+subscribeBtn.addEventListener('click',subscribe,false);
 
+let fansBtn=document.getElementById('fansBtn');
+fansBtn.addEventListener('click',fans,false);
+
+let myOrderBtn=document.getElementById('myOrderBtn');
+myOrderBtn.addEventListener('click',myOrder,false);
+console.log(collectBtn);*/
 
 
 window.onload=function(){
     showInformation();
     collect();
+    subscribe();
    /* let collectBtn=document.getElementById('collectBtn');
     collectBtn.addEventListener('click',collect,false);*/
 //collectBtn.removeEventListener('click',collect,false); 这个false是阻止冒泡的意思
 
-    let subscribeBtn=document.getElementById('subscribeBtn');
-    subscribeBtn.addEventListener('click',subscribe,false);
 
-    let fansBtn=document.getElementById('fansBtn');
-    fansBtn.addEventListener('click',fans,false);
 
-    let myOrderBtn=document.getElementById('myOrderBtn');
-    myOrderBtn.addEventListener('click',myOrder,false);
-    console.log(collectBtn);
-
-}
+};
