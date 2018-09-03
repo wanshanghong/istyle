@@ -286,8 +286,9 @@ function subscribe(){
                 //<span class="subscribeNum">关注(关注数)</span>
                 numsubscribe+="<span class='subscribeNum'>关注（"+info.follerCount+")</span>";
 
+                console.log(info.follerCount);
                 let s="";
-                for(let i=0;i<info.follers.length;i++){
+                for(let i=0;i<info.follerCount;i++){
 
                     s+= "<div class='subscribeContent1'>"+
                             "<img src='"+info.follers[i].userPhoto+"'/>"+
@@ -305,8 +306,9 @@ function subscribe(){
                         "</div>";
                 }
 
-            document.getElementsByClassName('subscribeNum').innerHTML=numsubscribe;
-            document.getElementsByClassName('rightBottomSubscribe').innerHTML+=s;
+             console.log(info.follers);
+            document.getElementsByClassName('subscribeNum')[0].innerHTML=numsubscribe;
+            document.getElementsByClassName('rightBottomSubscribe')[0].innerHTML+=s;
             alert("关注连接成功");
             console.log("成功");
             }else{
