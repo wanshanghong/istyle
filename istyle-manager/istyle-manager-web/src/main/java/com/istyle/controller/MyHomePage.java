@@ -147,8 +147,8 @@ public class MyHomePage {
         System.out.println("my foller");
         Long userId = (Long) request.getSession().getAttribute("userId");
         Map<String, List> map = new HashMap<>();
-        List<TbUser> follers;
         Long follerCount;
+        List<TbUser> follers;
 //        String json = null;
 
         if (userId != null){

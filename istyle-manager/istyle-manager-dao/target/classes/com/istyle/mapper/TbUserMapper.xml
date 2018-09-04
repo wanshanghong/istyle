@@ -51,7 +51,7 @@
 
     <!--通过id获取图片、昵称、签名-->
     <select id="selectPhotoNameWordById" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbUser">
-        select userPhoto, userName, userWord
+        select userId, userPhoto, userName, userWord
         from tb_user
         where userId in (
         select userId2

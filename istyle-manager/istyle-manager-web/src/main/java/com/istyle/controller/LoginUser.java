@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller
@@ -29,8 +30,17 @@ public class LoginUser {
             return "error";
         }
         else{
-            request.getSession().setAttribute("userId", userService.loginUser(user));
-            return "success";
+            HttpSession session = request.getSession();
+            if (session.isNew()){
+                request.getSession().setAttribute("userId", userService.loginUser(user));
+//            设置会话超时为20分钟
+                request.getSession().setMaxInactiveInterval(20*60);
+                return "success";
+            }
+            else {
+                System.out.println(session.isNew());
+                return "User is logged in";
+            }
         }
     }
 }

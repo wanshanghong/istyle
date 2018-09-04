@@ -1,33 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="df367f72-aeb0-458c-b375-93b133225eab" name="Default" comment="8.27 by hww">
+    <list default="true" id="df367f72-aeb0-458c-b375-93b133225eab" name="Default" comment="8.30 by hww">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-dao/src/main/java/com/istyle/mapper/TbUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-dao/src/main/java/com/istyle/mapper/TbUserMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-dao/src/main/java/com/istyle/mapper/TbUserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-dao/src/main/java/com/istyle/mapper/TbUserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-dao/target/classes/com/istyle/mapper/TbUserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-dao/target/classes/com/istyle/mapper/TbUserMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-dao/target/classes/com/istyle/mapper/TbUserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-dao/target/classes/com/istyle/mapper/TbUserMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-dao/target/istyle-manager-dao.jar" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-dao/target/istyle-manager-dao.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-dao/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-dao/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-pojo/target/istyle-manager-pojo.jar" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-pojo/target/istyle-manager-pojo.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-pojo/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-pojo/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-service/src/main/java/com/istyle/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-service/src/main/java/com/istyle/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-service/src/main/java/com/istyle/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-service/src/main/java/com/istyle/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-service/target/classes/com/istyle/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-service/target/classes/com/istyle/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-service/target/classes/com/istyle/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-service/target/classes/com/istyle/service/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-service/target/istyle-manager-service.jar" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-service/target/istyle-manager-service.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-service/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-service/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/java/com/istyle/controller/LoginUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/java/com/istyle/controller/LoginUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/java/com/istyle/controller/MyHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/java/com/istyle/controller/MyHomePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/target/classes/com/istyle/controller/MyHomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/target/classes/com/istyle/controller/MyHomePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/target/istyle-manager-web.war" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/target/istyle-manager-web.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/target/istyle-manager-web/WEB-INF/classes/com/istyle/controller/MyHomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/target/istyle-manager-web/WEB-INF/classes/com/istyle/controller/MyHomePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/target/istyle-manager-web/WEB-INF/html/userIndex.html" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/target/istyle-manager-web/WEB-INF/html/userIndex.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/target/istyle-manager-web/WEB-INF/lib/istyle-manager-dao-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/target/istyle-manager-web/WEB-INF/lib/istyle-manager-dao-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/target/istyle-manager-web/WEB-INF/lib/istyle-manager-pojo-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/target/istyle-manager-web/WEB-INF/lib/istyle-manager-pojo-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/target/istyle-manager-web/WEB-INF/lib/istyle-manager-service-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/target/istyle-manager-web/WEB-INF/lib/istyle-manager-service-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/target/istyle-manager-web/js/userIndex.js" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/target/istyle-manager-web/js/userIndex.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/istyle-manager/istyle-manager-web/target/maven-archiver/pom.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/istyle-parent/target/" />
     <ignored path="$PROJECT_DIR$/istyle-common/target/" />
@@ -111,45 +93,47 @@
     <session id="-422965084">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="11" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.14" value="3" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.17" value="1" />
-          <entry key="project.open.time.21" value="1" />
+          <entry key="project.open.time.20" value="1" />
+          <entry key="project.open.time.21" value="2" />
+          <entry key="project.open.time.22" value="1" />
           <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.29" value="1" />
-          <entry key="project.opened" value="12" />
+          <entry key="project.opened" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="985" />
-          <entry key="js" value="106" />
-          <entry key="txt" value="16" />
-          <entry key="xml" value="241" />
+          <entry key="java" value="1145" />
+          <entry key="js" value="121" />
+          <entry key="txt" value="20" />
+          <entry key="xml" value="249" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="985" />
-          <entry key="JavaScript" value="106" />
-          <entry key="PLAIN_TEXT" value="16" />
+          <entry key="JAVA" value="1145" />
+          <entry key="JavaScript" value="121" />
+          <entry key="PLAIN_TEXT" value="20" />
           <entry key="SQL" value="7" />
-          <entry key="XML" value="234" />
+          <entry key="XML" value="242" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="3" />
           <entry key="html" value="1" />
-          <entry key="java" value="28" />
+          <entry key="java" value="30" />
           <entry key="jpeg" value="1" />
           <entry key="jpg" value="4" />
-          <entry key="js" value="5" />
+          <entry key="js" value="6" />
           <entry key="png" value="3" />
           <entry key="xml" value="10" />
         </counts>
@@ -159,8 +143,8 @@
           <entry key="CLASS" value="3" />
           <entry key="HTML" value="1" />
           <entry key="Image" value="8" />
-          <entry key="JAVA" value="28" />
-          <entry key="JavaScript" value="5" />
+          <entry key="JAVA" value="30" />
+          <entry key="JavaScript" value="6" />
           <entry key="XML" value="10" />
         </counts>
       </usages-collector>
@@ -168,11 +152,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/java/com/istyle/controller/MyHomePage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="161" column="9" lean-forward="true" selection-start-line="161" selection-start-column="9" selection-end-line="161" selection-end-column="9" />
+            <state relative-caret-position="227">
+              <caret line="149" column="25" selection-start-line="149" selection-start-column="25" selection-end-line="149" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -180,21 +164,19 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-service/src/main/java/com/istyle/service/StylistService.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/java/com/istyle/controller/LoginUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+            <state relative-caret-position="561">
+              <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-service/src/main/java/com/istyle/service/impl/StylistServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/login-register.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="543">
-              <caret line="23" column="59" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
-            </state>
+            <state relative-caret-position="-1980" />
           </provider>
         </entry>
       </file>
@@ -210,7 +192,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-dao/src/main/java/com/istyle/mapper/TbStylistMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
+            <state relative-caret-position="594">
               <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
             </state>
           </provider>
@@ -219,8 +201,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="286" column="67" lean-forward="true" selection-start-line="286" selection-start-column="67" selection-end-line="286" selection-end-column="67" />
+            <state relative-caret-position="9306">
+              <caret line="282" column="56" selection-start-line="282" selection-start-column="56" selection-end-line="282" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -228,8 +210,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-service/src/main/java/com/istyle/service/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+            <state relative-caret-position="316">
+              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -237,12 +219,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-service/src/main/java/com/istyle/service/impl/UserServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="54" column="38" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
-              <folding>
-                <element signature="e#1525#1526#0" expanded="true" />
-                <element signature="e#1552#1553#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="413">
+              <caret line="39" column="36" lean-forward="true" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -250,7 +228,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-dao/src/main/java/com/istyle/mapper/TbUserMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
+            <state relative-caret-position="660">
               <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -262,8 +240,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-dao/src/main/java/com/istyle/mapper/TbUserMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="52" column="39" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="39" />
+            <state relative-caret-position="1749">
+              <caret line="53" column="23" selection-start-line="53" selection-start-column="23" selection-end-line="53" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -295,7 +273,6 @@
         <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/WEB-INF/html/userIndex.html" />
         <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/WEB-INF/html/userIndex.html" />
         <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/WEB-INF/html/userIndex.html" />
-        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/WEB-INF/html/userIndex.html" />
         <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/resources/properties/db.properties" />
         <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-pojo/src/main/java/com/istyle/pojo/TbStylist.java" />
         <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-dao/src/main/java/com/istyle/mapper/TbEvaluation.java" />
@@ -315,21 +292,9 @@
         <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-service/src/main/java/com/istyle/service/impl/StyHouseServiceImpl.java" />
         <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-dao/src/main/java/com/istyle/mapper/TbEvaluationMapper.xml" />
         <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-pojo/src/main/java/com/istyle/pojo/TbEvaluation.java" />
-        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-dao/src/main/java/com/istyle/mapper/TbUserMapper.xml" />
-        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-dao/src/main/java/com/istyle/mapper/TbUserMapper.xml" />
         <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-dao/src/main/java/com/istyle/mapper/TbUserMapper.java" />
         <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-service/src/main/java/com/istyle/service/impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-service/src/main/java/com/istyle/service/UserService.java" />
-        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js" />
-        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js" />
-        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js" />
-        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js" />
-        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js" />
-        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js" />
-        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js" />
-        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js" />
-        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js" />
-        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js" />
         <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/java/com/istyle/controller/MyHomePage.java" />
         <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/java/com/istyle/controller/MyHomePage.java" />
         <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/java/com/istyle/controller/MyHomePage.java" />
@@ -338,6 +303,19 @@
         <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/java/com/istyle/controller/MyHomePage.java" />
         <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/java/com/istyle/controller/MyHomePage.java" />
         <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/java/com/istyle/controller/MyHomePage.java" />
+        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js" />
+        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js" />
+        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js" />
+        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js" />
+        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js" />
+        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js" />
+        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js" />
+        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js" />
+        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js" />
+        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js" />
+        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-dao/src/main/java/com/istyle/mapper/TbUserMapper.xml" />
+        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-dao/src/main/java/com/istyle/mapper/TbUserMapper.xml" />
+        <option value="$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/java/com/istyle/controller/LoginUser.java" />
       </list>
     </option>
   </component>
@@ -363,6 +341,15 @@
   <component name="MavenProjectNavigator">
     <treeState>
       <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="istyle-manager-dao" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="istyle-manager-dao" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
           <item name="istyle-manager-web Maven Webapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
@@ -429,8 +416,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -618,7 +605,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -626,7 +613,7 @@
     <property name="SearchEverywhereHistoryKey" value="load&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535626244545" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535626249651" />
     <property name="last_opened_file_path" value="G:/task01" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="project.structure.last.edited" value="Project" />
@@ -649,117 +636,6 @@
       <recent name="F:\istyle\istyle-manager\istyle-manager-web\src\main\webapp\img" />
       <recent name="F:\istyle\istyle-manager\istyle-manager-web\src\main\webapp" />
     </key>
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/WEB-INF/html/userIndex.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -942,7 +818,10 @@
       <workItem from="1535271094033" duration="2806000" />
       <workItem from="1535382976584" duration="1635000" />
       <workItem from="1535447132548" duration="726000" />
-      <workItem from="1535622783921" duration="3410000" />
+      <workItem from="1535622783921" duration="3608000" />
+      <workItem from="1535896364605" duration="113000" />
+      <workItem from="1535976350326" duration="2864000" />
+      <workItem from="1536047396581" duration="2842000" />
     </task>
     <task id="LOCAL-00001" summary="测试在idea中github">
       <created>1525617668723</created>
@@ -986,11 +865,18 @@
       <option name="project" value="LOCAL" />
       <updated>1535384584639</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="8.30 by hww">
+      <created>1535626270406</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1535626270406</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="298192000" />
+    <option name="totallyTimeSpent" value="304209000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1000,7 +886,7 @@
       <window_info id="UI Designer" order="2" />
       <window_info id="Web" order="3" sideWeight="0.5186916" side_tool="true" weight="0.24892704" />
       <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="5" sideWeight="0.4813084" visible="true" weight="0.21811362" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" sideWeight="0.4813084" visible="true" weight="0.2274678" />
       <window_info id="Structure" order="6" weight="0.25" />
       <window_info id="Image Layers" order="7" />
       <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.50053304" side_tool="true" weight="0.50705755" />
@@ -1010,14 +896,14 @@
       <window_info anchor="bottom" id="Terminal" order="4" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Find" order="6" weight="0.32907802" />
-      <window_info active="true" anchor="bottom" id="Run" order="7" sideWeight="0.49946696" visible="true" weight="0.5105438" />
-      <window_info anchor="bottom" id="Debug" order="8" weight="0.24417314" />
+      <window_info anchor="bottom" id="Run" order="7" sideWeight="0.49946696" weight="0.5311804" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.74944323" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="11" />
       <window_info anchor="bottom" id="Spring" order="12" weight="0.32963374" />
       <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
-      <window_info anchor="right" id="Maven Projects" order="0" visible="true" weight="0.17041801" />
+      <window_info anchor="right" id="Maven Projects" order="0" weight="0.17006437" />
       <window_info anchor="right" id="Palette&#9;" order="1" />
       <window_info anchor="right" id="Database" order="2" weight="0.32977816" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
@@ -1073,16 +959,10 @@
     <MESSAGE value="8.24" />
     <MESSAGE value="8.26 by hww" />
     <MESSAGE value="8.27 by hww" />
-    <option name="LAST_COMMIT_MESSAGE" value="8.27 by hww" />
+    <MESSAGE value="8.30 by hww" />
+    <option name="LAST_COMMIT_MESSAGE" value="8.30 by hww" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/css/userbase.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="104" column="35" selection-start-line="104" selection-start-column="35" selection-end-line="104" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$MAVEN_REPOSITORY$/com/github/pagehelper/pagehelper/3.4.2-fix/pagehelper-3.4.2-fix.pom" />
     <entry file="file://$PROJECT_DIR$/istyle-common/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -1240,13 +1120,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/java/com/istyle/controller/LoginUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="32" column="29" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/java/com/istyle/controller/IndexPageShow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -1326,7 +1199,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-service/src/main/java/com/istyle/service/impl/StylistServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
+        <state relative-caret-position="561">
           <caret line="23" column="59" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
         </state>
       </provider>
@@ -1340,22 +1213,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-dao/src/main/java/com/istyle/mapper/TbStylistMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
+        <state relative-caret-position="594">
           <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-dao/src/main/java/com/istyle/mapper/TbUserMapper.xml">
+    <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="52" column="39" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="39" />
+        <state relative-caret-position="9306">
+          <caret line="282" column="56" selection-start-line="282" selection-start-column="56" selection-end-line="282" selection-end-column="56" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-dao/src/main/java/com/istyle/mapper/TbUserMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
+        <state relative-caret-position="660">
           <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-dao/src/main/java/com/istyle/mapper/TbUserMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1749">
+          <caret line="53" column="23" selection-start-line="53" selection-start-column="23" selection-end-line="53" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/login-register.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1980" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/java/com/istyle/controller/MyHomePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="149" column="25" selection-start-line="149" selection-start-column="25" selection-end-line="149" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1364,36 +1259,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-service/src/main/java/com/istyle/service/impl/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="54" column="38" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
-          <folding>
-            <element signature="e#1525#1526#0" expanded="true" />
-            <element signature="e#1552#1553#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="413">
+          <caret line="39" column="36" lean-forward="true" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-service/src/main/java/com/istyle/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+        <state relative-caret-position="316">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/webapp/js/userIndex.js">
+    <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/java/com/istyle/controller/LoginUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="286" column="67" lean-forward="true" selection-start-line="286" selection-start-column="67" selection-end-line="286" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/istyle-manager/istyle-manager-web/src/main/java/com/istyle/controller/MyHomePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="161" column="9" lean-forward="true" selection-start-line="161" selection-start-column="9" selection-end-line="161" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="561">
+          <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
         </state>
       </provider>
     </entry>
