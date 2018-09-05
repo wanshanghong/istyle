@@ -147,10 +147,13 @@ function collect(){
                 var info=JSON.parse(xhr.responseText);
                 /*var info=xhr.responseText;*/
                 //造型师、造型屋、测评的收藏数
+
+
                /* console.log("1");*/
                 let numDesigner="";
                 numDesigner+="<span class='stylingDesignerSpan'>造型师（"+info.styCount+")</span>";
              /*   console.log("2");
+
                 console.log(info.styCount);
                 console.log(info);*/
 
@@ -159,11 +162,13 @@ function collect(){
                 /*console.log("3");*/
                 let numEvaluate="";
                 numEvaluate+="<span class='evaluationCollection'>测评（"+info.evalCount+")</span>";
-                console.log(info.styHouseCount);
-                console.log(info.evalCount);
+                /*console.log(info.styHouseCount);
+                console.log(info.evalCount);*/
 
                 //造型师、造型屋、测评的添加内容
-             /*   console.log("4");
+
+                /*console.log("4");
+
                 console.log(info.stylist);*/
                 let designerBox="";
                 for (let i=0;i<info.stylist.length;i++){
@@ -174,7 +179,9 @@ function collect(){
                 for (let j=0;j<info.styHouse.length;j++){
                     salonBox += "<div class='box'><!--<a href='+info.styHouse[j].salonUrl+'>--><img src='"+info.styHouse[j].styHousePhoto+"'/><span>"+info.styHouse[j].styHouseName+"造型屋</span><!--</a>--></div>";
                 }
+
               /*  console.log("6");
+
                 console.log(info.styHouse);*/
                 let evaluateBox="";
                 for (let i=0;i<info.evaluation.length;i++){
@@ -182,14 +189,16 @@ function collect(){
                                        "<div class='box1'><!--<a href='+info.evaluation[i].evaluateUrl+'>-->"    +
                                            "<img src='"+info.evaluation[i].evalPhoto+"'/>"  +
                                            "<div class='box1_1'>"   +
-                                               "<span>"+info.evaluation[i].evalName+"</span><br/>"  +
-                                               "<span>简介："+info.evaluation[i].evalWord+"</span><br/>"  +
+                                               "<span>"+info.evaluation[i].evalName+"</span><br>"  +
+                                               "<span>简介："+info.evaluation[i].evalWord+"</span><br>"  +
                                                "<i class='iconfont icon-fenxiang'></i><span class='icon-fenxiangSpan'>分享</span>" +
-                                               "<i class=\"iconfont icon-shanchu\"></i><span class=\"icon-shanchuSpan\">删除收藏</span>" +
+                                               "<i class='iconfont icon-shanchu'></i><span class='icon-shanchuSpan'>删除收藏</span>" +
                                            "</div>"  +
                                        "<!--</a>--></div>";
                 }
+
                 /*console.log("7");
+
                 console.log(info.evaluation);
                 console.log(evaluateBox);*/
 
@@ -197,10 +206,13 @@ function collect(){
                 document.getElementsByClassName('hairSalonSpan')[0].innerHTML=numSalon;
                 document.getElementsByClassName('evaluationCollection')[0].innerHTML=numEvaluate;
 
+
                 document.getElementsByClassName('stylingDesignerIn')[0].innerHTML+=designerBox;
                 document.getElementsByClassName('hairSalonIn')[0].innerHTML+=salonBox;
                 document.getElementsByClassName('evaluation')[0].innerHTML+=evaluateBox;
                 alert("收藏成功");
+
+                /*console.log("succ");*/
 
             }else{
                 alert("发生错误"+xhr.status);
@@ -284,35 +296,35 @@ function subscribe(){
 
                 let numsubscribe="";
                 //<span class="subscribeNum">关注(关注数)</span>
-                numsubscribe+="<span class='subscribeNum'>关注（"+info.follerCount+")</span>";
+                numsubscribe+="关注（"+info.follerCount+")";
 
-                console.log(info.follerCount);
+                /*console.log(info.follerCount);*/
                 let s="";
-
                 for(let i=0;i<info.follerCount;i++){
 
-
-                    s+= "<div class='subscribeContent1'>"+
+                    s+= "<div class='clear'></div>"+
+                        "<div class='subscribeContent1'>"+
                             "<img src='"+info.follers[i].userPhoto+"'/>"+
                             "<p>"+
                             "<span>"+info.follers[i].userName+"</span><br/>"+
                             "<span>"+info.follers[i].userWord+"</span>"+
                             "</p>"+
                             "<button class='privateChat'><a href=''>私信</a></button>"+
-                            "<form action='' method='post'>"+
+                            /*"<form action='' method='post'>"+
                                 "<select class='subscribeOrNot' name='subscribeOrNot'>"+
                                 "<option value=''>取消关注</option>"+
                                 "<option value=''>关注</option>"+
                                 "</select>"+
-                            "</form>"+
-                        "</div>";
+                            "</form>"+*/
+                            "<button class='subscribeOrNot' onclick='delsubsc'>取消关注</button>"+
+                        "</div>"+
+                        "<div class='clear'></div>";
                 }
 
              console.log(info.follers);
             document.getElementsByClassName('subscribeNum')[0].innerHTML=numsubscribe;
             document.getElementsByClassName('rightBottomSubscribe')[0].innerHTML+=s;
-
-            alert("关注连接成功");
+            /*alert("关注连接成功");*/
             console.log("成功");
             }else{
                 alert("发生错误"+xmlhttp.status);
@@ -324,6 +336,47 @@ function subscribe(){
     xmlhttp.send(null);
 }
 //我的关注end
+
+//取消关注start
+function unsubscribe(){
+    /*    let fm=document.getElementById('form');
+
+        let fd=new FormData(fm);*/
+    console.log("1");
+    let information1="";
+    console.log("2");
+
+    let xhr=new XMLHttpRequest();
+    console.log("4");
+    xhr.onreadystatechange=function(){
+        if (xhr.readyState===4){
+            if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
+                console.log("5");
+                var info1 = JSON.parse(xhr.responseText);
+                console.log(info1);
+                // var info = xhr.responseText;
+                if (!info1){
+                    console.log("取消关注成功"+xhr.status);
+
+                }else{
+                    console.log("取消关注失败");
+                }
+                console.log("6");
+            }else{
+                console.log("发生错误"+xhr.status);
+            }
+        }
+    }
+    console.log("7");
+    xhr.open('post','unFollor');
+    xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    console.log("8");
+    information1 += ( userid + "=" + info.follers[i].userId );
+    xhr.send(information1);
+    console.log("9");
+    console.log(information1);
+}
+
 
 //我的粉丝start
 function fans(){
