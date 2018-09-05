@@ -280,7 +280,7 @@ function subscribe(){
     xmlhttp.onreadystatechange=function(){
         if(xmlhttp.readyState===4){
             if (xmlhttp.status>=200 && xmlhttp.status<300 || xmlhttp.status===304 ){
-                var info=xmlhttp.responseText;
+                var info=JSON.parse(xmlhttp.responseText);
 
                 let numsubscribe="";
                 //<span class="subscribeNum">关注(关注数)</span>
@@ -304,7 +304,7 @@ function subscribe(){
                                 "<option value=''>关注</option>"+
                                 "</select>"+
                             "</form>"+*/
-                            "<button class='subscribeOrNot' onclick='delsubsc'>取消关注</button>"+
+                            "<button class='subscribeOrNot' onclick='delSubsc()'>取消关注</button>"+
                         "</div>"+
                         "<div class='clear'></div>";
                 }
@@ -326,7 +326,7 @@ function subscribe(){
 //我的关注end
 
 //取消关注start
-function unsubscribe(){
+function delSubsc(){
     /*    let fm=document.getElementById('form');
 
         let fd=new FormData(fm);*/
