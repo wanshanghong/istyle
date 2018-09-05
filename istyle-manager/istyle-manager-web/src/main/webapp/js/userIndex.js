@@ -147,10 +147,13 @@ function collect(){
                 var info=JSON.parse(xhr.responseText);
                 /*var info=xhr.responseText;*/
                 //造型师、造型屋、测评的收藏数
-                /*console.log("1");*/
+
+
+               /* console.log("1");*/
                 let numDesigner="";
                 numDesigner+="<span class='stylingDesignerSpan'>造型师（"+info.styCount+")</span>";
-                /*console.log("2");
+             /*   console.log("2");
+
                 console.log(info.styCount);
                 console.log(info);*/
 
@@ -163,7 +166,9 @@ function collect(){
                 console.log(info.evalCount);*/
 
                 //造型师、造型屋、测评的添加内容
+
                 /*console.log("4");
+
                 console.log(info.stylist);*/
                 let designerBox="";
                 for (let i=0;i<info.stylist.length;i++){
@@ -174,7 +179,9 @@ function collect(){
                 for (let j=0;j<info.styHouse.length;j++){
                     salonBox += "<div class='box'><!--<a href='+info.styHouse[j].salonUrl+'>--><img src='"+info.styHouse[j].styHousePhoto+"'/><span>"+info.styHouse[j].styHouseName+"造型屋</span><!--</a>--></div>";
                 }
-               /* console.log("6");
+
+              /*  console.log("6");
+
                 console.log(info.styHouse);*/
                 let evaluateBox="";
                 for (let i=0;i<info.evaluation.length;i++){
@@ -189,19 +196,24 @@ function collect(){
                                            "</div>"  +
                                        "<!--</a>--></div>";
                 }
-            /*    console.log("7");
+
+                /*console.log("7");
+
                 console.log(info.evaluation);
                 console.log(evaluateBox);*/
 
                 document.getElementsByClassName('stylingDesignerSpan')[0].innerHTML=numDesigner;
                 document.getElementsByClassName('hairSalonSpan')[0].innerHTML=numSalon;
                 document.getElementsByClassName('evaluationCollection')[0].innerHTML=numEvaluate;
-                /*console.log("8");*/
+
+
                 document.getElementsByClassName('stylingDesignerIn')[0].innerHTML+=designerBox;
                 document.getElementsByClassName('hairSalonIn')[0].innerHTML+=salonBox;
                 document.getElementsByClassName('evaluation')[0].innerHTML+=evaluateBox;
                 alert("收藏成功");
+
                 /*console.log("succ");*/
+
             }else{
                 alert("发生错误"+xhr.status);
                 console.log("err"+xhr.status);
