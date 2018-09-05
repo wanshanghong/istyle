@@ -349,7 +349,6 @@ function unsubscribe(){
                 }else{
                     console.log("取消关注失败");
                 }
-                /*eval("var info="+xhr.responseText);*/
                 console.log("6");
             }else{
                 console.log("发生错误"+xhr.status);
