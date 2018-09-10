@@ -320,46 +320,7 @@ function subscribe(){
 }
 //我的关注end
 
-//取消关注start
-function delSubsc(obj){
-    /*    let fm=document.getElementById('form');
 
-        let fd=new FormData(fm);*/
-    console.log("1");
-    let information1="";
-    console.log("2");
-
-    let xhr=new XMLHttpRequest();
-    console.log("4");
-    xhr.onreadystatechange=function(){
-        if (xhr.readyState===4){
-            if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
-                console.log("5");
-                var info1 = JSON.parse(xhr.responseText);
-                console.log(info1);
-                // var info = xhr.responseText;
-                if (!info1){
-                    console.log("取消关注成功"+xhr.status);
-
-                }else{
-                    console.log("取消关注失败");
-                }
-                console.log("6");
-            }else{
-                console.log("发生错误"+xhr.status);
-            }
-        }
-    }
-    console.log("7");
-    xhr.open('post','');
-    xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-    console.log("8");
-    var userId=obj.attr("id");
-    information1 += ( "userId=" + userId );
-    xhr.send(information1);
-    console.log("9");
-    console.log(information1);
-}
 
 
 //我的粉丝start
@@ -497,3 +458,46 @@ window.onload=function(){
 
 
 };
+
+$(function () {
+    //取消关注start
+    function delSubsc(obj){
+        /*    let fm=document.getElementById('form');
+
+            let fd=new FormData(fm);*/
+        console.log("1");
+        let information1="";
+        console.log("2");
+
+        let xhr=new XMLHttpRequest();
+        console.log("4");
+        xhr.onreadystatechange=function(){
+            if (xhr.readyState===4){
+                if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
+                    console.log("5");
+                    var info1 = JSON.parse(xhr.responseText);
+                    console.log(info1);
+                    // var info = xhr.responseText;
+                    if (!info1){
+                        console.log("取消关注成功"+xhr.status);
+
+                    }else{
+                        console.log("取消关注失败");
+                    }
+                    console.log("6");
+                }else{
+                    console.log("发生错误"+xhr.status);
+                }
+            }
+        }
+        console.log("7");
+        xhr.open('post','');
+        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        console.log("8");
+        var userId=$(obj).attr("id");
+        information1 += ( "userId=" + userId );
+        xhr.send(information1);
+        console.log("9");
+        console.log(information1);
+    }
+});
