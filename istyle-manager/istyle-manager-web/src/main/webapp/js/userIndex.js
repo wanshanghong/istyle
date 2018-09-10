@@ -298,15 +298,10 @@ function subscribe(){
                             "<span>"+info.follers[i].userWord+"</span>"+
                             "</p>"+
                             "<button class='privateChat'><a href=''>私信</a></button>"+
-                            /*"<form action='' method='post'>"+
-                                "<select class='subscribeOrNot' name='subscribeOrNot'>"+
-                                "<option value=''>取消关注</option>"+
-                                "<option value=''>关注</option>"+
-                                "</select>"+
-                            "</form>"+*/
-                            "<button class='subscribeOrNot' onclick='delSubsc()'>取消关注</button>"+
+                            "<button class='subscribeOrNot' onclick='delSubsc(this)' id='"+info.follers[i].userId+"' >取消关注</button>"+  /*data-userId='info.follers[i].userId'*/
                         "</div>"+
                         "<div class='clear'></div>";
+                        /*userId=info.follers[i].userId;*/
                 }
 
              console.log(info.follers);
@@ -326,7 +321,7 @@ function subscribe(){
 //我的关注end
 
 //取消关注start
-function delSubsc(){
+function delSubsc(obj){
     /*    let fm=document.getElementById('form');
 
         let fd=new FormData(fm);*/
@@ -356,10 +351,11 @@ function delSubsc(){
         }
     }
     console.log("7");
-    xhr.open('post','unFollor');
+    xhr.open('post','');
     xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     console.log("8");
-    information1 += ( userid + "=" + info.follers[i].userId );
+    var userId=obj.attr("id");
+    information1 += ( "userId=" + userId );
     xhr.send(information1);
     console.log("9");
     console.log(information1);
