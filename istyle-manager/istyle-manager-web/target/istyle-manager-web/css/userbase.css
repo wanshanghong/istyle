@@ -111,6 +111,7 @@
 	display: inline-block;
 	width: 120px;
 	height: 120px;
+	border-radius: 50%;
 }
 .rightBottomInformation #editorBtn{
 	width: 12%;
@@ -140,6 +141,7 @@
 	width: 70px;
 	height: 70px;
 	float: left;
+	border-radius: 50%;
 }
 .rightBottomInformation form #changeheadPortrait{
 	display: inline-block;
@@ -410,8 +412,8 @@
 }
 .rightBottomSubscribe  button.privateChat ,.rightBottomMyfan button.privateChat{
 	float: left;
-	display: block;
-	margin-left: 190px;
+	display: inline-block;
+	margin-left: 120px;
 	margin-top: 65px;
 }
 .rightBottomSubscribe  button.privateChat a ,.rightBottomMyfan button.privateChat a{
@@ -419,11 +421,13 @@
 	padding: 0 20px;
 	color: #000000;
 }
-.rightBottomSubscribe select.subscribeOrNot ,.rightBottomMyfan select.subscribeOrNot{
+.rightBottomSubscribe button.subscribeOrNot ,.rightBottomMyfan .subscribeOrNot{
 	float: left;
-	display: block;
-	margin-left: 40px;
+	display: inline-block;
+	margin-left: 60px;
 	margin-top: 65px;
+	padding: 0 10px;
+	color: #000000;
 }
 
 /*我的主页预约    这里的样式改编自我的收藏，可进行代码优化*/

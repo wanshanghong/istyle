@@ -20,4 +20,7 @@ public interface UserService {
     List<TbUser> selectFollersById(Long userId);
 
     Long selectUserCountById(Long userId);
+
+//      取消关注
+    int unFoller(Long userId, Long userId2);
 }
