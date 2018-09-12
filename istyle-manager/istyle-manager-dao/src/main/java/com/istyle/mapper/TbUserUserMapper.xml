@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.istyle.mapper.TbUserUserMapper">
+
+<update id="updateUsersState" parameterType="com.istyle.pojo.TbUserUser">
+    UPDATE tb_user_user SET usersState=1 WHERE userId=#{userId} and userId2=#{userId2};
+</update>
+
+    <select id="selectUsersStateById" parameterType="com.istyle.pojo.TbUserUser" resultType="java.lang.Integer">
+        select usersState from tb_user_user where userId=#{userId} and userId2=#{userId2};
+    </select>
+</mapper>
