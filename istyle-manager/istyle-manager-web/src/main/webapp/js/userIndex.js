@@ -309,6 +309,7 @@ function subscribe(){
             document.getElementsByClassName('rightBottomSubscribe')[0].innerHTML+=s;
             /*alert("关注连接成功");*/
             console.log("成功");
+            subscribe();
             }else{
                 alert("发生错误"+xmlhttp.status);
                 console.log("'发生错误'+xmlhttp.status");
@@ -413,6 +414,7 @@ function fans(){
                 document.getElementsByClassName('fansNum')[0].innerHTML=numfans;
                 document.getElementsByClassName('rightBottomMyfan')[0].innerHTML+=s;
                 console.log("粉丝连接成功");
+                fans();
             }else{
                 console.log("发生错误"+xmlhttp.status);
             }
