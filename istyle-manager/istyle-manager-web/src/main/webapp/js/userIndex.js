@@ -1,3 +1,5 @@
+
+
 //用promise封装ajax
 function ajax(method, url, data){
     let xhr;
@@ -331,6 +333,7 @@ function delSubsc(obj){
 
     let xhr=new XMLHttpRequest();
     /*console.log("4");*/
+
     xhr.onreadystatechange=function(){
         if (xhr.readyState===4){
             if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
@@ -350,6 +353,7 @@ function delSubsc(obj){
             }
         }
     }
+
     /*console.log("7");*/
     xhr.open('post','');
     xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
@@ -359,6 +363,7 @@ function delSubsc(obj){
     xhr.send(information1);
    /* console.log("9");
     console.log(information1);*/
+
 }
 
 

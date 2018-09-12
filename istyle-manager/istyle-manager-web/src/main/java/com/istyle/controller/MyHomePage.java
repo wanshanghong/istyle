@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.*;
 
 @Controller
@@ -164,5 +167,19 @@ public class MyHomePage {
             System.out.println("失败");
         }
         return map;
+    }
+
+//    取消关注
+    @ResponseBody
+    @RequestMapping(value="/unFoller", method= RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+    public int unFoller(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+        System.out.println("unFoller");
+        System.out.println(request.getParameter("userId"));
+        Long userId = (Long) request.getSession().getAttribute("userId");
+        System.out.println(userId);
+        Long userId2 = Long.valueOf(request.getParameter("userId"));
+
+        int result = userService.unFoller(userId, userId2);
+        return result;
     }
 }
