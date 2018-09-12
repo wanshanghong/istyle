@@ -10,7 +10,7 @@ import com.istyle.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -77,5 +77,55 @@ public class UserServiceImpl implements UserService{
          else {
              return 1;
          }
+    }
+
+    /**
+     * 我的粉丝页面展示
+     * @param userId2
+     * @return fanCount
+     * @return users
+     * @return usersState
+     * @return fans
+     */
+    @Override
+    public Map myFansPage(Long userId2) {
+        Long fanCount;
+        List<TbUser> users ;
+        List<Integer> usersState = new ArrayList<>();
+        Map<String, List> fans = new HashMap<>();
+        TbUserUser tbUserUser = new TbUserUser();
+        List<Long> userId;
+        int flag;
+
+//        获取粉丝数量
+        fanCount = tbUserUserMapper.selectFanCountByUserId2(userId2);
+//        获取粉丝
+        users =tbUserUserMapper.selectUsersByUserId2(userId2);
+//        获取粉丝id
+        userId = tbUserUserMapper.selectUserIdByUserId2(userId2);
+
+//        获取粉丝是否关注
+        tbUserUser.setUserId2(userId2);
+        for (Long id :
+                userId) {
+            tbUserUser.setUserId(id);
+            System.out.println(id);
+            flag = tbUserUserMapper.selectUsersStateById(tbUserUser);
+            System.out.println(flag);
+            usersState.add(flag);
+        }
+
+        /*Iterator<Long> iterator = userId.iterator();
+        while (iterator.hasNext()) {
+            tbUserUser.setUserId(Long.valueOf(String.valueOf(iterator)));
+            System.out.println(Long.valueOf(String.valueOf(iterator)));
+            usersState.add(tbUserUserMapper.selectUsersStateById(tbUserUser));
+        }*/
+
+        fans.put("fanCount", Collections.singletonList(fanCount));
+        fans.put("users", users);
+        fans.put("usersState", usersState);
+
+        return fans;
     }
 }

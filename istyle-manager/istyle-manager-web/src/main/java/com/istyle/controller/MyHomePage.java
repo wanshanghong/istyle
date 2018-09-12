@@ -176,10 +176,22 @@ public class MyHomePage {
         System.out.println("unFoller");
         System.out.println(request.getParameter("userId"));
         Long userId = (Long) request.getSession().getAttribute("userId");
-        System.out.println(userId);
         Long userId2 = Long.valueOf(request.getParameter("userId"));
 
         int result = userService.unFoller(userId, userId2);
         return result;
+    }
+
+//    我的粉丝页面
+    @ResponseBody
+    @RequestMapping(value = "/myFans", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    public Map myFansPage(HttpServletRequest request){
+        System.out.println("myFans");
+        Long userId2 = (Long) request.getSession().getAttribute("userId");
+        Map<String, TbUser> fans;
+
+        fans = userService.myFansPage(userId2);
+
+        return fans;
     }
 }

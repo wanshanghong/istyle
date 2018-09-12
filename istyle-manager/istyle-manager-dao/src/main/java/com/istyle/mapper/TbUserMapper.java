@@ -23,8 +23,4 @@ public interface TbUserMapper {
     List<TbUser> selectPhotoNameWordById(Long userId);
 //    根据ID返回数目
     Long selectUserCountById(Long userId);
-//     根据id修改用户与用户的状态
-    void updateUsersStateById(Long userId, Long userId2);
-//    根据id查询用户与用户的状态
-    int selectUsersStateById(Long userId, Long userId2);
 }

@@ -309,7 +309,7 @@ function subscribe(){
             document.getElementsByClassName('rightBottomSubscribe')[0].innerHTML+=s;
             /*alert("关注连接成功");*/
             console.log("成功");
-            subscribe();
+
             }else{
                 alert("发生错误"+xmlhttp.status);
                 console.log("'发生错误'+xmlhttp.status");
@@ -341,7 +341,7 @@ function delSubsc(obj){
                 // var info = xhr.responseText;
                 if (!info1){
                     console.log("取消关注成功"+xhr.status);
-
+                    subscribe();
                 }else{
                     console.log("取消关注失败");
                 }
@@ -374,7 +374,7 @@ function fans(){
     xmlhttp.onreadystatechange=function(){
         if(xmlhttp.readyState===4){
             if(xmlhttp.status===200){
-                var info=xmlhttp.responseText;
+                var info=JSON.parse(xmlhttp.responseText);
 
                 let numfans="";
                 //<span class="fansNum">粉丝(粉丝数)</span>
@@ -382,26 +382,27 @@ function fans(){
 
                 let s="";
                 for(let i=0;i<info.fanCount;i++){
-
-                    if(info.usersState){  //0是已关注，1是未关注
+                    console.log("1");
+                    console.log(info.usersState);
+                    if(info.usersState[i]){  //0是已关注，1是未关注
                         s+="<div class='clear'></div>"+
                             "<div class='myfanContent1'>"+
                                 "<img src='"+info.users[i].userPhoto+"'/>"+
                                 "<p>"+
-                                "<span>"+info.user[i].userName+"</span><br/>"+
-                                "<span>"+info.user[i].userWord+"</span><br/>"+
+                                "<span>"+info.users[i].userName+"</span><br/>"+
+                                "<span>"+info.users[i].userWord+"</span><br/>"+
                                 "</p>"+
                                 "<button class='privateChat'><a href=''>私信</a></button>"+
-                                "<button class='subscribeOrNot' onclick='addSubsc(this)' id='"+info.fans[i].userId+"' >加关注</button>"+
+                                "<button class='subscribeOrNot' onclick='addSubsc(this)' id='"+info.users[i].userId+"' >加关注</button>"+
                              "</div>"+
                             "<div class='clear'></div>";
                     }else{
                         s+="<div class='clear'></div>"+
                             "<div class='myfanContent1'>"+
-                            "<img src='"+info.user[i].userPhoto+"'/>"+
+                            "<img src='"+info.users[i].userPhoto+"'/>"+
                             "<p>"+
-                            "<span>"+info.user[i].userName+"</span><br/>"+
-                            "<span>"+info.user[i].userWord+"</span><br/>"+
+                            "<span>"+info.users[i].userName+"</span><br/>"+
+                            "<span>"+info.users[i].userWord+"</span><br/>"+
                             "</p>"+
                             "<button class='privateChat'><a href=''>私信</a></button>"+
                             "<button class='subscribeOrNot'>已关注</button>"+
@@ -414,7 +415,7 @@ function fans(){
                 document.getElementsByClassName('fansNum')[0].innerHTML=numfans;
                 document.getElementsByClassName('rightBottomMyfan')[0].innerHTML+=s;
                 console.log("粉丝连接成功");
-                fans();
+
             }else{
                 console.log("发生错误"+xmlhttp.status);
             }
@@ -442,7 +443,7 @@ function addSubsc(obj){
                 // var info = xhr.responseText;
                 if (!info1){
                     console.log("关注成功"+xhr.status);
-
+                    fans();
                 }else{
                     console.log("关注失败");
                 }

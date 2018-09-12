@@ -4,6 +4,7 @@ import com.istyle.pojo.TbSubmission;
 import com.istyle.pojo.TbUser;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserService {
     //注册用户
@@ -23,4 +24,8 @@ public interface UserService {
 
 //      取消关注
     int unFoller(Long userId, Long userId2);
+
+//    我的粉丝展示
+    Map myFansPage(Long userId2);
+
 }

@@ -9,4 +9,27 @@
     <select id="selectUsersStateById" parameterType="com.istyle.pojo.TbUserUser" resultType="java.lang.Integer">
         select usersState from tb_user_user where userId=#{userId} and userId2=#{userId2};
     </select>
+
+    <select id="selectUsersByUserId2" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbUser">
+        SELECT userId, userPhoto, userName, userWord
+        FROM tb_user
+        WHERE userId
+        IN (SELECT userId
+        FROM tb_user_user
+        WHERE userId2=#{userId2});
+    </select>
+
+    <select id="selectFanCountByUserId2" parameterType="java.lang.Long" resultType="java.lang.Long">
+        SELECT COUNT(*)
+        FROM tb_user_user
+        WHERE userId2= #{userId2};
+    </select>
+
+    <select id="selectUserIdByUserId2" parameterType="java.lang.Long" resultType="java.lang.Long">
+        SELECT userId FROM tb_user_user WHERE userId2=#{userId2};
+    </select>
+
+    <update id="updateUsersState2" parameterType="com.istyle.pojo.TbUserUser">
+        UPDATE tb_user_user SET usersState=0 WHERE userId=#{userId} and userId2=#{userId2}
+    </update>
 </mapper>
