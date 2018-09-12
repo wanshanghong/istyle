@@ -309,7 +309,7 @@ function subscribe(){
             document.getElementsByClassName('rightBottomSubscribe')[0].innerHTML+=s;
             /*alert("关注连接成功");*/
             console.log("成功");
-            subscribe();
+
             }else{
                 alert("发生错误"+xmlhttp.status);
                 console.log("'发生错误'+xmlhttp.status");
@@ -341,7 +341,7 @@ function delSubsc(obj){
                 // var info = xhr.responseText;
                 if (!info1){
                     console.log("取消关注成功"+xhr.status);
-
+                    subscribe();
                 }else{
                     console.log("取消关注失败");
                 }
@@ -414,7 +414,7 @@ function fans(){
                 document.getElementsByClassName('fansNum')[0].innerHTML=numfans;
                 document.getElementsByClassName('rightBottomMyfan')[0].innerHTML+=s;
                 console.log("粉丝连接成功");
-                fans();
+
             }else{
                 console.log("发生错误"+xmlhttp.status);
             }
@@ -442,7 +442,7 @@ function addSubsc(obj){
                 // var info = xhr.responseText;
                 if (!info1){
                     console.log("关注成功"+xhr.status);
-
+                    fans();
                 }else{
                     console.log("关注失败");
                 }
