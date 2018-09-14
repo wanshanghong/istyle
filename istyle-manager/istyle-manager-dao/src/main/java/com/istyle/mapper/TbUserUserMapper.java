@@ -7,10 +7,10 @@ import java.util.List;
 
 public interface TbUserUserMapper {
 //    取消关注
-    void updateUsersState(TbUserUser tbUserUser);
+    void updateUsersStateTo1(TbUserUser tbUserUser);
 
     //    根据id查询用户与用户的状态
-    int selectUsersStateById(TbUserUser tbUserUser);
+    Integer selectUsersStateById(TbUserUser tbUserUser);
 
 //    根据id2查询关注粉丝
     List<TbUser> selectUsersByUserId2(Long userId2);
@@ -21,7 +21,9 @@ public interface TbUserUserMapper {
 //    根据id2查询粉丝id
     List<Long> selectUserIdByUserId2(Long userId2);
 
-//    增加关注
-    void updateUsersState2(TbUserUser tbUserUser);
+//    修改用户关注
+    void updateUsersStateTo0(TbUserUser tbUserUser);
 
+//    增加用户关注
+    void addUserStateTo0(TbUserUser tbUserUser);
 }

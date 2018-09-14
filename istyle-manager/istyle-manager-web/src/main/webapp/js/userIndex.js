@@ -306,7 +306,7 @@ function subscribe(){
 
              console.log(info.follers);
             document.getElementsByClassName('subscribeNum')[0].innerHTML=numsubscribe;
-            document.getElementsByClassName('rightBottomSubscribe')[0].innerHTML+=s;
+            document.getElementsByClassName('rightBottomSubscribe')[0].innerHTML=s;
             /*alert("关注连接成功");*/
             console.log("成功");
 
@@ -352,7 +352,7 @@ function delSubsc(obj){
         }
     }
     /*console.log("7");*/
-    xhr.open('post','');
+    xhr.open('post','/myHome/unFoller');
     xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     /*console.log("8");*/
     var userId=obj.getAttribute("id");
@@ -396,6 +396,7 @@ function fans(){
                                 "<button class='subscribeOrNot' onclick='addSubsc(this)' id='"+info.users[i].userId+"' >加关注</button>"+
                              "</div>"+
                             "<div class='clear'></div>";
+
                     }else{
                         s+="<div class='clear'></div>"+
                             "<div class='myfanContent1'>"+
@@ -408,13 +409,15 @@ function fans(){
                             "<button class='subscribeOrNot'>已关注</button>"+
                             "</div>"+
                             "<div class='clear'></div>";
+
                     }
+                    document.getElementsByClassName('fansNum')[0].innerHTML=numfans;
+                    document.getElementsByClassName('rightBottomMyfan')[0].innerHTML=s;
+                    console.log("粉丝连接成功");
 
                 }
 
-                document.getElementsByClassName('fansNum')[0].innerHTML=numfans;
-                document.getElementsByClassName('rightBottomMyfan')[0].innerHTML+=s;
-                console.log("粉丝连接成功");
+
 
             }else{
                 console.log("发生错误"+xmlhttp.status);

@@ -2,6 +2,7 @@ package com.istyle.service;
 
 import com.istyle.pojo.TbSubmission;
 import com.istyle.pojo.TbUser;
+import com.istyle.pojo.TbUserUser;
 
 import java.util.List;
 import java.util.Map;
@@ -27,5 +28,8 @@ public interface UserService {
 
 //    我的粉丝展示
     Map myFansPage(Long userId2);
+
+//     关注用户
+    int addFoller(TbUserUser tbUserUser);
 
 }
