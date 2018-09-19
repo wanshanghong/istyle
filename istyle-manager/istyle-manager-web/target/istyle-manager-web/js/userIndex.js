@@ -286,11 +286,10 @@ function subscribe(){
                 //<span class="subscribeNum">关注(关注数)</span>
                 numsubscribe+="关注（"+info.follerCount+")";
 
-                console.log(info.follerCount);
-                console.log(info.follers);
+                /*console.log(info.follerCount);*/
                 let s="";
                 for(let i=0;i<info.follerCount;i++){
-console.log("2");
+
                     s+= "<div class='clear'></div>"+
                         "<div class='subscribeContent1'>"+
                             "<img src='"+info.follers[i].userPhoto+"'/>"+
@@ -299,16 +298,10 @@ console.log("2");
                             "<span>"+info.follers[i].userWord+"</span>"+
                             "</p>"+
                             "<button class='privateChat'><a href=''>私信</a></button>"+
-                            /*"<form action='' method='post'>"+
-                                "<select class='subscribeOrNot' name='subscribeOrNot'>"+
-                                "<option value=''>取消关注</option>"+
-                                "<option value=''>关注</option>"+
-                                "</select>"+
-                            "</form>"+*/
-                            "<button class='subscribeOrNot' onclick='delSubsc()'>取消关注</button>"+
+                            "<button class='subscribeOrNot' onclick='delSubsc(this)' id='"+info.follers[i].userId+"' >取消关注</button>"+  /*data-userId='info.follers[i].userId'*/
                         "</div>"+
                         "<div class='clear'></div>";
-                             userId=info.follers[i].userId;
+                        /*userId=info.follers[i].userId;*/
                 }
 
              console.log(info.follers);
@@ -316,6 +309,7 @@ console.log("2");
             document.getElementsByClassName('rightBottomSubscribe')[0].innerHTML+=s;
             /*alert("关注连接成功");*/
             console.log("成功");
+
             }else{
                 alert("发生错误"+xmlhttp.status);
                 console.log("'发生错误'+xmlhttp.status");
@@ -328,16 +322,16 @@ console.log("2");
 //我的关注end
 
 //取消关注start
-function delSubsc(){
+function delSubsc(obj){
     /*    let fm=document.getElementById('form');
 
         let fd=new FormData(fm);*/
-    console.log("1");
+    /*console.log("1");*/
     let information1="";
-    console.log("2");
+    /*console.log("2");*/
 
     let xhr=new XMLHttpRequest();
-    console.log("4");
+    /*console.log("4");*/
     xhr.onreadystatechange=function(){
         if (xhr.readyState===4){
             if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
@@ -347,7 +341,7 @@ function delSubsc(){
                 // var info = xhr.responseText;
                 if (!info1){
                     console.log("取消关注成功"+xhr.status);
-
+                    subscribe();
                 }else{
                     console.log("取消关注失败");
                 }
@@ -357,14 +351,15 @@ function delSubsc(){
             }
         }
     }
-    console.log("7");
+    /*console.log("7");*/
     xhr.open('post','/myHome/unFoller');
     xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-    console.log("8");
-    information1 += (   "userId=" + userId );
+    /*console.log("8");*/
+    var userId=obj.getAttribute("id");
+    information1 += ( "userId=" + userId );
     xhr.send(information1);
-    console.log("9");
-    console.log(information1);
+   /* console.log("9");
+    console.log(information1);*/
 }
 
 
@@ -379,60 +374,95 @@ function fans(){
     xmlhttp.onreadystatechange=function(){
         if(xmlhttp.readyState===4){
             if(xmlhttp.status===200){
-                var info=xmlhttp.responseText;
+                var info=JSON.parse(xmlhttp.responseText);
 
                 let numfans="";
                 //<span class="fansNum">粉丝(粉丝数)</span>
-                numfans+="<span class='fansNum'>粉丝（"+info.fansNum+")</span>";
+                numfans+="粉丝（"+info.fanCount+")";
 
                 let s="";
-                for(let i=0;i<info.length;i++){
-
-                //<div class="myfanContent1">
-                 //       <img src="../img/headphoto.png"/>
-                //        <p>
-                //        <span>昵称</span><br />
-                //        <span>我的签名</span>
-                //        </p>
-                //        <button class="privateChat"><a href="">私信</a></button>
-                //    <form action="" method="post">
-                //        <select class="subscribeOrNot" name="subscribeOrNot">
-                //        <option value="">加关注</option>
-                //        <option value="">取消关注</option>
-                //        </select>
-                //        </form>
-                //        </div>
-
-                    s+="<div class=\"myfanContent1\">"+
-                            "<img src='"+info[i].fansPic+"'/>"+
+                for(let i=0;i<info.fanCount;i++){
+                    console.log("1");
+                    console.log(info.usersState);
+                    if(info.usersState[i]){  //0是已关注，1是未关注
+                        s+="<div class='clear'></div>"+
+                            "<div class='myfanContent1'>"+
+                                "<img src='"+info.users[i].userPhoto+"'/>"+
+                                "<p>"+
+                                "<span>"+info.users[i].userName+"</span><br/>"+
+                                "<span>"+info.users[i].userWord+"</span><br/>"+
+                                "</p>"+
+                                "<button class='privateChat'><a href=''>私信</a></button>"+
+                                "<button class='subscribeOrNot' onclick='addSubsc(this)' id='"+info.users[i].userId+"' >加关注</button>"+
+                             "</div>"+
+                            "<div class='clear'></div>";
+                    }else{
+                        s+="<div class='clear'></div>"+
+                            "<div class='myfanContent1'>"+
+                            "<img src='"+info.users[i].userPhoto+"'/>"+
                             "<p>"+
-                            "<span>"+info[i].fansNickname+"</span><br/>"+
-                            "<span>"+info[i].fansSignature+"</span><br/>"+
+                            "<span>"+info.users[i].userName+"</span><br/>"+
+                            "<span>"+info.users[i].userWord+"</span><br/>"+
                             "</p>"+
                             "<button class='privateChat'><a href=''>私信</a></button>"+
-                            "<form action='' method='post'>"+
-                                "<select class='subscribeOrNot' name='subscribeOrNot'>"+
-                                "<option value=''>加关注</option>"+
-                                "<option value=''>取消关注</option>"+
-                                "</select>"+
-                            "</form>"+
-                         "</div>";
+                            "<button class='subscribeOrNot'>已关注</button>"+
+                            "</div>"+
+                            "<div class='clear'></div>";
+                    }
 
                 }
 
-                document.getElementsByClassName('fansNum').innerHTML=numfans;
-                document.getElementsByClassName('rightBottomMyfan').innerHTML+=s;
-                alert("粉丝连接成功");
+                document.getElementsByClassName('fansNum')[0].innerHTML=numfans;
+                document.getElementsByClassName('rightBottomMyfan')[0].innerHTML+=s;
+                console.log("粉丝连接成功");
+
             }else{
-                alert("发生错误"+xmlhttp.status);
+                console.log("发生错误"+xmlhttp.status);
             }
         }
     }
-    xmlhttp.open('get','');
+    xmlhttp.open('get','/myHome/myFans');
     xmlhttp.send(null);
 }
 //我的粉丝end
 
+//加关注start
+function addSubsc(obj){
+    console.log("1");
+    let information1="";
+    console.log("2");
+
+    let xhr=new XMLHttpRequest();
+    console.log("4");
+    xhr.onreadystatechange=function(){
+        if (xhr.readyState===4){
+            if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
+                console.log("5");
+                var info1 = JSON.parse(xhr.responseText);
+                console.log(info1);
+                // var info = xhr.responseText;
+                if (!info1){
+                    console.log("关注成功"+xhr.status);
+                    fans();
+                }else{
+                    console.log("关注失败");
+                }
+                console.log("6");
+            }else{
+                console.log("发生错误"+xhr.status);
+            }
+        }
+    }
+    console.log("7");
+    xhr.open('post','/myHome/doFoller');
+    xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    console.log("8");
+    var userId=obj.getAttribute("id");
+    information1 += ( "userId=" + userId );
+    xhr.send(information1);
+    console.log("9");
+    console.log(information1);
+}
 
 //我的预约start
 function myOrder(){
@@ -496,6 +526,7 @@ window.onload=function(){
     showInformation();
     collect();
     subscribe();
+    fans();
    /* let collectBtn=document.getElementById('collectBtn');
     collectBtn.addEventListener('click',collect,false);*/
 //collectBtn.removeEventListener('click',collect,false); 这个false是阻止冒泡的意思
@@ -503,3 +534,4 @@ window.onload=function(){
 
 
 };
+

@@ -64,12 +64,4 @@
         from tb_user_user
         where (userId = #{userId} and usersState = 0)
     </select>
-
-    <update id="updateUsersStateById" parameterType="java.lang.Long">
-        UPDATE tb_user_user SET usersState=1 WHERE userId=#{userId} and userId2=#{userId2};
-    </update>
-
-    <select id="selectUsersStateById" parameterType="java.lang.Long" resultType="java.lang.Integer">
-        select usersState from tb_user_user where userId=#{userId} and userId2=#{userId2};
-    </select>
 </mapper>

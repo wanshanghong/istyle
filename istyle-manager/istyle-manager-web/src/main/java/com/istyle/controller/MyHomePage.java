@@ -1,10 +1,7 @@
 package com.istyle.controller;
 
 import com.alibaba.druid.support.json.JSONUtils;
-import com.istyle.pojo.TbEvaluation;
-import com.istyle.pojo.TbStyHouse;
-import com.istyle.pojo.TbStylist;
-import com.istyle.pojo.TbUser;
+import com.istyle.pojo.*;
 import com.istyle.service.EvaluationService;
 import com.istyle.service.StyHouseService;
 import com.istyle.service.StylistService;
@@ -75,7 +72,6 @@ public class MyHomePage {
         }
         else {
             map.put("isOpen", "0");
-            System.out.println("test4");
             json = JSONUtils.toJSONString(map);
             return json;
         }
@@ -174,12 +170,41 @@ public class MyHomePage {
     @RequestMapping(value="/unFoller", method= RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     public int unFoller(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         System.out.println("unFoller");
-        System.out.println(request.getParameter("userId"));
         Long userId = (Long) request.getSession().getAttribute("userId");
-        System.out.println(userId);
         Long userId2 = Long.valueOf(request.getParameter("userId"));
 
         int result = userService.unFoller(userId, userId2);
         return result;
+    }
+
+//    我的粉丝页面
+    @ResponseBody
+    @RequestMapping(value = "/myFans", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    public Map myFansPage(HttpServletRequest request){
+        System.out.println("myFans");
+        Long userId2 = (Long) request.getSession().getAttribute("userId");
+        Map<String, TbUser> fans;
+
+        fans = userService.myFansPage(userId2);
+
+        return fans;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/doFoller", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+    public int addFanFoller(HttpServletRequest request){
+        System.out.println("doFoller");
+        Long userId, userId2;
+        TbUserUser tbUserUser = new TbUserUser();
+        int flag;
+
+        userId = (Long) request.getSession().getAttribute("userId");
+        userId2 = Long.valueOf(request.getParameter("userId"));
+        tbUserUser.setUserId(userId);
+        tbUserUser.setUserId2(userId2);
+
+        flag = userService.addFoller(tbUserUser);
+
+        return flag;
     }
 }
