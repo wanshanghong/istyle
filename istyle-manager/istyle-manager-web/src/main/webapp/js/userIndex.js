@@ -374,7 +374,7 @@ function fans(){
     xmlhttp.onreadystatechange=function(){
         if(xmlhttp.readyState===4){
             if(xmlhttp.status===200){
-                var info=xmlhttp.responseText;
+                var info=JSON.parse(xmlhttp.responseText);
 
                 let numfans="";
                 //<span class="fansNum">粉丝(粉丝数)</span>
@@ -383,7 +383,7 @@ function fans(){
                 let s="";
                 for(let i=0;i<info.fanCount;i++){
 
-                    if(info.usersState){  //0是已关注，1是未关注
+                    if(info.usersState[i]){  //0是已关注，1是未关注
                         s+="<div class='clear'></div>"+
                             "<div class='myfanContent1'>"+
                                 "<img src='"+info.users[i].userPhoto+"'/>"+
@@ -515,7 +515,7 @@ function contribute(){
 
                 let contriNum="";
                 //<span class="fansNum">粉丝(粉丝数)</span>
-                contriNum+="全部稿件（"+info.fanCount+")";
+                contriNum+="全部稿件（"+info.submissionCount+")";
 
                 let s="";
                 for(let i=0;i<info.fanCount;i++){
@@ -523,20 +523,20 @@ function contribute(){
 
                     s+="<div class='clear'></div>"+
                         "<div class='contributeContentAll'>"+
-                        "<img src='"+info.img+"'/>"+
+                        "<img src='"+info.submissions[i].subPhoto+"'/>"+
                         "<div class='box1_1'>"+
-                        "<span>"+info.name+"</span><br />"+
-                        "<span>"+info.date+"</span><br />"+
-                        "<i class='iconfont icon-bofang'></i><span class='icon-viewSpan'>浏览"+info.num+"</span>"+
-                         "<i class='iconfont icon-comments'></i><span class='icon-commentSpan'>评论"+info.num+"</span>"+
-                         "<i class='iconfont icon-favoritesfilling'></i><span class='icon-collectSpan'>收藏"+info.num+"</span><br />"+
+                        "<span>"+info.submissions[i].subName+"</span><br />"+
+                        "<span>"+info.submissions[i].subTime+"</span><br />"+
+                        "<i class='iconfont icon-bofang'></i><span class='icon-viewSpan'>浏览"+info.submissions[i].subPageView+"</span>"+
+                         "<i class='iconfont icon-comments'></i><span class='icon-commentSpan'>评论"+info.submissions[i].subComment+"</span>"+
+                         "<i class='iconfont icon-favoritesfilling'></i><span class='icon-collectSpan'>收藏"+info.submissions[i].subCollection+"</span><br />"+
                           "<p>"+
                           "<button class='privateChat'><a href=''>编辑</a></button>"+
                           "<button class='privateChat'><a href=''>删除</a></button>"+
                           "</p>"+
                           "</div></div>"+
                          "<div class='clear'></div>";
-                    
+
                 }
 
                 document.getElementsByClassName('contriNum')[0].innerHTML=contriNum;
@@ -548,7 +548,7 @@ function contribute(){
             }
         }
     }
-    xmlhttp.open('get','');
+    xmlhttp.open('get','/myHome/mySubmission');
     xmlhttp.send(null);
 }
 //我的投稿end
@@ -580,6 +580,7 @@ window.onload=function(){
     collect();
     subscribe();
     fans();
+    contribute();
    /* let collectBtn=document.getElementById('collectBtn');
     collectBtn.addEventListener('click',collect,false);*/
 //collectBtn.removeEventListener('click',collect,false); 这个false是阻止冒泡的意思
