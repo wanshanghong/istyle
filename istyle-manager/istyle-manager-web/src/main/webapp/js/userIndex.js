@@ -306,7 +306,7 @@ function subscribe(){
 
              console.log(info.follers);
             document.getElementsByClassName('subscribeNum')[0].innerHTML=numsubscribe;
-            document.getElementsByClassName('rightBottomSubscribe')[0].innerHTML+=s;
+            document.getElementsByClassName('rightBottomSubscribe')[0].innerHTML=s;
             /*alert("关注连接成功");*/
             console.log("成功");
 
@@ -412,7 +412,7 @@ function fans(){
                 }
 
                 document.getElementsByClassName('fansNum')[0].innerHTML=numfans;
-                document.getElementsByClassName('rightBottomMyfan')[0].innerHTML+=s;
+                document.getElementsByClassName('rightBottomMyfan')[0].innerHTML=s;
                 console.log("粉丝连接成功");
 
             }else{
@@ -498,6 +498,60 @@ function myOrder(){
     xhr.send(null);
 }
 //我的预约end
+
+
+//我的投稿start
+function contribute(){
+    let xmlhttp;
+    if(window.XMLHttpRequest){
+        xmlhttp=new XMLHttpRequest();
+    }else{
+        xmlhttp=new ActiveXObject("Microsoft XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function(){
+        if(xmlhttp.readyState===4){
+            if(xmlhttp.status>=200 && xmlhttp.status<300 ||xmlhttp.status===304){
+                var info=xmlhttp.responseText;
+
+                let contriNum="";
+                //<span class="fansNum">粉丝(粉丝数)</span>
+                contriNum+="全部稿件（"+info.fanCount+")";
+
+                let s="";
+                for(let i=0;i<info.fanCount;i++){
+
+
+                    s+="<div class='clear'></div>"+
+                        "<div class='contributeContentAll'>"+
+                        "<img src='"+info.img+"'/>"+
+                        "<div class='box1_1'>"+
+                        "<span>"+info.name+"</span><br />"+
+                        "<span>"+info.date+"</span><br />"+
+                        "<i class='iconfont icon-bofang'></i><span class='icon-viewSpan'>浏览"+info.num+"</span>"+
+                         "<i class='iconfont icon-comments'></i><span class='icon-commentSpan'>评论"+info.num+"</span>"+
+                         "<i class='iconfont icon-favoritesfilling'></i><span class='icon-collectSpan'>收藏"+info.num+"</span><br />"+
+                          "<p>"+
+                          "<button class='privateChat'><a href=''>编辑</a></button>"+
+                          "<button class='privateChat'><a href=''>删除</a></button>"+
+                          "</p>"+
+                          "</div></div>"+
+                         "<div class='clear'></div>";
+                    
+                }
+
+                document.getElementsByClassName('contriNum')[0].innerHTML=contriNum;
+                document.getElementsByClassName('addContribute')[0].innerHTML+=s;
+                console.log("投稿连接成功");
+
+            }else{
+                console.log("发生错误"+xmlhttp.status);
+            }
+        }
+    }
+    xmlhttp.open('get','');
+    xmlhttp.send(null);
+}
+//我的投稿end
 
 
 
