@@ -382,8 +382,7 @@ function fans(){
 
                 let s="";
                 for(let i=0;i<info.fanCount;i++){
-                    console.log("1");
-                    console.log(info.usersState);
+
                     if(info.usersState[i]){  //0是已关注，1是未关注
                         s+="<div class='clear'></div>"+
                             "<div class='myfanContent1'>"+
@@ -411,11 +410,15 @@ function fans(){
                             "<div class='clear'></div>";
 
                     }
-                    document.getElementsByClassName('fansNum')[0].innerHTML=numfans;
-                    document.getElementsByClassName('rightBottomMyfan')[0].innerHTML=s;
-                    console.log("粉丝连接成功");
+  
 
                 }
+
+
+                document.getElementsByClassName('fansNum')[0].innerHTML=numfans;
+                document.getElementsByClassName('rightBottomMyfan')[0].innerHTML=s;
+                console.log("粉丝连接成功");
+
 
 
 
@@ -504,6 +507,60 @@ function myOrder(){
 //我的预约end
 
 
+//我的投稿start
+function contribute(){
+    let xmlhttp;
+    if(window.XMLHttpRequest){
+        xmlhttp=new XMLHttpRequest();
+    }else{
+        xmlhttp=new ActiveXObject("Microsoft XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function(){
+        if(xmlhttp.readyState===4){
+            if(xmlhttp.status>=200 && xmlhttp.status<300 ||xmlhttp.status===304){
+                var info=xmlhttp.responseText;
+
+                let contriNum="";
+                //<span class="fansNum">粉丝(粉丝数)</span>
+                contriNum+="全部稿件（"+info.submissionCount+")";
+
+                let s="";
+                for(let i=0;i<info.fanCount;i++){
+
+
+                    s+="<div class='clear'></div>"+
+                        "<div class='contributeContentAll'>"+
+                        "<img src='"+info.submissions[i].subPhoto+"'/>"+
+                        "<div class='box1_1'>"+
+                        "<span>"+info.submissions[i].subName+"</span><br />"+
+                        "<span>"+info.submissions[i].subTime+"</span><br />"+
+                        "<i class='iconfont icon-bofang'></i><span class='icon-viewSpan'>浏览"+info.submissions[i].subPageView+"</span>"+
+                         "<i class='iconfont icon-comments'></i><span class='icon-commentSpan'>评论"+info.submissions[i].subComment+"</span>"+
+                         "<i class='iconfont icon-favoritesfilling'></i><span class='icon-collectSpan'>收藏"+info.submissions[i].subCollection+"</span><br />"+
+                          "<p>"+
+                          "<button class='privateChat'><a href=''>编辑</a></button>"+
+                          "<button class='privateChat'><a href=''>删除</a></button>"+
+                          "</p>"+
+                          "</div></div>"+
+                         "<div class='clear'></div>";
+
+                }
+
+                document.getElementsByClassName('contriNum')[0].innerHTML=contriNum;
+                document.getElementsByClassName('addContribute')[0].innerHTML+=s;
+                console.log("投稿连接成功");
+
+            }else{
+                console.log("发生错误"+xmlhttp.status);
+            }
+        }
+    }
+    xmlhttp.open('get','/myHome/mySubmission');
+    xmlhttp.send(null);
+}
+//我的投稿end
+
+
 
 //事件绑定start
 /*onclick绑定
@@ -530,6 +587,7 @@ window.onload=function(){
     collect();
     subscribe();
     fans();
+    contribute();
    /* let collectBtn=document.getElementById('collectBtn');
     collectBtn.addEventListener('click',collect,false);*/
 //collectBtn.removeEventListener('click',collect,false); 这个false是阻止冒泡的意思
