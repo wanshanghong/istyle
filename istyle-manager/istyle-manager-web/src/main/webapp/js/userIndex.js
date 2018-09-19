@@ -352,7 +352,7 @@ function delSubsc(obj){
         }
     }
     /*console.log("7");*/
-    xhr.open('post','/myHome/unFoller');
+    xhr.open('post','');
     xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     /*console.log("8");*/
     var userId=obj.getAttribute("id");
@@ -388,39 +388,32 @@ function fans(){
                             "<div class='myfanContent1'>"+
                                 "<img src='"+info.users[i].userPhoto+"'/>"+
                                 "<p>"+
-                                "<span>"+info.users[i].userName+"</span><br/>"+
-                                "<span>"+info.users[i].userWord+"</span><br/>"+
+                                "<span>"+info.user[i].userName+"</span><br/>"+
+                                "<span>"+info.user[i].userWord+"</span><br/>"+
                                 "</p>"+
                                 "<button class='privateChat'><a href=''>私信</a></button>"+
-                                "<button class='subscribeOrNot' onclick='addSubsc(this)' id='"+info.users[i].userId+"' >加关注</button>"+
+                                "<button class='subscribeOrNot' onclick='addSubsc(this)' id='"+info.fans[i].userId+"' >加关注</button>"+
                              "</div>"+
                             "<div class='clear'></div>";
-
                     }else{
                         s+="<div class='clear'></div>"+
                             "<div class='myfanContent1'>"+
-                            "<img src='"+info.users[i].userPhoto+"'/>"+
+                            "<img src='"+info.user[i].userPhoto+"'/>"+
                             "<p>"+
-                            "<span>"+info.users[i].userName+"</span><br/>"+
-                            "<span>"+info.users[i].userWord+"</span><br/>"+
+                            "<span>"+info.user[i].userName+"</span><br/>"+
+                            "<span>"+info.user[i].userWord+"</span><br/>"+
                             "</p>"+
                             "<button class='privateChat'><a href=''>私信</a></button>"+
                             "<button class='subscribeOrNot'>已关注</button>"+
                             "</div>"+
                             "<div class='clear'></div>";
-
                     }
-  
 
                 }
-
 
                 document.getElementsByClassName('fansNum')[0].innerHTML=numfans;
                 document.getElementsByClassName('rightBottomMyfan')[0].innerHTML=s;
                 console.log("粉丝连接成功");
-
-
-
 
             }else{
                 console.log("发生错误"+xmlhttp.status);
