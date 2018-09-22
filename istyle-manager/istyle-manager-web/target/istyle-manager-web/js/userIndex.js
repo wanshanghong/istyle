@@ -79,7 +79,7 @@ function showInformation(){
                 }
             }
         }
-        xhr.open('get','/myHome/index');
+        xhr.open('get','http://localhost:8080/html/userIndex.html');
         xhr.send(null);
 
 }
@@ -197,10 +197,9 @@ function collect(){
                 document.getElementsByClassName('hairSalonSpan')[0].innerHTML=numSalon;
                 document.getElementsByClassName('evaluationCollection')[0].innerHTML=numEvaluate;
                 /*console.log("8");*/
-                document.getElementsByClassName('stylingDesignerIn')[0].innerHTML+=designerBox;
-                document.getElementsByClassName('hairSalonIn')[0].innerHTML+=salonBox;
-                document.getElementsByClassName('evaluation')[0].innerHTML+=evaluateBox;
-                alert("收藏成功");
+                document.getElementsByClassName('stylingDesignerIn')[0].innerHTML=designerBox;
+                document.getElementsByClassName('hairSalonIn')[0].innerHTML=salonBox;
+                document.getElementsByClassName('evaluation')[0].innerHTML=evaluateBox;
                 /*console.log("succ");*/
             }else{
                 alert("发生错误"+xhr.status);
@@ -306,7 +305,7 @@ function subscribe(){
 
              console.log(info.follers);
             document.getElementsByClassName('subscribeNum')[0].innerHTML=numsubscribe;
-            document.getElementsByClassName('rightBottomSubscribe')[0].innerHTML+=s;
+            document.getElementsByClassName('rightBottomSubscribe')[0].innerHTML=s;
             /*alert("关注连接成功");*/
             console.log("成功");
 
@@ -382,8 +381,7 @@ function fans(){
 
                 let s="";
                 for(let i=0;i<info.fanCount;i++){
-                    console.log("1");
-                    console.log(info.usersState);
+
                     if(info.usersState[i]){  //0是已关注，1是未关注
                         s+="<div class='clear'></div>"+
                             "<div class='myfanContent1'>"+
@@ -413,7 +411,7 @@ function fans(){
                 }
 
                 document.getElementsByClassName('fansNum')[0].innerHTML=numfans;
-                document.getElementsByClassName('rightBottomMyfan')[0].innerHTML+=s;
+                document.getElementsByClassName('rightBottomMyfan')[0].innerHTML=s;
                 console.log("粉丝连接成功");
 
             }else{
@@ -501,6 +499,61 @@ function myOrder(){
 //我的预约end
 
 
+//我的投稿start
+function contribute(){
+    let xmlhttp;
+    if(window.XMLHttpRequest){
+        xmlhttp=new XMLHttpRequest();
+    }else{
+        xmlhttp=new ActiveXObject("Microsoft XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function(){
+        if(xmlhttp.readyState===4){
+            if(xmlhttp.status>=200 && xmlhttp.status<300 ||xmlhttp.status===304){
+                var info=JSON.parse(xmlhttp.responseText);
+
+                let contriNum="";
+                //<span class="fansNum">粉丝(粉丝数)</span>
+                contriNum+="全部稿件（"+info.submissionCount+")";
+
+                let s="";
+                for(let i=0;i<info.submissionCount;i++){
+
+
+                    s+="<div class='clear'></div>"+
+                        "<div class='contributeContentAll'>"+
+                        "<img src='"+info.submissions[i].subPhoto+"'/>"+
+                        "<div class='box1_1'>"+
+                        "<span>"+info.submissions[i].subName+"</span><br />"+
+                        "<span>"+info.submissions[i].subTime+"</span><br />"+
+                        "<i class='iconfont icon-bofang'></i><span class='icon-viewSpan'>浏览"+info.submissions[i].subPageView+"</span>"+
+                         "<i class='iconfont icon-comments'></i><span class='icon-commentSpan' style='margin-left: 65px'>评论"+info.submissions[i].subComment+"</span>"+
+                         "<i class='iconfont icon-favoritesfilling'></i><span class='icon-collectSpan' style='margin-left: 60px'>收藏"+info.submissions[i].subCollection+"</span><br />"+
+                          "<p>"+
+                          "<button class='privateChat'><a href=''>编辑</a></button>"+
+                          "<button class='privateChat'><a href=''>删除</a></button>"+
+                          "</p>"+
+                          "</div></div>"+
+                         "<div class='clear'></div>";
+                    console.log(info.submissions[i].subPhoto);
+
+                }
+
+                document.getElementsByClassName('contriNum')[0].innerHTML=contriNum;
+                document.getElementsByClassName('contributeBottomContent')[0].innerHTML=s;
+                console.log("投稿连接成功");
+
+            }else{
+                console.log("发生错误"+xmlhttp.status);
+            }
+        }
+    }
+    xmlhttp.open('get','/myHome/mySubmission');
+    xmlhttp.send(null);
+}
+//我的投稿end
+
+
 
 //事件绑定start
 /*onclick绑定
@@ -524,13 +577,12 @@ console.log(collectBtn);*/
 
 window.onload=function(){
     showInformation();
-    collect();
-    subscribe();
-    fans();
+
+
+
    /* let collectBtn=document.getElementById('collectBtn');
     collectBtn.addEventListener('click',collect,false);*/
 //collectBtn.removeEventListener('click',collect,false); 这个false是阻止冒泡的意思
-
 
 
 };

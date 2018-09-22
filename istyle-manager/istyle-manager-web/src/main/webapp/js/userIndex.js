@@ -197,10 +197,9 @@ function collect(){
                 document.getElementsByClassName('hairSalonSpan')[0].innerHTML=numSalon;
                 document.getElementsByClassName('evaluationCollection')[0].innerHTML=numEvaluate;
                 /*console.log("8");*/
-                document.getElementsByClassName('stylingDesignerIn')[0].innerHTML+=designerBox;
-                document.getElementsByClassName('hairSalonIn')[0].innerHTML+=salonBox;
-                document.getElementsByClassName('evaluation')[0].innerHTML+=evaluateBox;
-                alert("收藏成功");
+                document.getElementsByClassName('stylingDesignerIn')[0].innerHTML=designerBox;
+                document.getElementsByClassName('hairSalonIn')[0].innerHTML=salonBox;
+                document.getElementsByClassName('evaluation')[0].innerHTML=evaluateBox;
                 /*console.log("succ");*/
             }else{
                 alert("发生错误"+xhr.status);
@@ -352,7 +351,7 @@ function delSubsc(obj){
         }
     }
     /*console.log("7");*/
-    xhr.open('post','');
+    xhr.open('post','/myHome/unFoller');
     xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     /*console.log("8");*/
     var userId=obj.getAttribute("id");
@@ -388,20 +387,20 @@ function fans(){
                             "<div class='myfanContent1'>"+
                                 "<img src='"+info.users[i].userPhoto+"'/>"+
                                 "<p>"+
-                                "<span>"+info.user[i].userName+"</span><br/>"+
-                                "<span>"+info.user[i].userWord+"</span><br/>"+
+                                "<span>"+info.users[i].userName+"</span><br/>"+
+                                "<span>"+info.users[i].userWord+"</span><br/>"+
                                 "</p>"+
                                 "<button class='privateChat'><a href=''>私信</a></button>"+
-                                "<button class='subscribeOrNot' onclick='addSubsc(this)' id='"+info.fans[i].userId+"' >加关注</button>"+
+                                "<button class='subscribeOrNot' onclick='addSubsc(this)' id='"+info.users[i].userId+"' >加关注</button>"+
                              "</div>"+
                             "<div class='clear'></div>";
                     }else{
                         s+="<div class='clear'></div>"+
                             "<div class='myfanContent1'>"+
-                            "<img src='"+info.user[i].userPhoto+"'/>"+
+                            "<img src='"+info.users[i].userPhoto+"'/>"+
                             "<p>"+
-                            "<span>"+info.user[i].userName+"</span><br/>"+
-                            "<span>"+info.user[i].userWord+"</span><br/>"+
+                            "<span>"+info.users[i].userName+"</span><br/>"+
+                            "<span>"+info.users[i].userWord+"</span><br/>"+
                             "</p>"+
                             "<button class='privateChat'><a href=''>私信</a></button>"+
                             "<button class='subscribeOrNot'>已关注</button>"+
@@ -511,14 +510,14 @@ function contribute(){
     xmlhttp.onreadystatechange=function(){
         if(xmlhttp.readyState===4){
             if(xmlhttp.status>=200 && xmlhttp.status<300 ||xmlhttp.status===304){
-                var info=xmlhttp.responseText;
+                var info=JSON.parse(xmlhttp.responseText);
 
                 let contriNum="";
                 //<span class="fansNum">粉丝(粉丝数)</span>
                 contriNum+="全部稿件（"+info.submissionCount+")";
 
                 let s="";
-                for(let i=0;i<info.fanCount;i++){
+                for(let i=0;i<info.submissionCount;i++){
 
 
                     s+="<div class='clear'></div>"+
@@ -528,19 +527,20 @@ function contribute(){
                         "<span>"+info.submissions[i].subName+"</span><br />"+
                         "<span>"+info.submissions[i].subTime+"</span><br />"+
                         "<i class='iconfont icon-bofang'></i><span class='icon-viewSpan'>浏览"+info.submissions[i].subPageView+"</span>"+
-                         "<i class='iconfont icon-comments'></i><span class='icon-commentSpan'>评论"+info.submissions[i].subComment+"</span>"+
-                         "<i class='iconfont icon-favoritesfilling'></i><span class='icon-collectSpan'>收藏"+info.submissions[i].subCollection+"</span><br />"+
+                         "<i class='iconfont icon-comments'></i><span class='icon-commentSpan' style='margin-left: 65px'>评论"+info.submissions[i].subComment+"</span>"+
+                         "<i class='iconfont icon-favoritesfilling'></i><span class='icon-collectSpan' style='margin-left: 60px'>收藏"+info.submissions[i].subCollection+"</span><br />"+
                           "<p>"+
                           "<button class='privateChat'><a href=''>编辑</a></button>"+
                           "<button class='privateChat'><a href=''>删除</a></button>"+
                           "</p>"+
                           "</div></div>"+
                          "<div class='clear'></div>";
+                    console.log(info.submissions[i].subPhoto);
 
                 }
 
                 document.getElementsByClassName('contriNum')[0].innerHTML=contriNum;
-                document.getElementsByClassName('addContribute')[0].innerHTML+=s;
+                document.getElementsByClassName('contributeBottomContent')[0].innerHTML=s;
                 console.log("投稿连接成功");
 
             }else{
@@ -577,14 +577,12 @@ console.log(collectBtn);*/
 
 window.onload=function(){
     showInformation();
-    collect();
-    subscribe();
-    fans();
-    contribute();
+
+
+
    /* let collectBtn=document.getElementById('collectBtn');
     collectBtn.addEventListener('click',collect,false);*/
 //collectBtn.removeEventListener('click',collect,false); 这个false是阻止冒泡的意思
-
 
 
 };

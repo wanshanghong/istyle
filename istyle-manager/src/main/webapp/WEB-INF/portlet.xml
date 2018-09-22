@@ -22,8 +22,8 @@
         <supported-locale>en</supported-locale>
 
         <portlet-info>
-            <title>Put the portlet title here</title>
-            <short-title>Portlet Short Title</short-title>
+            <subName>Put the portlet subName here</subName>
+            <short-subName>Portlet Short Title</short-subName>
             <keywords>put keywords here</keywords>
         </portlet-info>
     </portlet>

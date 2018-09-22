@@ -1,22 +1,23 @@
 package com.istyle.pojo;
 
 public class TbSubmission {
-    private Long submissionId; //投稿
+    private Long subId; //投稿
     private Long userId; //用户id
-    private String title; //标题
-    private int createTime; //创造日期
-    private int browse; //浏览人数
-    private int commentCount; //评论数
-    private int collectionCount; //收藏数
-    private String content; //内容
-    private int status; //状态
+    private String subPhoto;
+    private String subName; //标题
+    private String subTime; //创造日期
+    private int subPageView; //浏览人数
+    private int subComment; //评论数
+    private int subCollection; //收藏数
+    private String subContent; //内容
+    private int subStatus; //状态
 
-    public Long getSubmissionId() {
-        return submissionId;
+    public Long getSubId() {
+        return subId;
     }
 
-    public void setSubmissionId(Long submissionId) {
-        this.submissionId = submissionId;
+    public void setSubId(Long subId) {
+        this.subId = subId;
     }
 
     public Long getUserId() {
@@ -27,59 +28,67 @@ public class TbSubmission {
         this.userId = userId;
     }
 
-    public String getTitle() {
-        return title;
+    public String getSubPhoto() {
+        return subPhoto;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setSubPhoto(String subPhoto) {
+        this.subPhoto = subPhoto;
     }
 
-    public int getCreateTime() {
-        return createTime;
+    public String getSubName() {
+        return subName;
     }
 
-    public void setCreateTime(int createTime) {
-        this.createTime = createTime;
+    public void setSubName(String subName) {
+        this.subName = subName;
     }
 
-    public int getBrowse() {
-        return browse;
+    public String getSubTime() {
+        return subTime;
     }
 
-    public void setBrowse(int browse) {
-        this.browse = browse;
+    public void setSubTime(String subTime) {
+        this.subTime = subTime;
     }
 
-    public int getCommentCount() {
-        return commentCount;
+    public int getSubPageView() {
+        return subPageView;
     }
 
-    public void setCommentCount(int commentCount) {
-        this.commentCount = commentCount;
+    public void setSubPageView(int subPageView) {
+        this.subPageView = subPageView;
     }
 
-    public int getCollectionCount() {
-        return collectionCount;
+    public int getSubComment() {
+        return subComment;
     }
 
-    public void setCollectionCount(int collectionCount) {
-        this.collectionCount = collectionCount;
+    public void setSubComment(int subComment) {
+        this.subComment = subComment;
     }
 
-    public String getContent() {
-        return content;
+    public int getSubCollection() {
+        return subCollection;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setSubCollection(int subCollection) {
+        this.subCollection = subCollection;
     }
 
-    public int getStatus() {
-        return status;
+    public String getSubContent() {
+        return subContent;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setSubContent(String subContent) {
+        this.subContent = subContent;
+    }
+
+    public int getSubStatus() {
+        return subStatus;
+    }
+
+    public void setSubStatus(int subStatus) {
+        this.subStatus = subStatus;
     }
 }

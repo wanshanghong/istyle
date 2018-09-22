@@ -32,4 +32,6 @@ public interface UserService {
 //     关注用户
     int addFoller(TbUserUser tbUserUser);
 
+//    我的投稿界面展示
+    Map mySubmission(Long userId);
 }

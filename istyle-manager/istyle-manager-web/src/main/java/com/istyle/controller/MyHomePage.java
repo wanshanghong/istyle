@@ -207,4 +207,21 @@ public class MyHomePage {
 
         return flag;
     }
+
+    /**
+     * 我的投稿展示
+     * @param request
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/mySubmission", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    public Map mySubmissionPage(HttpServletRequest request){
+        System.out.println("my submission");
+        Map<String, List> map;
+        Long userId = (Long) request.getSession().getAttribute("userId");
+
+        map = userService.mySubmission(userId);
+
+        return map;
+    }
 }

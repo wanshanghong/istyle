@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title></title>
+	<subName></subName>
 	<link rel="stylesheet" type="text/css" href="/css/base.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/userIndex.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/userbase.css"/>
@@ -17,16 +17,16 @@
 	<div class="main">
 		<div class="topheader">
 			<div class="top-left">
-				<div class="logo">
+<!--				<div class="logo">
 					<img src=""/>
-				</div>
+				</div>-->
 				<a href=""><i class="home"></i>首页</a>
 				<a href="">发型设计</a>
 				<a href="">流行造型</a>
 				<a href="">造型屋</a>
 				<a href="">测评</a>
 			</div>
-			<div class="top-right">
+			<div class="top-right user" >
 				<div class="myhome">
 					<div class="myhometop">
 						<a href="">我的主页</a>
@@ -110,9 +110,7 @@
 							</div>
 						</li>
 						<li>
-							<div class="left" id="subscribeBtn"}>
-								<span>我的收藏</span>
-							</div>
+							<button class="left" onclick="collect()" style="border: 0; background-color: transparent; outline: none; width: 150px;height: 43px;overflow: hidden;"><span>我的收藏</span></button>
 							<div class="right">
 								<div class="rightTop tit">  <!--tit是为了写小竖线的样式-->
 									<span>我的收藏</span>
@@ -172,9 +170,7 @@
 							</div>
 						</li>
 						<li>
-							<div class="left">
-								<span>我的关注</span>
-							</div>
+							<button class="left" onclick="subscribe()" style="border: 0; background-color: transparent; outline: none; width: 150px;height: 43px;overflow: hidden;"><span>我的关注</span></button>
 							<div class="right">
 								<div class="rightTop tit">  <!--tit是为了写小竖线的样式-->
 									<span class="subscribeNum"><!--关注(关注数)--></span>
@@ -226,37 +222,37 @@
 							</div>
 						</li>
 						<li>
-							<div class="left">
-								<span class="fansNum">我的粉丝</span>
-							</div>
+							<button class="left" onclick="fans();" style="border: 0; background-color: transparent; outline: none; width: 150px;height: 43px;overflow: hidden;"><span>我的粉丝</span></button>
 							<div class="right">
 								<div class="rightTop tit">  <!--tit是为了写小竖线的样式-->
+
 									<span class="fansNum"></span>
 								</div>
 								<div class="rightBottomMyfan">
 
 
 
+
 								</div>
 							</div>
 						</li>
-						<li>
+<!--						<li>
 							<div class="left">
 								<span>我的预约</span>
 							</div>
 							<div class="right">
-								<div class="rightTop tit">  <!--tit是为了写小竖线的样式-->
+								<div class="rightTop tit">  &lt;!&ndash;tit是为了写小竖线的样式&ndash;&gt;
 									<span>我的预约</span>
 								</div>
 								<div class="rightBottomOrder">
-									<div class="myOrder">         <!--我的预约-->
+									<div class="myOrder">         &lt;!&ndash;我的预约&ndash;&gt;
 										<span class="orderSpan">我的预约</span>
 										<div class="clear"></div>
 									    <div class="box"><img src="/img/designerphoto2.jpg"/><span>XX造型师</span></div>
 										<div class="box"><img src="/img/designerphoto.jpg"/><span>YY造型师</span></div>
 										<div class="clear"></div>
 									</div>
-									<div class="stylingDesigner clear">   <!--历史预约造型师-->
+									<div class="stylingDesigner clear">   &lt;!&ndash;历史预约造型师&ndash;&gt;
 										<span class="stylingDesignerSpan">历史预约造型师</span>
 										<div class="clear"></div>
 									    <div class="box"><img src="/img/designerphoto2.jpg"/><span>XX造型师</span></div>
@@ -266,11 +262,9 @@
 								
 								</div>
 							</div>
-						</li>
+						</li>-->
 						<li>
-							<div class="left">
-								<span>我的投稿</span>
-							</div>
+							<button class="left" onclick="contribute();" style="border: 0; background-color: transparent; outline: none; width: 150px;height: 43px;overflow: hidden;"><span>我的投稿</span></button>
 							<div class="right">
 								<div class="rightTop tit">  <!--tit是为了写小竖线的样式-->
 									<span>我的投稿</span>
@@ -278,7 +272,7 @@
 								<div class="rightBottomContribute">
 									<div class="contributeTop">
 										<ul>
-											<li class="active">全部稿件（3）</li>
+											<li class="active contriNum"></li>
 											<li>进行中（0）</li>
 											<li>已通过（2）</li>
 											<li>未通过（0）</li>
@@ -286,7 +280,7 @@
 									</div>
 									<div class="contributeBottom clear">
 										<div class="contributeBottomContent">
-											<div class="contributeContentAll">
+											<!--<div class="contributeContentAll">
 												<img src="/img/evaluation2.jpeg"/>
 												<div class="box1_1">
 													<span>名字</span><br />
@@ -327,7 +321,7 @@
 													<button class="privateChat"><a href="">删除</a></button>	
 													</p>
 											    </div>
-											</div>
+											</div>-->
 										</div>
 									    <div class="contributeBottomContent">
 											<div class="contributeContentOngoing">

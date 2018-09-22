@@ -1,8 +1,9 @@
 package com.istyle.service.impl;
 
-import com.alibaba.druid.sql.visitor.functions.If;
+import com.istyle.mapper.TbSubmissionMapper;
 import com.istyle.mapper.TbUserMapper;
 import com.istyle.mapper.TbUserUserMapper;
+import com.istyle.pojo.TbSubmission;
 import com.istyle.pojo.TbUser;
 import com.istyle.pojo.TbUserUser;
 import com.istyle.service.UserService;
@@ -17,6 +18,8 @@ public class UserServiceImpl implements UserService{
     private TbUserMapper tbUserMapper;
     @Autowired
     private TbUserUserMapper tbUserUserMapper;
+    @Autowired
+    private TbSubmissionMapper tbSubmissionMapper;
 
     //注册用户
     @Override
@@ -150,5 +153,28 @@ public class UserServiceImpl implements UserService{
             return 0;
         else
             return 1;
+    }
+
+    /**
+     * 我的投稿界面展示
+     * @param userId
+     * @return map
+     */
+    @Override
+    public Map mySubmission(Long userId) {
+        HashMap<String, List> map = new HashMap<>();
+        List<TbSubmission> submissions;
+        Long subCount;
+
+        if (userId != null) {
+
+            subCount = tbSubmissionMapper.selectSubCountByUserId(userId);
+            submissions = tbSubmissionMapper.findSubmissionIdByUserId(userId);
+
+            map.put("submissionCount", Collections.singletonList(subCount));
+            map.put("submissions", submissions);
+        }
+
+        return map;
     }
 }
