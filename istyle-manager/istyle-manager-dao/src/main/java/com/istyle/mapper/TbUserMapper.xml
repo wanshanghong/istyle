@@ -5,8 +5,8 @@
     <!--注册用户-->
     <insert id="insertUser" parameterType="com.istyle.pojo.TbUser">
         insert into
-        tb_user(userName,userPassword,userPhone,userAge,userSex,userPhoto)
-        VALUES (#{userName}, #{userPassword},#{userPhone},#{userAge},#{userSex},#{userPhoto})
+        tb_user(userName,userPassword,userPhone,userAge,userSex,userPhoto, userStatue)
+        VALUES (#{userName}, #{userPassword},#{userPhone},#{userAge},#{userSex},"/img/headphoto.png", 0);
     </insert>
 
     <!--查询用户名是否存在,并返回数量-->
@@ -18,14 +18,14 @@
     <select id="isNameAndPassword" parameterType="com.istyle.pojo.TbUser" resultType="java.lang.Integer">
         SELECT count(*)
         FROM tb_user
-        WHERE userPhone = #{userPhone} and userPassword = #{userPassword}
+        WHERE userPhone = #{userPhone} and userPassword = #{userPassword} and userStatue = 0;
     </select>
 
     <!--用户登录-->
-    <select id="loginUser" parameterType="com.istyle.pojo.TbUser" resultType="java.lang.Long">
-        select userId
+    <select id="loginUser" parameterType="com.istyle.pojo.TbUser" resultType="com.istyle.pojo.TbUser">
+        select userId,userName,userPassword,userPhone,userAge,userSex,userPhoto
         from tb_user
-        where userPhone = #{userPhone} and userPassword = #{userPassword};
+        where userPhone = #{userPhone} and userPassword = #{userPassword} and userStatue = 0;
     </select>
 
     <!--根据号码返回ID-->

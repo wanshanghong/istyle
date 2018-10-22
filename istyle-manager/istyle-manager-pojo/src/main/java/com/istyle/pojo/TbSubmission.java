@@ -1,16 +1,19 @@
 package com.istyle.pojo;
 
+/**
+ * @author 黄文伟
+ */
 public class TbSubmission {
-    private Long subId; //投稿
-    private Long userId; //用户id
+    private Long subId;
+    private Long userId;
     private String subPhoto;
-    private String subName; //标题
-    private String subTime; //创造日期
-    private int subPageView; //浏览人数
-    private int subComment; //评论数
-    private int subCollection; //收藏数
-    private String subContent; //内容
-    private int subStatus; //状态
+    private String subName;
+    private String subTime;
+    private int subPageView;
+    private int subComment;
+    private int subCollection;
+    private String subContent;
+    private int subStatus;
 
     public Long getSubId() {
         return subId;

@@ -1,5 +1,6 @@
 package com.istyle.service.impl;
 
+import com.exception.AppAuthException;
 import com.istyle.mapper.TbSubmissionMapper;
 import com.istyle.mapper.TbUserMapper;
 import com.istyle.mapper.TbUserUserMapper;
@@ -7,11 +8,15 @@ import com.istyle.pojo.TbSubmission;
 import com.istyle.pojo.TbUser;
 import com.istyle.pojo.TbUserUser;
 import com.istyle.service.UserService;
+import com.util.JWT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+/**
+ * @author 黄文伟
+ */
 @Service
 public class UserServiceImpl implements UserService{
     @Autowired
@@ -21,50 +26,105 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private TbSubmissionMapper tbSubmissionMapper;
 
-    //注册用户
+    /**
+     * 注册用户
+     * @param user
+     */
     @Override
     public void insertUser(TbUser user){
+        if (user == null) {
+            System.out.println("user为空");
+        }
+        System.out.println(user.getUserName());
+        System.out.println(user.getUserPassword());
             tbUserMapper.insertUser(user);
     }
 
-    //判断号码是否存在
+    /**
+     * 判断号码是否存在
+     * @param userName
+     * @return
+     */
     @Override
     public boolean isUserName(String userName) {
-        if (tbUserMapper.isUserName(userName) == 0)
-            return false; //存在
-        else
-            return true; //不存在
-    }
-    @Override
-    public Long loginUser(TbUser user) {
-        if (tbUserMapper.isNameAndPassword(user) == 1)
-            return tbUserMapper.loginUser(user); //返回ID
-        else
-            return Long.valueOf(-1);
+        if (tbUserMapper.isUserName(userName) == 0) {
+            //存在
+            return false;
+        } else {
+            //不存在
+            return true;
+        }
     }
 
-//    修改用户信息
+    /**
+     * 用户登录
+     * @param user
+     * @return
+     */
+    @Override
+    public TbUser loginUser(TbUser user){
+        if (tbUserMapper.isNameAndPassword(user) != 1) {
+            throw new AppAuthException("号码和密码错误");
+        }
+        if (tbUserMapper.isUserName(user.getUserPhone()) != 1) {
+            throw new AppAuthException("号码错误");
+        }
+        TbUser tbUser = tbUserMapper.loginUser(user);
+        if (tbUser == null) {
+            throw new AppAuthException("登录错误");
+        }
+        String stoken = JWT.sign(user, 24L * 3600L * 30);
+        tbUser.setUserPassword(null);
+        tbUser.setStoken(stoken);
+        return tbUser;
+    }
+
+    /**
+     * 修改用户信息
+     * @param user
+     */
     @Override
     public void updateUser(TbUser user) {
         tbUserMapper.updateById(user);
     }
 
+    /**
+     * 通过id查询用户
+     * @param userId
+     * @return
+     */
     @Override
     public TbUser selectUserById(Long userId) {
         return tbUserMapper.selectUserById(userId);
     }
 
+    /**
+     * 通过id查询关注
+     * @param userId
+     * @return
+     */
     @Override
     public List<TbUser> selectFollersById(Long userId) {
         List<TbUser> users = tbUserMapper.selectPhotoNameWordById(userId);
         return users;
     }
 
+    /**
+     * 通过id查询用户数量
+     * @param userId
+     * @return
+     */
     @Override
     public Long selectUserCountById(Long userId) {
         return tbUserMapper.selectUserCountById(userId);
     }
 
+    /**
+     * 取消关注
+     * @param userId
+     * @param userId2
+     * @return
+     */
     @Override
     public int unFoller(Long userId, Long userId2) {
         TbUserUser tbUserUser = new TbUserUser();
@@ -94,7 +154,7 @@ public class UserServiceImpl implements UserService{
         Long fanCount;
         List<TbUser> users ;
         List<Integer> usersState = new ArrayList<>();
-        Map<String, List> fans = new HashMap<>();
+        Map<String, List> fans = new HashMap<>(16);
         TbUserUser tbUserUser = new TbUserUser();
         List<Long> userId;
         Integer flag;
@@ -111,10 +171,11 @@ public class UserServiceImpl implements UserService{
                 userId) {
                 tbUserUser.setUserId2(id);
                 flag = tbUserUserMapper.selectUsersStateById(tbUserUser);
-                if (flag == null)
+                if (flag == null) {
                     usersState.add(1);
-                else
+                } else {
                     usersState.add(flag);
+                }
 
         }
 
@@ -143,16 +204,16 @@ public class UserServiceImpl implements UserService{
         flag = tbUserUserMapper.selectUsersStateById(userUser);
         if (flag == null){
             tbUserUserMapper.addUserStateTo0(userUser);
-        }
-        else
+        } else {
             tbUserUserMapper.updateUsersStateTo0(userUser);
-
+        }
         flag = tbUserUserMapper.selectUsersStateById(userUser);
 
-        if (flag == 0)
+        if (flag == 0) {
             return 0;
-        else
+        } else {
             return 1;
+        }
     }
 
     /**
@@ -162,7 +223,7 @@ public class UserServiceImpl implements UserService{
      */
     @Override
     public Map mySubmission(Long userId) {
-        HashMap<String, List> map = new HashMap<>();
+        HashMap<String, List> map = new HashMap<>(16);
         List<TbSubmission> submissions;
         Long subCount;
 

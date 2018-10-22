@@ -4,10 +4,28 @@ import com.istyle.pojo.TbStylist;
 
 import java.util.List;
 
-
+/**
+ * 造型师接口
+ * @author 黄文伟
+ */
 public interface StylistService {
-//    查询造型师数量
+    /**
+     * 通过用户id查询造型师数量
+     * @param userId
+     * @return Long StylistCount
+     */
     Long selectStylistCountByUserId(Long userId);
-//    查询造型师昵称及图片
+
+    /**
+     * 通过用户id查询造型师
+     * @param userId
+     * @return List<TbStylist>
+     */
     List<TbStylist> selectStylistByUserId(Long userId);
+
+    /**
+     * 造型师注册
+     * @param tbStylist
+     */
+    void stylistRegister(TbStylist tbStylist);
 }

@@ -1,10 +1,13 @@
 package com.istyle.pojo;
 
+/**
+ * 测评pojo
+ * @author 黄文伟
+ */
 public class TbEvaluation {
     private Long evalId;
     private String evalPhoto;
     private String evalName;
-//    private String evalWord;
     private String evalWord;
 
     public Long getEvalId() {

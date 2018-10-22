@@ -79,7 +79,7 @@ function showInformation(){
                 }
             }
         }
-        xhr.open('get','http://localhost:8080/html/userIndex.html');
+        xhr.open('get','/myHome/index');
         xhr.send(null);
 
 }
@@ -94,7 +94,7 @@ function information(){
     /*let inputs=document.getElementsByClassName("updateInfo")[0].getElementsByTagName("input");*/
     let username=document.getElementById('nickname').value;
     let userword=document.getElementById('personalizedSignature').value;
-    let sex=document.getElementsByName('sex');
+    let sex=document.getElementsByName('userSex');
     let userSex=null;
     for(let i=0;i<sex.length;i++){
         if(sex[i].checked){

@@ -18,6 +18,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * 我的主页
+ * @author 黄文伟
+ */
 @Controller
 @RequestMapping("/myHome")
 public class MyHomePage {
@@ -30,12 +34,16 @@ public class MyHomePage {
     @Autowired
     private EvaluationService evaluationService;
 
-//    打开编辑页面发送用户数据
+    /**
+     * 打开编辑页面发送用户数据
+     * @param request
+     * @return json
+     */
     @ResponseBody
     @RequestMapping(value="/updateUserPage", method= RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     public String updatePage(HttpServletRequest request){
         Long userId;
-        Map<String, String> users = new HashMap<>();
+        Map<String, String> users = new HashMap<>(16);
         String json;
         userId = (Long) request.getSession().getAttribute("userId");
         TbUser user = userService.selectUserById(userId);
@@ -48,18 +56,22 @@ public class MyHomePage {
         return json;
     }
 
-//    编辑信息
+    /**
+     * 编辑信息
+     * @param request
+     * @return json
+     */
     @ResponseBody
     @RequestMapping("/updateMessage")
     public String updateUser(HttpServletRequest request){
         TbUser user = new TbUser();
-        Map<String, String> map = new HashMap<>();
+        Map<String, String> map = new HashMap<>(16);
         String json;
 
         user.setUserId((Long) request.getSession().getAttribute("userId"));
 
         if (request.getSession().getAttribute("userId") != null) {
-//            user.setUserPhoto(request.getParameter("userPhoto"));
+            /*user.setUserPhoto(request.getParameter("userPhoto"));*/
             user.setUserName(request.getParameter("userName"));
             user.setUserWord(request.getParameter("userWord"));
             user.setUserSex(request.getParameter("userSex"));
@@ -77,13 +89,17 @@ public class MyHomePage {
         }
     }
 
-//    我的主页跳转至我的信息
+    /**
+     * 我的主页跳转至我的信息
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value="/index", method= RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     public String myHomePage(HttpServletRequest request){
         System.out.println("message page success");
         Long userId = (Long) request.getSession().getAttribute("userId");
-        Map<String, String> users = new HashMap<String, String>();
+        Map<String, String> users = new HashMap(16);
         String json;
         if (userId != null){
             TbUser user = userService.selectUserById(userId);
@@ -101,13 +117,17 @@ public class MyHomePage {
         return json;
     }
 
-//    我的收藏
+    /**
+     * 我的收藏
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value="/userCollection", method= RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     public Map myCollection(HttpServletRequest request){
         System.out.println("my collection");
         Long userId = (Long) request.getSession().getAttribute("userId");
-        Map<String, List> map = new HashMap<>();
+        Map<String, List> map = new HashMap<>(16);
 //        String json;
         Long styCount; //造型师收藏数
         Long styHouseCount; //造型师收藏数
@@ -130,7 +150,7 @@ public class MyHomePage {
             map.put("evalCount", Collections.singletonList(evalCount));
             map.put("evaluation", evaluations);
 
-//            json = JSONUtils.toJSONString(map);
+            /*json = JSONUtils.toJSONString(map);*/
         }
         else {
             System.out.println("没有该成员");
@@ -139,13 +159,17 @@ public class MyHomePage {
         return map;
     }
 
-//    我的关注
+    /**
+     * 我的关注
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value="/userFoller", method= RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     public Map<String, List> myFoller(HttpServletRequest request){
         System.out.println("my foller");
         Long userId = (Long) request.getSession().getAttribute("userId");
-        Map<String, List> map = new HashMap<>();
+        Map<String, List> map = new HashMap<>(16);
         Long follerCount;
         List<TbUser> follers;
 //        String json = null;
@@ -157,7 +181,7 @@ public class MyHomePage {
             map.put("follerCount", Collections.singletonList(follerCount));
             map.put("follers", follers);
 
-//            json = JSONUtils.toJSONString(map);
+            /*json = JSONUtils.toJSONString(map);*/
         }
         else {
             System.out.println("失败");
@@ -165,7 +189,14 @@ public class MyHomePage {
         return map;
     }
 
-//    取消关注
+    /**
+     * 取消关注
+     * @param request
+     * @param response
+     * @return
+     * @throws IOException
+     * @throws ServletException
+     */
     @ResponseBody
     @RequestMapping(value="/unFoller", method= RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     public int unFoller(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
@@ -177,7 +208,11 @@ public class MyHomePage {
         return result;
     }
 
-//    我的粉丝页面
+    /**
+     * 我的粉丝页面
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/myFans", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     public Map myFansPage(HttpServletRequest request){
@@ -190,6 +225,11 @@ public class MyHomePage {
         return fans;
     }
 
+    /**
+     * 添加粉丝关注
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/doFoller", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     public int addFanFoller(HttpServletRequest request){

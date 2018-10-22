@@ -4,9 +4,28 @@ import com.istyle.pojo.TbStyHouse;
 
 import java.util.List;
 
+/**
+ * 造型屋相关
+ * @author 黄文伟
+ */
 public interface StyHouseService {
-    //    查询造型师数量
+    /**
+     * 通过用户id查询造型屋数量
+     * @param userId
+     * @return Long styHouseCount
+     */
     Long selectStyHouseCountByUserId(Long userId);
-    //    查询造型师昵称及图片
+
+    /**
+     * 通过用户id查询造型屋
+     * @param userId
+     * @return List<TbStyHouse>
+     */
     List<TbStyHouse> selectStyHouseByUserId(Long userId);
+
+    /**
+     * 造型屋注册
+     * @param tbStyHouse
+     */
+    void styHouseRegister(TbStyHouse tbStyHouse);
 }

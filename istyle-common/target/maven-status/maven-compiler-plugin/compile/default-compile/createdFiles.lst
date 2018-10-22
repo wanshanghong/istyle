@@ -1,1 +1,4 @@
-com\test.class
+com\util\CastUtil.class
+com\util\StringUtil.class
+com\util\CollectionUtil.class
+com\util\JWT.class

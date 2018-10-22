@@ -35,9 +35,9 @@
 	border-bottom: 1px solid #777777;
 }
 .verticalNav .box2 ul li.active {
-	background: #000;
+	background: #888888;
 	cursor: pointer;
-	color: #FFFFFF;
+
 }
 .verticalNav .box2 li{
 	width: 150px;

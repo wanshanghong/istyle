@@ -16,4 +16,11 @@
           FROM tb_user_stylist
           where userId = #{userId});
     </select>
+
+    <insert id="addStylist" parameterType="com.istyle.pojo.TbStylist">
+        INSERT INTO
+        tb_stylist(stylistName, realName, stylistPassword, stylistSex, stylistAge, stylistPhone)
+        VALUES
+        (#{stylistName}, #{realName}, #{stylistPassword}, #{stylistSex}, #{stylistAge}, #{stylistPhone});
+    </insert>
 </mapper>

@@ -1,5 +1,8 @@
 package com.istyle.pojo;
 
+/**
+ * @author 黄文伟
+ */
 public class TbUserUser {
     private Long userId;
     private Long userId2;
