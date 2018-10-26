@@ -163,51 +163,74 @@ function check2(){
 
 
 //登录
+/*
 function login(){
 	
 	var username = document.getElementById("username");
 	var password = document.getElementById("password");
 	
-	/*兼容ie*/
+	/!*兼容ie*!/
 	var xhr = null;
 	if(XMLHttpRequest){
 		xhr = new XMLHttpRequest();
 	} else {
 		xhr = new ActiveXObject("Microsoft.XMLHttp");
 	}
-	
-/*	function success(data){
-		console.log(information);
-		if(data.msg==2){
-            alert("登录成功");
-		} else {
-			alert("登录失败");
-		}
-
-	}*/
 	function fail(code){
 		console.log("发生错误"+code);
 	}
-
-
-	var url = "/login";
+	var url = "/userLogin";
 	xhr.open("post",url,true);
-	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=utf-8");
 
     xhr.onreadystatechange = function(){
         if(xhr.readyState===4){
-            if(xhr.status === 200){
-                /*return success(xhr.responseText)*/
+            if(xhr.status >= 200&&xhr.status<=300 || xhr.status===304){
+                /!*return success(xhr.responseText)*!/
                 alert(xhr.responseText);
+                console.log(xhr.responseText);
+
             } else {
                 return fail(xhr.status);
             }
         }
     };
 
-	var information = "action=userLogin&"+"username=" + username.value + "&" + "password=" + password.value;
-    xhr.send(information);
+	var information = {userPhone:  username.value,  userPassword:  password.value};
+	var data=JSON.stringify(information);
+    /!*var data1="data:"+data;*!/
+    // var data2=JSON.parse(data1);
+	console.log(data);
+    xhr.send(data);
 }
+*/
+
+    function login(){
+        let username = document.getElementById("username");
+        let password = document.getElementById("password");
+        console.log("1");
+        console.log(username);
+        var obj = {"userPhone":username.value, "userPassword":password.value};
+        $.ajax({
+            type:"POST",
+            url:"/userLogin",
+            dataType:"json",
+            contentType:'application/json;charset=utf-8',
+            data:JSON.stringify(obj),
+            success:function (data) {
+                console.log("succ");
+                console.log(data);
+            },
+            error:function (err) {
+                console.error(err);
+                console.log("发生错误");
+                alert(err.responseText);
+            }
+
+        });
+
+
+    }
 
 document.getElementById("loginbtn").onclick = function(){
 	check1()?login():alert("请重新输入");
@@ -215,9 +238,9 @@ document.getElementById("loginbtn").onclick = function(){
 
 
 function register(){
-    var information = "";
+    var data = "";
     var inputs = document.getElementsByClassName("fastRegister")[0].getElementsByTagName("input");
-    var arr = ["fakename","password1","password2","tel","sex","age"];
+    var arr = ["userName","userPassword","userPassword2","userPhone","userSex","userAge"];
 
 /*    创建对象*/
     var xhr = null;
@@ -238,7 +261,7 @@ function register(){
     /*连接服务器*/
     var url = "/register";
 	xhr.open("post",url,true);
-	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	xhr.setRequestHeader("Content-Type","application/json;charset=UTF-8");
     
     /*请求完成,响应就绪*/
 	xhr.onreadystatechange = function(){
@@ -253,10 +276,14 @@ function register(){
 	}
 
     for(var i=0; i<inputs.length-1; i++) {
-        information += ( arr[i] + "=" + inputs[i].value +"&" );
+        data += ( arr[i] + "=" + inputs[i].value +"&" );
     }
+	console.log(data);
+    var data_str = JSON.stringify(data);
+	console.log(data_str);
+    xhr.send(data_str);
 
-    xhr.send( information );
+	// xhr.send(data);
 
 }
 	

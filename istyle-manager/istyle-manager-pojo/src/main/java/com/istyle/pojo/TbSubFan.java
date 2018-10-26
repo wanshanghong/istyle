@@ -1,5 +1,8 @@
 package com.istyle.pojo;
 
+/**
+ * @author 黄文伟
+ */
 public class TbSubFan {
     private int subFanId;
     private int subId;

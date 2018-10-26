@@ -16,4 +16,11 @@
           FROM tb_user_styhouse
           where userId = #{userId});
     </select>
+
+    <insert id="addStyHouse" parameterType="com.istyle.pojo.TbStyHouse">
+        INSERT INTO
+        tb_styhouse(styHouseName, styHouseAccount, styHousePassword, headName, headId, headPhone, styHousePosition)
+        VALUES
+        (#{styHouseName}, #{styHouseAccount}, #{styHousePassword}, #{headName}, #{headId}, #{headPhone}, #{styHousePosition});
+    </insert>
 </mapper>

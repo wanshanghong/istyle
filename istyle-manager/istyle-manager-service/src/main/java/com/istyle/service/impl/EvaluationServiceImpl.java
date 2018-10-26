@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author 黄文伟
+ */
 @Service
 public class EvaluationServiceImpl implements EvaluationService {
     @Autowired

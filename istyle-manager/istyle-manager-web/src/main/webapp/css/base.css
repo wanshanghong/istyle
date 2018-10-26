@@ -45,6 +45,11 @@ a {
 	float: right;
 	margin-right: 50px;
 }
+.topheader .user{
+	float: right;
+	margin-right: 50px;
+	height: 38.4px;
+}
 /*.top .top-left .home{
 	width: 30px;
 	height: 30px;

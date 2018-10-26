@@ -3,9 +3,14 @@
 <mapper namespace="com.istyle.mapper.TbSubmissionMapper">
     <!--通过用户id查询他的投稿-->
     <select id="findSubmissionIdByUserId" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbSubmission">
-        select * FROM tb_submission where userId=#{userId}
+        select subPhoto, subName, subTime, subPageView, subComment, subCollection
+        FROM tb_submission
+        where (userId=#{userId} and subState=0);
     </select>
 
+    <select id="selectSubCountByUserId" parameterType="java.lang.Long" resultType="java.lang.Long">
+        select count(*) from tb_submission where (userId=#{userId} and subState=0);
+    </select>
 
 
 </mapper>

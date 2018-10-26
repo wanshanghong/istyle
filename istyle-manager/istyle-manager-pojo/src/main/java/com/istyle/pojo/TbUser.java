@@ -1,16 +1,21 @@
 package com.istyle.pojo;
 
-public class TbUser {
-    private Long userId; //用户id
-    private String userName; //昵称
-    private String userPassword; //密码
-    private String userPhone; //手机号
-    private String userSex; //性别
-    private int userAge; //年龄
-    private String userWord; //简介
-    private String userPhoto; //头像
-    private Long count; //记录数量
-    private int userStatus; //用户状态
+import com.istyle.pojo.ext.UserExt;
+
+/**
+ * @author 黄文伟
+ */
+public class TbUser extends UserExt {
+    private Long userId;
+    private String userName;
+    private String userPassword;
+    private String userPhone;
+    private String userSex;
+    private int userAge;
+    private String userWord;
+    private String userPhoto;
+    private Long count;
+    private int userStatus;
 
     public Long getUserId() {
         return userId;
