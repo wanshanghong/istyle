@@ -19,34 +19,81 @@
 			<li><a href="javascript:void(0)">注册</a></li>
 		</ul>
 
-		<div id="cd-login" class="fastLogin"> <!-- log in form -->
-			<form class="cd-form" method="post" name="login" id="login" ><!--onsubmit="return check1(this)"-->
-				<p class="fieldset"><label for="username">账号：</label><input type="text" class="input" id="username" name="userPhone" placeholder="请输入你注册时所用的电话" /></p>
-				<p class="fieldset"><label for="password">密码：</label><input type="password" class="input" id="password" name="userPassword" placeholder="请输入你的密码" /></p>
+		<div id="cd-login" class="fastLogin" > <!-- log in form -->
+			<p style="text-align: center; margin-top: 20px;margin-bottom: 10px">登录istyle</p>
+			<p style="text-align: center">与世界分享你的style</p>
+			<form class="cd-form" action="" method="post" name="login" id="login" ><!--onsubmit="return check1(this)"-->
+				<p class="fieldset"><label for="username">账号：</label><input type="text" class="input" id="username" name="username" placeholder="请输入你注册时所用的电话" /></p>
+				<p class="fieldset"><label for="password">密码：</label><input type="password" class="input" id="password" name="password" placeholder="请输入你的密码" /></p>
 				<p class="fieldset"><input type="button" class="submit1" value="登录" id="loginbtn" onclick=""/></p>
+
 			</form>
 		</div>
-	
-		<div id="cd-signup" class="fastRegister"> <!-- sign up form -->
-			<form class="cd-form" method="post" name="register" id="register" ><!--onsubmit="return check2(this)"-->
-				<h4>快速注册请注意格式</h4>
-				<p class="fieldset"><label for="fakename">用户名：</label><input type="text" class="input" id="fakename" name="userName"
-																			 placeholder="请输入你的昵称" /></p>
-				<!--<p class="fieldset"><label for="realname">姓名：</label><input type="text" class="input" id="realname" name="realname" placeholder="请输入你的姓名" /></p>-->
-				<p class="fieldset"><label for="password1">密码：</label><input type="password" class="input" id="password1" name="userPassword"
-																			 placeholder="请输入你的密码" /></p>
-				<p class="fieldset"><label for="password2">确认密码：</label><input type="password" class="input" id="password2" name="userPassword2"
-																			   placeholder="请再次输入密码"/></p>
-				<p class="fieldset"><label for="tel">手机号：</label><input type="text" class="input" id="tel" name="userPhone"
-																		placeholder="请输入你的手机号码" /></p>
-				<p class="fieldset"><label for="sex">性别：</label><input type="text" class="input" id="sex" name="userSex"
-																	   placeholder="请输入你的性别" /></p>
-				<p class="fieldset"><label for="age">年龄：</label><input type="text" class="input" id="age" name="userAge"
-																	   placeholder="请输入你的年龄" /></p>
-				<p class="fieldset"><input type="button" class="submit2" value="同意协议并注册" id="registerbtn" onclick=""/>  <a href="#"><span>注册协议</span></a></p>
-		    </form>
-		</div>
 
+		<div id="cd-signup" class="fastRegister"> <!-- sign up form -->
+			<div class="content" style="height: 600px">
+				<div class="clear"></div>
+				<div class="tabTop">
+					<ul>
+						<li class="active">普通用户</li>
+						<li>造型屋</li>
+						<li>造型师</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+				<div class="tabBottom">
+					<div class="tabBottomContent">
+						<form class="cd-form" action="" method="post" name="register" id="register" ><!--onsubmit="return check2(this)"-->
+							<h4>快速注册请注意格式</h4>
+							<p class="fieldset"><label for="fakename">用户名：</label><input type="text" class="input" id="fakename" name="fakename" placeholder="请输入你的昵称" /></p>
+							<!--<p class="fieldset"><label for="realname">姓名：</label><input type="text" class="input" id="realname" name="realname" placeholder="请输入你的姓名" /></p>-->
+							<p class="fieldset"><label for="password1">密码：</label><input type="password" class="input" id="password1" name="password1" placeholder="请输入你的密码" /></p>
+							<p class="fieldset"><label for="password2">确认密码：</label><input type="password" class="input" id="password2" name="password2" placeholder="请再次输入密码"/></p>
+							<p class="fieldset"><label for="tel">手机号：</label><input type="text" class="input" id="tel" name="tel" placeholder="请输入你的手机号码" /></p>
+							<p class="fieldset"><label for="sex">性别：</label><input type="text" class="input" id="sex" name="sex" placeholder="请输入你的性别" /></p>
+							<p class="fieldset"><label for="age">年龄：</label><input type="text" class="input" id="age" name="age" placeholder="请输入你的年龄" /></p>
+							<p class="fieldset"><input type="button" class="submit2" value="同意协议并注册" id="registerbtn" onclick=""/>  <a href="#"><span>注册协议</span></a></p>
+
+						</form>
+					</div>
+					<div class="tabBottomContent">
+						<form class="cd-form" action="" method="post" name="register" id="register2" ><!--onsubmit="return check2(this)"-->
+							<h4>快速注册请注意格式</h4>
+							<p class="fieldset"><label for="shopname">造型屋名：</label><input type="text" class="input" id="shopname" name="shopname" placeholder="请输入你的造型屋名" ></p>
+							<p class="fieldset"><label for="loginAccount">登录账号：</label><input type="text" class="input" id="loginAccount" name="loginAccount" placeholder="请输入你的造型屋登录账号，用电话登录" /></p>
+							<p class="fieldset"><label for="password3">密码：</label><input type="password" class="input" id="password3" name="password1" placeholder="请输入你的密码" /></p>
+							<p class="fieldset"><label for="password4">确认密码：</label><input type="password" class="input" id="password4" name="password2" placeholder="请再次输入密码"/></p>
+							<p class="fieldset"><label for="realname1">姓名：</label><input type="text" class="input" id="realname1" name="realname" placeholder="请输入店铺负责人的姓名" /></p>
+							<p class="fieldset"><label for="tel2">电话：</label><input type="text" class="input" id="tel2" name="tel" placeholder="请输入店铺负责人手机号码" /></p>
+							<p class="fieldset"><label for="idcard">身份证：</label><input type="text" class="input" id="idcard" name="idcard" placeholder="请输入店铺负责人的身份证号码" /></p>
+							<div class="clear"></div>
+							<p class="fieldset" style="margin-left: 35px">
+								<select class="form-control" id="cmbProvince" name="cmbProvince" ></select>
+								<select class="form-control" id="cmbCity" name="cmbCity" ></select>
+								<select class="form-control" id="cmbArea" name="cmbArea" ></select>
+							</p>
+							<p class="fieldset"><input type="button" class="submit2" value="同意协议并注册" id="registerbtn2" onclick=""/>  <a href="#"><span>注册协议</span></a></p>
+						</form>
+					</div>
+					<div class="tabBottomContent">
+						<form class="cd-form" action="" method="post" name="register" id="register3" ><!--onsubmit="return check2(this)"-->
+							<h4>快速注册请注意格式</h4>
+							<p class="fieldset"><label for="fakename3">用户名：</label><input type="text" class="input" id="fakename3" name="fakename3" placeholder="请输入你的昵称" /></p>
+							<p class="fieldset"><label for="realname3">姓名：</label><input type="text" class="input" id="realname3" name="realname3" placeholder="请输入你的真实姓名" /></p>
+							<p class="fieldset"><label for="password5">密码：</label><input type="password" class="input" id="password5" name="password5" placeholder="请输入你的密码" /></p>
+							<p class="fieldset"><label for="password6">确认密码：</label><input type="password" class="input" id="password6" name="password6" placeholder="请再次输入密码"/></p>
+							<p class="fieldset"><label for="tel3">手机号：</label><input type="text" class="input" id="tel3" name="tel" placeholder="请输入你的手机号码" /></p>
+							<p class="fieldset"><label for="sex3">性别：</label><input type="text" class="input" id="sex3" name="sex" placeholder="请输入你的性别" /></p>
+							<p class="fieldset"><label for="age3">年龄：</label><input type="text" class="input" id="age3" name="age" placeholder="请输入你的年龄" /></p>
+							<p class="fieldset"><input type="button" class="submit2" value="同意协议并注册" id="registerbtn3" onclick=""/>  <a href="#"><span>注册协议</span></a></p>
+
+						</form>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
 
 		<a href="#0" class="cd-close-form">关闭</a>
 	</div>

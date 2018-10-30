@@ -1,9 +1,12 @@
 package com.istyle.service.impl;
 
+import com.exception.AppAuthException;
+import com.exception.AppUnknowException;
 import com.istyle.mapper.TbStylistMapper;
 import com.istyle.pojo.TbStylist;
 import com.istyle.service.StylistService;
-import com.istyle.service.util.PublicUtil;
+import com.util.CastUtil;
+import com.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,29 +20,6 @@ import java.util.List;
 public class StylistServiceImpl implements StylistService {
     @Autowired
     private TbStylistMapper tbStylistMapper;
-    private PublicUtil publicUtil;
-
-    /**
-     * 根据id查询造型师数量
-     * @param userId
-     * @return
-     */
-    @Override
-    public Long selectStylistCountByUserId(Long userId) {
-        Long id = tbStylistMapper.selectStylistCountByUserId(userId);
-        return id;
-    }
-
-    /**
-     * 根据id查询造型师
-     * @param userId
-     * @return
-     */
-    @Override
-    public List<TbStylist> selectStylistByUserId(Long userId) {
-        List<TbStylist> stylists = tbStylistMapper.selectStylistByUserId(userId);
-        return stylists;
-    }
 
     /**
      * 造型师注册
@@ -48,18 +28,33 @@ public class StylistServiceImpl implements StylistService {
      */
     @Override
     public void stylistRegister(TbStylist tbStylist) {
-        if (publicUtil.isEmpty(tbStylist.getStylistName())){
-            System.out.printf("造型师昵称为空");
+        if (StringUtil.isEmpty(tbStylist.getStylistName())){
+            throw new AppAuthException("造型师昵称为空");
         }
-        if (publicUtil.isEmpty(tbStylist.getRealName())) {
-            System.out.println("真实姓名为空");
+        if (StringUtil.isEmpty(tbStylist.getRealName())) {
+            throw new AppAuthException("真实姓名为空");
         }
-        if (publicUtil.isEmpty(tbStylist.getStylistPassword())) {
-            System.out.println("密码为空");
+        if (StringUtil.isEmpty(tbStylist.getStylistPassword())) {
+            throw new AppAuthException("密码为空");
         }
-        if (publicUtil.isEmpty(tbStylist.getStylistPhone())) {
-            System.out.println("手机为空");
+        if (StringUtil.isEmpty(tbStylist.getStylistSex())) {
+            throw new AppAuthException("性别为空");
+        }
+        if (StringUtil.isEmpty(CastUtil.castString(tbStylist.getStylistAge()))) {
+            throw new AppAuthException("年龄为空");
+        }
+        if (StringUtil.isEmpty(tbStylist.getStylistPhone())) {
+            throw new AppAuthException("号码为空");
+        }
+        if (tbStylistMapper.isStylistPhone(tbStylist.getStylistPhone()) != 0) {
+            throw new AppAuthException("号码已注册");
+        }
+        if (tbStylistMapper.isStylistName(tbStylist.getStylistName()) != 0) {
+            throw new AppAuthException("昵称已注册");
         }
         tbStylistMapper.addStylist(tbStylist);
+        if (tbStylistMapper.isPhoneAndPassword(tbStylist) != 0) {
+            throw new AppUnknowException("注册失败");
+        }
     }
 }

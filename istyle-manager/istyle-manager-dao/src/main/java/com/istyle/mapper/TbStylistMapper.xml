@@ -23,4 +23,28 @@
         VALUES
         (#{stylistName}, #{realName}, #{stylistPassword}, #{stylistSex}, #{stylistAge}, #{stylistPhone});
     </insert>
+
+    <!--根据号码查询数量，并返回-->
+    <select id="isStylistPhone" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*)
+        from tb_stylist
+        where stylistPhone = #{stylistPhone};
+    </select>
+
+    <!--根据昵称查询数量，并返回-->
+    <select id="isStylistName" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*)
+        from tb_stylist
+        where stylistName = #{stylistName};
+    </select>
+
+    <!--根据号码和密码查询数量，并返回-->
+    <select id="isPhoneAndPassword" parameterType="com.istyle.pojo.TbStylist" resultType="java.lang.Integer">
+        select count(*)
+        from tb_stylist
+        where stylistPhone=#{stylistPhone}
+        and stylistPassword=#{stylistPassword}
+        and stylistStatus=0;
+    </select>
+
 </mapper>

@@ -27,4 +27,26 @@ public interface TbStylistMapper {
      * @param tbStylist
      */
     void addStylist(TbStylist tbStylist);
+
+    /**
+     * 判断号码是否注册，返回数量
+     * @param stylistPhone
+     * @return
+     */
+    int isStylistPhone(String stylistPhone);
+
+
+    /**
+     * 判断昵称是否注册，返回数量
+     * @param stylistName
+     * @return
+     */
+    int isStylistName(String stylistName);
+
+    /**
+     * 判断号码和密码是否注册，返回数量
+     * @param stylist
+     * @return
+     */
+    int isPhoneAndPassword(TbStylist stylist);
 }

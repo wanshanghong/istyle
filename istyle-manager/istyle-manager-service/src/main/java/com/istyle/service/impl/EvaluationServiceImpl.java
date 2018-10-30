@@ -16,13 +16,4 @@ public class EvaluationServiceImpl implements EvaluationService {
     @Autowired
     private TbEvaluationMapper tbEvaluationMapper;
 
-    @Override
-    public Long selectEvaluationCountByUserId(Long userId) {
-        return tbEvaluationMapper.selectEvalCountByUserId(userId);
-    }
-
-    @Override
-    public List<TbEvaluation> selectEvaluationByUserId(Long userId) {
-        return tbEvaluationMapper.selectEvalByUserId(userId);
-    }
 }
