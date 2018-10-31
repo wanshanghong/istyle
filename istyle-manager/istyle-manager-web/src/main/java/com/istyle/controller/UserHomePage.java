@@ -16,7 +16,7 @@ import java.util.*;
  */
 @Controller
 @RequestMapping("/userHome")
-public class MyHomePage {
+public class UserHomePage {
     @Autowired
     private UserService userService;
 
@@ -27,7 +27,7 @@ public class MyHomePage {
      */
     @ResponseBody
     @RequestMapping(value="/index", method= RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
-    public Response myHomePage(@RequestParam("stoken") String stoken) {
+    public Response userHomePage(@RequestParam("stoken") String stoken) {
         TbUser user = JWT.unsign(stoken, TbUser.class);
         TbUser param = userService.selectUserByUserId(user);
         return Response.ok(param);
@@ -40,7 +40,7 @@ public class MyHomePage {
      */
     @ResponseBody
     @RequestMapping(value = "/updatePage", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
-    public Response updatePage(@RequestParam("stoken") String stoken) {
+    public Response userUpdatePage(@RequestParam("stoken") String stoken) {
         TbUser user = JWT.unsign(stoken, TbUser.class);
         TbUser param = userService.selectUserByUserId(user);
         return Response.ok(param);
@@ -53,7 +53,7 @@ public class MyHomePage {
      */
     @ResponseBody
     @RequestMapping(value = "/updateMessage", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
-    public Response updateMessage(@RequestBody TbUser tbUser){
+    public Response userUpdateMessage(@RequestBody TbUser tbUser){
         TbUser user = JWT.unsign(tbUser.getStoken(), TbUser.class);
         userService.updateUser(user, tbUser);
         return Response.ok();
@@ -66,7 +66,7 @@ public class MyHomePage {
      */
     @ResponseBody
     @RequestMapping(value="/collection", method= RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
-    public Response myCollection(@RequestParam("stoken") String stoken){
+    public Response userCollection(@RequestParam("stoken") String stoken){
         TbUser user = JWT.unsign(stoken, TbUser.class);
         Map param = userService.selectCollection(user);
         return Response.ok(param);
@@ -79,7 +79,7 @@ public class MyHomePage {
      */
     @ResponseBody
     @RequestMapping(value="/foller", method= RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
-    public Response follerPage(@RequestParam("stoken") String stoken) {
+    public Response userfollowPage(@RequestParam("stoken") String stoken) {
         TbUser user = JWT.unsign(stoken, TbUser.class);
         Map param = userService.selectAttentionsById(user);
         return Response.ok(param);
@@ -93,7 +93,7 @@ public class MyHomePage {
      */
     @ResponseBody
     @RequestMapping(value="/unFollow", method= RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
-    public Response unFollow(@RequestParam("stoken") String stoken, @RequestParam("unFollowUserId") long unFollowUserId) {
+    public Response userUnFollow(@RequestParam("stoken") String stoken, @RequestParam("unFollowUserId") long unFollowUserId) {
         TbUser user = JWT.unsign(stoken, TbUser.class);
         userService.unFollow(user, unFollowUserId);
         return Response.ok();
@@ -106,7 +106,7 @@ public class MyHomePage {
      */
     @ResponseBody
     @RequestMapping(value = "/fans", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
-    public Response myFansPage(@RequestParam("stoken") String stoken){
+    public Response userFansPage(@RequestParam("stoken") String stoken){
         TbUser user = JWT.unsign(stoken, TbUser.class);
         Map param = userService.myFansPage(user);
         return Response.ok(param);
@@ -120,7 +120,7 @@ public class MyHomePage {
      */
     @ResponseBody
     @RequestMapping(value = "/doFanFollow", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
-    public Response addFanFoller(@RequestParam("stoken") String stoken, @RequestParam("doFollowUserId") long doFollowUserId) {
+    public Response userAddFanFollow(@RequestParam("stoken") String stoken, @RequestParam("doFollowUserId") long doFollowUserId) {
         TbUser user = JWT.unsign(stoken, TbUser.class);
         userService.addFollow(user, doFollowUserId);
         return Response.ok();
@@ -133,7 +133,7 @@ public class MyHomePage {
      */
     @ResponseBody
     @RequestMapping(value = "/submission", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
-    public Response mySubmissionPage(@RequestParam("stoken") String stoken){
+    public Response userSubmissionPage(@RequestParam("stoken") String stoken){
         TbUser user = JWT.unsign(stoken, TbUser.class);
         Map param = userService.mySubmission(user);
         return Response.ok(param);

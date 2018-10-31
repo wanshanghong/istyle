@@ -13,6 +13,8 @@ public class TbStylist {
     private String stylistSex;
     private int stylistAge;
     private String stylistPhone;
+    private long stylistAdvisory;
+    private long stylistIntoduction;
 
     public Long getStylistId() {
         return stylistId;
@@ -84,5 +86,21 @@ public class TbStylist {
 
     public void setStylistPhone(String stylistPhone) {
         this.stylistPhone = stylistPhone;
+    }
+
+    public long getStylistAdvisory() {
+        return stylistAdvisory;
+    }
+
+    public void setStylistAdvisory(long stylistAdvisory) {
+        this.stylistAdvisory = stylistAdvisory;
+    }
+
+    public long getStylistIntoduction() {
+        return stylistIntoduction;
+    }
+
+    public void setStylistIntoduction(long stylistIntoduction) {
+        this.stylistIntoduction = stylistIntoduction;
     }
 }

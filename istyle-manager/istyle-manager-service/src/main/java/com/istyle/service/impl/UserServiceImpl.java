@@ -110,12 +110,14 @@ public class UserServiceImpl implements UserService {
     public TbUser selectUserByUserId(TbUser user) {
         long id = user.getUserId();
         TbUser tbUser = null;
+
         if (StringUtil.isNotEmpty(CastUtil.castString(id))) {
             tbUser = tbUserMapper.selectUserById(id);
         }
         else {
             throw new AppAuthException("在我的信息展示时，发现用户id为空，操作错误。");
         }
+
         return tbUser;
     }
 

@@ -4,6 +4,7 @@ import com.exception.AppAuthException;
 import com.exception.AppUnknownException;
 import com.istyle.mapper.TbStylistMapper;
 import com.istyle.pojo.TbStylist;
+import com.istyle.pojo.TbUser;
 import com.istyle.service.StylistService;
 import com.util.CastUtil;
 import com.util.JWT;
@@ -91,5 +92,25 @@ public class StylistServiceImpl implements StylistService {
         } else {
             throw new AppUnknownException("stoken获取失败，造型师登录错误");
         }
+    }
+
+    /**
+     * 查询造型师信息数据并返回
+     * @param stylist id
+     * @return stylist 造型师数据
+     */
+    @Override
+    public TbStylist selectStylistById(TbStylist stylist) {
+        long id = stylist.getStylistId();
+        TbStylist tbStylist = null;
+
+        if (StringUtil.isNotEmpty(CastUtil.castString(id))) {
+            tbStylist = tbStylistMapper.selectStylistById(id);
+        }
+        else {
+            throw new AppAuthException("在我的信息展示时，发现造型师id为空，操作错误。");
+        }
+
+        return tbStylist;
     }
 }

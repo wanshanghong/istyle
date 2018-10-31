@@ -12,9 +12,16 @@ public interface StylistService {
 
     /**
      * 造型师注册
-     * @param tbStylist
+     * @param tbStylist 注册数据
      */
     void stylistRegister(TbStylist tbStylist);
 
+    /**
+     * 造型师登录
+     * @param stylist 账号密码
+     * @return Map， token
+     */
     Map stylistLogin(TbStylist stylist);
+
+    TbStylist selectStylistById(TbStylist stylist);
 }

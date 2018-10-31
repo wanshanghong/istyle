@@ -54,4 +54,10 @@
         and stylistStatus=0;
     </select>
 
+    <!--根据id查询数据-->
+    <select id="selectStylistById" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStylist">
+        select stylistPhoto, seylistName, stylistWord, stylistIntroduction, stylistAdvisory
+        from tb_stylist
+        where stylistId = {stylistId};
+    </select>
 </mapper>
