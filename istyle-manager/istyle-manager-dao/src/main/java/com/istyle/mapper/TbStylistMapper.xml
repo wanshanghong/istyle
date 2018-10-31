@@ -17,6 +17,7 @@
           where userId = #{userId});
     </select>
 
+    <!--造型师注册-->
     <insert id="addStylist" parameterType="com.istyle.pojo.TbStylist">
         INSERT INTO
         tb_stylist(stylistName, realName, stylistPassword, stylistSex, stylistAge, stylistPhone)
@@ -24,6 +25,12 @@
         (#{stylistName}, #{realName}, #{stylistPassword}, #{stylistSex}, #{stylistAge}, #{stylistPhone});
     </insert>
 
+    <!--造型师登录-->
+    <select id="selectStylistByPhoneAndPassword" parameterType="com.istyle.pojo.TbStylist" resultType="com.istyle.pojo.TbStylist">
+        select stylistId, stylistName, stylistPhoto, stylistWord, stylistSex, stylistAge, stylistPhone
+        from tb_stylist
+        where stylistPhone=#{stylistPhone} and stylistPassword=#{stylistPassword} and stylistStatus=0;
+    </select>
     <!--根据号码查询数量，并返回-->
     <select id="isStylistPhone" parameterType="java.lang.String" resultType="java.lang.Integer">
         select count(*)

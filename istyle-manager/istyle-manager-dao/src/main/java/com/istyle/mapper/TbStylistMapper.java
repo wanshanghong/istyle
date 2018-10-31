@@ -29,6 +29,13 @@ public interface TbStylistMapper {
     void addStylist(TbStylist tbStylist);
 
     /**
+     * 通过号码和密码查询造型师id、昵称、照片、签名、性别、年龄、电话
+     * @param stylist 造型师数据，包括号码和密码
+     * @return stylist
+     */
+    TbStylist selectStylistByPhoneAndPassword(TbStylist stylist);
+
+    /**
      * 判断号码是否注册，返回数量
      * @param stylistPhone
      * @return

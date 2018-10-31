@@ -28,7 +28,7 @@
 
     <!--用户登录-->
     <select id="loginUser" parameterType="com.istyle.pojo.TbUser" resultType="com.istyle.pojo.TbUser">
-        select userId,userName,userPassword,userPhone,userAge,userSex,userPhoto
+        select userId, userName, userPhone, userAge, userSex, userPhoto
         from tb_user
         where userPhone = #{userPhone} and userPassword = #{userPassword} and userStatue = 0;
     </select>

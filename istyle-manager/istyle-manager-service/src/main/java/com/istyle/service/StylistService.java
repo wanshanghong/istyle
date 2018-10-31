@@ -2,7 +2,7 @@ package com.istyle.service;
 
 import com.istyle.pojo.TbStylist;
 
-import java.util.List;
+import java.util.Map;
 
 /**
  * 造型师接口
@@ -15,4 +15,6 @@ public interface StylistService {
      * @param tbStylist
      */
     void stylistRegister(TbStylist tbStylist);
+
+    Map stylistLogin(TbStylist stylist);
 }

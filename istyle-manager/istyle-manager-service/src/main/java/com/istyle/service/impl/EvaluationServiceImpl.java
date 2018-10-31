@@ -1,12 +1,9 @@
 package com.istyle.service.impl;
 
 import com.istyle.mapper.TbEvaluationMapper;
-import com.istyle.pojo.TbEvaluation;
 import com.istyle.service.EvaluationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * @author 黄文伟

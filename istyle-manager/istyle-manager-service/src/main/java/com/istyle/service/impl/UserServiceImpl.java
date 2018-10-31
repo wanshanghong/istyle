@@ -1,7 +1,7 @@
 package com.istyle.service.impl;
 
 import com.exception.AppAuthException;
-import com.exception.AppUnknowException;
+import com.exception.AppUnknownException;
 import com.istyle.mapper.*;
 import com.istyle.pojo.*;
 import com.istyle.service.UserService;
@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
 
         // 根据号码和密码查询数据库是否有数据
         if (tbUserMapper.isNameAndPassword(user) != 1) {
-            throw new AppUnknowException("注册失败");
+            throw new AppUnknownException("注册失败");
         }
     }
 
@@ -88,16 +88,17 @@ public class UserServiceImpl implements UserService {
             throw new AppAuthException("登录错误");
         }
 
-        // 设置密码为空，避免stoken泄露用户数据
-        user.setUserPassword(null);
         // 获得stoken
-        String stoken = JWT.sign(user, 24L * 3600L * 30);
+        String stoken = JWT.sign(tbUser, 24L * 3600L * 30L);
 
         if (StringUtil.isNotEmpty(stoken)) {
             stokenMap = new HashMap<>(16);
             stokenMap.put("stoken", stoken);
+
+            return stokenMap;
+        } else {
+            throw new AppUnknownException("获取stoken失败，用户登录错误");
         }
-        return stokenMap;
     }
 
     /**
@@ -212,7 +213,7 @@ public class UserServiceImpl implements UserService {
             int flag = tbUserUserMapper.selectUsersStateById(tbUserUser);
 
             if (flag != 1){
-                throw new AppUnknowException("取消关注失败。");
+                throw new AppUnknownException("取消关注失败。");
             }
         }
         else {
@@ -292,7 +293,7 @@ public class UserServiceImpl implements UserService {
             flag = tbUserUserMapper.selectUsersStateById(tbUserUser);
 
             if (flag != 0) {
-                throw new AppUnknowException("关注失败。");
+                throw new AppUnknownException("关注失败。");
             }
         } else {
             throw new AppAuthException("在添加粉丝关注时，发现用户id为空，操作错误。");
