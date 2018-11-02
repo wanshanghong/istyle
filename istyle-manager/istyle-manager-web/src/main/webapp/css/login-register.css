@@ -71,7 +71,7 @@
   width: 100%;
   height: 100%;
   background: rgba(52, 54, 66, 0.9);
-  z-index: 3;
+  z-index: 100;
   overflow-y: auto;
   cursor: pointer;
   visibility: hidden;
@@ -312,4 +312,50 @@
 
 #cd-login.is-selected, #cd-signup.is-selected{
   display: block;
+}
+
+
+
+/*多用户登录、注册时的切换*/
+.fastLogin .tabTop, .fastRegister .tabTop{
+    margin-left: 80px;
+    width: 800px;
+    height: 30px;
+}
+.fastLogin .tabTop ul, .fastRegister .tabTop ul{
+    list-style: none;
+}
+.fastLogin .tabTop ul li, .fastRegister .tabTop ul li{
+    margin-top: 20px;
+    float: left;
+    width: 100px;
+    height: 30px;
+    background: #FFFFFF;
+    margin-left: 30px;
+    text-align: center;
+    border: 1px solid #999999;
+    font-size: 16px;
+    line-height: 30px;
+    color: #000;
+    border-radius: 8%;
+}
+.fastLogin .tabTop ul li.active, .fastRegister .tabTop ul li.active {
+    background: #FFFFFF;
+    cursor: pointer;
+}
+.fastLogin .tabBottom{
+    width: 572px;
+    height: 250px;
+    float: right;
+    background-color: #FFFFFF;
+}
+.fastRegister .tabBottom{
+    width: 572px;
+    height: 400px;
+    float: right;
+    background-color: #FFFFFF;
+
+}
+.fastLogin .tabBottom .tabBottomContent, .fastRegister .tabBottom .tabBottomContent{
+    display: none;
 }
