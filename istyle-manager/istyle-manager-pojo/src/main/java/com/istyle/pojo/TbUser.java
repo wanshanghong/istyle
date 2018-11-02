@@ -6,7 +6,7 @@ import com.istyle.pojo.ext.UserExt;
  * @author 黄文伟
  */
 public class TbUser extends UserExt {
-    private Long userId;
+    private long userId;
     private String userName;
     private String userPassword;
     private String userPhone;
@@ -17,11 +17,11 @@ public class TbUser extends UserExt {
     private Long count;
     private int userStatus;
 
-    public Long getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 

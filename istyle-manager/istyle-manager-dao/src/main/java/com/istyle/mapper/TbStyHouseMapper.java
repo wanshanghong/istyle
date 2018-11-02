@@ -28,4 +28,24 @@ public interface TbStyHouseMapper {
      */
     void addStyHouse(TbStyHouse tbStyHouse);
 
+    /**
+     * 判断造型屋登录账号是否注册，返回数量
+     * @param styHouseAccount 造型屋账号
+     * @return int 数量
+     */
+    int isStyHouseAccount(String styHouseAccount);
+
+    /**
+     * 判断账号密码是否正确，返回数量
+     * @param styHouse 账号密码
+     * @return int 数量
+     */
+    int isAccountAndPassword(TbStyHouse styHouse);
+
+    /**
+     * 根据账号密码查询造型屋数据
+     * @param styHouse 账号密码
+     * @return styHouse
+     */
+    TbStyHouse selectStyHouseByAccountAndPassword(TbStyHouse styHouse);
 }

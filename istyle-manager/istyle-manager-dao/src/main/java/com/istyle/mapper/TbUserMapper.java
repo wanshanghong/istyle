@@ -20,7 +20,14 @@ public interface TbUserMapper {
      * @param userPhone
      * @return
      */
-    int isUserName(String userPhone);
+    int isUserPhone(String userPhone);
+
+    /**
+     * 判断昵称是否使用，返回数量
+     * @param userName
+     * @return
+     */
+    int isUserName(String userName);
 
     /**
      * 判断账号密码是否正确，返回数量

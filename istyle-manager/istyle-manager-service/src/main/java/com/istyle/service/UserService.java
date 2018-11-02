@@ -1,9 +1,7 @@
 package com.istyle.service;
 
 import com.istyle.pojo.TbUser;
-import com.istyle.pojo.TbUserUser;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,74 +16,65 @@ public interface UserService {
     void insertUser(TbUser user);
 
     /**
-     * 判断用户是否存在
-     * @param userName
-     * @return
-     */
-    boolean isUserName(String userName);
-
-    /**
      * 登录用户
      * @param user
-     * @return
-     * @throws Exception
+     * @return Map
      */
-    TbUser loginUser(TbUser user);
+    Map loginUser(TbUser user);
+
+    /**
+     * 通过ID获得用户信息，用于我的信息展示
+     * @param user 用户数据
+     * @return TbUser
+     */
+    TbUser selectUserByUserId(TbUser user);
 
     /**
      * 用户编辑信息
-     * @param user
+     * @param user1 修改前数据
+     * @param user2 修改后数据
      */
-    void updateUser(TbUser user);
+    void updateUser(TbUser user1, TbUser user2);
 
     /**
-     * 查询用户信息
-     * @param userId
-     * @return
+     * 查询我的收藏数据
+     * @param user 用户数据
+     * @return Map
      */
-    TbUser selectUserById(Long userId);
+    Map selectCollection(TbUser user);
 
     /**
      * 查询我的关注
-     * @param userId
+     * @param user 用户数据
      * @return
      */
-    List<TbUser> selectFollersById(Long userId);
-
-    /**
-     * 通过id查询用户数量
-     * @param userId
-     * @return
-     */
-    Long selectUserCountById(Long userId);
-
+    Map selectAttentionsById(TbUser user);
 
     /**
      * 取消关注
-     * @param userId
-     * @param userId2
-     * @return
+     * @param user 用户数据
+     * @param id2 被取消关注用户id
      */
-    int unFoller(Long userId, Long userId2);
+    void unFollow(TbUser user, long id2);
 
     /**
      * 我的粉丝展示
-     * @param userId2
-     * @return
+     * @param user 用户数据
+     * @return Map
      */
-    Map myFansPage(Long userId2);
+    Map myFansPage(TbUser user);
 
     /**
      * 关注用户
-     * @param tbUserUser
-     * @return
+     * @param user 用户数据
+     * @Param id2 被关注用户id
      */
-    int addFoller(TbUserUser tbUserUser);
+    void addFollow(TbUser user, long id2);
 
     /**
      * 我的投稿界面展示
-     * @param userId
-     * @return
+     * @param user 用户数据
+     * @return Map
      */
-    Map mySubmission(Long userId);
+    Map mySubmission(TbUser user);
 }

@@ -27,4 +27,47 @@ public interface TbStylistMapper {
      * @param tbStylist
      */
     void addStylist(TbStylist tbStylist);
+
+    /**
+     * 通过号码和密码查询造型师id、昵称、照片、签名、性别、年龄、电话
+     * @param stylist 造型师数据，包括号码和密码
+     * @return stylist
+     */
+    TbStylist selectStylistByPhoneAndPassword(TbStylist stylist);
+
+    /**
+     * 判断号码是否注册，返回数量
+     * @param stylistPhone
+     * @return
+     */
+    int isStylistPhone(String stylistPhone);
+
+
+    /**
+     * 判断昵称是否注册，返回数量
+     * @param stylistName
+     * @return
+     */
+    int isStylistName(String stylistName);
+
+    /**
+     * 判断号码和密码是否注册，返回数量
+     * @param stylist
+     * @return
+     */
+    int isPhoneAndPassword(TbStylist stylist);
+
+    /**
+     * 根据id查询造型师主页数据
+     * @param stylistId id
+     * @return stylist
+     */
+    TbStylist selectStylistHomeById(long stylistId);
+
+    /**
+     * 根据id查询造型师头像、昵称、性别、签名
+     * @param stylistId id
+     * @return stylist数据
+     */
+    TbStylist selectPhotoNameWordSexById(long stylistId);
 }

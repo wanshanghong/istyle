@@ -10,8 +10,13 @@
     </insert>
 
     <!--查询用户名是否存在,并返回数量-->
-    <select id="isUserName" parameterType="java.lang.String" resultType="java.lang.Integer">
+    <select id="isUserPhone" parameterType="java.lang.String" resultType="java.lang.Integer">
         select count(*) from tb_user where userPhone = #{userPhone}
+    </select>
+
+    <!--查询昵称是否存在,并返回数量-->
+    <select id="isUserName" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from tb_user where userName = #{userName}
     </select>
 
     <!--检查账号和密码是否正确-->
@@ -23,7 +28,7 @@
 
     <!--用户登录-->
     <select id="loginUser" parameterType="com.istyle.pojo.TbUser" resultType="com.istyle.pojo.TbUser">
-        select userId,userName,userPassword,userPhone,userAge,userSex,userPhoto
+        select userId, userName, userPhone, userAge, userSex, userPhoto
         from tb_user
         where userPhone = #{userPhone} and userPassword = #{userPassword} and userStatue = 0;
     </select>
@@ -44,7 +49,7 @@
 
     <!--通过id获取用户资料-->
     <select id="selectUserById" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbUser">
-        SELECT userPhoto, userName, userWord, userSex
+        SELECT userPhoto, userName, userWord, userSex, userAge
         FROM tb_user
         WHERE userId = #{userId};
     </select>

@@ -9,8 +9,8 @@
     </select>
 
     <select id="selectStyHouseByUserId" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStyHouse">
-        SELECT styHouseName, styHousePhoto
-        FROM tb_styHouse
+        SELECT styHouseId, styHouseName, styHousePhoto
+        FROM tb_styhouse
         WHERE styHouseId
           IN (SELECT styHouseId
           FROM tb_user_styhouse
@@ -23,4 +23,22 @@
         VALUES
         (#{styHouseName}, #{styHouseAccount}, #{styHousePassword}, #{headName}, #{headId}, #{headPhone}, #{styHousePosition});
     </insert>
+
+    <select id="isStyHouseAccount" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*)
+        from tb_styhouse
+        where styHouseAccount=#{styHouseAccount} and styHouseStatus=0;
+    </select>
+
+    <select id="isAccountAndPassword" parameterType="com.istyle.pojo.TbStyHouse" resultType="java.lang.Integer">
+        select count(*)
+        from tb_styhouse
+        where styHouseAccount=#{styHouseAccount} and styHousePassword={styHousePassword} and styHouseStatus=0;
+    </select>
+
+    <select id="selectStyHouseByAccountAndPassword" parameterType="com.istyle.pojo.TbStyHouse" resultType="com.istyle.pojo.TbStyHouse">
+        select styHouseId, styHouseName, styHouseWord, styHousePhoto, styHousePosition, styHouseAccount
+        from tb_styhouse
+        where styHouseAccount=#{styHouseAccount} and styHousePassword={styHousePassword} and styHouseStatus=0;
+    </select>
 </mapper>
