@@ -379,7 +379,7 @@ document.getElementById("loginbtn").onclick = function(){
         let obj={"userPhone":username.value,"userPassword":password.value};
         $.ajax({
             type:"POST",
-            url:"/userLogin",
+            url:"/styHouseLogin",
             contentType:'application/json;charset=utf-8',
             data:JSON.stringify(obj),
             dataType:"json",
@@ -408,7 +408,7 @@ document.getElementById("loginbtn").onclick = function(){
         let obj={"userPhone":username.value,"userPassword":password.value};
         $.ajax({
             type:"POST",
-            url:"/userLogin",
+            url:"/stylistLogin",
             contentType:'application/json;charset=utf-8',
             data:JSON.stringify(obj),
             dataType:"json",
