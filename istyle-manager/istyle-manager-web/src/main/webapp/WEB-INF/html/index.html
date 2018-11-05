@@ -19,20 +19,49 @@
 			<li><a href="javascript:void(0)">注册</a></li>
 		</ul>
 
-		<div id="cd-login" class="fastLogin" > <!-- log in form -->
-			<p style="text-align: center; margin-top: 20px;margin-bottom: 10px">登录istyle</p>
-			<p style="text-align: center">与世界分享你的style</p>
-			<form class="cd-form" action="" method="post" name="login" id="login" ><!--onsubmit="return check1(this)"-->
-				<p class="fieldset"><label for="username">账号：</label><input type="text" class="input" id="username" name="username" placeholder="请输入你注册时所用的电话" /></p>
-				<p class="fieldset"><label for="password">密码：</label><input type="password" class="input" id="password" name="password" placeholder="请输入你的密码" /></p>
-				<p class="fieldset"><input type="button" class="submit1" value="登录" id="loginbtn" onclick=""/></p>
-
-			</form>
+		<div id="cd-login" class="fastLogin"> <!-- log in form -->
+			<div class="content" style="height: 250px">
+				<div class="clear"></div>
+				<p style="text-align: center; margin-top: 20px;margin-bottom: 10px">登录istyle</p>
+				<p style="text-align: center">与世界分享你的style</p>
+				<div class="tabTop">
+					<ul>
+						<li class="active">普通用户</li>
+						<li>造型屋</li>
+						<li>造型师</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+				<div class="tabBottom">
+					<div class="tabBottomContent">
+						<form class="cd-form" action="" method="post" name="login" id="login" ><!--onsubmit="return check1(this)"-->
+							<p class="fieldset"><label for="username">账号：</label><input type="text" class="input" id="username" name="username" placeholder="请输入你注册时所用的电话" /></p>
+							<p class="fieldset"><label for="password">密码：</label><input type="password" class="input" id="password" name="password" placeholder="请输入你的密码" /></p>
+							<p class="fieldset"><input type="button" class="submit1" value="登录" id="loginbtn" onclick=""/></p>
+						</form>
+					</div>
+					<div class="tabBottomContent">
+						<form class="cd-form" action="" method="post" name="login" id="login2" ><!--onsubmit="return check1(this)"-->
+							<p class="fieldset"><label for="username">账号：</label><input type="text" class="input" id="username02" name="username" placeholder="请输入你注册时所用的电话" /></p>
+							<p class="fieldset"><label for="password">密码：</label><input type="password" class="input" id="password02" name="password" placeholder="请输入你的密码" /></p>
+							<p class="fieldset"><input type="button" class="submit1" value="登录" id="loginbtn2" onclick=""/></p>
+						</form>
+					</div>
+					<div class="tabBottomContent">
+						<form class="cd-form" action="" method="post" name="login" id="login3" ><!--onsubmit="return check1(this)"-->
+							<p class="fieldset"><label for="username">账号：</label><input type="text" class="input" id="username03" name="username" placeholder="请输入你注册时所用的电话" /></p>
+							<p class="fieldset"><label for="password">密码：</label><input type="password" class="input" id="password03" name="password" placeholder="请输入你的密码" /></p>
+							<p class="fieldset"><input type="button" class="submit1" value="登录" id="loginbtn3" onclick=""/></p>
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
-
+		<div class="clear"></div>
 		<div id="cd-signup" class="fastRegister"> <!-- sign up form -->
 			<div class="content" style="height: 600px">
 				<div class="clear"></div>
+				<p style="text-align: center; margin-top: 20px">快速注册请注意格式</p>
 				<div class="tabTop">
 					<ul>
 						<li class="active">普通用户</li>
@@ -44,7 +73,6 @@
 				<div class="tabBottom">
 					<div class="tabBottomContent">
 						<form class="cd-form" action="" method="post" name="register" id="register" ><!--onsubmit="return check2(this)"-->
-							<h4>快速注册请注意格式</h4>
 							<p class="fieldset"><label for="fakename">用户名：</label><input type="text" class="input" id="fakename" name="fakename" placeholder="请输入你的昵称" /></p>
 							<!--<p class="fieldset"><label for="realname">姓名：</label><input type="text" class="input" id="realname" name="realname" placeholder="请输入你的姓名" /></p>-->
 							<p class="fieldset"><label for="password1">密码：</label><input type="password" class="input" id="password1" name="password1" placeholder="请输入你的密码" /></p>
@@ -58,7 +86,6 @@
 					</div>
 					<div class="tabBottomContent">
 						<form class="cd-form" action="" method="post" name="register" id="register2" ><!--onsubmit="return check2(this)"-->
-							<h4>快速注册请注意格式</h4>
 							<p class="fieldset"><label for="shopname">造型屋名：</label><input type="text" class="input" id="shopname" name="shopname" placeholder="请输入你的造型屋名" ></p>
 							<p class="fieldset"><label for="loginAccount">登录账号：</label><input type="text" class="input" id="loginAccount" name="loginAccount" placeholder="请输入你的造型屋登录账号，用电话登录" /></p>
 							<p class="fieldset"><label for="password3">密码：</label><input type="password" class="input" id="password3" name="password1" placeholder="请输入你的密码" /></p>
@@ -77,7 +104,6 @@
 					</div>
 					<div class="tabBottomContent">
 						<form class="cd-form" action="" method="post" name="register" id="register3" ><!--onsubmit="return check2(this)"-->
-							<h4>快速注册请注意格式</h4>
 							<p class="fieldset"><label for="fakename3">用户名：</label><input type="text" class="input" id="fakename3" name="fakename3" placeholder="请输入你的昵称" /></p>
 							<p class="fieldset"><label for="realname3">姓名：</label><input type="text" class="input" id="realname3" name="realname3" placeholder="请输入你的真实姓名" /></p>
 							<p class="fieldset"><label for="password5">密码：</label><input type="password" class="input" id="password5" name="password5" placeholder="请输入你的密码" /></p>
@@ -86,7 +112,6 @@
 							<p class="fieldset"><label for="sex3">性别：</label><input type="text" class="input" id="sex3" name="sex" placeholder="请输入你的性别" /></p>
 							<p class="fieldset"><label for="age3">年龄：</label><input type="text" class="input" id="age3" name="age" placeholder="请输入你的年龄" /></p>
 							<p class="fieldset"><input type="button" class="submit2" value="同意协议并注册" id="registerbtn3" onclick=""/>  <a href="#"><span>注册协议</span></a></p>
-
 						</form>
 					</div>
 				</div>

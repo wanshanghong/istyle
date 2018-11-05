@@ -61,6 +61,18 @@ $(function(){
 		$tab_signup.addClass('selected');
 	}
 
+    //多用户登录切换效果
+    $('.fastLogin .tabBottom .tabBottomContent').first().show();
+
+    $('.fastLogin .tabTop ul li').mousedown(function(){
+        $(this).addClass('active');
+        $('.fastLogin .tabTop ul li').not($(this)).removeClass('active');
+
+        idx = $(this).index('.fastLogin .tabTop ul li');
+        $('.fastLogin .tabBottom .tabBottomContent').eq(idx).show();
+        $('.fastLogin .tabBottom .tabBottomContent').not($('.fastLogin .tabBottom .tabBottomContent').eq(idx)).hide();
+    });
+
 	//多用户注册切换效果
     $('.fastRegister .tabBottom .tabBottomContent').first().show();
 
@@ -117,20 +129,46 @@ function check1(){
 		alert('账号输入有误');
 		return false;
 	}
-	var password=document.getElementById("password").value;
+/*	var password=document.getElementById("password").value;
 	if(/^[\s\t\r\n]*$/.test(password)){
 		alert('密码不能为空');
 		return false;
-	}
+	}*/
 	var password=document.getElementById("password").value;
 	if(password.length<6){
-		alert('密码不能小于六个字符，请重新输入');
+		alert('密码不能小于六个字符');
 		return false;
 	}
 	return true;
 }
+    function check2(){
+        var username=document.getElementById("username02").value;
+        if(!/^[0-9]+$/.test(username)){
+            alert('账号输入有误');
+            return false;
+        }
+        var password=document.getElementById("password02").value;
+        if(password.length<6){
+            alert('密码不能小于六个字符');
+            return false;
+        }
+        return true;
+    }
+    function check3(){
+        var username=document.getElementById("username03").value;
+        if(!/^[0-9]+$/.test(username)){
+            alert('账号输入有误');
+            return false;
+        }
+        var password=document.getElementById("password03").value;
+        if(password.length<6){
+            alert('密码不能小于六个字符');
+            return false;
+        }
+        return true;
+    }
 //注册表单验证
-function check2(){
+function check4(){
 	var fakename=document.getElementById("fakename").value;
 	if(/^[\s\t\r\n]*$/.test(fakename)){
 		alert('用户名不能为空');
@@ -146,13 +184,8 @@ function check2(){
 		return false;
 	}}*/
 	var password1=document.getElementById("password1").value;
-	if(/^[\s\t\r\n]*$/.test(password1)){
-		alert('密码不能为空');
-		return false;
-	}
-	var password1=document.getElementById("password1").value;
 	if(password1.length<6){
-		alert('密码不能小于六个字符，请重新输入');
+		alert('密码不能小于六个字符');
 		return false;
 	}
 	var password2=document.getElementById("password2").value;
@@ -169,7 +202,7 @@ function check2(){
 	return true;
 }
 
-    function check3(){
+    function check5(){
         var fakename=document.getElementById("loginAccount").value;
         if(/^1(3|4|5|7|8)\d{9}$/.test(loginAccount)){
             alert('登录账号输入有误');
@@ -185,13 +218,8 @@ function check2(){
             return false;
         }}*/
         var password3=document.getElementById("password3").value;
-        if(/^[\s\t\r\n]*$/.test(password1)){
-            alert('密码不能为空');
-            return false;
-        }
-        var password3=document.getElementById("password3").value;
         if(password1.length<6){
-            alert('密码不能小于六个字符，请重新输入');
+            alert('密码不能小于六个字符');
             return false;
         }
         var password4=document.getElementById("password4").value;
@@ -213,7 +241,7 @@ function check2(){
         return true;
     }
 
-    function check4(){
+    function check6(){
         var fakename=document.getElementById("fakename3").value;
         if(/^[\s\t\r\n]*$/.test(fakename)){
             alert('昵称不能为空');
@@ -234,13 +262,8 @@ function check2(){
             return false;
         }}*/
         var password5=document.getElementById("password5").value;
-        if(/^[\s\t\r\n]*$/.test(password5)){
-            alert('密码不能为空');
-            return false;
-        }
-        var password5=document.getElementById("password5").value;
         if(password5.length<6){
-            alert('密码不能小于六个字符，请重新输入');
+            alert('密码不能小于六个字符');
             return false;
         }
         var password6=document.getElementById("password6").value;
@@ -319,7 +342,8 @@ function check2(){
     console.log(information);
 }
 */
-function login(){
+//用户登录
+function login1(){
     let username = document.getElementById("username");
     let password = document.getElementById("password");
     let obj={"userPhone":username.value,"userPassword":password.value};
@@ -330,9 +354,12 @@ function login(){
         data:JSON.stringify(obj),
         dataType:"json",
         success:function (data) {
-            console.log("succ");
             console.log(data);
-            window.location.href="";  /*登录成功后跳转*/
+            if(data.errCode===0){
+                console.log("succ");
+                document.cookie='token=data.token';
+            }
+
         },
         error:function (err) {
             console.error(err);
@@ -342,14 +369,67 @@ function login(){
     });
 }
 
-
-
 document.getElementById("loginbtn").onclick = function(){
-	check1()?login():alert("请重新输入");
+	check1()?login1():alert("请重新输入");
 };
+    //造型屋登录
+    function login2(){
+        let username = document.getElementById("username02");
+        let password = document.getElementById("password02");
+        let obj={"userPhone":username.value,"userPassword":password.value};
+        $.ajax({
+            type:"POST",
+            url:"/styHouseLogin",
+            contentType:'application/json;charset=utf-8',
+            data:JSON.stringify(obj),
+            dataType:"json",
+            success:function (data) {
+                console.log(data);
+                if(data.errCode===0){
+                    console.log("succ");
+                    document.cookie='token=data.token';
+                }
+            },
+            error:function (err) {
+                console.error(err);
+                console.log("发生错误");
+                alert(err.responseText);
+            }
+        });
+    }
 
+    document.getElementById("loginbtn2").onclick = function(){
+        check2()?login2():alert("请重新输入");
+    };
+    //造型师登录
+    function login3(){
+        let username = document.getElementById("username03");
+        let password = document.getElementById("password03");
+        let obj={"userPhone":username.value,"userPassword":password.value};
+        $.ajax({
+            type:"POST",
+            url:"/stylistLogin",
+            contentType:'application/json;charset=utf-8',
+            data:JSON.stringify(obj),
+            dataType:"json",
+            success:function (data) {
+                console.log(data);
+                if(data.errCode===0){
+                    console.log("succ");
+                    document.cookie='token=data.token';
+                }
+            },
+            error:function (err) {
+                console.error(err);
+                console.log("发生错误");
+                alert(err.responseText);
+            }
+        });
+    }
 
-
+    document.getElementById("loginbtn3").onclick = function(){
+        check3()?login3():alert("请重新输入");
+    };
 
 /*function register1(){
     let information = "";
@@ -404,7 +484,7 @@ document.getElementById("loginbtn").onclick = function(){
         let age = document.getElementById("age");
         $.ajax({
             type:"POST",
-            url:"/register",
+            url:"/userRegister",
             contentType:'application/json;charset=utf-8',
             data:JSON.stringify(
                 {
@@ -418,8 +498,10 @@ document.getElementById("loginbtn").onclick = function(){
             ),
             dataType:"json",
             success:function (data) {
-                console.log("用户注册成功");
                 console.log(data);
+                if(data.errCode===0){
+                    console.log("用户注册成功");
+                }
             },
             error:function (err) {
                 console.error(err);
@@ -432,7 +514,7 @@ document.getElementById("loginbtn").onclick = function(){
 
 
 document.getElementById("registerbtn").onclick = function(){
-	check2()?register1():alert("请重新输入");
+	check4()?register1():alert("请重新输入");
 };
 
 
@@ -537,12 +619,12 @@ document.getElementById("registerbtn").onclick = function(){
         let headPhone=document.getElementById('tel2');
         $.ajax({
             type:"POST",
-            url:"/register",
+            url:"/styHouseRegister",
             contentType:'application/json;charset=utf-8',
             data:JSON.stringify(
                 {
                     "styHouseName":styHouseName.value,
-                    "styAccount":styHouseAccount.value,
+                    "styHouseAccount":styHouseAccount.value,
                     "styHousePassword":styHousePassword.value,
                     "headName":headName.value,
                     "headId":headId.value,
@@ -565,7 +647,7 @@ document.getElementById("registerbtn").onclick = function(){
     }
 
     document.getElementById("registerbtn2").onclick = function(){
-        check3()?register2():alert("请重新输入");
+        check5()?register2():alert("请重新输入");
     };
 
 
@@ -625,7 +707,7 @@ document.getElementById("registerbtn").onclick = function(){
         let stylistPhone = document.getElementById("tel3");
         $.ajax({
             type:"POST",
-            url:"/register",
+            url:"/stylistRegister",
             contentType:'application/json;charset=utf-8',
             data:JSON.stringify(
                 {
@@ -640,8 +722,10 @@ document.getElementById("registerbtn").onclick = function(){
             ),
             dataType:"json",
             success:function (data) {
-                console.log("造型师注册成功");
                 console.log(data);
+                if(data.errCode===0){
+                    console.log("造型师注册成功");
+                }
             },
             error:function (err) {
                 console.error(err);
@@ -655,7 +739,7 @@ document.getElementById("registerbtn").onclick = function(){
 
 
     document.getElementById("registerbtn3").onclick = function(){
-        check4()?register3():alert("请重新输入");
+        check6()?register3():alert("请重新输入");
     }
 
 
