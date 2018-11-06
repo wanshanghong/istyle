@@ -9,7 +9,7 @@
     </select>
 
     <select id="selectEvalByUserId" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbEvaluation">
-        SELECT evalId, evalPhoto, evalName, evalWord
+        SELECT evalPhoto, evalName, evalWord
         FROM tb_evaluation
         WHERE evalId
           IN (SELECT evalId

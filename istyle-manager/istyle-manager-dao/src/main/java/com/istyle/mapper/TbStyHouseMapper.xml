@@ -9,7 +9,7 @@
     </select>
 
     <select id="selectStyHouseByUserId" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStyHouse">
-        SELECT styHouseId, styHouseName, styHousePhoto
+        SELECT styHouseName, styHousePhoto
         FROM tb_styhouse
         WHERE styHouseId
           IN (SELECT styHouseId

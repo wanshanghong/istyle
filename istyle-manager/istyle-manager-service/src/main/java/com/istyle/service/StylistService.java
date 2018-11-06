@@ -1,7 +1,6 @@
 package com.istyle.service;
 
 import com.istyle.pojo.TbStylist;
-import com.istyle.pojo.TbUser;
 
 import java.util.Map;
 
@@ -24,24 +23,5 @@ public interface StylistService {
      */
     Map stylistLogin(TbStylist stylist);
 
-    /**
-     * 查询造型师信息数据并返回
-     * @param id id
-     * @return stylist 造型师数据
-     */
-    TbStylist selectStylistById(long id);
-
-    /**
-     * 根据id查询粉丝数据
-     * @param id id
-     * @return result 造型师数据、粉丝数据、粉丝数
-     */
-    Map selectFansById(long id);
-
-    /**
-     * 关注造型师
-     * @param user 用户id
-     * @param stylistId 造型师id
-     */
-    void addAttention(TbUser user, long stylistId);
+    TbStylist selectStylistById(TbStylist stylist);
 }

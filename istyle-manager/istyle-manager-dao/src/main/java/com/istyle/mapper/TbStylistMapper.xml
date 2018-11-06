@@ -9,7 +9,7 @@
     </select>
 
     <select id="selectStylistByUserId" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStylist">
-        SELECT stylistId, stylistName, stylistPhoto
+        SELECT stylistName, stylistPhoto
         FROM tb_stylist
         WHERE stylistId
           IN (SELECT stylistId
@@ -54,19 +54,10 @@
         and stylistStatus=0;
     </select>
 
-    <!--根据id查询造型师主页信息-->
-    <select id="selectStylistHomeById" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStylist">
-        select stylistPhoto, stylistName, stylistSex, stylistWord, stylistIntroduction, stylistAdvisory
+    <!--根据id查询数据-->
+    <select id="selectStylistById" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStylist">
+        select stylistPhoto, seylistName, stylistWord, stylistIntroduction, stylistAdvisory
         from tb_stylist
         where stylistId = {stylistId};
     </select>
-
-    <!--根据id查询照片、昵称、性别、签名-->
-    <select id="selectPhotoNameWordSexById" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStylist">
-        select stylistPhoto, stylistName, stylistSex, stylistWord
-        from tb_stylist
-        where stylistId = {stylistId};
-    </select>
-
-
 </mapper>
