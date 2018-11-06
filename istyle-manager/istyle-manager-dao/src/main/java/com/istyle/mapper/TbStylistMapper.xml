@@ -20,9 +20,9 @@
     <!--造型师注册-->
     <insert id="addStylist" parameterType="com.istyle.pojo.TbStylist">
         INSERT INTO
-        tb_stylist(stylistName, realName, stylistPassword, stylistSex, stylistAge, stylistPhone)
+        tb_stylist(stylistName, realName, stylistPassword, stylistSex, stylistAge, stylistPhone, stylistStatus, stylistAdvisory)
         VALUES
-        (#{stylistName}, #{realName}, #{stylistPassword}, #{stylistSex}, #{stylistAge}, #{stylistPhone});
+        (#{stylistName}, #{realName}, #{stylistPassword}, #{stylistSex}, #{stylistAge}, #{stylistPhone}, 0, 0);
     </insert>
 
     <!--造型师登录-->

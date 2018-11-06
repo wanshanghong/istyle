@@ -360,7 +360,7 @@ function login1(){
                 function setCookie(name,value){
                     document.cookie=name +"="+value;
                 }
-                setCookie('token',data.token);
+                setCookie('stoken',data.result.stoken);
             }
 
         },
@@ -379,7 +379,7 @@ document.getElementById("loginbtn").onclick = function(){
     function login2(){
         let username = document.getElementById("username02");
         let password = document.getElementById("password02");
-        let obj={"userPhone":username.value,"userPassword":password.value};
+        let obj={"styHouseAccount":username.value,"styHousePassword":password.value};
         $.ajax({
             type:"POST",
             url:"/styHouseLogin",
@@ -393,7 +393,7 @@ document.getElementById("loginbtn").onclick = function(){
                     function setCookie(name,value){
                         document.cookie=name +"="+value;
                     }
-                    setCookie('token',data.token);
+                    setCookie('stoken',data.result.stoken);
                 }
             },
             error:function (err) {
@@ -411,7 +411,7 @@ document.getElementById("loginbtn").onclick = function(){
     function login3(){
         let username = document.getElementById("username03");
         let password = document.getElementById("password03");
-        let obj={"userPhone":username.value,"userPassword":password.value};
+        let obj={"stylistPhone":username.value,"stylistPassword":password.value};
         $.ajax({
             type:"POST",
             url:"/stylistLogin",
@@ -425,7 +425,7 @@ document.getElementById("loginbtn").onclick = function(){
                     function setCookie(name,value){
                         document.cookie=name +"="+value;
                     }
-                    setCookie('token',data.token);
+                    setCookie('stoken',data.result.stoken);
                 }
             },
             error:function (err) {

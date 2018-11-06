@@ -59,8 +59,7 @@
           <element id="library" level="project" name="Maven: org.bouncycastle:bcprov-jdk15on:1.52" />
           <element id="library" level="project" name="Maven: io.fastjson:boon:0.33" />
           <element id="library" level="project" name="Maven: org.apache.commons:commons-collections4:4.2" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-core:5.1.2.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.1.2.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-core:4.1.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:4.1.3.RELEASE" />
         </element>
       </element>

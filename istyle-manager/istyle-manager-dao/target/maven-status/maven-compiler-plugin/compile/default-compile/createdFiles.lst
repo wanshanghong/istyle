@@ -3,5 +3,4 @@ com\istyle\mapper\TbSubmissionMapper.class
 com\istyle\mapper\TbEvaluationMapper.class
 com\istyle\mapper\TbStyHouseMapper.class
 com\istyle\mapper\TbUserUserMapper.class
-com\istyle\mapper\TbUserStylistMapper.class
 com\istyle\mapper\TbStylistMapper.class

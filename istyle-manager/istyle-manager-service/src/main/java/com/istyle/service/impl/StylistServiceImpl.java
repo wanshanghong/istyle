@@ -55,7 +55,7 @@ public class StylistServiceImpl implements StylistService {
             throw new AppAuthException("昵称已注册");
         }
         tbStylistMapper.addStylist(tbStylist);
-        if (tbStylistMapper.isPhoneAndPassword(tbStylist) != 0) {
+        if (tbStylistMapper.isPhoneAndPassword(tbStylist) == 0) {
             throw new AppUnknownException("注册失败");
         }
     }

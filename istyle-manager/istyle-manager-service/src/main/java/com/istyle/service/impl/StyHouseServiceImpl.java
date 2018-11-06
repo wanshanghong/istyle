@@ -55,7 +55,7 @@ public class StyHouseServiceImpl implements StyHouseService {
 
         styHouseMapper.addStyHouse(StyHouse);
 
-        if (styHouseMapper.isAccountAndPassword(StyHouse) != 0) {
+        if (styHouseMapper.isAccountAndPassword(StyHouse) == 0) {
             throw new AppUnknownException("造型屋注册失败");
         }
     }

@@ -2,7 +2,6 @@ com\istyle\pojo\TbSubmission.class
 com\istyle\pojo\TbUserUser.class
 com\istyle\pojo\TbUser.class
 com\istyle\pojo\TbStyHouse.class
-com\istyle\pojo\TbUserStylist.class
 com\istyle\pojo\ext\UserExt.class
 com\istyle\pojo\TbStylist.class
 com\istyle\pojo\TbSubFan.class
