@@ -357,7 +357,10 @@ function login1(){
             console.log(data);
             if(data.errCode===0){
                 console.log("succ");
-                document.cookie='token=data.token';
+                function setCookie(name,value){
+                    document.cookie=name +"="+value;
+                }
+                setCookie('token',data.token);
             }
 
         },
@@ -387,7 +390,10 @@ document.getElementById("loginbtn").onclick = function(){
                 console.log(data);
                 if(data.errCode===0){
                     console.log("succ");
-                    document.cookie='token=data.token';
+                    function setCookie(name,value){
+                        document.cookie=name +"="+value;
+                    }
+                    setCookie('token',data.token);
                 }
             },
             error:function (err) {
@@ -416,7 +422,10 @@ document.getElementById("loginbtn").onclick = function(){
                 console.log(data);
                 if(data.errCode===0){
                     console.log("succ");
-                    document.cookie='token=data.token';
+                    function setCookie(name,value){
+                        document.cookie=name +"="+value;
+                    }
+                    setCookie('token',data.token);
                 }
             },
             error:function (err) {
