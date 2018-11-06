@@ -1,4 +1,6 @@
-com\istyle\controller\LoginUser.class
+com\istyle\controller\UserHomePage.class
+com\istyle\controller\UserRegisterAndLogin.class
+com\istyle\controller\StylistPage.class
 com\istyle\controller\IndexPageShow.class
-com\istyle\controller\RegisterUser.class
-com\istyle\controller\MyHomePage.class
+com\istyle\controller\StyHouseRegisterAndLogin.class
+com\istyle\controller\StylistRegisterAndLogin.class
