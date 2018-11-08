@@ -62,7 +62,7 @@ public class StyHouseServiceImpl implements StyHouseService {
 
     @Override
     public Map styHouseLogin(TbStyHouse styHouse) {
-        Map<String, String> stokenMap = null;
+        Map<String, String> stokenMap;
 
         if (StringUtil.isEmpty(styHouse.getStyHouseAccount())) {
             throw new AppAuthException("账号为空");

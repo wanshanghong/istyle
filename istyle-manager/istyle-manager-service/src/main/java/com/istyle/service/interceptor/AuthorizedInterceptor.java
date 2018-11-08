@@ -21,7 +21,7 @@ import java.io.PrintWriter;
  * @Date:Created in 20:53 2018/10/22
  */
 public class AuthorizedInterceptor implements HandlerInterceptor {
-    private final Logger logger = LoggerFactory.getLogger(AuthorizedInterceptor.class);
+    private static Logger logger = LoggerFactory.getLogger(AuthorizedInterceptor.class);
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {

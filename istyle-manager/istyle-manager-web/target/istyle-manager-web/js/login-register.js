@@ -357,7 +357,10 @@ function login1(){
             console.log(data);
             if(data.errCode===0){
                 console.log("succ");
-                document.cookie='token=data.token';
+                function setCookie(name,value){
+                    document.cookie=name +"="+value;
+                }
+                setCookie('stoken',data.result.stoken);
             }
 
         },
@@ -376,7 +379,7 @@ document.getElementById("loginbtn").onclick = function(){
     function login2(){
         let username = document.getElementById("username02");
         let password = document.getElementById("password02");
-        let obj={"userPhone":username.value,"userPassword":password.value};
+        let obj={"styHouseAccount":username.value,"styHousePassword":password.value};
         $.ajax({
             type:"POST",
             url:"/styHouseLogin",
@@ -387,7 +390,10 @@ document.getElementById("loginbtn").onclick = function(){
                 console.log(data);
                 if(data.errCode===0){
                     console.log("succ");
-                    document.cookie='token=data.token';
+                    function setCookie(name,value){
+                        document.cookie=name +"="+value;
+                    }
+                    setCookie('stoken',data.result.stoken);
                 }
             },
             error:function (err) {
@@ -405,7 +411,7 @@ document.getElementById("loginbtn").onclick = function(){
     function login3(){
         let username = document.getElementById("username03");
         let password = document.getElementById("password03");
-        let obj={"userPhone":username.value,"userPassword":password.value};
+        let obj={"stylistPhone":username.value,"stylistPassword":password.value};
         $.ajax({
             type:"POST",
             url:"/stylistLogin",
@@ -416,7 +422,10 @@ document.getElementById("loginbtn").onclick = function(){
                 console.log(data);
                 if(data.errCode===0){
                     console.log("succ");
-                    document.cookie='token=data.token';
+                    function setCookie(name,value){
+                        document.cookie=name +"="+value;
+                    }
+                    setCookie('stoken',data.result.stoken);
                 }
             },
             error:function (err) {
