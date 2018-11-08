@@ -2,13 +2,11 @@ package com.istyle.controller;
 
 import com.istyle.pojo.TbStyHouse;
 import com.istyle.service.StyHouseService;
+import com.util.JWT;
 import com.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -43,6 +41,19 @@ public class StyHouseRegisterAndLogin {
     @RequestMapping(value = "/styHouseLogin", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     public Response styHouseLogin(@RequestBody TbStyHouse styHouse) {
         Map param = styHouseService.styHouseLogin(styHouse);
+        return Response.ok(param);
+    }
+
+    /**
+     * 登录后跳转主页返回用户名
+     * @param stoken 身份认证
+     * @return Response
+     */
+    @RequestMapping(value = "/afterStyHouseLogin", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Response afterStyHouseLogin(@RequestParam("stoken") String stoken) {
+        TbStyHouse stylist = JWT.unsign(stoken, TbStyHouse.class);
+        String param = styHouseService.afterLoginGetName(stylist);
         return Response.ok(param);
     }
 }

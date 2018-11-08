@@ -63,4 +63,11 @@ public interface TbStylistMapper {
      * @return stylist
      */
     TbStylist selectStylistById(long stylistId);
+
+    /**
+     * 根据id查找昵称
+     * @param id id
+     * @return stylistName
+     */
+    String selectStylistNameById(Long id);
 }

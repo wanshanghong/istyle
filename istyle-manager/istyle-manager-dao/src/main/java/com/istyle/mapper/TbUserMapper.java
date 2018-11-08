@@ -44,6 +44,13 @@ public interface TbUserMapper {
     TbUser loginUser(TbUser user);
 
     /**
+     * 根据id查找昵称
+     * @param id id
+     * @return userName
+     */
+    String selectUserNameById(Long id);
+
+    /**
      * 根据号码返回ID
      * @param userPhone
      * @return

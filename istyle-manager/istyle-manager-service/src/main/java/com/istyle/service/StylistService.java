@@ -23,5 +23,17 @@ public interface StylistService {
      */
     Map stylistLogin(TbStylist stylist);
 
+    /**
+     * 登录后跳转主页返回用户名
+     * @param stylist id
+     * @return stylistName
+     */
+    String afterLoginGetName(TbStylist stylist);
+
+    /**
+     * 查询造型师信息数据并返回
+     * @param stylist id
+     * @return stylist 造型师数据
+     */
     TbStylist selectStylistById(TbStylist stylist);
 }

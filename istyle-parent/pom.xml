@@ -237,8 +237,6 @@
     </dependencies>
   </dependencyManagement>
 
-
-
   <build>
     <finalName>${project.artifactId}</finalName>
     <plugins>
@@ -274,8 +272,4 @@
       </plugins>
     </pluginManagement>
   </build>
-  
-  <dependencies>
-
-  </dependencies>
 </project>

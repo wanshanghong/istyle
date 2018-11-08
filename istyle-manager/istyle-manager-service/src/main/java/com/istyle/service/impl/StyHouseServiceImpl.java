@@ -93,4 +93,24 @@ public class StyHouseServiceImpl implements StyHouseService {
             throw new AppUnknownException("stoken获取失败，造型屋登录错误");
         }
     }
+
+    /**
+     * 登录后跳转主页返回用户名
+     * @param styHouse id
+     * @return styHouseName
+     */
+    @Override
+    public String afterLoginGetName(TbStyHouse styHouse) {
+        String styHouseName;
+
+        styHouseName = styHouse.getStyHouseName();
+        if (StringUtil.isEmpty(styHouseName)) {
+            throw new AppAuthException("登陆失败，请重新登陆");
+        }
+        if (styHouseName != styHouseMapper.selectStyHouseNameById(styHouse.getStyHouseId())) {
+            throw new AppAuthException("登陆失败，请重新登陆");
+        }
+
+        return styHouseName;
+    }
 }

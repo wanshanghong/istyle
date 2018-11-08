@@ -60,4 +60,10 @@
         from tb_stylist
         where stylistId = {stylistId};
     </select>
+
+    <select id="selectStylistNameById" parameterType="java.lang.Long" resultType="java.lang.String">
+        select stylistName
+        from tb_stylist
+        where stylistId = #{stylistId};
+    </select>
 </mapper>

@@ -95,6 +95,26 @@ public class StylistServiceImpl implements StylistService {
     }
 
     /**
+     * 登录后跳转主页返回用户名
+     * @param stylist id
+     * @return stylistName
+     */
+    @Override
+    public String afterLoginGetName(TbStylist stylist) {
+        String stylistName;
+
+        stylistName = stylist.getStylistName();
+        if (StringUtil.isEmpty(stylistName)) {
+            throw new AppAuthException("登陆失败，请重新登陆");
+        }
+        if (stylistName != tbStylistMapper.selectStylistNameById(stylist.getStylistId())) {
+            throw new AppAuthException("登陆失败，请重新登陆");
+        }
+
+        return stylistName;
+    }
+
+    /**
      * 查询造型师信息数据并返回
      * @param stylist id
      * @return stylist 造型师数据

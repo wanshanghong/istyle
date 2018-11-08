@@ -48,4 +48,11 @@ public interface TbStyHouseMapper {
      * @return styHouse
      */
     TbStyHouse selectStyHouseByAccountAndPassword(TbStyHouse styHouse);
+
+    /**
+     * 根据id查找昵称
+     * @param id id
+     * @return styHouseName
+     */
+    String selectStyHouseNameById(Long id);
 }

@@ -23,6 +23,13 @@ public interface UserService {
     Map loginUser(TbUser user);
 
     /**
+     * 登录后跳转主页返回用户名
+     * @param user id
+     * @return userName
+     */
+    String afterLoginGetName(TbUser user);
+
+    /**
      * 通过ID获得用户信息，用于我的信息展示
      * @param user 用户数据
      * @return TbUser

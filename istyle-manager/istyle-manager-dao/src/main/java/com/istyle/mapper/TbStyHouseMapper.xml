@@ -41,4 +41,10 @@
         from tb_styhouse
         where styHouseAccount=#{styHouseAccount} and styHousePassword=#{styHousePassword} and styHouseStatus=0;
     </select>
+
+    <select id="selectStyHouseNameById" parameterType="java.lang.Long" resultType="java.lang.String">
+        select styHouseName
+        from tb_styHouse
+        where styHouseId = #{styHouseId};
+    </select>
 </mapper>
