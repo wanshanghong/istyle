@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="istyle-common:war">
-    <output-path>$PROJECT_DIR$/../istyle/istyle-common/target</output-path>
-    <root id="archive" name="istyle-common-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="istyle-common:war exploded" />
-    </root>
-  </artifact>
-</component>
