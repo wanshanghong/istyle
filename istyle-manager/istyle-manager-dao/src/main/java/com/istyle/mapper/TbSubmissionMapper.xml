@@ -3,7 +3,7 @@
 <mapper namespace="com.istyle.mapper.TbSubmissionMapper">
     <!--通过用户id查询他的投稿-->
     <select id="findSubmissionIdByUserId" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbSubmission">
-        select subId, subPhoto, subName, subTime, subPageView, subComment, subCollection
+        select subPhoto, subName, subTime, subPageView, subComment, subCollection
         FROM tb_submission
         where (userId=#{userId} and subState=0);
     </select>

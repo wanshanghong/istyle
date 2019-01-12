@@ -2,13 +2,11 @@ package com.istyle.controller;
 
 import com.istyle.pojo.TbStylist;
 import com.istyle.service.StylistService;
+import com.util.JWT;
 import com.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -43,6 +41,19 @@ public class StylistRegisterAndLogin {
     @RequestMapping(value = "/stylistLogin", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     public Response stylistLogin(@RequestBody TbStylist stylist) {
         Map param = stylistService.stylistLogin(stylist);
+        return Response.ok(param);
+    }
+
+    /**
+     * 登录后跳转主页返回用户名
+     * @param stoken 身份认证
+     * @return Response
+     */
+    @RequestMapping(value = "/afterStylistLogin", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Response afterStylistLogin(@RequestParam("stoken") String stoken) {
+        TbStylist stylist = JWT.unsign(stoken, TbStylist.class);
+        String param = stylistService.afterLoginGetName(stylist);
         return Response.ok(param);
     }
 }

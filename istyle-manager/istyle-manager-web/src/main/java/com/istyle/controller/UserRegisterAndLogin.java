@@ -2,13 +2,11 @@ package com.istyle.controller;
 
 import com.istyle.pojo.TbUser;
 import com.istyle.service.UserService;
+import com.util.JWT;
 import com.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -42,6 +40,19 @@ public class UserRegisterAndLogin {
     @ResponseBody
     public Response loginUser(@RequestBody TbUser user) {
         Map param = userService.loginUser(user);
+        return Response.ok(param);
+    }
+
+    /**
+     * 登录后跳转主页返回用户名
+     * @param stoken 身份认证
+     * @return Response
+     */
+    @RequestMapping(value = "/afterUserLogin", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Response afterUserLogin(@RequestParam("stoken") String stoken) {
+        TbUser user = JWT.unsign(stoken, TbUser.class);
+        String param = userService.afterLoginGetName(user);
         return Response.ok(param);
     }
 }

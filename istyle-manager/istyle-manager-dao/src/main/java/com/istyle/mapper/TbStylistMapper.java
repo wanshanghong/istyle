@@ -58,16 +58,16 @@ public interface TbStylistMapper {
     int isPhoneAndPassword(TbStylist stylist);
 
     /**
-     * 根据id查询造型师主页数据
+     * 根据id查询造型师数据
      * @param stylistId id
      * @return stylist
      */
-    TbStylist selectStylistHomeById(long stylistId);
+    TbStylist selectStylistById(long stylistId);
 
     /**
-     * 根据id查询造型师头像、昵称、性别、签名
-     * @param stylistId id
-     * @return stylist数据
+     * 根据id查找昵称
+     * @param id id
+     * @return stylistName
      */
-    TbStylist selectPhotoNameWordSexById(long stylistId);
+    String selectStylistNameById(Long id);
 }

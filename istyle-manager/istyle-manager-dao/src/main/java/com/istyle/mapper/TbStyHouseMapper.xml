@@ -9,7 +9,7 @@
     </select>
 
     <select id="selectStyHouseByUserId" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStyHouse">
-        SELECT styHouseId, styHouseName, styHousePhoto
+        SELECT styHouseName, styHousePhoto
         FROM tb_styhouse
         WHERE styHouseId
           IN (SELECT styHouseId
@@ -19,9 +19,9 @@
 
     <insert id="addStyHouse" parameterType="com.istyle.pojo.TbStyHouse">
         INSERT INTO
-        tb_styhouse(styHouseName, styHouseAccount, styHousePassword, headName, headId, headPhone, styHousePosition)
+        tb_styhouse(styHouseName, styHouseAccount, styHousePassword, headName, headId, headPhone, styHousePosition, styHouseStatus)
         VALUES
-        (#{styHouseName}, #{styHouseAccount}, #{styHousePassword}, #{headName}, #{headId}, #{headPhone}, #{styHousePosition});
+        (#{styHouseName}, #{styHouseAccount}, #{styHousePassword}, #{headName}, #{headId}, #{headPhone}, #{styHousePosition}, 0);
     </insert>
 
     <select id="isStyHouseAccount" parameterType="java.lang.String" resultType="java.lang.Integer">
@@ -33,12 +33,18 @@
     <select id="isAccountAndPassword" parameterType="com.istyle.pojo.TbStyHouse" resultType="java.lang.Integer">
         select count(*)
         from tb_styhouse
-        where styHouseAccount=#{styHouseAccount} and styHousePassword={styHousePassword} and styHouseStatus=0;
+        where styHouseAccount=#{styHouseAccount} and styHousePassword=#{styHousePassword} and styHouseStatus=0;
     </select>
 
     <select id="selectStyHouseByAccountAndPassword" parameterType="com.istyle.pojo.TbStyHouse" resultType="com.istyle.pojo.TbStyHouse">
         select styHouseId, styHouseName, styHouseWord, styHousePhoto, styHousePosition, styHouseAccount
         from tb_styhouse
-        where styHouseAccount=#{styHouseAccount} and styHousePassword={styHousePassword} and styHouseStatus=0;
+        where styHouseAccount=#{styHouseAccount} and styHousePassword=#{styHousePassword} and styHouseStatus=0;
+    </select>
+
+    <select id="selectStyHouseNameById" parameterType="java.lang.Long" resultType="java.lang.String">
+        select styHouseName
+        from tb_styHouse
+        where styHouseId = #{styHouseId};
     </select>
 </mapper>

@@ -23,4 +23,11 @@ public interface StyHouseService {
      * @return map，返回stoken
      */
     Map styHouseLogin(TbStyHouse styHouse);
+
+    /**
+     * 登录后跳转主页返回用户名
+     * @param styHouse id
+     * @return styHouseName
+     */
+    String afterLoginGetName(TbStyHouse styHouse);
 }

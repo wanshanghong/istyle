@@ -102,6 +102,26 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
+     * 登录后跳转主页返回用户名
+     * @param user id
+     * @return userName
+     */
+    @Override
+    public String afterLoginGetName(TbUser user) {
+        String userName;
+
+        userName = user.getUserName();
+        if (StringUtil.isEmpty(userName)) {
+            throw new AppAuthException("登陆失败，请重新登陆");
+        }
+        if (userName != tbUserMapper.selectUserNameById(user.getUserId())) {
+            throw new AppAuthException("登陆失败，请重新登陆");
+        }
+
+        return userName;
+    }
+
+    /**
      * 查询我的信息数据
      * @param user 用户数据，包括id
      * @return TbUser

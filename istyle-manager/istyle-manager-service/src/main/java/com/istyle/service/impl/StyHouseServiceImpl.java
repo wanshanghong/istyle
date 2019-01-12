@@ -55,14 +55,14 @@ public class StyHouseServiceImpl implements StyHouseService {
 
         styHouseMapper.addStyHouse(StyHouse);
 
-        if (styHouseMapper.isAccountAndPassword(StyHouse) != 0) {
+        if (styHouseMapper.isAccountAndPassword(StyHouse) == 0) {
             throw new AppUnknownException("造型屋注册失败");
         }
     }
 
     @Override
     public Map styHouseLogin(TbStyHouse styHouse) {
-        Map<String, String> stokenMap = null;
+        Map<String, String> stokenMap;
 
         if (StringUtil.isEmpty(styHouse.getStyHouseAccount())) {
             throw new AppAuthException("账号为空");
@@ -92,5 +92,25 @@ public class StyHouseServiceImpl implements StyHouseService {
         } else {
             throw new AppUnknownException("stoken获取失败，造型屋登录错误");
         }
+    }
+
+    /**
+     * 登录后跳转主页返回用户名
+     * @param styHouse id
+     * @return styHouseName
+     */
+    @Override
+    public String afterLoginGetName(TbStyHouse styHouse) {
+        String styHouseName;
+
+        styHouseName = styHouse.getStyHouseName();
+        if (StringUtil.isEmpty(styHouseName)) {
+            throw new AppAuthException("登陆失败，请重新登陆");
+        }
+        if (styHouseName != styHouseMapper.selectStyHouseNameById(styHouse.getStyHouseId())) {
+            throw new AppAuthException("登陆失败，请重新登陆");
+        }
+
+        return styHouseName;
     }
 }
