@@ -357,12 +357,9 @@ function login1(){
             console.log(data);
             if(data.errCode===0){
                 console.log("succ");
-                function setCookie(name,value){
-                    document.cookie=name +"="+value;
-                }
                 setCookie('stoken',data.result.stoken);
+                locationUserHome();
             }
-
         },
         error:function (err) {
             console.error(err);
@@ -375,6 +372,34 @@ function login1(){
 document.getElementById("loginbtn").onclick = function(){
 	check1()?login1():alert("请重新输入");
 };
+/*用户登录成功跳转*/
+    function locationUserHome(){
+        let xhr=new XMLHttpRequest();
+        xhr.onreadystatechange=function(){
+            if (xhr.readyState===4){
+                if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
+                    var info = JSON.parse(xhr.responseText);
+                    if (info.error_code === 0) {
+                        window.location.href = "html/userIndex.html";
+                        alert("跳转成功");
+                        document.getElementsByClassName('beforeLogin')[0].style.display='none';
+                        document.getElementsByClassName('afterLogin')[0].innerHTML="欢迎"+info.result.userName+"登录istyle";
+                    }else{
+                        alert("该用户没有登录");
+                    }
+                }else {
+                    alert("发生错误"+xhr.status);
+                    console.error(xhr.responseText);
+                }
+            }
+        }
+        xhr.open('post','/afterUserLogin');
+        xhr.setRequestHeader("Content-Type","application/json");
+        let obj={"stoken":getCookie('stoken')};
+        xhr.send(JSON.stringify(obj));
+    }
+
+
     //造型屋登录
     function login2(){
         let username = document.getElementById("username02");
@@ -394,6 +419,7 @@ document.getElementById("loginbtn").onclick = function(){
                         document.cookie=name +"="+value;
                     }
                     setCookie('stoken',data.result.stoken);
+                    locationStyhouseHome();
                 }
             },
             error:function (err) {
@@ -407,6 +433,36 @@ document.getElementById("loginbtn").onclick = function(){
     document.getElementById("loginbtn2").onclick = function(){
         check2()?login2():alert("请重新输入");
     };
+
+    /*造型屋登录成功跳转*/
+    function locationStyhouseHome(){
+        let xhr=new XMLHttpRequest();
+        xhr.onreadystatechange=function(){
+            if (xhr.readyState===4){
+                if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
+                    var info = JSON.parse(xhr.responseText);
+                    if (info.error_code === 0) {
+                        window.location.href = "html/userIndex.html";
+                        alert("跳转成功");
+                        document.getElementsByClassName('beforeLogin')[0].style.display='none';
+                        document.getElementsByClassName('afterLogin')[0].innerHTML="欢迎"+info.result.styHouseName+"登录istyle";
+                    }else{
+                        alert("该造型屋没有登录");
+                    }
+                }else {
+                    alert("发生错误"+xhr.status);
+                    console.error(xhr.responseText);
+                }
+            }
+        }
+        xhr.open('post','/afterStyHouseLogin');
+        xhr.setRequestHeader("Content-Type","application/json");
+        let obj={"stoken":getCookie('stoken')};
+        xhr.send(JSON.stringify(obj));
+    }
+
+
+
     //造型师登录
     function login3(){
         let username = document.getElementById("username03");
@@ -426,6 +482,7 @@ document.getElementById("loginbtn").onclick = function(){
                         document.cookie=name +"="+value;
                     }
                     setCookie('stoken',data.result.stoken);
+                    locationStylistHome();
                 }
             },
             error:function (err) {
@@ -440,51 +497,37 @@ document.getElementById("loginbtn").onclick = function(){
         check3()?login3():alert("请重新输入");
     };
 
-/*function register1(){
-    let information = "";
-    var inputs = document.getElementById("register").getElementsByTagName("input");
-    var arr = ["fakename","password1","tel","sex","age"];
-
-/!*    创建对象*!/
-    var xhr = null;
-    if(XMLHttpRequest) {
-        xhr = new XMLHttpRequest();
-    } else {
-        xhr = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-
-/!*    function success(data){
-        console.log(information);
-        alert("注册成功");
-    }*!/
-    function fail(code){
-        console.log("发生错误"+code);
-    }
-    
-    /!*连接服务器*!/
-    var url = "/register";
-	xhr.open("post",url,true);
-	xhr.setRequestHeader("Content-Type","application/json");
-    
-    /!*请求完成,响应就绪*!/
-	xhr.onreadystatechange = function(){
-		if(xhr.readyState===4){
-			if((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304){
-                alert("注册成功");
-			} else {
-                return fail(xhr.status);
-			}
-
+    /*造型师登录成功跳转*/
+    function locationStylistHome(){
+        let xhr=new XMLHttpRequest();
+        xhr.onreadystatechange=function(){
+            if (xhr.readyState===4){
+                if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
+                    var info = JSON.parse(xhr.responseText);
+                    if (info.error_code === 0) {
+                        window.location.href = "html/userIndex.html";
+                        alert("跳转成功");
+                        document.getElementsByClassName('beforeLogin')[0].style.display='none';
+                        document.getElementsByClassName('afterLogin')[0].innerHTML="欢迎"+info.result.stylistName+"登录istyle";
+                    }else{
+                        alert("该造型师没有登录");
+                    }
+                }else {
+                    alert("发生错误"+xhr.status);
+                    console.error(xhr.responseText);
+                }
+            }
         }
-	}
-
-    for(var i=0; i<inputs.length-1; i++) {
-        information += ( arr[i] + "=" + inputs[i].value +"&" );
+        xhr.open('post','/afterStylistLogin');
+        xhr.setRequestHeader("Content-Type","application/json");
+        let obj={"stoken":getCookie('stoken')};
+        xhr.send(JSON.stringify(obj));
     }
-    xhr.send( information +"userType=1");
 
-}*/
 
+
+
+//用户注册
     function register1(){
         let fakename = document.getElementById("fakename");
         let password1 = document.getElementById("password1");
@@ -501,8 +544,7 @@ document.getElementById("loginbtn").onclick = function(){
                     "userPassword":password1.value,
                     "userPhone":tel.value,
                     "userSex":sex.value,
-                    "userAge":age.value,
-                    "userType":"1"
+                    "userAge":age.value
                 }
             ),
             dataType:"json",
@@ -527,78 +569,7 @@ document.getElementById("registerbtn").onclick = function(){
 };
 
 
-/*//造型屋注册
-    function register2(){
-
-        var information = "";
-        /!*var inputs = document.getElementsByClassName("fastRegister")[0].getElementsByTagName("input");*!/
-        var arr = ["styHouseName","styHouseAccount","styHousePassword","headName","headId","headPhone","styHousePosition"];
-        let styHouseName=document.getElementById('shopname').value;
-        let styHouseAccount=document.getElementById('loginAccount').value;
-        let styHousePassword=document.getElementById('password3').value;
-        let headName=document.getElementById('realname1').value;
-        let headId=document.getElementById('idcard').value;
-        let headPhone=document.getElementById('tel2').value;
-
-
-
-       /!* 地址三级联动的取值*!/
-        let pro = document.getElementById('cmbProvince'); //定位id
-        let index1 = pro.selectedIndex; // 选中索引
-        let text1 = pro.options[index1].text; // 选中文本
-        let value1 = pro.options[index1].value; // 选中值
-
-        let city = document.getElementById('cmbCity'); //定位id
-        let index2 = city.selectedIndex; // 选中索引
-        let text2 = city.options[index2].text; // 选中文本
-        let value2 = city.options[index2].value; // 选中值
-
-        let area = document.getElementById('cmbArea'); //定位id
-        let index3 = area.selectedIndex; // 选中索引
-        let text3 = area.options[index3].text; // 选中文本
-        let value3 = area.options[index3].value; // 选中值
-
-		let styHousePosition=value1+value2+value3;
-
-
-        /!*    创建对象*!/
-        var xhr = null;
-        if(XMLHttpRequest) {
-            xhr = new XMLHttpRequest();
-        } else {
-            xhr = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-
-        /!*    function success(data){
-                console.log(information);
-                alert("注册成功");
-            }*!/
-        function fail(code){
-            console.log("发生错误"+code);
-        }
-
-        /!*连接服务器*!/
-        var url = "/register";
-        xhr.open("post",url,true);
-        xhr.setRequestHeader("Content-Type","application/json");
-
-        /!*请求完成,响应就绪*!/
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState===4){
-                if((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304){
-                    alert("注册成功");
-                } else {
-                    return fail(xhr.status);
-                }
-
-            }
-        };
-        information += ( arr[0] + "=" + styHouseName +"&" +arr[1]+ "=" +styHouseAccount+ "&" +arr[2]+ "=" +styHousePassword  +"&" +arr[3]+ "=" +headName +"&" +arr[4]+ "=" +headId +"&" +arr[5]+ "=" +headPhone +"&" +arr[6]+ "=" +styHousePosition);
-        xhr.send( information+"userType=3");
-
-    }*/
-
-
+//造型屋注册
     function register2(){
 
         /* 地址三级联动的取值*/
@@ -638,8 +609,7 @@ document.getElementById("registerbtn").onclick = function(){
                     "headName":headName.value,
                     "headId":headId.value,
                     "headPhone":headPhone.value,
-                    "styHousePosition":styHousePosition,
-                    "userType":"3"
+                    "styHousePosition":styHousePosition
                 }
             ),
             dataType:"json",
@@ -662,51 +632,6 @@ document.getElementById("registerbtn").onclick = function(){
 
     //造型师注册
 
-/*    function register3(){
-        var information = "";
-        var inputs = document.getElementById("register3").getElementsByTagName("input");
-        var arr = ["stylistName","realName","stylistPassword","stylistPhone","stylistSex","stylistAge"];
-
-        /!*    创建对象*!/
-        var xhr = null;
-        if(XMLHttpRequest) {
-            xhr = new XMLHttpRequest();
-        } else {
-            xhr = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-
-        /!*    function success(data){
-                console.log(information);
-                alert("注册成功");
-            }*!/
-        function fail(code){
-            console.log("发生错误"+code);
-        }
-
-        /!*连接服务器*!/
-        var url = "/register";
-        xhr.open("post",url,true);
-        xhr.setRequestHeader("Content-Type","application/json");
-
-        /!*请求完成,响应就绪*!/
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState===4){
-                if((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304){
-                    alert("造型师注册成功");
-                } else {
-                    return fail(xhr.status);
-                }
-
-            }
-        }
-
-        for(var i=0; i<inputs.length-1; i++) {
-            information += ( arr[i] + "=" + inputs[i].value +"&" );
-        }
-        xhr.send( information +"userType=2");
-
-    }*/
-
     function register3(){
         let stylistName = document.getElementById("fakename3");
         let realName = document.getElementById("realname3");
@@ -725,8 +650,7 @@ document.getElementById("registerbtn").onclick = function(){
                     "stylistPassword":stylistPassword.value,
                     "stylistSex":stylistSex.value,
                     "stylistAge":stylistAge.value,
-                    "stylistPhone":stylistPhone.value,
-                    "userType":"2"
+                    "stylistPhone":stylistPhone.value
                 }
             ),
             dataType:"json",

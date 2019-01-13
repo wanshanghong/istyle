@@ -22,7 +22,7 @@ function ajax(method, url, data){
             xhr.open("GET", url, true);
             xhr.send(null);
         }else if(method.toUpperCase()==="POST"){
-            xhr.open("OPST", url, true);
+            xhr.open("POST", url, true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=utf-8');
             xhr.send(data);
 
@@ -59,14 +59,15 @@ function showInformation(){
 
                     var info = JSON.parse(xhr.responseText);
 
-                    if (info.isOpen === "1") {
+                    if (info.errCode === 0) {
 
                         let showInform = "";
                         /*alert("成功1");*/
-                        showInform += "<p><img src='" + info.userPhoto + "'></p><div class=\"clear\"></div>" +
-                            "<p><span class=\"nickname\">昵称：" + info.userName + "</span></p><div class=\"clear\"></div>" +
-                            "<p><span class=\"personalizedSignature\">我的签名：" + info.userWord + "</span></p><div class=\"clear\"></div>" +
-                            "<p><span class=\"sex\">性别:" + info.userSex + "</span></p><div class=\"clear\"></div>";
+                        showInform += "<p><img src='" + info.result.userPhoto + "'></p><div class=\"clear\"></div>" +
+                            "<p><span class=\"nickname\">昵称：" + info.result.userName + "</span></p><div class=\"clear\"></div>" +
+                            "<p><span class=\"personalizedSignature\">我的签名：" + info.result.userWord + "</span></p><div class=\"clear\"></div>" +
+                            "<p><span class=\"userage\">昵称：" + info.result.userAge + "</span></p><div class=\"clear\"></div>" +
+                            "<p><span class=\"sex\">性别:" + info.result.userSex + "</span></p><div class=\"clear\"></div>";
                         /*alert("成功2"+showInform);*/
 
                         document.getElementsByClassName('addContent')[0].innerHTML = showInform;
@@ -79,22 +80,22 @@ function showInformation(){
                 }
             }
         }
-        xhr.open('get','/myHome/index');
-        xhr.send(null);
+        xhr.open('post','/userHome/index');
+        xhr.setRequestHeader("Content-Type","application/json");
+        let obj={"stoken":getCookie('stoken')};
+        xhr.send(JSON.stringify(obj));
 
 }
 //我的信息编辑
 function information(){
 /*    let fm=document.getElementById('form');
-
     let fd=new FormData(fm);*/
     console.log("1");
-    let information1="";
-    console.log("2");
     /*let inputs=document.getElementsByClassName("updateInfo")[0].getElementsByTagName("input");*/
     let username=document.getElementById('nickname').value;
     let userword=document.getElementById('personalizedSignature').value;
-    let sex=document.getElementsByName('userSex');
+    let userage=document.getElementById('userage').value;
+    let sex=document.getElementsByName('sex');
     let userSex=null;
     for(let i=0;i<sex.length;i++){
         if(sex[i].checked){
@@ -103,8 +104,6 @@ function information(){
         }
     }
     console.log("3");
-    let arr = ["userName","userWord","userSex"];
-
     let xhr=new XMLHttpRequest();
     console.log("4");
     xhr.onreadystatechange=function(){
@@ -113,7 +112,7 @@ function information(){
                 console.log("5");
                  var info = JSON.parse(xhr.responseText);
                 // var info = xhr.responseText;
-                if (info.isOpen === "1"){
+                if (info.errCode === 0){
                 console.log("保存成功"+xhr.status);
                 showInformation();
                 }else{
@@ -127,15 +126,15 @@ function information(){
         }
     }
     console.log("7");
-    xhr.open('post','/myHome/updateMessage');
-    xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    xhr.open('post','/userHome/updateMessage');
+    xhr.setRequestHeader("Content-Type","application/json");
     console.log("8");
     /*for(var i=0; i<inputs.length-1; i++) {*/
-        information1 += ( arr[0] + "=" + username +"&" +arr[1]+ "=" +userword+ "&" +arr[2]+ "=" +userSex );
     /*}*/
-    xhr.send(information1);
+    let obj={"stoken":getCookie('stoken'),"userName":username,"userWord":userword,"userSex":userSex,"userAge":userage};
+    xhr.send(JSON.stringify(obj));
     console.log("9");
-    console.log(information1);
+    console.log(JSON.stringify(obj));
 }
 
 //我的收藏start
@@ -145,20 +144,19 @@ function collect(){
         if (xhr.readyState===4){
             if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
                 var info=JSON.parse(xhr.responseText);
-                /*var info=xhr.responseText;*/
                 //造型师、造型屋、测评的收藏数
                 /*console.log("1");*/
                 let numDesigner="";
-                numDesigner+="<span class='stylingDesignerSpan'>造型师（"+info.styCount+")</span>";
+                numDesigner+="<span class='stylingDesignerSpan'>造型师（"+info.result.styCount+")</span>";
                 /*console.log("2");
                 console.log(info.styCount);
                 console.log(info);*/
 
                 let numSalon="";
-                numSalon+="<span class='hairSalonSpan'>造型屋（"+info.styHouseCount+")</span>";
+                numSalon+="<span class='hairSalonSpan'>造型屋（"+info.result.styHouseCount+")</span>";
                 /*console.log("3");*/
                 let numEvaluate="";
-                numEvaluate+="<span class='evaluationCollection'>测评（"+info.evalCount+")</span>";
+                numEvaluate+="<span class='evaluationCollection'>测评（"+info.result.evalCount+")</span>";
                 /*console.log(info.styHouseCount);
                 console.log(info.evalCount);*/
 
@@ -166,24 +164,24 @@ function collect(){
                 /*console.log("4");
                 console.log(info.stylist);*/
                 let designerBox="";
-                for (let i=0;i<info.stylist.length;i++){
-                    designerBox += "<div class='box'><!--<a href='+/*info.stylist[i].designerUrl--><img src='"+info.stylist[i].stylistPhoto+"'/><span>"+info.stylist[i].stylistName+"造型师</span><!--</a>--></div>";
+                for (let i=0;i<info.result.stylist.length;i++){
+                    designerBox += "<div class='box'><!--<a href='+/*info.stylist[i].designerUrl--><img src='"+info.result.stylist[i].stylistPhoto+"'/><span>"+info.result.stylist[i].stylistName+"造型师</span><!--</a>--></div>";
                 }
                 /*console.log("5");*/
                 let salonBox="";
-                for (let j=0;j<info.styHouse.length;j++){
-                    salonBox += "<div class='box'><!--<a href='+info.styHouse[j].salonUrl+'>--><img src='"+info.styHouse[j].styHousePhoto+"'/><span>"+info.styHouse[j].styHouseName+"造型屋</span><!--</a>--></div>";
+                for (let j=0;j<info.result.styHouse.length;j++){
+                    salonBox += "<div class='box'><!--<a href='+info.styHouse[j].salonUrl+'>--><img src='"+info.result.styHouse[j].styHousePhoto+"'/><span>"+info.result.styHouse[j].styHouseName+"造型屋</span><!--</a>--></div>";
                 }
                /* console.log("6");
                 console.log(info.styHouse);*/
                 let evaluateBox="";
-                for (let i=0;i<info.evaluation.length;i++){
+                for (let i=0;i<info.result.evaluation.length;i++){
                     evaluateBox += "<div class='clear'></div>" +
                                        "<div class='box1'><!--<a href='+info.evaluation[i].evaluateUrl+'>-->"    +
-                                           "<img src='"+info.evaluation[i].evalPhoto+"'/>"  +
+                                           "<img src='"+info.result.evaluation[i].evalPhoto+"'/>"  +
                                            "<div class='box1_1'>"   +
-                                               "<span>"+info.evaluation[i].evalName+"</span><br>"  +
-                                               "<span>简介："+info.evaluation[i].evalWord+"</span><br>"  +
+                                               "<span>"+info.result.evaluation[i].evalName+"</span><br>"  +
+                                               "<span>简介："+info.result.evaluation[i].evalWord+"</span><br>"  +
                                                "<i class='iconfont icon-fenxiang'></i><span class='icon-fenxiangSpan'>分享</span>" +
                                                "<i class='iconfont icon-shanchu'></i><span class='icon-shanchuSpan'>删除收藏</span>" +
                                            "</div>"  +
@@ -200,6 +198,7 @@ function collect(){
                 document.getElementsByClassName('stylingDesignerIn')[0].innerHTML=designerBox;
                 document.getElementsByClassName('hairSalonIn')[0].innerHTML=salonBox;
                 document.getElementsByClassName('evaluation')[0].innerHTML=evaluateBox;
+                alert("收藏成功");
                 /*console.log("succ");*/
             }else{
                 alert("发生错误"+xhr.status);
@@ -207,8 +206,10 @@ function collect(){
             }
         }
     }
-    xhr.open('get','/myHome/userCollection');
-    xhr.send(null);
+    xhr.open('post','/userHome/collection');
+    xhr.setRequestHeader("Content-Type","application/json");
+    let obj={"stoken":getCookie('stoken')};
+    xhr.send(JSON.stringify(obj));
 }
 
 
@@ -253,9 +254,9 @@ function collect() {
         document.getElementsByClassName('hairSalonSpan')[0].innerHTML=numSalon;
         document.getElementsByClassName('evaluationCollection')[0].innerHTML=numEvaluate;
 
-        document.getElementsByClassName('stylingDesigner')[0].innerHTML+=designerBox;
-        document.getElementsByClassName('hairSalon')[0].innerHTML+=salonBox;
-        document.getElementsByClassName('evaluation')[0].innerHTML+=evaluateBox;
+        document.getElementsByClassName('stylingDesigner')[0].innerHTML=designerBox;
+        document.getElementsByClassName('hairSalon')[0].innerHTML=salonBox;
+        document.getElementsByClassName('evaluation')[0].innerHTML=evaluateBox;
         alert("收藏成功");
     }).catch(function (err) {
         console.error(err);
@@ -283,27 +284,27 @@ function subscribe(){
 
                 let numsubscribe="";
                 //<span class="subscribeNum">关注(关注数)</span>
-                numsubscribe+="关注（"+info.follerCount+")";
+                numsubscribe+="关注（"+info.result.attentionCount+")";
 
                 /*console.log(info.follerCount);*/
                 let s="";
-                for(let i=0;i<info.follerCount;i++){
+                for(let i=0;i<info.result.attentionCount;i++){
 
                     s+= "<div class='clear'></div>"+
                         "<div class='subscribeContent1'>"+
-                            "<img src='"+info.follers[i].userPhoto+"'/>"+
+                            "<img src='"+info.result.attentions[i].userPhoto+"'/>"+
                             "<p>"+
-                            "<span>"+info.follers[i].userName+"</span><br/>"+
-                            "<span>"+info.follers[i].userWord+"</span>"+
+                            "<span>"+info.result.attentions[i].userName+"</span><br/>"+
+                            "<span>"+info.result.attentions[i].userWord+"</span>"+
                             "</p>"+
                             "<button class='privateChat'><a href=''>私信</a></button>"+
-                            "<button class='subscribeOrNot' onclick='delSubsc(this)' id='"+info.follers[i].userId+"' >取消关注</button>"+  /*data-userId='info.follers[i].userId'*/
+                            "<button class='subscribeOrNot' onclick='delSubsc(this)' id='"+info.result.attentions[i].userId+"' >取消关注</button>"+  /*data-userId='info.follers[i].userId'*/
                         "</div>"+
                         "<div class='clear'></div>";
                         /*userId=info.follers[i].userId;*/
                 }
 
-             console.log(info.follers);
+             console.log(info.result.attentions);
             document.getElementsByClassName('subscribeNum')[0].innerHTML=numsubscribe;
             document.getElementsByClassName('rightBottomSubscribe')[0].innerHTML=s;
             /*alert("关注连接成功");*/
@@ -315,8 +316,10 @@ function subscribe(){
             }
         }
     }
-    xmlhttp.open('get','/myHome/userFoller');
-    xmlhttp.send(null);
+    xmlhttp.open('post','/userHome/attention');
+    xmlhttp.setRequestHeader("Content-Type","application/json");
+    let obj={"stoken":getCookie('stoken')};
+    xmlhttp.send(JSON.stringify(obj));
 }
 //我的关注end
 
@@ -351,14 +354,14 @@ function delSubsc(obj){
         }
     }
     /*console.log("7");*/
-    xhr.open('post','/myHome/unFoller');
-    xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    xhr.open('post','/userHome/unFollow');
+    xhr.setRequestHeader("Content-Type","application/json");
     /*console.log("8");*/
-    var userId=obj.getAttribute("id");
-    information1 += ( "userId=" + userId );
-    xhr.send(information1);
+    let userId=obj.getAttribute("id");
+    let data={"stoken":getCookie('stoken'),"unFollowUserId":userId};
+    xhr.send(JSON.stringify(data));
    /* console.log("9");
-    console.log(information1);*/
+    console.log(data);*/
 }
 
 
@@ -377,30 +380,30 @@ function fans(){
 
                 let numfans="";
                 //<span class="fansNum">粉丝(粉丝数)</span>
-                numfans+="粉丝（"+info.fanCount+")";
+                numfans+="粉丝（"+info.result.fanCount+")";
 
                 let s="";
-                for(let i=0;i<info.fanCount;i++){
+                for(let i=0;i<info.result.fanCount;i++){
 
-                    if(info.usersState[i]){  //0是已关注，1是未关注
+                    if(info.result.usersState[i]){  //0是已关注，1是未关注
                         s+="<div class='clear'></div>"+
                             "<div class='myfanContent1'>"+
-                                "<img src='"+info.users[i].userPhoto+"'/>"+
+                                "<img src='"+info.result.fans[i].userPhoto+"'/>"+
                                 "<p>"+
-                                "<span>"+info.users[i].userName+"</span><br/>"+
-                                "<span>"+info.users[i].userWord+"</span><br/>"+
+                                "<span>"+info.result.fans[i].userName+"</span><br/>"+
+                                "<span>"+info.result.fans[i].userWord+"</span><br/>"+
                                 "</p>"+
                                 "<button class='privateChat'><a href=''>私信</a></button>"+
-                                "<button class='subscribeOrNot' onclick='addSubsc(this)' id='"+info.users[i].userId+"' >加关注</button>"+
+                                "<button class='subscribeOrNot' onclick='addSubsc(this)' id='"+info.result.fans[i].userId+"' >加关注</button>"+
                              "</div>"+
                             "<div class='clear'></div>";
                     }else{
                         s+="<div class='clear'></div>"+
                             "<div class='myfanContent1'>"+
-                            "<img src='"+info.users[i].userPhoto+"'/>"+
+                            "<img src='"+info.result.fans[i].userPhoto+"'/>"+
                             "<p>"+
-                            "<span>"+info.users[i].userName+"</span><br/>"+
-                            "<span>"+info.users[i].userWord+"</span><br/>"+
+                            "<span>"+info.result.fans[i].userName+"</span><br/>"+
+                            "<span>"+info.result.fans[i].userWord+"</span><br/>"+
                             "</p>"+
                             "<button class='privateChat'><a href=''>私信</a></button>"+
                             "<button class='subscribeOrNot'>已关注</button>"+
@@ -419,23 +422,25 @@ function fans(){
             }
         }
     }
-    xmlhttp.open('get','/myHome/myFans');
-    xmlhttp.send(null);
+    xmlhttp.open('post','/userHome/fans');
+    xmlhttp.setRequestHeader("Content-Type","application/json");
+    let obj={"stoken":getCookie('stoken')};
+    xmlhttp.send(JSON.stringify(obj));
 }
 //我的粉丝end
 
 //加关注start
 function addSubsc(obj){
-    console.log("1");
+    /*console.log("1");*/
     let information1="";
-    console.log("2");
+    /*console.log("2");*/
 
     let xhr=new XMLHttpRequest();
-    console.log("4");
+    /*console.log("4");*/
     xhr.onreadystatechange=function(){
         if (xhr.readyState===4){
             if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
-                console.log("5");
+                /*console.log("5");*/
                 var info1 = JSON.parse(xhr.responseText);
                 console.log(info1);
                 // var info = xhr.responseText;
@@ -451,15 +456,15 @@ function addSubsc(obj){
             }
         }
     }
-    console.log("7");
-    xhr.open('post','/myHome/doFoller');
-    xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-    console.log("8");
-    var userId=obj.getAttribute("id");
-    information1 += ( "userId=" + userId );
-    xhr.send(information1);
-    console.log("9");
-    console.log(information1);
+    /*console.log("7");*/
+    xhr.open('post','/userHome/doFanFollow');
+    xhr.setRequestHeader("Content-Type","application/json");
+    /*console.log("8");*/
+    let userId=obj.getAttribute("id");
+    let data={"stoken":getCookie('stoken'),"doFollowUserId":userId};
+    xhr.send(JSON.stringify(data));
+    /*console.log("9");*/
+    /*console.log(JSON.stringify(data));*/
 }
 
 //我的预约start
@@ -510,37 +515,36 @@ function contribute(){
     xmlhttp.onreadystatechange=function(){
         if(xmlhttp.readyState===4){
             if(xmlhttp.status>=200 && xmlhttp.status<300 ||xmlhttp.status===304){
-                var info=JSON.parse(xmlhttp.responseText);
+                var info=xmlhttp.responseText;
 
                 let contriNum="";
                 //<span class="fansNum">粉丝(粉丝数)</span>
-                contriNum+="全部稿件（"+info.submissionCount+")";
+                contriNum+="全部稿件（"+info.result.submissionCount+")";
 
                 let s="";
-                for(let i=0;i<info.submissionCount;i++){
+                for(let i=0;i<info.result.submissionCount;i++){
 
 
                     s+="<div class='clear'></div>"+
                         "<div class='contributeContentAll'>"+
-                        "<img src='"+info.submissions[i].subPhoto+"'/>"+
+                        "<img src='"+info.result.submissions[i].subPhoto+"'/>"+
                         "<div class='box1_1'>"+
-                        "<span>"+info.submissions[i].subName+"</span><br />"+
-                        "<span>"+info.submissions[i].subTime+"</span><br />"+
-                        "<i class='iconfont icon-bofang'></i><span class='icon-viewSpan'>浏览"+info.submissions[i].subPageView+"</span>"+
-                         "<i class='iconfont icon-comments'></i><span class='icon-commentSpan' style='margin-left: 65px'>评论"+info.submissions[i].subComment+"</span>"+
-                         "<i class='iconfont icon-favoritesfilling'></i><span class='icon-collectSpan' style='margin-left: 60px'>收藏"+info.submissions[i].subCollection+"</span><br />"+
+                        "<span>"+info.result.submissions[i].subName+"</span><br />"+
+                        "<span>"+info.result.submissions[i].subTime+"</span><br />"+
+                        "<i class='iconfont icon-bofang'></i><span class='icon-viewSpan'>浏览"+info.result.submissions[i].subPageView+"</span>"+
+                         "<i class='iconfont icon-comments'></i><span class='icon-commentSpan' style='margin-left: 65px'>评论"+info.result.submissions[i].subComment+"</span>"+
+                         "<i class='iconfont icon-favoritesfilling'></i><span class='icon-collectSpan' style='margin-left: 60px'>收藏"+info.result.submissions[i].subCollection+"</span><br />"+
                           "<p>"+
                           "<button class='privateChat'><a href=''>编辑</a></button>"+
                           "<button class='privateChat'><a href=''>删除</a></button>"+
                           "</p>"+
                           "</div></div>"+
                          "<div class='clear'></div>";
-                    console.log(info.submissions[i].subPhoto);
 
                 }
 
                 document.getElementsByClassName('contriNum')[0].innerHTML=contriNum;
-                document.getElementsByClassName('contributeBottomContent')[0].innerHTML=s;
+                document.getElementsByClassName('addContribute')[0].innerHTML=s;
                 console.log("投稿连接成功");
 
             }else{
@@ -548,8 +552,10 @@ function contribute(){
             }
         }
     }
-    xmlhttp.open('get','/myHome/mySubmission');
-    xmlhttp.send(null);
+    xmlhttp.open('post','/userHome/submission');
+    xmlhttp.setRequestHeader("Content-Type","application/json");
+    let obj={"stoken":getCookie('stoken')};
+    xmlhttp.send(JSON.stringify(obj));
 }
 //我的投稿end
 
@@ -577,12 +583,10 @@ console.log(collectBtn);*/
 
 window.onload=function(){
     showInformation();
-
-
-
    /* let collectBtn=document.getElementById('collectBtn');
     collectBtn.addEventListener('click',collect,false);*/
 //collectBtn.removeEventListener('click',collect,false); 这个false是阻止冒泡的意思
+
 
 
 };
