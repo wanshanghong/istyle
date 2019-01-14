@@ -2,6 +2,9 @@
 $(function(){
 
 
+
+
+
 /*下拉框效果*/
 $('.top .myhome').mouseenter(function(){
 	$(this).find('.myhome').css({'background':'#fff'});
@@ -18,14 +21,14 @@ $('.top .myhome').mouseleave(function(){
 /*隐藏部分的tab切换效果*/
 $('.hide-right .tabBottom .tabBottomContent').first().show();
 
-$('.hide-right .tabTop ul li').mouseenter(function(){
-	$(this).addClass('active');
-	$('.hide-right .tabTop ul li').not($(this)).removeClass('active');
-	
-	idx = $(this).index('.hide-right .tabTop ul li');
-	$('.hide-right .tabBottom .tabBottomContent').eq(idx).show();
-	$('.hide-right .tabBottom .tabBottomContent').not($('.hide-right .tabBottom .tabBottomContent').eq(idx)).hide();
-});
+    $('.hide-right .tabTop ul li').mouseenter(function(){
+        $(this).addClass('active');
+        $('.hide-right .tabTop ul li').not($(this)).removeClass('active');
+
+        idx = $(this).index('.hide-right .tabTop ul li');
+        $('.hide-right .tabBottom .tabBottomContent').eq(idx).show();
+        $('.hide-right .tabBottom .tabBottomContent').not($('.hide-right .tabBottom .tabBottomContent').eq(idx)).hide();
+    });
 
 
 /*//首页下面的轮播图实现
@@ -166,6 +169,7 @@ var slideBox = $(".slideBox");
 
 });
 
+
 function locationInformation(){
     let xhr=new XMLHttpRequest();
 
@@ -175,10 +179,9 @@ function locationInformation(){
 
                 var info = JSON.parse(xhr.responseText);
 
-                if (info.isOpen === "1") {
+                if (info.errCode === 0) {
 
                     window.location.href = "html/userIndex.html";
-
                     alert("跳转成功");
                 }else{
                     alert("用户没有登录");
@@ -188,7 +191,11 @@ function locationInformation(){
             }
         }
     }
-    xhr.open('get','/myHome/index');
-    xhr.send(null);
+    xhr.open('post','/userHome/index');
+    xhr.setRequestHeader("Content-Type","application/json");
+    let data=getCookie('stoken');
+    console.log(data);
+    let obj={"stoken":data};
+    xhr.send(JSON.stringify(obj));
 
 }

@@ -29,7 +29,7 @@
 			<div class="top-right user" >
 				<div class="myhome">
 					<div class="myhometop">
-						<a href="">我的主页</a>
+						<a href="" onclick="locationInformation()">我的主页</a>
 					</div>
 					<div class="mydropdown">
 						<ul>
@@ -94,16 +94,20 @@
 
 										</p>-->
 											<div class="clear"></div>
-											<p><label for="nickname">昵称：</label><input type="text" class="input" id="nickname" name="userName" placeholder="请输入你的昵称" /></p>
-											<p><label for="personalizedSignature">我的签名：</label><input type="text" class="input" id="personalizedSignature" name="userWord" placeholder="请输入你的个性签名" /></p>
-											<p><label for="userage">我的年龄：</label><input type="text" class="input" id="userage" name="userage" placeholder="请输入你的年龄" /></p>
-											<p>
-												<span class="sex">性别</span>
-                                                <label for="man">男</label><input  name="sex" type="radio"  id="man" checked="checked" value="男"/>
-                                                <label for="woman">女</label><input type="radio"  id="woman" name="sex" value="女"/>
-                                                <label for="secret">保密</label><input type="radio"  id="secret" name="sex" value="保密"/>
-											</p>
-											<p><input type="button" onclick="success();information();showInformation()" class="submit" value="保存"/>
+											<div class="updateContent">
+
+												<!--<p><label for="nickname">昵称：</label><input type="text" class="input" id="nickname" name="userName" placeholder="请输入你的昵称" /></p>
+                                                <p><label for="personalizedSignature">我的签名：</label><input type="text" class="input" id="personalizedSignature" name="userWord" placeholder="请输入你的个性签名" /></p>
+                                                <p><label for="userage">我的年龄：</label><input type="text" class="input" id="userage" name="userage" placeholder="请输入你的年龄" /></p>
+                                                <p>
+                                                    <span class="sex">性别</span>
+                                                    <label for="man">男</label><input  name="sex" type="radio"  id="man" checked="checked" value="男"/>
+                                                    <label for="woman">女</label><input type="radio"  id="woman" name="sex" value="女"/>
+                                                    <label for="secret">保密</label><input type="radio"  id="secret" name="sex" value="保密"/>
+                                                </p>-->
+												<p><input type="button" onclick="success();information();showInformation()" class="submit" value="保存"/>
+
+											</div>
 
 										</form>
 									</div>
