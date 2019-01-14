@@ -29,5 +29,5 @@ public interface StyHouseService {
      * @param styHouse id
      * @return styHouseName
      */
-    String afterLoginGetName(TbStyHouse styHouse);
+    Map afterLoginGetName(TbStyHouse styHouse);
 }

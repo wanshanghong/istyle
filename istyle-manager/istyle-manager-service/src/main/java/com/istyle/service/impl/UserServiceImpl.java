@@ -107,18 +107,22 @@ public class UserServiceImpl implements UserService {
      * @return userName
      */
     @Override
-    public String afterLoginGetName(TbUser user) {
+    public Map<String, String> afterLoginGetName(TbUser user) {
         String userName;
 
         userName = user.getUserName();
+
         if (StringUtil.isEmpty(userName)) {
             throw new AppAuthException("登陆失败，请重新登陆");
         }
-        if (userName != tbUserMapper.selectUserNameById(user.getUserId())) {
+        if (userName.equals(tbUserMapper.selectUserNameById(user.getUserId()))) {
+            Map<String, String> map = new HashMap<>(16);
+            map.put("userName", userName);
+            return map;
+        }
+        else {
             throw new AppAuthException("登陆失败，请重新登陆");
         }
-
-        return userName;
     }
 
     /**

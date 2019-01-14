@@ -100,17 +100,19 @@ public class StyHouseServiceImpl implements StyHouseService {
      * @return styHouseName
      */
     @Override
-    public String afterLoginGetName(TbStyHouse styHouse) {
+    public Map<String, String> afterLoginGetName(TbStyHouse styHouse) {
         String styHouseName;
 
         styHouseName = styHouse.getStyHouseName();
         if (StringUtil.isEmpty(styHouseName)) {
             throw new AppAuthException("登陆失败，请重新登陆");
         }
-        if (styHouseName != styHouseMapper.selectStyHouseNameById(styHouse.getStyHouseId())) {
+        if (styHouseName.equals(styHouseMapper.selectStyHouseNameById(styHouse.getStyHouseId()))) {
+            Map<String, String> map = new HashMap<>(16);
+            map.put("styHouseName", styHouseName);
+            return map;
+        } else {
             throw new AppAuthException("登陆失败，请重新登陆");
         }
-
-        return styHouseName;
     }
 }

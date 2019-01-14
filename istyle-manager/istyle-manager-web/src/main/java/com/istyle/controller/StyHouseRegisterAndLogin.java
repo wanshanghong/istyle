@@ -46,14 +46,14 @@ public class StyHouseRegisterAndLogin {
 
     /**
      * 登录后跳转主页返回用户名
-     * @param stoken 身份认证
+     * @param request
      * @return Response
      */
     @RequestMapping(value = "/afterStyHouseLogin", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public Response afterStyHouseLogin(@RequestParam("stoken") String stoken) {
-        TbStyHouse stylist = JWT.unsign(stoken, TbStyHouse.class);
-        String param = styHouseService.afterLoginGetName(stylist);
+    public Response afterStyHouseLogin(@RequestBody Map<String, String> request) {
+        TbStyHouse stylist = JWT.unsign(request.get("stoken"), TbStyHouse.class);
+        Map param = styHouseService.afterLoginGetName(stylist);
         return Response.ok(param);
     }
 }

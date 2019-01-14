@@ -69,10 +69,10 @@
     <url-pattern>*.js</url-pattern>
   </servlet-mapping>
 
+  <!--首页展示-->
   <welcome-file-list>
     <welcome-file>/WEB-INF/html/index.html</welcome-file>
     <welcome-file>js/index.js</welcome-file>
     <welcome-file>css/index.css</welcome-file>
   </welcome-file-list>
-
 </web-app>
