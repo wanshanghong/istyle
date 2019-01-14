@@ -100,18 +100,20 @@ public class StylistServiceImpl implements StylistService {
      * @return stylistName
      */
     @Override
-    public String afterLoginGetName(TbStylist stylist) {
+    public Map<String, String> afterLoginGetName(TbStylist stylist) {
         String stylistName;
 
         stylistName = stylist.getStylistName();
         if (StringUtil.isEmpty(stylistName)) {
             throw new AppAuthException("登陆失败，请重新登陆");
         }
-        if (stylistName != tbStylistMapper.selectStylistNameById(stylist.getStylistId())) {
+        if (stylistName.equals(tbStylistMapper.selectStylistNameById(stylist.getStylistId()))) {
+            Map<String, String> map = new HashMap<>(16);
+            map.put("stylistName", stylistName);
+            return map;
+        } else {
             throw new AppAuthException("登陆失败，请重新登陆");
         }
-
-        return stylistName;
     }
 
     /**

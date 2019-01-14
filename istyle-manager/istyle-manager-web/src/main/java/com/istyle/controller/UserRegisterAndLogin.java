@@ -45,14 +45,14 @@ public class UserRegisterAndLogin {
 
     /**
      * 登录后跳转主页返回用户名
-     * @param stoken 身份认证
+     * @param request 身份认证
      * @return Response
      */
     @RequestMapping(value = "/afterUserLogin", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public Response afterUserLogin(@RequestParam("stoken") String stoken) {
-        TbUser user = JWT.unsign(stoken, TbUser.class);
-        String param = userService.afterLoginGetName(user);
+    public Response afterUserLogin(@RequestBody Map<String, String> request) {
+        TbUser user = JWT.unsign(request.get("stoken"), TbUser.class);
+        Map param = userService.afterLoginGetName(user);
         return Response.ok(param);
     }
 }

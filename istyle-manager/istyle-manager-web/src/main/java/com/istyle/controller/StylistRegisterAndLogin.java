@@ -46,14 +46,14 @@ public class StylistRegisterAndLogin {
 
     /**
      * 登录后跳转主页返回用户名
-     * @param stoken 身份认证
+     * @param request 身份认证
      * @return Response
      */
     @RequestMapping(value = "/afterStylistLogin", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public Response afterStylistLogin(@RequestParam("stoken") String stoken) {
-        TbStylist stylist = JWT.unsign(stoken, TbStylist.class);
-        String param = stylistService.afterLoginGetName(stylist);
+    public Response afterStylistLogin(@RequestBody Map<String, String> request) {
+        TbStylist stylist = JWT.unsign(request.get("stoken"), TbStylist.class);
+        Map param = stylistService.afterLoginGetName(stylist);
         return Response.ok(param);
     }
 }

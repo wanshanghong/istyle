@@ -27,7 +27,7 @@ public interface UserService {
      * @param user id
      * @return userName
      */
-    String afterLoginGetName(TbUser user);
+    Map afterLoginGetName(TbUser user);
 
     /**
      * 通过ID获得用户信息，用于我的信息展示

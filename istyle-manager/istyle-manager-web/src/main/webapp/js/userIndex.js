@@ -55,7 +55,7 @@ function editor() {
                     alert("成功渲染");
                     showInform += "<p><label for='nickname'>昵称：</label><input type='text' class='input' id='nickname' name='userName' placeholder='"+info.result.userName+"'/></p>" +
                         "<p><label for='personalizedSignature'>我的签名：</label><input type='text' class='input' id='personalizedSignature' name='userWord' placeholder='"+info.result.userWord+"'/></p>" +
-                        "<p><label for='userage'>我的年龄：</label><input type='text' class='input' id='userage' name='userage' placeholder='"+info.reesult.userAge+"' /></p>" +
+                        "<p><label for='userage'>我的年龄：</label><input type='text' class='input' id='userage' name='userage' placeholder='"+info.result.userAge+"' /></p>" +
                         "<p>" +
                         "<span class=\"sex\">性别</span>"+
                         "<label for=\"man\">男</label><input  name=\"sex\" type=\"radio\"  id=\"man\" checked=\"checked\" value=\"男\"/>"+

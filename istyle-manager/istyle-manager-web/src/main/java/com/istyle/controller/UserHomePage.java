@@ -2,6 +2,7 @@ package com.istyle.controller;
 
 import com.istyle.pojo.*;
 import com.istyle.service.UserService;
+import com.util.CastUtil;
 import com.util.JWT;
 import com.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,26 +23,26 @@ public class UserHomePage {
 
     /**
      * 我的主页跳转至我的信息
-     * @param stoken token身份认证
+     * @param request token身份认证
      * @return Response
      */
     @ResponseBody
     @RequestMapping(value="/index", method= RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
-    public Response userHomePage(@RequestParam("stoken") String stoken) {
-        TbUser user = JWT.unsign(stoken, TbUser.class);
+    public Response userHomePage(@RequestBody Map<String, String> request) {
+        TbUser user = JWT.unsign(request.get("stoken"), TbUser.class);
         TbUser param = userService.selectUserByUserId(user);
         return Response.ok(param);
     }
 
     /**
      * 打开编辑页面发送用户数据
-     * @param stoken token身份认证
+     * @param request
      * @return Response
      */
     @ResponseBody
     @RequestMapping(value = "/updatePage", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
-    public Response userUpdatePage(@RequestParam("stoken") String stoken) {
-        TbUser user = JWT.unsign(stoken, TbUser.class);
+    public Response userUpdatePage(@RequestBody Map<String, String> request) {
+        TbUser user = JWT.unsign(request.get("stoken"), TbUser.class);
         TbUser param = userService.selectUserByUserId(user);
         return Response.ok(param);
     }
@@ -61,80 +62,78 @@ public class UserHomePage {
 
     /**
      * 我的收藏
-     * @param stoken 用户身份认证
+     * @param request 用户身份认证
      * @return Response
      */
     @ResponseBody
     @RequestMapping(value="/collection", method= RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
-    public Response userCollection(@RequestParam("stoken") String stoken){
-        TbUser user = JWT.unsign(stoken, TbUser.class);
+    public Response userCollection(@RequestBody Map<String, String> request){
+        TbUser user = JWT.unsign(request.get("stoken"), TbUser.class);
         Map param = userService.selectCollection(user);
         return Response.ok(param);
     }
 
     /**
      * 我的关注
-     * @param stoken 用户身份认证
+     * @param request 用户身份认证
      * @return Response
      */
     @ResponseBody
     @RequestMapping(value="/foller", method= RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
-    public Response userfollowPage(@RequestParam("stoken") String stoken) {
-        TbUser user = JWT.unsign(stoken, TbUser.class);
+    public Response userfollowPage(@RequestBody Map<String, String> request) {
+        TbUser user = JWT.unsign(request.get("stoken"), TbUser.class);
         Map param = userService.selectAttentionsById(user);
         return Response.ok(param);
     }
 
     /**
      * 取消关注
-     * @param stoken 用户身份认证
-     * @param unFollowUserId 被取消关注用户id
+     * @param request 包含 stoken 用户身份认证和 unFollowUserId 被取消关注用户id
      * @return Response
      */
     @ResponseBody
     @RequestMapping(value="/unFollow", method= RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
-    public Response userUnFollow(@RequestParam("stoken") String stoken, @RequestParam("unFollowUserId") long unFollowUserId) {
-        TbUser user = JWT.unsign(stoken, TbUser.class);
-        userService.unFollow(user, unFollowUserId);
+    public Response userUnFollow(@RequestBody Map<String, String> request) {
+        TbUser user = JWT.unsign(request.get("stoken"), TbUser.class);
+        userService.unFollow(user, CastUtil.castLong(request.get("unFollowUserId")));
         return Response.ok();
     }
 
     /**
      * 我的粉丝页面
-     * @param stoken 用户身份认证
+     * @param request
      * @return Response
      */
     @ResponseBody
     @RequestMapping(value = "/fans", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
-    public Response userFansPage(@RequestParam("stoken") String stoken){
-        TbUser user = JWT.unsign(stoken, TbUser.class);
+    public Response userFansPage(@RequestBody Map<String, String> request){
+        TbUser user = JWT.unsign(request.get("stoken"), TbUser.class);
         Map param = userService.myFansPage(user);
         return Response.ok(param);
     }
 
     /**
      * 添加粉丝关注
-     * @param stoken 用户身份认证
-     * @param doFollowUserId 粉丝id
+     * @param request
      * @return Response
      */
     @ResponseBody
     @RequestMapping(value = "/doFanFollow", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
-    public Response userAddFanFollow(@RequestParam("stoken") String stoken, @RequestParam("doFollowUserId") long doFollowUserId) {
-        TbUser user = JWT.unsign(stoken, TbUser.class);
-        userService.addFollow(user, doFollowUserId);
+    public Response userAddFanFollow(@RequestBody Map<String, String> request) {
+        TbUser user = JWT.unsign(request.get("stoken"), TbUser.class);
+        userService.addFollow(user, CastUtil.castLong(request.get("doFollowUserId")));
         return Response.ok();
     }
 
     /**
      * 我的投稿展示
-     * @param stoken 用户身份认证
+     * @param request
      * @return Response
      */
     @ResponseBody
     @RequestMapping(value = "/submission", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
-    public Response userSubmissionPage(@RequestParam("stoken") String stoken){
-        TbUser user = JWT.unsign(stoken, TbUser.class);
+    public Response userSubmissionPage(@RequestBody Map<String, String> request){
+        TbUser user = JWT.unsign(request.get("stoken"), TbUser.class);
         Map param = userService.mySubmission(user);
         return Response.ok(param);
     }

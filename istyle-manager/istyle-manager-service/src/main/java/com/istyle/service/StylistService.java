@@ -28,7 +28,7 @@ public interface StylistService {
      * @param stylist id
      * @return stylistName
      */
-    String afterLoginGetName(TbStylist stylist);
+    Map afterLoginGetName(TbStylist stylist);
 
     /**
      * 查询造型师信息数据并返回
