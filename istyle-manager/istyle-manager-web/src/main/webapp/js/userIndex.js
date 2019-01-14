@@ -39,6 +39,52 @@ function editor() {
 
     let obj=document.getElementById('form');
     obj.style.display="block";
+
+    //渲染用户信息
+    let xhr=new XMLHttpRequest();
+
+    xhr.onreadystatechange=function(){
+        if (xhr.readyState===4){
+            if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
+
+                var info = JSON.parse(xhr.responseText);
+
+                if (info.errCode === 0) {
+
+                    let showInform = "";
+                    alert("成功渲染");
+                    showInform += "<p><label for='nickname'>昵称：</label><input type='text' class='input' id='nickname' name='userName' placeholder='"+info.result.userName+"'/></p>" +
+                        "<p><label for='personalizedSignature'>我的签名：</label><input type='text' class='input' id='personalizedSignature' name='userWord' placeholder='"+info.result.userWord+"'/></p>" +
+                        "<p><label for='userage'>我的年龄：</label><input type='text' class='input' id='userage' name='userage' placeholder='"+info.reesult.userAge+"' /></p>" +
+                        "<p>" +
+                        "<span class=\"sex\">性别</span>"+
+                        "<label for=\"man\">男</label><input  name=\"sex\" type=\"radio\"  id=\"man\" checked=\"checked\" value=\"男\"/>"+
+                        "<label for=\"woman\">女</label><input type=\"radio\"  id=\"woman\" name=\"sex\" value=\"女\"/>"+
+                        "<label for=\"secret\">保密</label><input type=\"radio\"  id=\"secret\" name=\"sex\" value=\"保密\"/>"+
+                        "</p>";
+
+
+                    /*alert("成功2"+showInform);*/
+
+                    document.getElementsByClassName('updateContent')[0].innerHTML = showInform;
+                    /*alert("成功");*/
+                }else{
+                    alert("用户没有登录");
+                }
+            }else {
+                alert("发生错误"+xhr.status);
+            }
+        }
+    }
+    xhr.open('post','/userHome/updatePage');
+    xhr.setRequestHeader("Content-Type","application/json");
+    let data=getCookie('stoken');
+    console.log(data);
+    let obj={"stoken":data};
+    xhr.send(JSON.stringify(obj));
+
+
+
 }
 function success(){
     let hidden=document.getElementById('form');
@@ -46,7 +92,6 @@ function success(){
     showInformation();
     let obj=document.getElementById('showInformation');
     obj.style.display="block";
-
 }
 //我的信息编辑隐藏弹出end
 //我的信息展示
@@ -62,11 +107,11 @@ function showInformation(){
                     if (info.errCode === 0) {
 
                         let showInform = "";
-                        /*alert("成功1");*/
+                        alert("成功展示");
                         showInform += "<p><img src='" + info.result.userPhoto + "'></p><div class=\"clear\"></div>" +
                             "<p><span class=\"nickname\">昵称：" + info.result.userName + "</span></p><div class=\"clear\"></div>" +
                             "<p><span class=\"personalizedSignature\">我的签名：" + info.result.userWord + "</span></p><div class=\"clear\"></div>" +
-                            "<p><span class=\"userage\">昵称：" + info.result.userAge + "</span></p><div class=\"clear\"></div>" +
+                            "<p><span class=\"userage\">年龄：" + info.result.userAge + "</span></p><div class=\"clear\"></div>" +
                             "<p><span class=\"sex\">性别:" + info.result.userSex + "</span></p><div class=\"clear\"></div>";
                         /*alert("成功2"+showInform);*/
 
@@ -82,7 +127,9 @@ function showInformation(){
         }
         xhr.open('post','/userHome/index');
         xhr.setRequestHeader("Content-Type","application/json");
-        let obj={"stoken":getCookie('stoken')};
+        let data=getCookie('stoken');
+        console.log(data);
+        let obj={"stoken":data};
         xhr.send(JSON.stringify(obj));
 
 }
