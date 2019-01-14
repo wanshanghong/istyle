@@ -517,7 +517,7 @@ document.getElementById("loginbtn").onclick = function(){
                 if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
                     var info = JSON.parse(xhr.responseText);
                     if (info.error_code === 0) {
-                        window.location.href = "html/userIndex.html";
+                        window.location.href = "/html/userIndex.html";
                         alert("跳转成功");
                         document.getElementsByClassName('beforeLogin')[0].style.display='none';
                         document.getElementsByClassName('afterLogin')[0].innerHTML="欢迎"+info.result.stylistName+"登录istyle";

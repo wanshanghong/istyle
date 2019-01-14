@@ -80,8 +80,8 @@ function editor() {
     xhr.setRequestHeader("Content-Type","application/json");
     let data=getCookie('stoken');
     console.log(data);
-    let obj={"stoken":data};
-    xhr.send(JSON.stringify(obj));
+    let obj1={"stoken":data};
+    xhr.send(JSON.stringify(obj1));
 
 
 
