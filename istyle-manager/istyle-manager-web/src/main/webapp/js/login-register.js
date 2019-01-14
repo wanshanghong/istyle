@@ -358,6 +358,8 @@ function login1(){
             if(data.errCode===0){
                 console.log("succ");
                 setCookie('stoken',data.result.stoken);
+                alert("登录成功");
+                /*console.log(getCookie('stoken'));*/
                 locationUserHome();
             }
         },
@@ -385,7 +387,7 @@ document.getElementById("loginbtn").onclick = function(){
                         document.getElementsByClassName('beforeLogin')[0].style.display='none';
                         document.getElementsByClassName('afterLogin')[0].innerHTML="欢迎"+info.result.userName+"登录istyle";
                     }else{
-                        alert("该用户没有登录");
+                        alert("跳转失败，该用户没有登录");
                     }
                 }else {
                     alert("发生错误"+xhr.status);
@@ -395,7 +397,9 @@ document.getElementById("loginbtn").onclick = function(){
         }
         xhr.open('post','/afterUserLogin');
         xhr.setRequestHeader("Content-Type","application/json");
-        let obj={"stoken":getCookie('stoken')};
+        let data=getCookie('stoken');
+        console.log(data);
+        let obj={"stoken":data};
         xhr.send(JSON.stringify(obj));
     }
 
@@ -419,6 +423,7 @@ document.getElementById("loginbtn").onclick = function(){
                         document.cookie=name +"="+value;
                     }
                     setCookie('stoken',data.result.stoken);
+                    alert("登录成功");
                     locationStyhouseHome();
                 }
             },
@@ -447,7 +452,7 @@ document.getElementById("loginbtn").onclick = function(){
                         document.getElementsByClassName('beforeLogin')[0].style.display='none';
                         document.getElementsByClassName('afterLogin')[0].innerHTML="欢迎"+info.result.styHouseName+"登录istyle";
                     }else{
-                        alert("该造型屋没有登录");
+                        alert("跳转失败,该造型屋没有登录");
                     }
                 }else {
                     alert("发生错误"+xhr.status);
@@ -457,7 +462,9 @@ document.getElementById("loginbtn").onclick = function(){
         }
         xhr.open('post','/afterStyHouseLogin');
         xhr.setRequestHeader("Content-Type","application/json");
-        let obj={"stoken":getCookie('stoken')};
+        let data=getCookie('stoken');
+        console.log(data);
+        let obj={"stoken":data};
         xhr.send(JSON.stringify(obj));
     }
 
@@ -482,6 +489,7 @@ document.getElementById("loginbtn").onclick = function(){
                         document.cookie=name +"="+value;
                     }
                     setCookie('stoken',data.result.stoken);
+                    alert("登录成功");
                     locationStylistHome();
                 }
             },
@@ -510,7 +518,7 @@ document.getElementById("loginbtn").onclick = function(){
                         document.getElementsByClassName('beforeLogin')[0].style.display='none';
                         document.getElementsByClassName('afterLogin')[0].innerHTML="欢迎"+info.result.stylistName+"登录istyle";
                     }else{
-                        alert("该造型师没有登录");
+                        alert("跳转失败，该造型师没有登录");
                     }
                 }else {
                     alert("发生错误"+xhr.status);
@@ -520,7 +528,9 @@ document.getElementById("loginbtn").onclick = function(){
         }
         xhr.open('post','/afterStylistLogin');
         xhr.setRequestHeader("Content-Type","application/json");
-        let obj={"stoken":getCookie('stoken')};
+        let data=getCookie('stoken');
+        console.log(data);
+        let obj={"stoken":data};
         xhr.send(JSON.stringify(obj));
     }
 
