@@ -450,8 +450,8 @@ document.getElementById("loginbtn").onclick = function(){
             if (xhr.readyState===4){
                 if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
                     var info = JSON.parse(xhr.responseText);
-                    if (info.error_code === 0) {
-                        window.location.href = "html/userIndex.html";
+                    if (info.errCode === 0) {
+                        window.location.href = "/html/index.html";
                         alert("跳转成功");
                         let hidden=document.getElementById('beforeLogin');
                         hidden.style.display="none";
@@ -518,8 +518,8 @@ document.getElementById("loginbtn").onclick = function(){
             if (xhr.readyState===4){
                 if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
                     var info = JSON.parse(xhr.responseText);
-                    if (info.error_code === 0) {
-                        window.location.href = "/html/userIndex.html";
+                    if (info.errCode === 0) {
+                        window.location.href = "/html/index.html";
                         alert("跳转成功");
                         let hidden=document.getElementById('beforeLogin');
                         hidden.style.display="none";
