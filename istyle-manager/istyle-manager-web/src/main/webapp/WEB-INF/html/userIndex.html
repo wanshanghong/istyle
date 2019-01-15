@@ -43,8 +43,10 @@
 				<div class="main-nav">
 					<ul>
 						<!-- inser more links here -->
-						<li class="beforeLoin"><a class="cd-signin" href="javascript:void(0)">登录</a></li>
-						<li class="beforeLoin"><a class="cd-signup" href="javascript:void(0)">注册</a></li>
+						<div id="beforeLoin" style="display: none">
+							<li class=""><a class="cd-signin" href="javascript:void(0)">登录</a></li>
+							<li class=""><a class="cd-signup" href="javascript:void(0)">注册</a></li>
+						</div>
 						<li class="afterLogin" style="color: #FFF;"></li>
 					</ul>
 				</div>
@@ -105,10 +107,8 @@
                                                     <label for="woman">女</label><input type="radio"  id="woman" name="sex" value="女"/>
                                                     <label for="secret">保密</label><input type="radio"  id="secret" name="sex" value="保密"/>
                                                 </p>-->
-												<p><input type="button" onclick="success();information();showInformation()" class="submit" value="保存"/>
-
 											</div>
-
+											<p><input type="button" onclick="success();information();showInformation()" class="submit" value="保存"/>
 										</form>
 									</div>
 

@@ -384,12 +384,12 @@ document.getElementById("loginbtn").onclick = function(){
                     if (info.errCode === 0) {
                         window.location.href = "/html/index.html";
                         alert("跳转首页成功");
-                        /*let hidden=document.getElementById('beforeLogin');
+                        let hidden=document.getElementById('beforeLogin');
                         hidden.style.display="none";
                         let appear=document.getElementsByClassName('afterLogin')[0];
-                        appear.innerHTML="欢迎"+info.result.userName+"登录istyle";*/
-                        document.getElementsByClassName('beforeLogin')[0].style.display='none';
-                        document.getElementsByClassName('afterLogin')[0].innerHTML="欢迎"+info.result.userName+"登录istyle";
+                        appear.innerHTML="欢迎"+info.result.userName+"登录istyle";
+/*                      document.getElementsByClassName('beforeLogin')[0].style.display='none';
+                        document.getElementsByClassName('afterLogin')[0].innerHTML="欢迎"+info.result.userName+"登录istyle";*/
                     }else{
                         alert("跳转失败，该用户没有登录");
                     }
@@ -453,8 +453,10 @@ document.getElementById("loginbtn").onclick = function(){
                     if (info.error_code === 0) {
                         window.location.href = "html/userIndex.html";
                         alert("跳转成功");
-                        document.getElementsByClassName('beforeLogin')[0].style.display='none';
-                        document.getElementsByClassName('afterLogin')[0].innerHTML="欢迎"+info.result.styHouseName+"登录istyle";
+                        let hidden=document.getElementById('beforeLogin');
+                        hidden.style.display="none";
+                        let appear=document.getElementsByClassName('afterLogin')[0];
+                        appear.innerHTML="欢迎"+info.result.userName+"登录istyle";
                     }else{
                         alert("跳转失败,该造型屋没有登录");
                     }
@@ -519,8 +521,10 @@ document.getElementById("loginbtn").onclick = function(){
                     if (info.error_code === 0) {
                         window.location.href = "/html/userIndex.html";
                         alert("跳转成功");
-                        document.getElementsByClassName('beforeLogin')[0].style.display='none';
-                        document.getElementsByClassName('afterLogin')[0].innerHTML="欢迎"+info.result.stylistName+"登录istyle";
+                        let hidden=document.getElementById('beforeLogin');
+                        hidden.style.display="none";
+                        let appear=document.getElementsByClassName('afterLogin')[0];
+                        appear.innerHTML="欢迎"+info.result.userName+"登录istyle";
                     }else{
                         alert("跳转失败，该造型师没有登录");
                     }

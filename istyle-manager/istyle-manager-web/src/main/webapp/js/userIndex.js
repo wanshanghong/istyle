@@ -190,63 +190,69 @@ function collect(){
     xhr.onreadystatechange=function(){
         if (xhr.readyState===4){
             if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
-                var info=JSON.parse(xhr.responseText);
-                //造型师、造型屋、测评的收藏数
-                /*console.log("1");*/
-                let numDesigner="";
-                numDesigner+="<span class='stylingDesignerSpan'>造型师（"+info.result.styCount+")</span>";
-                /*console.log("2");
-                console.log(info.styCount);
-                console.log(info);*/
+                let info=JSON.parse(xhr.responseText);
+                if (info.errCode === 0) {
 
-                let numSalon="";
-                numSalon+="<span class='hairSalonSpan'>造型屋（"+info.result.styHouseCount+")</span>";
-                /*console.log("3");*/
-                let numEvaluate="";
-                numEvaluate+="<span class='evaluationCollection'>测评（"+info.result.evalCount+")</span>";
-                /*console.log(info.styHouseCount);
-                console.log(info.evalCount);*/
+//造型师、造型屋、测评的收藏数
+                    /*console.log("1");*/
+                    let numDesigner="";
+                    numDesigner+="<span class='stylingDesignerSpan'>造型师（"+info.result.styCount+")</span>";
+                    /*console.log("2");
+                    console.log(info.styCount);
+                    console.log(info);*/
 
-                //造型师、造型屋、测评的添加内容
-                /*console.log("4");
-                console.log(info.stylist);*/
-                let designerBox="";
-                for (let i=0;i<info.result.stylist.length;i++){
-                    designerBox += "<div class='box'><!--<a href='+/*info.stylist[i].designerUrl--><img src='"+info.result.stylist[i].stylistPhoto+"'/><span>"+info.result.stylist[i].stylistName+"造型师</span><!--</a>--></div>";
-                }
-                /*console.log("5");*/
-                let salonBox="";
-                for (let j=0;j<info.result.styHouse.length;j++){
-                    salonBox += "<div class='box'><!--<a href='+info.styHouse[j].salonUrl+'>--><img src='"+info.result.styHouse[j].styHousePhoto+"'/><span>"+info.result.styHouse[j].styHouseName+"造型屋</span><!--</a>--></div>";
-                }
-               /* console.log("6");
-                console.log(info.styHouse);*/
-                let evaluateBox="";
-                for (let i=0;i<info.result.evaluation.length;i++){
-                    evaluateBox += "<div class='clear'></div>" +
-                                       "<div class='box1'><!--<a href='+info.evaluation[i].evaluateUrl+'>-->"    +
-                                           "<img src='"+info.result.evaluation[i].evalPhoto+"'/>"  +
-                                           "<div class='box1_1'>"   +
-                                               "<span>"+info.result.evaluation[i].evalName+"</span><br>"  +
-                                               "<span>简介："+info.result.evaluation[i].evalWord+"</span><br>"  +
-                                               "<i class='iconfont icon-fenxiang'></i><span class='icon-fenxiangSpan'>分享</span>" +
-                                               "<i class='iconfont icon-shanchu'></i><span class='icon-shanchuSpan'>删除收藏</span>" +
-                                           "</div>"  +
-                                       "<!--</a>--></div>";
-                }
-            /*    console.log("7");
-                console.log(info.evaluation);
-                console.log(evaluateBox);*/
+                    let numSalon="";
+                    numSalon+="<span class='hairSalonSpan'>造型屋（"+info.result.styHouseCount+")</span>";
+                    /*console.log("3");*/
+                    let numEvaluate="";
+                    numEvaluate+="<span class='evaluationCollection'>测评（"+info.result.evalCount+")</span>";
+                    /*console.log(info.styHouseCount);
+                    console.log(info.evalCount);*/
 
-                document.getElementsByClassName('stylingDesignerSpan')[0].innerHTML=numDesigner;
-                document.getElementsByClassName('hairSalonSpan')[0].innerHTML=numSalon;
-                document.getElementsByClassName('evaluationCollection')[0].innerHTML=numEvaluate;
-                /*console.log("8");*/
-                document.getElementsByClassName('stylingDesignerIn')[0].innerHTML=designerBox;
-                document.getElementsByClassName('hairSalonIn')[0].innerHTML=salonBox;
-                document.getElementsByClassName('evaluation')[0].innerHTML=evaluateBox;
-                alert("收藏成功");
-                /*console.log("succ");*/
+                    //造型师、造型屋、测评的添加内容
+                    /*console.log("4");
+                    console.log(info.stylist);*/
+                    let designerBox="";
+                    for (let i=0;i<info.result.stylist.length;i++){
+                        designerBox += "<div class='box'><!--<a href='+/*info.stylist[i].designerUrl--><img src='"+info.result.stylist[i].stylistPhoto+"'/><span>"+info.result.stylist[i].stylistName+"造型师</span><!--</a>--></div>";
+                    }
+                    /*console.log("5");*/
+                    let salonBox="";
+                    for (let j=0;j<info.result.styHouse.length;j++){
+                        salonBox += "<div class='box'><!--<a href='+info.styHouse[j].salonUrl+'>--><img src='"+info.result.styHouse[j].styHousePhoto+"'/><span>"+info.result.styHouse[j].styHouseName+"造型屋</span><!--</a>--></div>";
+                    }
+                    /* console.log("6");
+                     console.log(info.styHouse);*/
+                    let evaluateBox="";
+                    for (let i=0;i<info.result.evaluation.length;i++){
+                        evaluateBox += "<div class='clear'></div>" +
+                            "<div class='box1'><!--<a href='+info.evaluation[i].evaluateUrl+'>-->"    +
+                            "<img src='"+info.result.evaluation[i].evalPhoto+"'/>"  +
+                            "<div class='box1_1'>"   +
+                            "<span>"+info.result.evaluation[i].evalName+"</span><br>"  +
+                            "<span>简介："+info.result.evaluation[i].evalWord+"</span><br>"  +
+                            "<i class='iconfont icon-fenxiang'></i><span class='icon-fenxiangSpan'>分享</span>" +
+                            "<i class='iconfont icon-shanchu'></i><span class='icon-shanchuSpan'>删除收藏</span>" +
+                            "</div>"  +
+                            "<!--</a>--></div>";
+                    }
+                    /*    console.log("7");
+                        console.log(info.evaluation);
+                        console.log(evaluateBox);*/
+
+                    document.getElementsByClassName('stylingDesignerSpan')[0].innerHTML=numDesigner;
+                    document.getElementsByClassName('hairSalonSpan')[0].innerHTML=numSalon;
+                    document.getElementsByClassName('evaluationCollection')[0].innerHTML=numEvaluate;
+                    /*console.log("8");*/
+                    document.getElementsByClassName('stylingDesignerIn')[0].innerHTML=designerBox;
+                    document.getElementsByClassName('hairSalonIn')[0].innerHTML=salonBox;
+                    document.getElementsByClassName('evaluation')[0].innerHTML=evaluateBox;
+                    alert("收藏成功");
+                    /*console.log("succ");*/
+                }else{
+                    alert("用户没有登录");
+                }
+
             }else{
                 alert("发生错误"+xhr.status);
                 console.log("err"+xhr.status);
@@ -327,18 +333,20 @@ function subscribe(){
     xmlhttp.onreadystatechange=function(){
         if(xmlhttp.readyState===4){
             if (xmlhttp.status>=200 && xmlhttp.status<300 || xmlhttp.status===304 ){
-                var info=JSON.parse(xmlhttp.responseText);
+                let info=JSON.parse(xmlhttp.responseText);
 
-                let numsubscribe="";
-                //<span class="subscribeNum">关注(关注数)</span>
-                numsubscribe+="关注（"+info.result.attentionCount+")";
+                if (info.errCode === 0) {
 
-                /*console.log(info.follerCount);*/
-                let s="";
-                for(let i=0;i<info.result.attentionCount;i++){
+                    let numsubscribe="";
+                    //<span class="subscribeNum">关注(关注数)</span>
+                    numsubscribe+="关注（"+info.result.attentionCount+")";
 
-                    s+= "<div class='clear'></div>"+
-                        "<div class='subscribeContent1'>"+
+                    /*console.log(info.follerCount);*/
+                    let s="";
+                    for(let i=0;i<info.result.attentionCount;i++){
+
+                        s+= "<div class='clear'></div>"+
+                            "<div class='subscribeContent1'>"+
                             "<img src='"+info.result.attentions[i].userPhoto+"'/>"+
                             "<p>"+
                             "<span>"+info.result.attentions[i].userName+"</span><br/>"+
@@ -346,17 +354,19 @@ function subscribe(){
                             "</p>"+
                             "<button class='privateChat'><a href=''>私信</a></button>"+
                             "<button class='subscribeOrNot' onclick='delSubsc(this)' id='"+info.result.attentions[i].userId+"' >取消关注</button>"+  /*data-userId='info.follers[i].userId'*/
-                        "</div>"+
-                        "<div class='clear'></div>";
+                            "</div>"+
+                            "<div class='clear'></div>";
                         /*userId=info.follers[i].userId;*/
+                    }
+
+                    console.log(info.result.attentions);
+                    document.getElementsByClassName('subscribeNum')[0].innerHTML=numsubscribe;
+                    document.getElementsByClassName('rightBottomSubscribe')[0].innerHTML=s;
+                    /*alert("关注连接成功");*/
+                    console.log("成功");
+                }else{
+                    alert("用户没有登录");
                 }
-
-             console.log(info.result.attentions);
-            document.getElementsByClassName('subscribeNum')[0].innerHTML=numsubscribe;
-            document.getElementsByClassName('rightBottomSubscribe')[0].innerHTML=s;
-            /*alert("关注连接成功");*/
-            console.log("成功");
-
             }else{
                 alert("发生错误"+xmlhttp.status);
                 console.log("'发生错误'+xmlhttp.status");
@@ -388,7 +398,7 @@ function delSubsc(obj){
                 var info1 = JSON.parse(xhr.responseText);
                 console.log(info1);
                 // var info = xhr.responseText;
-                if (!info1){
+                if (!info1.errCode){
                     console.log("取消关注成功"+xhr.status);
                     subscribe();
                 }else{
@@ -423,18 +433,19 @@ function fans(){
     xmlhttp.onreadystatechange=function(){
         if(xmlhttp.readyState===4){
             if(xmlhttp.status===200){
-                var info=JSON.parse(xmlhttp.responseText);
+                let info=JSON.parse(xmlhttp.responseText);
 
-                let numfans="";
-                //<span class="fansNum">粉丝(粉丝数)</span>
-                numfans+="粉丝（"+info.result.fanCount+")";
+                if (info.errCode === 0) {
+                    let numfans="";
+                    //<span class="fansNum">粉丝(粉丝数)</span>
+                    numfans+="粉丝（"+info.result.fanCount+")";
 
-                let s="";
-                for(let i=0;i<info.result.fanCount;i++){
+                    let s="";
+                    for(let i=0;i<info.result.fanCount;i++){
 
-                    if(info.result.usersState[i]){  //0是已关注，1是未关注
-                        s+="<div class='clear'></div>"+
-                            "<div class='myfanContent1'>"+
+                        if(info.result.usersState[i]){  //0是已关注，1是未关注
+                            s+="<div class='clear'></div>"+
+                                "<div class='myfanContent1'>"+
                                 "<img src='"+info.result.fans[i].userPhoto+"'/>"+
                                 "<p>"+
                                 "<span>"+info.result.fans[i].userName+"</span><br/>"+
@@ -442,27 +453,32 @@ function fans(){
                                 "</p>"+
                                 "<button class='privateChat'><a href=''>私信</a></button>"+
                                 "<button class='subscribeOrNot' onclick='addSubsc(this)' id='"+info.result.fans[i].userId+"' >加关注</button>"+
-                             "</div>"+
-                            "<div class='clear'></div>";
-                    }else{
-                        s+="<div class='clear'></div>"+
-                            "<div class='myfanContent1'>"+
-                            "<img src='"+info.result.fans[i].userPhoto+"'/>"+
-                            "<p>"+
-                            "<span>"+info.result.fans[i].userName+"</span><br/>"+
-                            "<span>"+info.result.fans[i].userWord+"</span><br/>"+
-                            "</p>"+
-                            "<button class='privateChat'><a href=''>私信</a></button>"+
-                            "<button class='subscribeOrNot'>已关注</button>"+
-                            "</div>"+
-                            "<div class='clear'></div>";
+                                "</div>"+
+                                "<div class='clear'></div>";
+                        }else{
+                            s+="<div class='clear'></div>"+
+                                "<div class='myfanContent1'>"+
+                                "<img src='"+info.result.fans[i].userPhoto+"'/>"+
+                                "<p>"+
+                                "<span>"+info.result.fans[i].userName+"</span><br/>"+
+                                "<span>"+info.result.fans[i].userWord+"</span><br/>"+
+                                "</p>"+
+                                "<button class='privateChat'><a href=''>私信</a></button>"+
+                                "<button class='subscribeOrNot'>已关注</button>"+
+                                "</div>"+
+                                "<div class='clear'></div>";
+                        }
+
                     }
 
+                    document.getElementsByClassName('fansNum')[0].innerHTML=numfans;
+                    document.getElementsByClassName('rightBottomMyfan')[0].innerHTML=s;
+                    console.log("粉丝连接成功");
+
+                }else{
+                    alert("用户没有登录");
                 }
 
-                document.getElementsByClassName('fansNum')[0].innerHTML=numfans;
-                document.getElementsByClassName('rightBottomMyfan')[0].innerHTML=s;
-                console.log("粉丝连接成功");
 
             }else{
                 console.log("发生错误"+xmlhttp.status);
@@ -491,7 +507,7 @@ function addSubsc(obj){
                 var info1 = JSON.parse(xhr.responseText);
                 console.log(info1);
                 // var info = xhr.responseText;
-                if (!info1){
+                if (!info1.errCode){
                     console.log("关注成功"+xhr.status);
                     fans();
                 }else{
@@ -515,7 +531,7 @@ function addSubsc(obj){
 }
 
 //我的预约start
-function myOrder(){
+/*function myOrder(){
     let xhr=new XMLHttpRequest();
     xhr.onreadystatechange=function(){
         if (xhr.readyState===4){
@@ -547,7 +563,7 @@ function myOrder(){
     }
     xhr.open('get','');
     xhr.send(null);
-}
+}*/
 //我的预约end
 
 
@@ -562,37 +578,43 @@ function contribute(){
     xmlhttp.onreadystatechange=function(){
         if(xmlhttp.readyState===4){
             if(xmlhttp.status>=200 && xmlhttp.status<300 ||xmlhttp.status===304){
-                var info=xmlhttp.responseText;
+                let info=xmlhttp.responseText;
 
-                let contriNum="";
-                //<span class="fansNum">粉丝(粉丝数)</span>
-                contriNum+="全部稿件（"+info.result.submissionCount+")";
+                if (info.errCode === 0) {
 
-                let s="";
-                for(let i=0;i<info.result.submissionCount;i++){
+                    let contriNum="";
+                    //<span class="fansNum">粉丝(粉丝数)</span>
+                    contriNum+="全部稿件（"+info.result.submissionCount+")";
+
+                    let s="";
+                    for(let i=0;i<info.result.submissionCount;i++){
 
 
-                    s+="<div class='clear'></div>"+
-                        "<div class='contributeContentAll'>"+
-                        "<img src='"+info.result.submissions[i].subPhoto+"'/>"+
-                        "<div class='box1_1'>"+
-                        "<span>"+info.result.submissions[i].subName+"</span><br />"+
-                        "<span>"+info.result.submissions[i].subTime+"</span><br />"+
-                        "<i class='iconfont icon-bofang'></i><span class='icon-viewSpan'>浏览"+info.result.submissions[i].subPageView+"</span>"+
-                         "<i class='iconfont icon-comments'></i><span class='icon-commentSpan' style='margin-left: 65px'>评论"+info.result.submissions[i].subComment+"</span>"+
-                         "<i class='iconfont icon-favoritesfilling'></i><span class='icon-collectSpan' style='margin-left: 60px'>收藏"+info.result.submissions[i].subCollection+"</span><br />"+
-                          "<p>"+
-                          "<button class='privateChat'><a href=''>编辑</a></button>"+
-                          "<button class='privateChat'><a href=''>删除</a></button>"+
-                          "</p>"+
-                          "</div></div>"+
-                         "<div class='clear'></div>";
+                        s+="<div class='clear'></div>"+
+                            "<div class='contributeContentAll'>"+
+                            "<img src='"+info.result.submissions[i].subPhoto+"'/>"+
+                            "<div class='box1_1'>"+
+                            "<span>"+info.result.submissions[i].subName+"</span><br />"+
+                            "<span>"+info.result.submissions[i].subTime+"</span><br />"+
+                            "<i class='iconfont icon-bofang'></i><span class='icon-viewSpan'>浏览"+info.result.submissions[i].subPageView+"</span>"+
+                            "<i class='iconfont icon-comments'></i><span class='icon-commentSpan' style='margin-left: 65px'>评论"+info.result.submissions[i].subComment+"</span>"+
+                            "<i class='iconfont icon-favoritesfilling'></i><span class='icon-collectSpan' style='margin-left: 60px'>收藏"+info.result.submissions[i].subCollection+"</span><br />"+
+                            "<p>"+
+                            "<button class='privateChat'><a href=''>编辑</a></button>"+
+                            "<button class='privateChat'><a href=''>删除</a></button>"+
+                            "</p>"+
+                            "</div></div>"+
+                            "<div class='clear'></div>";
 
+                    }
+
+                    document.getElementsByClassName('contriNum')[0].innerHTML=contriNum;
+                    document.getElementsByClassName('addContribute')[0].innerHTML=s;
+                    console.log("投稿连接成功");
+
+                }else{
+                    alert("用户没有登录");
                 }
-
-                document.getElementsByClassName('contriNum')[0].innerHTML=contriNum;
-                document.getElementsByClassName('addContribute')[0].innerHTML=s;
-                console.log("投稿连接成功");
 
             }else{
                 console.log("发生错误"+xmlhttp.status);

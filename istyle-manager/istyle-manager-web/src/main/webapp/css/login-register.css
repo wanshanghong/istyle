@@ -340,7 +340,7 @@
     border-radius: 8%;
 }
 .fastLogin .tabTop ul li.active, .fastRegister .tabTop ul li.active {
-    background: #FFFFFF;
+    background: lightblue;
     cursor: pointer;
 }
 .fastLogin .tabBottom{
@@ -359,3 +359,4 @@
 .fastLogin .tabBottom .tabBottomContent, .fastRegister .tabBottom .tabBottomContent{
     display: none;
 }
+
