@@ -53,9 +53,9 @@ function editor() {
 
                     let showInform = "";
                     alert("成功渲染");
-                    showInform += "<p><label for='nickname'>昵称：</label><input type='text' class='input' id='nickname' name='userName' placeholder='"+info.result.userName+"'/></p>" +
-                        "<p><label for='personalizedSignature'>我的签名：</label><input type='text' class='input' id='personalizedSignature' name='userWord' placeholder='"+info.result.userWord+"'/></p>" +
-                        "<p><label for='userage'>我的年龄：</label><input type='text' class='input' id='userage' name='userage' placeholder='"+info.result.userAge+"' /></p>" +
+                    showInform += "<p><label for='nickname'>昵称：</label><input type='text' class='input' id='nickname' name='userName' value='"+info.result.userName+"'/></p>" +
+                        "<p><label for='personalizedSignature'>我的签名：</label><input type='text' class='input' id='personalizedSignature' name='userWord' value='"+info.result.userWord+"'/></p>" +
+                        "<p><label for='userage'>我的年龄：</label><input type='text' class='input' id='userage' name='userage' value='"+info.result.userAge+"' /></p>" +
                         "<p>" +
                         "<span class=\"sex\">性别</span>"+
                         "<label for=\"man\">男</label><input  name=\"sex\" type=\"radio\"  id=\"man\" checked=\"checked\" value=\"男\"/>"+
@@ -578,7 +578,7 @@ function contribute(){
     xmlhttp.onreadystatechange=function(){
         if(xmlhttp.readyState===4){
             if(xmlhttp.status>=200 && xmlhttp.status<300 ||xmlhttp.status===304){
-                let info=xmlhttp.responseText;
+                let info=JSON.parse(xmlhttp.responseText);
 
                 if (info.errCode === 0) {
 
