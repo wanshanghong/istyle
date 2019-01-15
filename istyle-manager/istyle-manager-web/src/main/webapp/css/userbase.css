@@ -37,7 +37,6 @@
 .verticalNav .box2 ul li.active {
 	background: #888888;
 	cursor: pointer;
-
 }
 .verticalNav .box2 li{
 	width: 150px;
@@ -106,12 +105,23 @@
 	float: left;
 	margin-left: 270px;
 }
-
 .rightBottomInformation .addContent img{
 	display: inline-block;
 	width: 120px;
 	height: 120px;
 	border-radius: 50%;
+}
+.rightBottomInformation .updateContent p:first-child{
+	margin-top: 100px;
+}
+.rightBottomInformation .updateContent p{
+	width: 800px;
+}
+.rightBottomInformation .updateContent input:first-child,.rightBottomInformation .updateContent input:nth-child(2),.rightBottomInformation .updateContent input:nth-child(1){
+	width: 250px;
+}
+.rightBottomInformation .updateContent span{
+	margin-left: 50px;
 }
 .rightBottomInformation #editorBtn{
 	width: 12%;
