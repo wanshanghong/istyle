@@ -30,6 +30,8 @@ public class UserServiceImpl implements UserService {
     private TbStyHouseMapper tbStyHouseMapper;
     @Autowired
     private TbEvaluationMapper tbEvaluationMapper;
+    @Autowired
+    private TbStyHouseStylistMapper tbStyHouseStylistMapper;
 
     /**
      * 注册用户
@@ -284,7 +286,7 @@ public class UserServiceImpl implements UserService {
 
             }
             fans.put("fanCount", Collections.singletonList(fanCount));
-            fans.put("users", users);
+            fans.put("fans", users);
             fans.put("usersState", usersState);
 
             return fans;
@@ -349,6 +351,42 @@ public class UserServiceImpl implements UserService {
             return map;
         }else {
             throw new AppAuthException("在我的投稿展示时，发现用户id为空，操作错误。");
+        }
+    }
+
+    /**
+     * 用户浏览造型屋
+     * @param styHousePosition
+     * @return
+     */
+    @Override
+    public Map browseStyHouse(String styHousePosition) {
+        if (StringUtil.isNotEmpty(styHousePosition)) {
+            Map<String, List> map = new HashMap<>(16);
+            List<TbStyHouse> styHouses;
+            List<TbStylist> stylists = new ArrayList<>(4);
+
+            styHouses = tbStyHouseMapper.selectPhotoNameAddressPackageByPosition(styHousePosition);
+
+            // 遍历造型屋，获得每个造型屋的造型师
+            outer: for (int i = 0; i < styHouses.size(); i++) {
+                List<Long> stylistId = tbStyHouseStylistMapper.selectStylistIdByStyHouseId(styHouses.get(i).getStyHouseId());
+                //遍历造型师，获得每个造型师的数据
+                for (int j = 0; j < stylistId.size(); j++) {
+                    stylists = tbStylistMapper.selectPhotoAndNameById(stylistId.get(j));
+                    // 如果容器多于4个，就跳出外循环
+                    if (stylists.size() > 4) {
+                        break outer;
+                    }
+                }
+            }
+
+            map.put("styHouses", styHouses);
+            map.put("stylists", stylists);
+
+            return map;
+        } else {
+            throw new AppAuthException("造型屋地址为空。");
         }
     }
 }

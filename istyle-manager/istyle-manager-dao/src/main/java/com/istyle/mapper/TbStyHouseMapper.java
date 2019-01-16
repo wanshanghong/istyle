@@ -55,4 +55,11 @@ public interface TbStyHouseMapper {
      * @return styHouseName
      */
     String selectStyHouseNameById(Long id);
+
+    /**
+     * 根据地质查询造型屋头像、名称、简介
+     * @param styHousePosition
+     * @return styHouse
+     */
+    List<TbStyHouse> selectPhotoNameAddressPackageByPosition(String styHousePosition);
 }

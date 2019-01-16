@@ -66,4 +66,11 @@
         from tb_stylist
         where stylistId = #{stylistId};
     </select>
+
+    <select id="selectPhotoAndNameById" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStylist">
+        select stylistPhoto, stylistName
+        from tb_stylist
+        where stylistId = #{stylistId}
+        limit 0,4;
+    </select>
 </mapper>

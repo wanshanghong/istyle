@@ -79,7 +79,7 @@ public class UserHomePage {
      * @return Response
      */
     @ResponseBody
-    @RequestMapping(value="/foller", method= RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+    @RequestMapping(value="/attention", method= RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     public Response userfollowPage(@RequestBody Map<String, String> request) {
         TbUser user = JWT.unsign(request.get("stoken"), TbUser.class);
         Map param = userService.selectAttentionsById(user);
