@@ -169,7 +169,7 @@ var slideBox = $(".slideBox");
 
 });
 
-
+//跳转用户主页
 function locationInformation(){
     let xhr=new XMLHttpRequest();
 
@@ -177,7 +177,7 @@ function locationInformation(){
         if (xhr.readyState===4){
             if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
 
-                var info = JSON.parse(xhr.responseText);
+                let info = JSON.parse(xhr.responseText);
 
                 if (info.errCode === 0) {
 
@@ -197,5 +197,49 @@ function locationInformation(){
     console.log(data);
     let obj={"stoken":data};
     xhr.send(JSON.stringify(obj));
-
 }
+//跳转造型屋
+function locationSalon(){
+    let xhr=new XMLHttpRequest();
+
+    xhr.onreadystatechange=function(){
+        if (xhr.readyState===4){
+            if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
+                /* 地址三级联动的取值*/
+                let pro = document.getElementById('cmbProvince'); //定位id
+                let index1 = pro.selectedIndex; // 选中索引
+                let text1 = pro.options[index1].text; // 选中文本
+                let value1 = pro.options[index1].value; // 选中值
+
+                let city = document.getElementById('cmbCity'); //定位id
+                let index2 = city.selectedIndex; // 选中索引
+                let text2 = city.options[index2].text; // 选中文本
+                let value2 = city.options[index2].value; // 选中值
+
+                let area = document.getElementById('cmbArea'); //定位id
+                let index3 = area.selectedIndex; // 选中索引
+                let text3 = area.options[index3].text; // 选中文本
+                let value3 = area.options[index3].value; // 选中值
+
+                let styHousePosition=value1+value2+value3;
+                let info = JSON.parse(xhr.responseText);
+                if (info.error_code === 0) {
+                    window.location.href = "/html/salonIndex.html";
+                    alert("跳转成功");
+                }else{
+                    alert("用户没有登录");
+                }
+            }else {
+                alert("发生错误"+xhr.status);
+            }
+        }
+    }
+    xhr.open('post','/userBrowse/styHouseIndex');
+    xhr.setRequestHeader("Content-Type","application/json");
+    let obj={"stoken":getCookie('stoken'),"styHousePosition":styHousePosition};
+    xhr.send(JSON.stringify(obj));
+    console.log(JSON.stringify(obj));
+}
+window.onload=function(){
+  lodingUsername();
+};

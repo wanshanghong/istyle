@@ -16,14 +16,14 @@
 <div class="top">
 	<div class="main">
 		<div class="topheader">
+			<div class="logo">
+				<img src="/img/logo1.png"/>
+			</div>
 			<div class="top-left">
-<!--				<div class="logo">
-					<img src=""/>
-				</div>-->
 				<a href=""><i class="home"></i>首页</a>
 				<a href="">发型设计</a>
 				<a href="">流行造型</a>
-				<a href="">造型屋</a>
+				<a href="" onclick="locationSalon()">造型屋</a>
 				<a href="">测评</a>
 			</div>
 			<div class="top-right user" >
@@ -43,10 +43,8 @@
 				<div class="main-nav">
 					<ul>
 						<!-- inser more links here -->
-						<div id="beforeLoin">
-							<li class=""><a class="cd-signin" href="javascript:void(0)">登录</a></li>
-							<li class=""><a class="cd-signup" href="javascript:void(0)">注册</a></li>
-						</div>
+						<li class="beforeLoin"><a class="cd-signin" href="javascript:void(0)">登录</a></li>
+						<li class="beforeLoin"><a class="cd-signup" href="javascript:void(0)">注册</a></li>
 						<li class="afterLogin" style="color: #FFF;"></li>
 					</ul>
 				</div>
@@ -386,7 +384,16 @@
 	
 </div>
 
-
+<a href="#" class="return" style="
+        position: fixed;
+        width: 30px;
+        height:80px;
+        top: 250px;
+        left:50px;
+        z-index: 5000;
+    ">
+	<img src="/img/return.gif" alt=""/>
+</a>
 
 <div class="footer2">
 	<div class="footer-row1">
@@ -414,5 +421,6 @@
 <script src="/js/login-register.js"></script>
 <script src="/js/userIndex.js"></script>
 <script src="/js/base.js"></script>
+<script src="/js/index.js"></script>
 </body>
 </html>

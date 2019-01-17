@@ -358,6 +358,7 @@ function login1(){
             if(data.errCode===0){
                 console.log("succ");
                 setCookie('stoken',data.result.stoken);
+                setCookie('username',username.value);
                 alert("登录成功");
                 /*console.log(getCookie('stoken'));*/
                 locationUserHome();
@@ -382,12 +383,9 @@ document.getElementById("loginbtn").onclick = function(){
                 if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
                     var info = JSON.parse(xhr.responseText);
                     if (info.errCode === 0) {
+                        lodingUsername();
                         window.location.href = "/html/index.html";
                         alert("跳转首页成功");
-                        let hidden=document.getElementById('beforeLogin');
-                        hidden.style.display="none";
-                        let appear=document.getElementsByClassName('afterLogin')[0];
-                        appear.innerHTML="欢迎"+info.result.userName+"登录istyle";
 /*                      document.getElementsByClassName('beforeLogin')[0].style.display='none';
                         document.getElementsByClassName('afterLogin')[0].innerHTML="欢迎"+info.result.userName+"登录istyle";*/
                     }else{

@@ -24,7 +24,31 @@ function getCookie(name) {
         }
 }
 
-
+//登录后刷新用户信息
+function lodingUsername() {
+    let xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+        if (xhr.readyState===4){
+            if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
+                let info = JSON.parse(xhr.responseText);
+                if (info.errCode === 0) {
+                    let username=getCookie('username');
+                    document.getElementsByClassName('beforeLogin')[0].style.display='none';
+                    document.getElementsByClassName('afterLogin')[0].innerHTML="欢迎"+username+"登录istyle";
+                }
+            }else {
+                alert("发生错误"+xhr.status);
+                console.error(xhr.responseText);
+            }
+        }
+    }
+    xhr.open('post','/userLogin');
+    xhr.setRequestHeader("Content-Type","application/json");
+    let data=getCookie('stoken');
+    console.log(data);
+    let obj={"stoken":data};
+    xhr.send(JSON.stringify(obj));
+}
 
 //我的主页跳转
 function home(){
