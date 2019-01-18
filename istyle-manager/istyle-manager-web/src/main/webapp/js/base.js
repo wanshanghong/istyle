@@ -8,7 +8,11 @@ function getCookie(name) {
         //在cookie中查找cookieName的位置保存在i中
         let i=cookie.indexOf(name);
         //如果i等于-1,就返回null
-        if(i==-1){return null}
+        if(i==-1){
+            let username=getCookie('username');
+            document.getElementsByClassName('beforeLogin')[0].style.display='none';
+            document.getElementsByClassName('afterLogin')[0].innerHTML="欢迎"+username+"登录istyle";
+        }
         else{//否则
             //i+name的长度+1,保存在变量starti中
             let starti=i+name.length+1;
@@ -25,15 +29,13 @@ function getCookie(name) {
 }
 
 //登录后刷新用户信息
-function lodingUsername() {
+/*function lodingUsername() {
     if(getCookie('stoken')){
         console.log("用户还没登录");
     }else{
-        let username=getCookie('username');
-        document.getElementsByClassName('beforeLogin')[0].style.display='none';
-        document.getElementsByClassName('afterLogin')[0].innerHTML="欢迎"+username+"登录istyle";
+
     }
-}
+}*/
 
 //我的主页跳转
 function home(){
