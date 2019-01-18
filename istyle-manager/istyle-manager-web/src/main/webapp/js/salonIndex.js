@@ -65,6 +65,5 @@ function selesctAddress(){
         console.log(JSON.stringify(obj));
 }
 window.onload=function () {
-    lodingUsername();
     selesctAddress();
 };
