@@ -240,4 +240,6 @@ function locationSalon(){
     xhr.send(JSON.stringify(obj));
     console.log(JSON.stringify(obj));
 }
-
+window.onload=function(){
+  getCookie('stoken');
+};
