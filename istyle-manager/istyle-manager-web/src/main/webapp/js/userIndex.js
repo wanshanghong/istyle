@@ -651,7 +651,6 @@ console.log(collectBtn);*/
 
 
 window.onload=function(){
-    lodingUsername();
     showInformation();
    /* let collectBtn=document.getElementById('collectBtn');
     collectBtn.addEventListener('click',collect,false);*/
