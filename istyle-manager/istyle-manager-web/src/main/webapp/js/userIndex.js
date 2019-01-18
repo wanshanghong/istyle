@@ -651,6 +651,7 @@ console.log(collectBtn);*/
 
 
 window.onload=function(){
+    getCookie('stoken');
     showInformation();
    /* let collectBtn=document.getElementById('collectBtn');
     collectBtn.addEventListener('click',collect,false);*/
