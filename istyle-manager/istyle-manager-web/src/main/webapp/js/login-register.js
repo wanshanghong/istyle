@@ -380,10 +380,9 @@ document.getElementById("loginbtn").onclick = function(){
         let xhr=new XMLHttpRequest();
         xhr.onreadystatechange=function(){
             if (xhr.readyState===4){
-                if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
-                    var info = JSON.parse(xhr.responseText);
-                    if (info.errCode === 0) {
-                        lodingUsername();
+                        if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
+                            let info = JSON.parse(xhr.responseText);
+                            if (info.errCode === 0) {
                         window.location.href = "/html/index.html";
                         alert("跳转首页成功");
 /*                      document.getElementsByClassName('beforeLogin')[0].style.display='none';
