@@ -14,7 +14,8 @@ function getCookie(name) {
         else{//否则
             //i+name的长度+1,保存在变量starti中
             let username=getCookie2('username');
-            document.getElementsByClassName('beforeLogin')[0].style.display='none';
+            let hidden=document.getElementsByClassName('beforeLogin')[0];
+            hidden.style.display="none";
             document.getElementsByClassName('afterLogin')[0].innerHTML="欢迎"+username+"登录istyle";
             let starti=i+name.length+1;
             //从starti开始查找cookie中下一个;的位置endi
