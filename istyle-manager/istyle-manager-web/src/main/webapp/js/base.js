@@ -9,12 +9,13 @@ function getCookie(name) {
         let i=cookie.indexOf(name);
         //如果i等于-1,就返回null
         if(i==-1){
-            let username=getCookie('username');
-            document.getElementsByClassName('beforeLogin')[0].style.display='none';
-            document.getElementsByClassName('afterLogin')[0].innerHTML="欢迎"+username+"登录istyle";
+            console.log("用户还没登录");
         }
         else{//否则
             //i+name的长度+1,保存在变量starti中
+            let username=getCookie('username');
+            document.getElementsByClassName('beforeLogin')[0].style.display='none';
+            document.getElementsByClassName('afterLogin')[0].innerHTML="欢迎"+username+"登录istyle";
             let starti=i+name.length+1;
             //从starti开始查找cookie中下一个;的位置endi
             let endi=cookie.indexOf(";",starti);
