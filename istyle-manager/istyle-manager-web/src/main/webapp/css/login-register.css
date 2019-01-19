@@ -6,9 +6,10 @@
 .afterLogin{
     float: right;
     /*  margin-right: 5%;*/
-    width: 100px;
+    width: 200px;
     height: 19px;
     cursor: pointer;
+
 }
 .main-nav {
 	
