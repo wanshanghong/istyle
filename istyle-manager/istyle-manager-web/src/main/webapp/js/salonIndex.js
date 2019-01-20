@@ -24,7 +24,7 @@ function selesctAddress(){
                 if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
                     let info = JSON.parse(xhr.responseText);
                     // var info = xhr.responseText;
-                    if (info.error_code === 0){
+                    if (info.errCode === 0){
                         console.log("成功"+xhr.status);
                         let salonBox="";
                         for (let i=0;i<info.result.styHouses.length;i++){
@@ -58,7 +58,7 @@ function selesctAddress(){
                 }
             }
         }
-        xhr.open('post','/userBrowse/styHouseIndex');
+        xhr.open('post','/userBrowse/styHouse');
         xhr.setRequestHeader("Content-Type","application/json");
         let obj={"stoken":getCookie('stoken'),"styHousePosition":styHousePosition};
         xhr.send(JSON.stringify(obj));
