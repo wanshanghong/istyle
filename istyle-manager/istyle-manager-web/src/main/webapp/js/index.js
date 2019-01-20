@@ -180,7 +180,6 @@ function locationInformation(){
                 let info = JSON.parse(xhr.responseText);
 
                 if (info.errCode === 0) {
-                    showInformation();
                     window.location.href = "/html/userIndex.html";
                     alert("跳转成功");
                 }else{
@@ -223,7 +222,7 @@ function locationSalon(){
         if (xhr.readyState===4){
             if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
                 let info = JSON.parse(xhr.responseText);
-                if (info.error_code === 0) {
+                if (info.errCode === 0) {
                     window.location.href = "/html/salonIndex.html";
                     alert("跳转成功");
                 }else{
@@ -234,7 +233,7 @@ function locationSalon(){
             }
         }
     }
-    xhr.open('post','/userBrowse/styHouseIndex');
+    xhr.open('post','/userBrowse/styHouse');
     xhr.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken'),"styHousePosition":styHousePosition};
     xhr.send(JSON.stringify(obj));
