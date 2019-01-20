@@ -180,7 +180,7 @@ function locationInformation(){
                 let info = JSON.parse(xhr.responseText);
 
                 if (info.errCode === 0) {
-
+                    showInformation();
                     window.location.href = "/html/userIndex.html";
                     alert("跳转成功");
                 }else{
@@ -200,28 +200,28 @@ function locationInformation(){
 }
 //跳转造型屋
 function locationSalon(){
-    let xhr=new XMLHttpRequest();
+    /* 地址三级联动的取值*/
+    let pro = document.getElementById('cmbProvince'); //定位id
+    let index1 = pro.selectedIndex; // 选中索引
+    let text1 = pro.options[index1].text; // 选中文本
+    let value1 = pro.options[index1].value; // 选中值
 
+    let city = document.getElementById('cmbCity'); //定位id
+    let index2 = city.selectedIndex; // 选中索引
+    let text2 = city.options[index2].text; // 选中文本
+    let value2 = city.options[index2].value; // 选中值
+
+    let area = document.getElementById('cmbArea'); //定位id
+    let index3 = area.selectedIndex; // 选中索引
+    let text3 = area.options[index3].text; // 选中文本
+    let value3 = area.options[index3].value; // 选中值
+
+    let styHousePosition=value1+value2+value3;
+
+    let xhr=new XMLHttpRequest();
     xhr.onreadystatechange=function(){
         if (xhr.readyState===4){
             if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
-                /* 地址三级联动的取值*/
-                let pro = document.getElementById('cmbProvince'); //定位id
-                let index1 = pro.selectedIndex; // 选中索引
-                let text1 = pro.options[index1].text; // 选中文本
-                let value1 = pro.options[index1].value; // 选中值
-
-                let city = document.getElementById('cmbCity'); //定位id
-                let index2 = city.selectedIndex; // 选中索引
-                let text2 = city.options[index2].text; // 选中文本
-                let value2 = city.options[index2].value; // 选中值
-
-                let area = document.getElementById('cmbArea'); //定位id
-                let index3 = area.selectedIndex; // 选中索引
-                let text3 = area.options[index3].text; // 选中文本
-                let value3 = area.options[index3].value; // 选中值
-
-                let styHousePosition=value1+value2+value3;
                 let info = JSON.parse(xhr.responseText);
                 if (info.error_code === 0) {
                     window.location.href = "/html/salonIndex.html";

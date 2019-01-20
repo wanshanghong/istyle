@@ -97,7 +97,6 @@ function success(){
 //我的信息展示
 function showInformation(){
         let xhr=new XMLHttpRequest();
-
         xhr.onreadystatechange=function(){
             if (xhr.readyState===4){
                 if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
@@ -127,9 +126,7 @@ function showInformation(){
         }
         xhr.open('post','/userHome/index');
         xhr.setRequestHeader("Content-Type","application/json");
-        let data=getCookie('stoken');
-        console.log(data);
-        let obj={"stoken":data};
+        let obj={"stoken":getCookie('stoken')};
         xhr.send(JSON.stringify(obj));
 
 }
@@ -653,6 +650,7 @@ console.log(collectBtn);*/
 window.onload=function(){
     showInformation();
     getCookie('stoken');
+    showInformation();
    /* let collectBtn=document.getElementById('collectBtn');
     collectBtn.addEventListener('click',collect,false);*/
 //collectBtn.removeEventListener('click',collect,false); 这个false是阻止冒泡的意思
