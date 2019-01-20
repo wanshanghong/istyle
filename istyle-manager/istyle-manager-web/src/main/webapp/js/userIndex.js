@@ -100,13 +100,10 @@ function showInformation(){
         xhr.onreadystatechange=function(){
             if (xhr.readyState===4){
                 if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
-
                     var info = JSON.parse(xhr.responseText);
-
                     if (info.errCode === 0) {
-
                         let showInform = "";
-                        alert("成功展示");
+                        console.log("成功展示");
                         showInform += "<p><img src='" + info.result.userPhoto + "'></p><div class=\"clear\"></div>" +
                             "<p><span class=\"nickname\">昵称：" + info.result.userName + "</span></p><div class=\"clear\"></div>" +
                             "<p><span class=\"personalizedSignature\">我的签名：" + info.result.userWord + "</span></p><div class=\"clear\"></div>" +
@@ -124,11 +121,11 @@ function showInformation(){
                 }
             }
         }
+        console.log("2");
         xhr.open('post','/userHome/index');
         xhr.setRequestHeader("Content-Type","application/json");
         let obj={"stoken":getCookie('stoken')};
         xhr.send(JSON.stringify(obj));
-
 }
 //我的信息编辑
 function information(){
@@ -649,10 +646,9 @@ console.log(collectBtn);*/
 
 window.onload=function(){
     showInformation();
-    getCookie('stoken');
-    showInformation();
-   /* let collectBtn=document.getElementById('collectBtn');
-    collectBtn.addEventListener('click',collect,false);*/
+
+    /* let collectBtn=document.getElementById('collectBtn');
+     collectBtn.addEventListener('click',collect,false);*/
 //collectBtn.removeEventListener('click',collect,false); 这个false是阻止冒泡的意思
 
 
