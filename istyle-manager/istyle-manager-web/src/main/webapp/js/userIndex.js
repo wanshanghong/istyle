@@ -646,7 +646,6 @@ console.log(collectBtn);*/
 
 window.onload=function(){
     showInformation();
-
     /* let collectBtn=document.getElementById('collectBtn');
      collectBtn.addEventListener('click',collect,false);*/
 //collectBtn.removeEventListener('click',collect,false); 这个false是阻止冒泡的意思
