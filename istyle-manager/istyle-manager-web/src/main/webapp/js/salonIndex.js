@@ -40,7 +40,7 @@ function selesctAddress(){
                         }
                         let stylistBox="";
                         for(let i=0;i<info.result.stylists.length;i++){
-                            stylistBox+="<div class=\"box2\" style=\"width: 120px; height: 120px;background:url('/img/stylistBackground.png') center;\">"+
+                            stylistBox+="<div class=\"box2\" style=\"width: 120px; height: 120px;background:url('../img/stylistBackground.png') center;\">"+
                                         "<img src='"+info.result.stylists[i].stylistPhoto+"'/>"  +
                                         "<div class=\"box2_2\">"+
                                         "<span><b>"+info.result.stylists[i].stylistName+"</b></span>"+
@@ -65,6 +65,6 @@ function selesctAddress(){
         console.log(JSON.stringify(obj));
 }
 window.onload=function () {
-    
-    getCookie('stoken');
+    selesctAddress();
+    /*getCookie('stoken');*/
 };
