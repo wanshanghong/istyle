@@ -53,4 +53,10 @@
         from tb_styHouse
         where styHousePosition = #{styHousePosition};
     </select>
+
+    <select id="selectNamePhotoPackagePhoneTimeWordByStyHouseId" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStyHouse">
+        select styHouseName, styHousePhoto, styHouseAddress, styHousePackage, styHousePhone, styHouseWorkTime, styHouseWord
+        from tb_styHouse
+        where styHouseId = #{styHouseId};
+    </select>
 </mapper>

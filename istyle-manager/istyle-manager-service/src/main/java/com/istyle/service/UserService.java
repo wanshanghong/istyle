@@ -84,11 +84,4 @@ public interface UserService {
      * @return Map
      */
     Map mySubmission(TbUser user);
-
-    /**
-     * 用户浏览造型屋
-     * @param styHousePosition
-     * @return
-     */
-    Map browseStyHouse(String styHousePosition);
 }

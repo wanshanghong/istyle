@@ -32,8 +32,8 @@ public interface StylistService {
 
     /**
      * 查询造型师信息数据并返回
-     * @param stylist id
+     * @param stylistId id
      * @return stylist 造型师数据
      */
-    TbStylist selectStylistById(TbStylist stylist);
+    TbStylist selectStylistById(Long stylistId);
 }

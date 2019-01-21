@@ -135,7 +135,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public TbUser selectUserByUserId(TbUser user) {
         long id = user.getUserId();
-        TbUser tbUser = null;
+        TbUser tbUser;
 
         if (StringUtil.isNotEmpty(CastUtil.castString(id))) {
             tbUser = tbUserMapper.selectUserById(id);
@@ -354,39 +354,5 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    /**
-     * 用户浏览造型屋
-     * @param styHousePosition
-     * @return
-     */
-    @Override
-    public Map browseStyHouse(String styHousePosition) {
-        if (StringUtil.isNotEmpty(styHousePosition)) {
-            Map<String, List> map = new HashMap<>(16);
-            List<TbStyHouse> styHouses;
-            List<TbStylist> stylists = new ArrayList<>(4);
 
-            styHouses = tbStyHouseMapper.selectPhotoNameAddressPackageByPosition(styHousePosition);
-
-            // 遍历造型屋，获得每个造型屋的造型师
-            outer: for (int i = 0; i < styHouses.size(); i++) {
-                List<Long> stylistId = tbStyHouseStylistMapper.selectStylistIdByStyHouseId(styHouses.get(i).getStyHouseId());
-                //遍历造型师，获得每个造型师的数据
-                for (int j = 0; j < stylistId.size(); j++) {
-                    stylists = tbStylistMapper.selectPhotoAndNameById(stylistId.get(j));
-                    // 如果容器多于4个，就跳出外循环
-                    if (stylists.size() > 4) {
-                        break outer;
-                    }
-                }
-            }
-
-            map.put("styHouses", styHouses);
-            map.put("stylists", stylists);
-
-            return map;
-        } else {
-            throw new AppAuthException("造型屋地址为空。");
-        }
-    }
 }

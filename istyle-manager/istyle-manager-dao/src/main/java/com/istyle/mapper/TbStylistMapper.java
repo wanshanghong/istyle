@@ -62,7 +62,7 @@ public interface TbStylistMapper {
      * @param stylistId id
      * @return stylist
      */
-    TbStylist selectStylistById(long stylistId);
+    TbStylist selectStylistById(Long stylistId);
 
     /**
      * 根据id查找昵称

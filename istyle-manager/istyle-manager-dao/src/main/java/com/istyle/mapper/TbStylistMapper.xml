@@ -56,9 +56,9 @@
 
     <!--根据id查询数据-->
     <select id="selectStylistById" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStylist">
-        select stylistPhoto, seylistName, stylistWord, stylistIntroduction, stylistAdvisory
+        select stylistPhoto, stylistName, stylistWord, stylistIntroduction, stylistAdvisory
         from tb_stylist
-        where stylistId = {stylistId};
+        where stylistId = #{stylistId};
     </select>
 
     <select id="selectStylistNameById" parameterType="java.lang.Long" resultType="java.lang.String">

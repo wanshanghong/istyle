@@ -118,16 +118,15 @@ public class StylistServiceImpl implements StylistService {
 
     /**
      * 查询造型师信息数据并返回
-     * @param stylist id
+     * @param stylistId id
      * @return stylist 造型师数据
      */
     @Override
-    public TbStylist selectStylistById(TbStylist stylist) {
-        long id = stylist.getStylistId();
-        TbStylist tbStylist = null;
+    public TbStylist selectStylistById(Long stylistId) {
+        TbStylist tbStylist;
 
-        if (StringUtil.isNotEmpty(CastUtil.castString(id))) {
-            tbStylist = tbStylistMapper.selectStylistById(id);
+        if (StringUtil.isNotEmpty(CastUtil.castString(stylistId))) {
+            tbStylist = tbStylistMapper.selectStylistById(stylistId);
         }
         else {
             throw new AppAuthException("在我的信息展示时，发现造型师id为空，操作错误。");
