@@ -237,5 +237,5 @@ function locationSalon(){
     console.log(JSON.stringify(obj));
 }
 window.onload=function(){
-  getCookie('stoken');
+  let a=getCookie('stoken');
 };
