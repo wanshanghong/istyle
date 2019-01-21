@@ -146,4 +146,33 @@ public class UserBrowseServiceImpl implements UserBrowseService {
             throw new AppAuthException("造型师Id为空。");
         }
     }
+
+    /**
+     * 用户关注造型师
+     * @param userId
+     * @param stylistId
+     */
+    @Override
+    public void addAttention(Long userId, Long stylistId) {
+        TbUserStylist tbUserStylist = new TbUserStylist();
+        Integer flag;
+
+        tbUserStylist.setUserId(userId);
+        tbUserStylist.setStylistId(stylistId);
+
+        flag = tbUserStylistMapper.selectStatusByUserIdAndStylistId(tbUserStylist);
+
+        if (flag == null) {
+            tbUserStylistMapper.insertStatusByUserIdAndStylistId(tbUserStylist);
+        } else if (flag == 0){
+            throw new AppAuthException("该造型师已关注。");
+        } else {
+            tbUserStylistMapper.updateStatusByUserIdAndStylistId(tbUserStylist);
+        }
+
+        flag = tbUserStylistMapper.selectStatusByUserIdAndStylistId(tbUserStylist);
+        if (flag == null || flag == 1) {
+            throw new AppAuthException("关注失败。");
+        }
+    }
 }

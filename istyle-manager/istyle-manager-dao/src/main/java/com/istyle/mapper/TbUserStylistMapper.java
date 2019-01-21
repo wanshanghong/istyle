@@ -14,4 +14,16 @@ public interface TbUserStylistMapper {
      * @return
      */
     Integer selectStatusByUserIdAndStylistId(TbUserStylist tbUserStylist);
+
+    /**
+     * 修改关注状态
+     * @param tbUserStylist
+     */
+    void updateStatusByUserIdAndStylistId(TbUserStylist tbUserStylist);
+
+    /**
+     * 插入关注状态
+     * @param tbUserStylist
+     */
+    void insertStatusByUserIdAndStylistId(TbUserStylist tbUserStylist);
 }

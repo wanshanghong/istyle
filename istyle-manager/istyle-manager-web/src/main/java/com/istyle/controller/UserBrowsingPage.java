@@ -69,6 +69,21 @@ public class UserBrowsingPage {
     }
 
     /**
+     * 关注造型师
+     * @param stylistId
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/stylist/{stylistId}/addAttention", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+    public Response stylistAddAttention(@PathVariable("stylistId") Long stylistId, @RequestBody Map<String, String> request) {
+        TbUser tbUser = JWT.unsign(request.get("stoken"), TbUser.class);
+        Long userId = tbUser.getUserId();
+
+        userBrowseService.addAttention(userId, stylistId);
+        return Response.ok();
+    }
+
+    /**
      * 造型师粉丝的展示界面
      * @param stylistId
      * @return

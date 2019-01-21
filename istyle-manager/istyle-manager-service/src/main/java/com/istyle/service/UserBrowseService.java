@@ -38,4 +38,11 @@ public interface UserBrowseService {
      * @return
      */
     Map showStylistFans(Long stylistId);
+
+    /**
+     * 用户关注造型师
+     * @param userId
+     * @param stylistId
+     */
+    void addAttention(Long userId, Long stylistId);
 }

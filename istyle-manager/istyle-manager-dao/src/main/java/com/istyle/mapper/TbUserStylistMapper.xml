@@ -6,4 +6,16 @@
         from tb_user_stylist
         where userId = #{userId} and stylistId = #{stylistId};
     </select>
+
+    <update id="updateStatusByUserIdAndStylistId" parameterType="com.istyle.pojo.TbUserStylist">
+        update tb_user_stylist
+        set status = 0
+        where userId = #{userId} and stylistId = #{stylistId};
+    </update>
+
+    <insert id="insertStatusByUserIdAndStylistId" parameterType="com.istyle.pojo.TbUserStylist">
+        insert into
+        tb_user_stylist(userId, stylistId, status)
+        values (#{userId}, #{stylistId}, 0);
+    </insert>
 </mapper>
