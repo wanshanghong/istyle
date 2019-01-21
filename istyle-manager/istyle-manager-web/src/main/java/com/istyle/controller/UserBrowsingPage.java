@@ -1,9 +1,11 @@
 package com.istyle.controller;
 
 import com.istyle.pojo.TbStylist;
+import com.istyle.pojo.TbUser;
 import com.istyle.service.StylistService;
 import com.istyle.service.UserBrowseService;
 import com.istyle.service.UserService;
+import com.util.JWT;
 import com.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -58,8 +60,11 @@ public class UserBrowsingPage {
      */
     @ResponseBody
     @RequestMapping(value = "/stylist/{stylistId}", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
-    public Response stylistHomePage(@PathVariable("stylistId") Long stylistId) {
-        TbStylist param = userBrowseService.selectStylistById(stylistId);
+    public Response stylistHomePage(@PathVariable("stylistId") Long stylistId, @RequestBody Map<String, String> request) {
+        TbUser tbUser = JWT.unsign(request.get("stoken"), TbUser.class);
+        Long userId = tbUser.getUserId();
+
+        Map param = userBrowseService.selectStylistById(userId, stylistId);
         return Response.ok(param);
     }
 

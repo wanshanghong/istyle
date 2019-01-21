@@ -26,10 +26,11 @@ public interface UserBrowseService {
 
     /**
      * 造型师展示
-     * @param stylistId id
+     * @param userId 用户id
+     * @param stylistId 造型师id
      * @return stylist 造型师数据
      */
-    TbStylist selectStylistById(Long stylistId);
+    Map selectStylistById(Long userId, Long stylistId);
 
     /**
      * 展示造型师粉丝

@@ -1,14 +1,8 @@
 package com.istyle.service.impl;
 
 import com.exception.AppAuthException;
-import com.istyle.mapper.TbStyHouseMapper;
-import com.istyle.mapper.TbStyHousePackageMapper;
-import com.istyle.mapper.TbStyHouseStylistMapper;
-import com.istyle.mapper.TbStylistMapper;
-import com.istyle.pojo.TbStyHouse;
-import com.istyle.pojo.TbStyHousePackage;
-import com.istyle.pojo.TbStylist;
-import com.istyle.pojo.TbUser;
+import com.istyle.mapper.*;
+import com.istyle.pojo.*;
 import com.istyle.service.UserBrowseService;
 import com.util.CastUtil;
 import com.util.StringUtil;
@@ -32,6 +26,8 @@ public class UserBrowseServiceImpl implements UserBrowseService {
     private TbStylistMapper tbStylistMapper;
     @Autowired
     private TbStyHousePackageMapper tbStyHousePackageMapper;
+    @Autowired
+    private TbUserStylistMapper tbUserStylistMapper;
 
     /**
      * 用户浏览造型屋
@@ -99,21 +95,36 @@ public class UserBrowseServiceImpl implements UserBrowseService {
      * @return stylist 造型师数据
      */
     @Override
-    public TbStylist selectStylistById(Long stylistId) {
-        TbStylist tbStylist;
-
+    public Map<String, List> selectStylistById(Long userId, Long stylistId) {
         if (StringUtil.isNotEmpty(CastUtil.castString(stylistId))) {
+            Map<String, List> map = new HashMap<>(16);
+            TbStylist tbStylist;
+            // 该变量判断是否用户是否关注造型师，0为已经关注，1为没关注
+            Integer isAttention;
+            TbUserStylist tbUserStylist = new TbUserStylist();
+            tbUserStylist.setUserId(userId);
+            tbUserStylist.setStylistId(stylistId);
+
             tbStylist = tbStylistMapper.selectStylistById(stylistId);
+            isAttention = tbUserStylistMapper.selectStatusByUserIdAndStylistId(tbUserStylist);
+
+            if (isAttention == null) {
+                isAttention = 1;
+                map.put("isAttention", Collections.singletonList(isAttention));
+            } else {
+                map.put("isAttention", Collections.singletonList(isAttention));
+            }
+            map.put("tbStylist", Collections.singletonList(tbStylist));
+
+            return map;
         }
         else {
             throw new AppAuthException("在我的信息展示时，发现造型师id为空，操作错误。");
         }
-
-        return tbStylist;
     }
 
     /**
-     * 造型师展示
+     * 展示造型师粉丝
      * @param stylistId
      * @return
      */
