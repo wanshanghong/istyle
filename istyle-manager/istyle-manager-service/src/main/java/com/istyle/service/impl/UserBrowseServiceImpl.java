@@ -8,7 +8,9 @@ import com.istyle.mapper.TbStylistMapper;
 import com.istyle.pojo.TbStyHouse;
 import com.istyle.pojo.TbStyHousePackage;
 import com.istyle.pojo.TbStylist;
+import com.istyle.pojo.TbUser;
 import com.istyle.service.UserBrowseService;
+import com.util.CastUtil;
 import com.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -74,7 +76,6 @@ public class UserBrowseServiceImpl implements UserBrowseService {
      */
     @Override
     public Map showStyHouse(Long styHouseId) {
-        System.out.println(styHouseId);
         if (StringUtil.isNotEmpty(styHouseId.toString())) {
             Map<String, List> map = new HashMap<>(16);
             TbStyHouse styHouse;
@@ -89,6 +90,49 @@ public class UserBrowseServiceImpl implements UserBrowseService {
             return map;
         } else {
             throw new AppAuthException("造型屋Id为空。");
+        }
+    }
+
+    /**
+     * 造型师展示
+     * @param stylistId id
+     * @return stylist 造型师数据
+     */
+    @Override
+    public TbStylist selectStylistById(Long stylistId) {
+        TbStylist tbStylist;
+
+        if (StringUtil.isNotEmpty(CastUtil.castString(stylistId))) {
+            tbStylist = tbStylistMapper.selectStylistById(stylistId);
+        }
+        else {
+            throw new AppAuthException("在我的信息展示时，发现造型师id为空，操作错误。");
+        }
+
+        return tbStylist;
+    }
+
+    /**
+     * 造型师展示
+     * @param stylistId
+     * @return
+     */
+    @Override
+    public Map showStylistFans(Long stylistId) {
+        if (StringUtil.isNotEmpty(stylistId.toString())) {
+            Map<String, List> map = new HashMap<>(16);
+            TbStylist stylist;
+            List<TbUser> fans;
+
+            stylist = tbStylistMapper.selectPhotoNameSexWord(stylistId);
+            fans = tbStylistMapper.selectFansBystylistId(stylistId);
+
+            map.put("stylist", Collections.singletonList(stylist));
+            map.put("fans", fans);
+
+            return map;
+        } else {
+            throw new AppAuthException("造型师Id为空。");
         }
     }
 }

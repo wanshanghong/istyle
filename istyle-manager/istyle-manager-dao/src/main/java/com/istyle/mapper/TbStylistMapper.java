@@ -1,6 +1,7 @@
 package com.istyle.mapper;
 
 import com.istyle.pojo.TbStylist;
+import com.istyle.pojo.TbUser;
 
 import java.util.List;
 
@@ -65,6 +66,13 @@ public interface TbStylistMapper {
     TbStylist selectStylistById(Long stylistId);
 
     /**
+     * 根据id查询造型师的头像、名称、性别、简介
+     * @param stylistId
+     * @return
+     */
+    TbStylist selectPhotoNameSexWord(Long stylistId);
+
+    /**
      * 根据id查找昵称
      * @param stylistId stylistId
      * @return stylistName
@@ -77,4 +85,11 @@ public interface TbStylistMapper {
      * @return
      */
     List<TbStylist> selectPhotoAndNameById(Long stylistId);
+
+    /**
+     * 根据id查询造型师粉丝
+     * @param stylistId
+     * @return
+     */
+    List<TbUser> selectFansBystylistId(Long stylistId);
 }

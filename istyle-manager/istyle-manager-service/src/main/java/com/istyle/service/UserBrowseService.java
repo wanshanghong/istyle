@@ -1,5 +1,7 @@
 package com.istyle.service;
 
+import com.istyle.pojo.TbStylist;
+
 import java.util.Map;
 
 /**
@@ -21,4 +23,18 @@ public interface UserBrowseService {
      * @return
      */
     Map showStyHouse(Long styHouseId);
+
+    /**
+     * 造型师展示
+     * @param stylistId id
+     * @return stylist 造型师数据
+     */
+    TbStylist selectStylistById(Long stylistId);
+
+    /**
+     * 展示造型师粉丝
+     * @param stylistId
+     * @return
+     */
+    Map showStylistFans(Long stylistId);
 }

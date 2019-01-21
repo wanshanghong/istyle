@@ -4,8 +4,6 @@ import com.istyle.pojo.TbStylist;
 import com.istyle.service.StylistService;
 import com.istyle.service.UserBrowseService;
 import com.istyle.service.UserService;
-import com.util.CastUtil;
-import com.util.JWT;
 import com.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,7 +35,6 @@ public class UserBrowsingPage {
     @RequestMapping(value = "/styHouse", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     public Response userBrowseStyHousePage(@RequestBody Map<String, String> request) {
         String position = request.get("styHousePosition");
-        System.out.println(position);
         Map temp = userBrowseService.browseStyHouse(position);
         return Response.ok(temp);
     }
@@ -56,14 +53,25 @@ public class UserBrowsingPage {
 
     /**
      * 造型师主页展示
-     * @param request 身份认证
+     * @param stylistId 身份认证
      * @return Response，造型师数据
      */
     @ResponseBody
     @RequestMapping(value = "/stylist/{stylistId}", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
-    public Response stylistHomePage(@RequestBody Map<String, String> request, @PathVariable("stylistId") Integer stylistId) {
-        Long id = CastUtil.castLong(request.get("stylistId"));
-        TbStylist param = stylistService.selectStylistById(id);
+    public Response stylistHomePage(@PathVariable("stylistId") Long stylistId) {
+        TbStylist param = userBrowseService.selectStylistById(stylistId);
+        return Response.ok(param);
+    }
+
+    /**
+     * 造型师粉丝的展示界面
+     * @param stylistId
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/stylist/{stylistId}/showStylistFan", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+    public Response stylistFanShow(@PathVariable("stylistId") Long stylistId) {
+        Map param = userBrowseService.showStylistFans(stylistId);
         return Response.ok(param);
     }
 }
