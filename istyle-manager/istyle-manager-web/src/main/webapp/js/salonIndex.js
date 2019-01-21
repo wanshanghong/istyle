@@ -65,6 +65,6 @@ function selesctAddress(){
         console.log(JSON.stringify(obj));
 }
 window.onload=function () {
-    selesctAddress();
+    
     getCookie('stoken');
 };
