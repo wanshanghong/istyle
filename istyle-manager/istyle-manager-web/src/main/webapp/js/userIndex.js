@@ -109,10 +109,8 @@ function showInformation(){
                             "<p><span class=\"personalizedSignature\">我的签名：" + info.result.userWord + "</span></p><div class=\"clear\"></div>" +
                             "<p><span class=\"userage\">年龄：" + info.result.userAge + "</span></p><div class=\"clear\"></div>" +
                             "<p><span class=\"sex\">性别:" + info.result.userSex + "</span></p><div class=\"clear\"></div>";
-                        /*alert("成功2"+showInform);*/
 
                         document.getElementsByClassName('addContent')[0].innerHTML = showInform;
-                        /*alert("成功");*/
                     }else{
                         alert("用户没有登录");
                     }
@@ -649,8 +647,5 @@ window.onload=function(){
     /* let collectBtn=document.getElementById('collectBtn');
      collectBtn.addEventListener('click',collect,false);*/
 //collectBtn.removeEventListener('click',collect,false); 这个false是阻止冒泡的意思
-
-
-
 };
 

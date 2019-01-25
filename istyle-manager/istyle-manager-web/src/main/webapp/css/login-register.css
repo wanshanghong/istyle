@@ -4,15 +4,13 @@
     
 }
 .afterLogin{
-    float: right;
-    /*  margin-right: 5%;*/
+/*    float: right;
+    !*  margin-right: 5%;*!
     width: 200px;
-    height: 19px;
-    cursor: pointer;
-
+    height: 19px;*/
 }
 .main-nav {
-	
+
   float: right;
 /*  margin-right: 5%;*/
   width: 100px;
