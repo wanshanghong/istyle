@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.istyle.mapper.TbStyHousePackageMapper">
+    <select id="selectAllPackageByStyHouseId" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStyHousePackage">
+        select packagePhoto, packageName, packagePrice
+        from tb_styhouse_package
+        where styHouseId = #{styHouseId};
+    </select>
+</mapper>

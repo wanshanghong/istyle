@@ -56,13 +56,36 @@
 
     <!--根据id查询数据-->
     <select id="selectStylistById" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStylist">
-        select stylistPhoto, seylistName, stylistWord, stylistIntroduction, stylistAdvisory
+        select stylistId, stylistPhoto, stylistName, stylistSex, stylistWord, stylistIntroduction, stylistAdvisory
         from tb_stylist
-        where stylistId = {stylistId};
+        where stylistId = #{stylistId};
     </select>
 
     <select id="selectStylistNameById" parameterType="java.lang.Long" resultType="java.lang.String">
         select stylistName
+        from tb_stylist
+        where stylistId = #{stylistId};
+    </select>
+
+    <select id="selectPhotoAndNameById" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStylist">
+        select stylistPhoto, stylistName
+        from tb_stylist
+        where stylistId = #{stylistId}
+        limit 0,4;
+    </select>
+
+    <select id="selectFansBystylistId" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbUser">
+        select userId, userPhoto, userName, userWord
+        from tb_user
+        where userId in (
+        select userId
+        from tb_user_stylist
+        where stylistId = #{stylistId} and status = 0
+        );
+    </select>
+
+    <select id="selectPhotoNameSexWord" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStylist">
+        select stylistId, stylistPhoto, stylistName, stylistSex, stylistWord
         from tb_stylist
         where stylistId = #{stylistId};
     </select>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.istyle.mapper.TbStyHouseStylistMapper">
+    <select id="selectStylistIdByStyHouseId" parameterType="java.lang.Long" resultType="java.lang.Long">
+        select stylistId
+        from tb_styHouse_stylist
+        where styHouseId = #{styHouseId};
+    </select>
+
+    <select id="selectStylistCountByStyHouseId" parameterType="java.lang.Long" resultType="java.lang.Long">
+        select COUNT(*)
+        from tb_styHouse_stylist
+        where styHouseId = #{styHouseId};
+    </select>
+</mapper>
