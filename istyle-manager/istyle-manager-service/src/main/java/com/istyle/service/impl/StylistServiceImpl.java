@@ -115,24 +115,4 @@ public class StylistServiceImpl implements StylistService {
             throw new AppAuthException("登陆失败，请重新登陆");
         }
     }
-
-    /**
-     * 查询造型师信息数据并返回
-     * @param stylist id
-     * @return stylist 造型师数据
-     */
-    @Override
-    public TbStylist selectStylistById(TbStylist stylist) {
-        long id = stylist.getStylistId();
-        TbStylist tbStylist = null;
-
-        if (StringUtil.isNotEmpty(CastUtil.castString(id))) {
-            tbStylist = tbStylistMapper.selectStylistById(id);
-        }
-        else {
-            throw new AppAuthException("在我的信息展示时，发现造型师id为空，操作错误。");
-        }
-
-        return tbStylist;
-    }
 }

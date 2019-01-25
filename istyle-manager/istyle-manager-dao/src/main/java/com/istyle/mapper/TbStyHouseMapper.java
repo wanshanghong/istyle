@@ -55,4 +55,18 @@ public interface TbStyHouseMapper {
      * @return styHouseName
      */
     String selectStyHouseNameById(Long id);
+
+    /**
+     * 根据地址查询造型屋头像、名称、简介
+     * @param styHousePosition
+     * @return styHouse
+     */
+    List<TbStyHouse> selectPhotoNameAddressPackageByPosition(String styHousePosition);
+
+    /**
+     * 根据id查询造型屋的图片、名称、电话、评论、套餐、营业时间、描述、地址
+     * @param styHouseId
+     * @return
+     */
+    TbStyHouse selectNamePhotoPackagePhoneTimeWordByStyHouseId(Long styHouseId);
 }

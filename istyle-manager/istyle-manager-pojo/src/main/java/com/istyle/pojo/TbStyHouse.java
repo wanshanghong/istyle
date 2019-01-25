@@ -14,6 +14,11 @@ public class TbStyHouse {
     private String headName;
     private String headId;
     private String headPhone;
+    private String styHouseStatus;
+    private String styHouseAddress;
+    private String styHousePackage;
+    private String styHousePhone;
+    private String styHouseWorkTime;
 
     public Long getStyHouseId() {
         return styHouseId;
@@ -93,5 +98,45 @@ public class TbStyHouse {
 
     public void setHeadPhone(String headPhone) {
         this.headPhone = headPhone;
+    }
+
+    public String getStyHouseStatus() {
+        return styHouseStatus;
+    }
+
+    public void setStyHouseStatus(String styHouseStatus) {
+        this.styHouseStatus = styHouseStatus;
+    }
+
+    public String getStyHouseAddress() {
+        return styHouseAddress;
+    }
+
+    public void setStyHouseAddress(String styHouseAddress) {
+        this.styHouseAddress = styHouseAddress;
+    }
+
+    public String getStyHousePackage() {
+        return styHousePackage;
+    }
+
+    public void setStyHousePackage(String styHousePackage) {
+        this.styHousePackage = styHousePackage;
+    }
+
+    public String getStyHousePhone() {
+        return styHousePhone;
+    }
+
+    public void setStyHousePhone(String styHousePhone) {
+        this.styHousePhone = styHousePhone;
+    }
+
+    public String getStyHouseWorkTime() {
+        return styHouseWorkTime;
+    }
+
+    public void setStyHouseWorkTime(String styHouseWorkTime) {
+        this.styHouseWorkTime = styHouseWorkTime;
     }
 }

@@ -30,6 +30,8 @@ public class UserServiceImpl implements UserService {
     private TbStyHouseMapper tbStyHouseMapper;
     @Autowired
     private TbEvaluationMapper tbEvaluationMapper;
+    @Autowired
+    private TbStyHouseStylistMapper tbStyHouseStylistMapper;
 
     /**
      * 注册用户
@@ -133,7 +135,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public TbUser selectUserByUserId(TbUser user) {
         long id = user.getUserId();
-        TbUser tbUser = null;
+        TbUser tbUser;
 
         if (StringUtil.isNotEmpty(CastUtil.castString(id))) {
             tbUser = tbUserMapper.selectUserById(id);
@@ -284,7 +286,7 @@ public class UserServiceImpl implements UserService {
 
             }
             fans.put("fanCount", Collections.singletonList(fanCount));
-            fans.put("users", users);
+            fans.put("fans", users);
             fans.put("usersState", usersState);
 
             return fans;
@@ -351,4 +353,6 @@ public class UserServiceImpl implements UserService {
             throw new AppAuthException("在我的投稿展示时，发现用户id为空，操作错误。");
         }
     }
+
+
 }

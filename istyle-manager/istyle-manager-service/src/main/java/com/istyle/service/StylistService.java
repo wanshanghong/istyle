@@ -29,11 +29,4 @@ public interface StylistService {
      * @return stylistName
      */
     Map afterLoginGetName(TbStylist stylist);
-
-    /**
-     * 查询造型师信息数据并返回
-     * @param stylist id
-     * @return stylist 造型师数据
-     */
-    TbStylist selectStylistById(TbStylist stylist);
 }
