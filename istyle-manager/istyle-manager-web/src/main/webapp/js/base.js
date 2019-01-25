@@ -17,6 +17,8 @@ function getCookie(name) {
             let hidden=document.getElementsByClassName('beforeLogin')[0];
             hidden.style.display="none";
             document.getElementsByClassName('afterLogin')[0].innerHTML="欢迎"+username+"登录istyle";
+            let show=document.getElementsByClassName('afterLogin')[0];
+            show.style="float: right; width: 200px; height: 19px;";
             let starti=i+name.length+1;
             //从starti开始查找cookie中下一个;的位置endi
             let endi=cookie.indexOf(";",starti);
@@ -53,36 +55,8 @@ function getCookie2(name) {
     }
 }
 
-//登录后刷新用户信息
-/*function lodingUsername() {
-    if(getCookie('stoken')){
-        console.log("用户还没登录");
-    }else{
 
-    }
-}*/
 
-//我的主页跳转
-function home(){
 
-    let xmlhttp;
-    if(window.XMLHttpRequest){
-        //code for IE7+,Firefox,Chrome,Opera,Safari
-        xmlhttp=new XMLHttpRequest();
-    }
-    else{
-        //code for IE6+,IE5+
-        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-    }
 
-    xmlhttp.onreadystatechange=function(){
-        if (xmlhttp.readyState===4){
-            alert("连接成功");
-
-        }
-    }
-    xmlhttp.open('get','');
-    xmlhttp.send(null);
-
-}
 
