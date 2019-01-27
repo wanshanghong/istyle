@@ -1,5 +1,6 @@
 package com.istyle.service.interceptor;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.exception.AppAuthException;
 import com.istyle.pojo.TbUser;
@@ -13,7 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Map;
 
 /**
  * @Author: 黄文伟
@@ -25,10 +29,17 @@ public class AuthorizedInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("正在校验stoken。。。.");
-        String stoken = request.getParameter("stoken");
-        System.out.println("stoken: " + stoken);
-        logger.info("stoken:{}", stoken);
+        String param;
+        BufferedReader streamReader = new BufferedReader( new InputStreamReader(request.getInputStream(), "UTF-8"));
+        StringBuilder responseStrBuilder = new StringBuilder();
+        String inputStr;
+        while ((inputStr = streamReader.readLine()) != null) {
+            responseStrBuilder.append(inputStr);
+        }
+        JSONObject jsonObject = JSONObject.parseObject(responseStrBuilder.toString());
+        param= jsonObject.toJSONString();
+        Map map = (Map) JSON.parse(param);
+        String stoken = (String) map.get("stoken");
 
         if (StringUtil.isEmpty(stoken)) {
             responseMessage(response, response.getWriter(), Response.errAuth("stoken错误，校验失败"));
@@ -53,9 +64,10 @@ public class AuthorizedInterceptor implements HandlerInterceptor {
         logger.info("afterCompletion");
     }
 
-    /**
-     * 请求不通过，返回错误信息给客户端
-     */
+/**
+ * 请求不通过，返回错误信息给客户端
+ */
+
     private void responseMessage(HttpServletResponse response, PrintWriter out, Response responseData) {
         response.setContentType("application/json;charset=utf-8");
         String json = JSONObject.toJSONString(responseData);

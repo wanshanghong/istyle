@@ -26,6 +26,17 @@
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
 
+  测试过滤器
+  <filter>
+    <filter-name>BodyReaderFilter</filter-name>
+    <filter-class>com.istyle.service.interceptor.BodyReaderFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>BodyReaderFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+
   <!--springmvc前端控制器-->
   <servlet>
     <servlet-name>istyle-manager</servlet-name>

@@ -84,6 +84,19 @@ public class UserBrowsingPage {
     }
 
     /**
+     * 用户打开造型师咨询界面
+     * @param stylistId
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/stylist/{stylistId}/ShowAdvisory", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+    public Response showAdvisory(@PathVariable("stylistId") Long stylistId) {
+        return Response.ok();
+    }
+
+    //造型师咨询提交
+
+    /**
      * 造型师粉丝的展示界面
      * @param stylistId
      * @return
