@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>造型屋详情页</title>
+    <link rel="stylesheet" type="text/css" href="/css/base.css"/> <!--改路径时相当于是base.css-->
+    <link rel="stylesheet" type="text/css" href="/css/login-register.css"/>  <!--改路径时相当于是login-register.css-->
+    <link rel="stylesheet" href="/css/salonDetail.css">
+</head>
+<body>
+<!--页头-->
+<div class="top">
+    <div class="main">
+        <div class="topheader">
+            <div class="logo">
+                <img src="/img/logo1.png"/>
+            </div>
+            <div class="top-left">
+
+                <a href=""><i class="home"></i>首页</a>
+                <a href="">发型设计</a>
+                <a href="">流行造型</a>
+                <a href="">造型屋</a>
+                <a href="">测评</a>
+            </div>
+            <div class="top-right">
+                <div class="myhome">
+                    <div class="myhometop">
+                        <a href="" onclick="locationInformation()">我的主页</a>
+                    </div>
+                </div>
+
+                <div class="main-nav beforeLogin">
+                    <ul>
+                    </ul>
+                </div>
+                <div class="afterLogin" style="color: #FFF;"></div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clear"></div>
+<!--造型屋详情页上半部分-介绍-->
+<div class="salonIntroduce main">
+<!--    <div class="salonTopLeft">
+        <h4>BIGSTART大明星造型（东平店）</h4><br>
+        <span style="color: orangered">3452人评论</span>
+        <div style="width:500px; border:1px solid #666;"></div>
+        <span>东平桥东惠城区东平东坡路57号二楼</span><br>
+        <span>BIG STAR大明星洗剪吹单人套餐35元，BIG STAR大明星韩国进口美发单人套餐196元</span><br>
+        <span>电话：1379458885545</span><br>
+        <span>营业时间：周一至周五 12:00-22:00</span>
+        <div style="width:983px; border:1px solid #666;"></div>
+        <span>提供wifi</span>&nbsp;&nbsp;
+        <span>提供免费车位</span>
+    </div>
+    <div class="salonTopRight">
+        <img src="../我的主页/img/salonpho3.jpg" alt="">
+    </div>
+    <div class="clear"></div>
+    <div class="salonTopBottom"></div>-->
+</div>
+<div class="clear"></div>
+<!--造型屋套餐部分-->
+<span class="orderSpan">优惠套餐</span>
+<div class="salonMeal main">
+        <!--<div class="clear"></div>
+        <div class="mealContent">
+            <img src="img/meal2.jpg"/>
+            <p>
+                <span>韩国烫染发单人套餐</span><br />
+                <span style="color: orange;padding-top: 20px">198</span>
+            </p>
+            <button class='order' onclick=''>立即预约</button>
+        </div>
+        <div class="clear"></div>
+        <div class="mealContent">
+            <img src="img/meal3.jpg"/>
+            <p>
+                <span>韩国烫染发单人套餐</span><br />
+                <span style="color: orange;padding-top: 20px">198</span>
+            </p>
+            <button class='order' onclick=''>立即预约</button>
+        </div>
+        <div class="clear"></div>
+        <div class="mealContent">
+            <img src="img/meal4.jpg"/>
+            <p>
+                <span>韩国烫染发单人套餐</span><br />
+                <span style="color: orange;padding-top: 20px">198</span>
+            </p>
+            <button class='order' onclick=''>立即预约</button>
+        </div>
+        <div class="clear"></div>
+        <div class="mealContent">
+            <img src="img/meal1.jpg"/>
+            <p>
+                <span>韩国烫染发单人套餐</span><br />
+                <span style="color: #FF9800;padding-top: 20px">198</span>
+            </p>
+            <button class='order' onclick=''>立即预约</button>
+        </div>
+        <div class="clear"></div>
+        <div class="mealContent">
+            <img src="img/meal2.jpg"/>
+            <p>
+                <span>韩国烫染发单人套餐</span><br />
+                <span style="color: orange;padding-top: 20px">198</span>
+            </p>
+            <button class='order' onclick=''>立即预约</button>
+        </div>-->
+</div>
+
+<!--造型屋网友评论部分start-->
+<span class="orderSpan">用户评论</span>
+<div class="salonComment main">
+        <div class="clear"></div>
+        <div class="commentContent">
+            <img src="/img/user1.jpg"/>
+            <p>
+                <span>欧阳帅哥</span><br />
+                <span style="padding: 20px 20px 0 0;letter-spacing: 5px;">态度很不错，理发师很专业很有耐心，提了自己的要求后理发师很详细的跟我讲解了什么发型最适合自己，感觉很好，下次再来</span>
+            </p>
+        </div>
+        <div class="clear"></div>
+        <div class="commentContent">
+            <img src="/img/user2.jpg"/>
+            <p>
+                <span>欧阳美女</span><br />
+                <span style="padding: 20px 20px 0 0;letter-spacing: 5px;">态度很不错，理发师很专业很有耐心，感觉很好，下次再来</span>
+            </p>
+        </div>
+</div>
+<!--造型屋网友评论部分end-->
+
+<a href="#" class="return" style="
+        position: fixed;
+        width: 30px;
+        height:80px;
+        top: 250px;
+        left:50px;
+        z-index: 5000;
+    ">
+    <img src="/img/return.gif" alt=""/>
+</a>
+
+<div class="footer2">
+    <div class="footer-row1">
+        <a href="">关于我们 -</a>
+        <a href="">使用手册 -</a>
+        <a href="">法律声明 -</a>
+        <a href="">广告服务 -</a>
+        <a href="">联系我们 -</a>
+        <a href="">友情链接 -</a>
+        <a href="">删除或修改信息 -</a>
+        <a href="">网站地图</a>
+    </div>
+    <span>技术支持:xxxx</span>
+    <span>粤ICP备案号12020213号-1</span>
+    <span>1024商务网客服QQ:xxx</span>
+    <span>站长统计</span>
+    </br>
+    <span>免责声明:此网页并非该单位官网，而是由会员免费注册的1024商务网商铺，内容的真实性、准确性和合法性由</span></br>
+    <span>布者负责，istyle对此不承担任何责任!</span></br>
+    <span>如发现侵权违规问题请发邮件至xxxx@qq.com或在线留言联系删除。</span>
+</div>
+
+
+<script src="/js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/city.js"></script>
+<!--<script src="/js/login-register.js"></script>-->
+<script src="/js/base.js"></script>
+<script src="/js/salonIndex.js"></script>
+<script src="/js/index.js"></script>
+<script src="/js/userIndex.js"></script>
+<script src="/js/salonDetail.js"></script>
+</body>
+</html>

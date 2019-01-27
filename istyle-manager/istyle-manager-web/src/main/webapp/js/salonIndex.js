@@ -28,7 +28,7 @@ function selesctAddress(){
                         console.log("成功"+xhr.status);
                         let salonBox="";
                         for (let i=0;i<info.result.styHouses.length;i++){
-                            salonBox += "<div class=\"box1\">" +
+                            salonBox += "<div class='box1' onclick='locationDetail(this),locaDetail(this)' id='"+info.result.fans[i].userId+"'>" +
                                 "<img src='"+info.result.styHouses[i].styHousePhoto+"'/>"  +
                                 "<div class='box1_1'>"   +
                                 "<h5>"+info.result.styHouses[i].styHouseName+"</h5><br/>"  +
@@ -40,7 +40,7 @@ function selesctAddress(){
                         }
                         let stylistBox="";
                         for(let i=0;i<info.result.stylists.length;i++){
-                            stylistBox+="<div class=\"box2\" style=\"width: 120px; height: 120px;background:url('../img/stylistBackground.png') center;\">"+
+                            stylistBox+="<div class=\"box2\" style=\"width: 120px; height: 120px;background:url('/img/stylistBackground.png') center;\">"+
                                         "<img src='"+info.result.stylists[i].stylistPhoto+"'/>"  +
                                         "<div class=\"box2_2\">"+
                                         "<span><b>"+info.result.stylists[i].stylistName+"</b></span>"+
@@ -63,6 +63,33 @@ function selesctAddress(){
         let obj={"stoken":getCookie('stoken'),"styHousePosition":styHousePosition};
         xhr.send(JSON.stringify(obj));
         console.log(JSON.stringify(obj));
+}
+function locationDetail(objid){
+    let xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+        if (xhr.readyState===4){
+            if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
+                let info = JSON.parse(xhr.responseText);
+                // var info = xhr.responseText;
+                if (info.errCode === 0){
+                    console.log("成功"+xhr.status);
+                    locaDetail(objid.getAttribute("id"));
+                    window.location.href = "/html/salonDetail.html";
+                }else{
+                    console.log("跳转详情页失败");
+                }
+            }else{
+                console.log("发生错误"+xhr.status);
+            }
+        }
+    }
+    let salonId=objid.getAttribute("id");
+    let url='/userBrowse/styHouse/'+salonId;
+    xhr.open('post',url);
+    xhr.setRequestHeader("Content-Type","application/json");
+    let obj={"stoken":getCookie('stoken'),"styHouseId":salonId};
+    xhr.send(JSON.stringify(obj));
+    console.log(JSON.stringify(obj));
 }
 window.onload=function () {
     selesctAddress();
