@@ -1,0 +1,133 @@
+html{
+    background: url(/img/userIndexbackground.jpg);
+    background-size: cover;
+}
+
+a {
+     text-decoration: none;
+     color: #fff;
+ }
+
+
+/*造型屋详情页上半部分-介绍start*/
+.salonIntroduce{
+width: 1000px;
+height: 250px;
+background-color: #FFFFFF;
+margin-top: 30px;
+border-radius: 1%;
+}
+.salonIntroduce .salonTopLeft{
+    float: left;
+    text-align: left;
+    margin: 15px;
+    width: 650px;
+}
+.salonIntroduce .salonTopLeft h4, .salonIntroduce .salonTopLeft span{
+    margin-top: 3px;
+    margin-bottom: 3px;
+    display: inline-block;
+    font-size: 14px;
+    padding-top: 4px;
+    padding-bottom: 2px;
+}
+.salonIntroduce .salonTopRight{
+     width: 350px;
+     height: 135px;
+     float: right;
+     margin-left: -100px;
+     margin-top: 15px;
+ }
+.salonIntroduce .salonTopRight img{
+    width: 200px;
+    height: 135px;
+    margin: 10px;
+}
+/*造型屋详情页上半部分-介绍end*/
+
+
+/*造型屋详情页的套餐部分start*/
+.orderSpan{
+    color: #FFFFFF;
+    margin-top: 50px;
+    display: inline-block;
+    margin-left: 260px;
+}
+.salonMeal{
+    width: 1000px;
+    height: 500px;
+    background-color: #FFFFFF;
+    margin-top: 20px;
+    border-radius: 1%;
+    /*overflow-y: scroll;*/
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.salonMeal::-webkit-scrollbar { width:10px; height:2px; background:#ccc; border-radius:10px;/*外层轨道*/}
+.salonMeal::-webkit-scrollbar-thumb{ display:block; width:6px; margin:0 auto; border-radius: 2px; background:#999999;/*内层轨道*/}
+.salonMeal .mealContent{
+    width: 1000px;
+    height: 150px;
+    border-bottom: 1px solid #999999;
+    margin: 0 auto;
+}
+.salonMeal img {
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin: 40px 0 20px 100px;
+}
+.salonMeal p {
+    float: left;
+    width: 200px;
+    margin: 40px 0 20px 50px;
+}
+.salonMeal span {
+    float: left;
+}
+.salonMeal button.order {
+    float: left;
+    display: inline-block;
+    margin-left: 280px;
+    margin-top: 65px;
+    color: #FFFFFF;
+    background-color: #FF9800;
+    border: none;
+    border-radius: 5%;
+    padding: 5px;
+}
+/*造型屋详情页的套餐部分end*/
+
+/*造型屋详情页的评论部分start*/
+.salonComment{
+    width: 1000px;
+    height: 300px;
+    background-color: #FFFFFF;
+    margin-top: 20px;
+    border-radius: 1%;
+    /*overflow-y: scroll;*/
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.salonComment::-webkit-scrollbar { width:10px; height:2px; background:#ccc; border-radius:10px;/*外层轨道*/}
+.salonComment::-webkit-scrollbar-thumb{ display:block; width:6px; margin:0 auto; border-radius: 2px; background:#999999;/*内层轨道*/}
+.salonComment .commentContent{
+    width: 1000px;
+    height: 150px;
+    border-bottom: 1px solid #999999;
+    margin: 0 auto;
+}
+.salonComment img {
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin: 40px 0 20px 100px;
+}
+.salonComment p {
+    float: left;
+    width: 700px;
+    margin: 40px 0 20px 50px;
+}
+.salonComment span {
+    float: left;
+}

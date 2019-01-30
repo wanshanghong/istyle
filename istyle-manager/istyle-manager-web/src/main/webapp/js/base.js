@@ -18,7 +18,7 @@ function getCookie(name) {
             hidden.style.display="none";
             document.getElementsByClassName('afterLogin')[0].innerHTML="欢迎"+username+"登录istyle";
             let show=document.getElementsByClassName('afterLogin')[0];
-            show.style="float: right; width: 200px; height: 19px;";
+            show.style="float: right; width: 200px; height: 19px;color: #FFFFFF;";
             let starti=i+name.length+1;
             //从starti开始查找cookie中下一个;的位置endi
             let endi=cookie.indexOf(";",starti);
