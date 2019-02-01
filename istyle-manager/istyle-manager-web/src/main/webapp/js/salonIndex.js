@@ -28,7 +28,7 @@ function selesctAddress(){
                         console.log("成功"+xhr.status);
                         let salonBox="";
                         for (let i=0;i<info.result.styHouses.length;i++){
-                            salonBox += "<div class='box1' onclick='locationDetail(this),locaDetail(this)' id='"+info.result.fans[i].userId+"'>" +
+                            salonBox += "<div class='box1' onclick='locationDetail(this);locaDetail(this)' id='"+info.result.fans[i].userId+"'>" +
                                 "<img src='"+info.result.styHouses[i].styHousePhoto+"'/>"  +
                                 "<div class='box1_1'>"   +
                                 "<h5>"+info.result.styHouses[i].styHouseName+"</h5><br/>"  +
