@@ -643,6 +643,7 @@ console.log(collectBtn);*/
 
 
 window.onload=function(){
+    console.log("userIndex");
     showInformation();
     /* let collectBtn=document.getElementById('collectBtn');
      collectBtn.addEventListener('click',collect,false);*/

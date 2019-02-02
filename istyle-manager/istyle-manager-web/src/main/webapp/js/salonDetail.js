@@ -58,6 +58,6 @@ function locaDetail(objid){
     console.log(JSON.stringify(obj));
 }
 window.onload=function () {
-    locaDetail(objid);
+
     /*getCookie('stoken');*/
 };
