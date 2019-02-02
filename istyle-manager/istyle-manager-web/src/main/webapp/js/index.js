@@ -200,7 +200,7 @@ function locationInformation(){
 //跳转造型屋
 function locationSalon(){
     /* 地址三级联动的取值*/
-    let pro = document.getElementById('cmbProvince'); //定位id
+    /*let pro = document.getElementById('cmbProvince'); //定位id
     let index1 = pro.selectedIndex; // 选中索引
     let value1 = pro.options[index1].value; // 选中值
 
@@ -213,7 +213,7 @@ function locationSalon(){
     let value3 = area.options[index3].value; // 选中值
 
     let styHousePosition=value1+value2+value3;
-
+*/
     let xhr=new XMLHttpRequest();
     xhr.onreadystatechange=function(){
         if (xhr.readyState===4){
@@ -232,7 +232,7 @@ function locationSalon(){
     }
     xhr.open('post','/userBrowse/styHouse',true);
     xhr.setRequestHeader("Content-Type","application/json");
-    let obj={"stoken":getCookie('stoken'),"styHousePosition":styHousePosition};
+    let obj={"stoken":getCookie('stoken'),"styHousePosition":"上海市辖区黄浦区"};
     xhr.send(JSON.stringify(obj));
     console.log(JSON.stringify(obj));
 }
