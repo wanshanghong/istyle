@@ -19,9 +19,6 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
-
-
-
     <!-- 配置注解驱动 -->
     <mvc:annotation-driven/>
 
@@ -33,7 +30,6 @@
         <property name="prefix" value="/WEB-INF/html/"/>
         <property name="suffix" value=".html"/>
     </bean>
-
 
     <!--静态资源包扫描-->
     <!--静态资源映射-->

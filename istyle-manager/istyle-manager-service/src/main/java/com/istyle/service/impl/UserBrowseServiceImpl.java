@@ -46,12 +46,17 @@ public class UserBrowseServiceImpl implements UserBrowseService {
             // 遍历造型屋，获得每个造型屋的造型师
             outer: for (int i = 0; i < styHouses.size(); i++) {
                 List<Long> stylistId = tbStyHouseStylistMapper.selectStylistIdByStyHouseId(styHouses.get(i).getStyHouseId());
-                //遍历造型师，获得每个造型师的数据
-                for (int j = 0; j < stylistId.size(); j++) {
-                    stylists = tbStylistMapper.selectPhotoAndNameById(stylistId.get(j));
-                    // 如果容器多于4个，就跳出外循环
-                    if (stylists.size() > 4) {
-                        break outer;
+                // 判断造型屋旗下的造型师数量是否为0，是则跳过内循环
+                if (stylistId.size() == 0) {
+                    i++;
+                } else {
+                    //遍历造型师，获得每个造型师的数据
+                    for (int j = 0; j < stylistId.size(); j++) {
+                        stylists.add(tbStylistMapper.selectPhotoAndNameById(stylistId.get(j)));
+                        // 如果容器多于4个，就跳出外循环
+                        if (stylists.size() > 4) {
+                            break outer;
+                        }
                     }
                 }
             }

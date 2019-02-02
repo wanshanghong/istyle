@@ -49,7 +49,7 @@
     </select>
 
     <select id="selectPhotoNameAddressPackageByPosition" parameterType="java.lang.String" resultType="com.istyle.pojo.TbStyHouse">
-        select styHousePhoto, styHouseName, styHouseAddress, styHousePackage
+        select styHouseId, styHousePhoto, styHouseName, styHouseAddress, styHousePackage
         from tb_styHouse
         where styHousePosition = #{styHousePosition};
     </select>

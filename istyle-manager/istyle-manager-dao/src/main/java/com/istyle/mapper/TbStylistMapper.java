@@ -84,7 +84,7 @@ public interface TbStylistMapper {
      * @param stylistId
      * @return
      */
-    List<TbStylist> selectPhotoAndNameById(Long stylistId);
+    TbStylist selectPhotoAndNameById(Long stylistId);
 
     /**
      * 根据id查询造型师粉丝
