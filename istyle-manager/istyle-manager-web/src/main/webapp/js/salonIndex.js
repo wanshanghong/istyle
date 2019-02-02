@@ -48,7 +48,7 @@ function selesctAddress(){
                                         "</div>"+
                                         "</div>";
                         }
-                        document.getElementsByClassName('salon')[0].innerHTML=salonBox;
+                        document.getElementsByClassName('salonIndex')[0].innerHTML=salonBox;
                         document.getElementsByClassName('stylistAdd')[0].innerHTML=stylistBox;
                     }else{
                         console.log("失败");

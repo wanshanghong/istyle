@@ -226,11 +226,11 @@ function locationSalon(){
                     alert("用户没有登录");
                 }
             }else {
-                alert("发生错误"+xhr.status);
+                alert("发生错误"+xhr.status+xhr.responseText+xhr.readyState);
             }
         }
     }
-    xhr.open('post','/userBrowse/styHouse');
+    xhr.open('post','/userBrowse/styHouse',true);
     xhr.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken'),"styHousePosition":styHousePosition};
     xhr.send(JSON.stringify(obj));
