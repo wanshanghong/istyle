@@ -76,15 +76,17 @@ function locationDetail(objid){
                     locaDetail(objid.getAttribute("id"));
                     window.location.href = "/html/salonDetail.html";
                 }else{
-                    console.log("跳转详情页失败");
-                }
+
+                } console.log("跳转详情页失败");
             }else{
                 console.log("发生错误"+xhr.status);
             }
         }
     }
     let salonId=objid.getAttribute("id");
+    console.log(salonId);
     let url='/userBrowse/styHouse/'+salonId;
+    console.log(url);
     xhr.open('post',url);
     xhr.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken'),"styHouseId":salonId};
