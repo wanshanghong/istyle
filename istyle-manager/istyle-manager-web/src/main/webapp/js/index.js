@@ -226,13 +226,15 @@ function locationSalon(){
                     alert("用户没有登录");
                 }
             }else {
-                alert("发生错误"+xhr.status+xhr.responseText+xhr.readyState);
+                alert("发生错误"+xhr.status+xhr.responseText);
             }
         }
     }
     xhr.open('post','/userBrowse/styHouse',true);
     xhr.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken'),"styHousePosition":"上海市辖区黄浦区"};
+    console.log("先");
     xhr.send(JSON.stringify(obj));
     console.log(JSON.stringify(obj));
+    console.log("后");
 }
