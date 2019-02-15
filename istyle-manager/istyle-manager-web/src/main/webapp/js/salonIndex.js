@@ -28,7 +28,7 @@ function selesctAddress(){
                         console.log("成功"+xhr.status);
                         let salonBox="";
                         for (let i=0;i<info.result.styHouses.length;i++){
-                            salonBox += "<div class='box1' onclick='locationDetail(this);locaDetail(this)' id='"+info.result.styHouses[i].styHouseId+"'>" +
+                            salonBox += "<div class='box1' onclick='locationDetail(this)/*;locaDetail(this)*/' id='"+info.result.styHouses[i].styHouseId+"'>" +
                                 "<img src='"+info.result.styHouses[i].styHousePhoto+"'/>"  +
                                 "<div class='box1_1'>"   +
                                 "<h5>"+info.result.styHouses[i].styHouseName+"</h5><br/>"  +
@@ -93,7 +93,7 @@ function locationDetail(objid){
     xhr.send(JSON.stringify(obj));
     console.log(JSON.stringify(obj));
 }
-function locaDetail(objid){
+/*function locaDetail(objid){
 
     let xhr=new XMLHttpRequest();
     xhr.onreadystatechange=function(){
@@ -151,7 +151,7 @@ function locaDetail(objid){
     let obj={"stoken":getCookie('stoken'),"styHouseId":salonId};
     xhr.send(JSON.stringify(obj));
     console.log(JSON.stringify(obj));
-}
+}*/
 window.onload=function () {
     console.log("salonIndex");
     selesctAddress();
