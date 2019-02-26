@@ -182,7 +182,7 @@ function locationInformation(){
                 if (info.errCode === 0) {
                     window.location.href = "/html/userIndex.html";
                     alert("跳转成功");
-                }else{
+           j     }else{
                     alert("用户没有登录");
                 }
             }else {
