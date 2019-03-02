@@ -1,5 +1,55 @@
 /*第43行有个路径需要改*/
 
+function selesctAddress2(){
+    /* 地址三级联动的取值*/
+    let xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+        if (xhr.readyState===4){
+            if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
+                let info = JSON.parse(xhr.responseText);
+                // var info = xhr.responseText;
+                if (info.errCode === 0){
+                    console.log("成功"+xhr.status);
+                    let salonBox="";
+                    for (let i=0;i<info.result.styHouses.length;i++){
+                        salonBox += "<div class='box1' onclick='/*locationDetail(this)*//*;locaDetail(this)*/' id='"+info.result.styHouses[i].styHouseId+"'>" +
+                            "<img src='"+info.result.styHouses[i].styHousePhoto+"'/>"  +
+                            "<div class='box1_1'>"   +
+                            "<h5>"+info.result.styHouses[i].styHouseName+"</h5><br/>"  +
+                            "<span class=\"address\">地址:"+info.result.styHouses[i].styHouseAddress+"</span><br/>"  +
+                            "<span class=\"package\">"+info.result.styHouses[i].styHousePackage+"</span><br/>"+
+                            "<a href=\"\">查看详情>></a><button style=\"float: right;color: #FF0000;border: 1px solid #000000;outline: none;background-color:#FFFFFF;padding: 2px;margin: 18px\">预约发型师</button>" +
+                            "</div>"  +
+                            "</div>";
+                    }
+                    let stylistBox="";
+                    for(let i=0;i<info.result.stylists.length;i++){
+                        stylistBox+="<div class=\"box2\" style=\"width: 120px; height: 120px;background:url('/img/stylistBackground.png') center;\">"+
+                            "<img src='"+info.result.stylists[i].stylistPhoto+"'/>"  +
+                            "<div class=\"box2_2\">"+
+                            "<span><b>"+info.result.stylists[i].stylistName+"</b></span>"+
+                            "<span>Lv20</span>"+
+                            "</div>"+
+                            "</div>";
+                    }
+                    document.getElementsByClassName('salonIndex')[0].innerHTML=salonBox;
+                    document.getElementsByClassName('stylistAdd')[0].innerHTML=stylistBox;
+                }else{
+                    console.log("失败");
+                }
+            }else{
+                console.log("发生错误"+xhr.status);
+            }
+        }
+    }
+    xhr.open('post','/userBrowse/styHouse');
+    xhr.setRequestHeader("Content-Type","application/json");
+    let obj={"stoken":getCookie('stoken'),"styHousePosition":"上海市辖区黄浦区"};
+    console.log("select2");
+    xhr.send(JSON.stringify(obj));
+    console.log(JSON.stringify(obj));
+}
+
 function selesctAddress(){
         /* 地址三级联动的取值*/
         let pro = document.getElementById('cmbProvince'); //定位id
@@ -40,7 +90,7 @@ function selesctAddress(){
                         }
                         let stylistBox="";
                         for(let i=0;i<info.result.stylists.length;i++){
-                            stylistBox+="<div class=\"box2\" style=\"width: 120px; height: 120px;background:url('/img/stylistBackground.png') center;\">"+
+                            stylistBox+="<div class=\"box2\" onclick='' id='" +info.result.stylists[i].stylistId+ "' style=\"width: 120px; height: 120px;background:url('/img/stylistBackground.png') center;\">"+
                                         "<img src='"+info.result.stylists[i].stylistPhoto+"'/>"  +
                                         "<div class=\"box2_2\">"+
                                         "<span><b>"+info.result.stylists[i].stylistName+"</b></span>"+
@@ -61,6 +111,7 @@ function selesctAddress(){
         xhr.open('post','/userBrowse/styHouse');
         xhr.setRequestHeader("Content-Type","application/json");
         let obj={"stoken":getCookie('stoken'),"styHousePosition":styHousePosition};
+        console.log("select1");
         xhr.send(JSON.stringify(obj));
         console.log(JSON.stringify(obj));
 }
@@ -76,17 +127,15 @@ function selesctAddress(){
                     locaDetail(objid.getAttribute("id"));
                     window.location.href = "/html/salonDetail.html";
                 }else{
-
-                } console.log("跳转详情页失败");
+                    console.log("跳转详情页失败");
+                }
             }else{
                 console.log("发生错误"+xhr.status);
             }
         }
     }
     let salonId=objid.getAttribute("id");
-    console.log(salonId);
     let url='/userBrowse/styHouse/'+salonId;
-    console.log(url);
     xhr.open('post',url);
     xhr.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken'),"styHouseId":salonId};
@@ -154,6 +203,6 @@ function selesctAddress(){
 }*/
 window.onload=function () {
     console.log("salonIndex");
-    selesctAddress();
+    selesctAddress2();
     /*getCookie('stoken');*/
 };
