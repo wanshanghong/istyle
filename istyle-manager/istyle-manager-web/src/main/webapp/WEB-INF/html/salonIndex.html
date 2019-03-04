@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/css/login-register.css"/>  <!--改路径时相当于是login-register.css-->
     <link rel="stylesheet" href="/css/salonIndex.css">
 </head>
-<body>
+<body onload="selesctAddress2()">
 <!--页头导航栏start-->
 <div class="top">
     <div class="main">
@@ -199,13 +199,14 @@
 <script src="/js/base.js"></script>
 <script src="/js/salonIndex.js"></script>
 <script src="/js/index.js"></script>
-<script src="/js/index2.js"></script>
+<!--<script src="/js/index2.js"></script>-->
 <!--<script src="/js/userIndex.js"></script>-->
 <!--<script src="/js/salonDetail.js"></script>-->
 <script>
     /*地址选择控件*/
     $(document).ready(function(){
         addressInit('cmbProvince', 'cmbCity', 'cmbArea');
+        selesctAddress2();
     });
 </script>
 </body>
