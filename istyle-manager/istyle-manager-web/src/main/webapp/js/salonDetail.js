@@ -1,5 +1,4 @@
-function locaDetail(objid){
-
+function locaDetail(){
     let xhr=new XMLHttpRequest();
     xhr.onreadystatechange=function(){
         if (xhr.readyState===4){
@@ -50,6 +49,7 @@ function locaDetail(objid){
         }
     }
     let salonId=objid.getAttribute("id");
+    sessionStorage.clear();
     let url='/userBrowse/styHouse/'+salonId;
     xhr.open('post',url);
     xhr.setRequestHeader("Content-Type","application/json");
@@ -58,6 +58,6 @@ function locaDetail(objid){
     console.log(JSON.stringify(obj));
 }
 window.onload=function () {
-
+    locaDetail();
     /*getCookie('stoken');*/
 };
