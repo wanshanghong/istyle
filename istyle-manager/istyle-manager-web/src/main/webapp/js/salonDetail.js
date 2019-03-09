@@ -9,19 +9,19 @@ function locaDetail(){
                     console.log("成功"+xhr.status);
                     let salonBox="";
                         salonBox += "<div class=\"salonTopLeft\">" +
-                            "<h4>"+info.result.styHouse.styHouseName+"</h4><br>"  +
-                            "<span style=\"color: orangered\">" +info.result.styHouse.styHouseEvaluation+ "人评论</span>" +
+                            "<h4>"+info.result.styHouse[0].styHouseName+"</h4><br>"  +
+                            "<span style=\"color: orangered\">" +info.result.styHouse[0].styHouseEvaluation+ "人评论</span>" +
                             "<div style='width:500px; border:1px solid #666;'></div>"  +
-                            "<span>"+info.result.styHouse.styHouseAddress+"</span><br>"  +
-                            "<span>"+info.result.styHouse.styHousePackage+"</span><br>"+
-                            "<span>电话："+info.result.styHouse.styHousePhone+"</span><br>" +
-                            "<span>营业时间:"+info.result.styHouse.styHouseWorkTime+"</span>" +
+                            "<span>"+info.result.styHouse[0].styHouseAddress+"</span><br>"  +
+                            "<span>"+info.result.styHouse[0].styHousePackage+"</span><br>"+
+                            "<span>电话："+info.result.styHouse[0].styHousePhone+"</span><br>" +
+                            "<span>营业时间:"+info.result.styHouse[0].styHouseWorkTime+"</span>" +
                             "<div style=\"width:983px; border:1px solid #666;\"></div>"+
                             "<span>提供wifi</span>&nbsp;&nbsp;"+
                             "<span>提供免费车位</span>"+
                             "</div>"+
                             "<div class=\"salonTopRight\">"+
-                            "<img src='"+info.result.styHouse.styHousePhoto+"'>"+
+                            "<img src='"+info.result.styHouse[0].styHousePhoto+"'>"+
                             "</div>"+
                             "<div class=\"clear\"></div>"+
                             "<div class=\"salonTopBottom\"></div>";
