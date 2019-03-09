@@ -48,7 +48,7 @@ function locaDetail(){
             }
         }
     }
-    let salonId=objid.getAttribute("id");
+    let salonId=sessionStorage.getItem('styhouseId');
     sessionStorage.clear();
     let url='/userBrowse/styHouse/'+salonId;
     xhr.open('post',url);
