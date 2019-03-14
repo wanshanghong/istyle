@@ -24,7 +24,7 @@ function selesctAddress2(){
                     }
                     let stylistBox="";
                     for(let i=0;i<info.result.stylists.length;i++){
-                        stylistBox+="<div class=\"box2\" style=\"width: 120px; height: 120px;background:url('/img/stylistBackground.png') center;\">"+
+                        stylistBox+="<div class=\"box2\" onclick='locationStylistDetail(this)' id='"+info.result.stylists[i].stylistId+"' style=\"width: 120px; height: 120px;background:url('/img/stylistBackground.png') center;\">"+
                             "<img src='"+info.result.stylists[i].stylistPhoto+"'/>"  +
                             "<div class=\"box2_2\">"+
                             "<span><b>"+info.result.stylists[i].stylistName+"</b></span>"+
@@ -90,7 +90,7 @@ function selesctAddress(){
                         }
                         let stylistBox="";
                         for(let i=0;i<info.result.stylists.length;i++){
-                            stylistBox+="<div class=\"box2\" onclick='' id='" +info.result.stylists[i].stylistId+ "' style=\"width: 120px; height: 120px;background:url('/img/stylistBackground.png') center;\">"+
+                            stylistBox+="<div class=\"box2\" onclick='locationStylistDetail(this)' id='"+info.result.stylists[i].stylistId+"' style=\"width: 120px; height: 120px;background:url('/img/stylistBackground.png') center;\">"+
                                         "<img src='"+info.result.stylists[i].stylistPhoto+"'/>"  +
                                         "<div class=\"box2_2\">"+
                                         "<span><b>"+info.result.stylists[i].stylistName+"</b></span>"+
@@ -135,12 +135,41 @@ function locationDetail(objid){
         }
     }
     let salonId=objid.getAttribute("id");
-    sessionStorage.setItem('styhouseId',salonId);
+    sessionStorage.setItem('styhouseId',salonId);  /*后面可以加一个验证浏览器支不支持sessionStorage来优化*/
     let url='/userBrowse/styHouse/'+salonId;
     console.log(url);
     xhr.open('post',url);
     xhr.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken'),"styHouseId":salonId};
+    xhr.send(JSON.stringify(obj));
+    console.log(JSON.stringify(obj));
+}
+/*造型师详情页跳转*/
+function locationStylistDetail(objid){
+    let xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+        if (xhr.readyState===4){
+            if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
+                let info = JSON.parse(xhr.responseText);
+                // var info = xhr.responseText;
+                if (info.errCode === 0){
+                    console.log("成功"+xhr.status);
+                    window.location.href = "/html/stylistIndex.html";
+                }else{
+                    console.log("跳转详情页失败");
+                }
+            }else{
+                console.log("发生错误"+xhr.status);
+            }
+        }
+    }
+    let stylistId=objid.getAttribute("id");
+    sessionStorage.setItem('stylistId',stylistId);  /*后面可以加一个验证浏览器支不支持sessionStorage来优化*/
+    let url='/userBrowse/stylist/'+stylistId;
+    console.log(url);
+    xhr.open('post',url);
+    xhr.setRequestHeader("Content-Type","application/json");
+    let obj={"stoken":getCookie('stoken'),"stylistId":stylistId};
     xhr.send(JSON.stringify(obj));
     console.log(JSON.stringify(obj));
 }
