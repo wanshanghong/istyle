@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户查看造型师主页</title>
+    <link rel="stylesheet" type="text/css" href="/css/base.css"/> <!--改路径时相当于是base.css-->
+    <link rel="stylesheet" type="text/css" href="/css/login-register.css"/>  <!--改路径时相当于是login-register.css-->
+    <link rel="stylesheet" href="/css/stylistIndex.css">
+</head>
+<body>
+<!--页头-->
+<div class="top2">
+    <div class="main">
+        <div class="topheader">
+            <div class="logo">
+                <img src="/img/logo1.png"/>
+            </div>
+            <div class="top-left">
+
+                <a href=""><i class="home"></i>首页</a>
+                <a href="">发型设计</a>
+                <a href="">流行造型</a>
+                <a href="javascript:;" onclick="locationSalon()">造型屋</a>
+                <a href="">测评</a>
+            </div>
+            <div class="top-right">
+                <div class="myhome">
+                    <div class="myhometop">
+                        <a href="" onclick="locationInformation()">我的主页</a>
+                    </div>
+                </div>
+
+                <div class="main-nav beforeLogin">
+                    <ul>
+                        <!-- inser more links here -->
+                        <!--  <li><a class="cd-signin" href="javascript:void(0)">登录</a></li>
+                          <li><a class="cd-signup" href="javascript:void(0)">注册</a></li>-->
+                    </ul>
+                </div>
+                <div class="afterLogin" style="color: #FFF;"></div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="topContent main">
+    <!--<img src="img/user1.jpg" alt="">
+    <h5>潮流前线</h5>
+    <span>fighting!!!</span>
+    <div class="clear"></div>
+    <button class="stylistBtn1">关注</button> &lt;!&ndash;关注的留坑&ndash;&gt;
+    <button onclick="locationConsultation()" class="stylistBtn2">咨询</button>-->
+</div>
+<div class="bottomContent main">
+    <div class="-top">
+        <ul>
+            <li class="active" onclick="stylistIndex()">主页</li>
+            <li onclick="stylistFan()">粉丝</li>
+        </ul>
+    </div>
+    <div class="-bottom">
+        <div class="-bottomCon stylistindex">
+            <!--<span>已接受咨询人数：256</span>
+            <div class="clear"></div>
+            <div style="width:1000px; border:1px solid #666;"></div>
+            <p>个人简介></p>
+            <div class="clear"></div>
+            <span class="introduce">本人现在惠州OPPO零度造型（数码街店）担任高级理发师，擅长女生理发，染发，韩式发型。 05年毕业于Tony guy美发学院，06年参加日本春季流行发式研讨小组，07年进修于维尼沙宣美发学院。08年3月份开始分别旅行于日本、韩国、加拿大找寻发式未来发展趋势，9月新作获业内好评。08年10月份，参与创办北木造型Angel国际烫染会所。</span>-->
+        </div>
+        <div class="-bottomCon">
+            <span class="fannum"><!--粉丝数 399--></span>
+            <div class="clear"></div>
+            <div style="width:1000px; border:1px solid #666;"></div>
+            <div class="clear"></div>
+            <div class="fanCon">
+                <!--<div class="subscribeContent1">
+                    <img src="img/user2.jpg"/>
+                    <p>
+                        <span>fly</span><br />
+                        <span>fly for freedom</span>
+                    </p>
+                    <button class="privateChat"><a href="">私信</a></button>
+                    <button class='subscribeOrNot' onclick='delSubsc()'>取消关注</button>
+                </div>
+                <div class="clear"></div>
+                <div class="subscribeContent1">
+                    <img src="img/user2.jpg"/>
+                    <p>
+                        <span>安利</span><br />
+                        <span>喜欢安利的安利君</span>
+                    </p>
+                    <button class="privateChat"><a href="">私信</a></button>
+                    <button class='subscribeOrNot' onclick='delSubsc()'>取消关注</button>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="#" class="return" style="
+        position: fixed;
+        width: 30px;
+        height:80px;
+        top: 250px;
+        left:50px;
+        z-index: 5000;
+    ">
+    <img src="/img/return.gif" alt=""/>
+</a>
+
+<div class="footer3">
+    <div class="footer-row1">
+        <a href="">关于我们 -</a>
+        <a href="">使用手册 -</a>
+        <a href="">法律声明 -</a>
+        <a href="">广告服务 -</a>
+        <a href="">联系我们 -</a>
+        <a href="">友情链接 -</a>
+        <a href="">删除或修改信息 -</a>
+        <a href="">网站地图</a>
+    </div>
+    <span>技术支持:xxxx</span>
+    <span>粤ICP备案号12020213号-1</span>
+    <span>1024商务网客服QQ:xxx</span>
+    <span>站长统计</span>
+    </br>
+    <span>免责声明:此网页并非该单位官网，而是由会员免费注册的1024商务网商铺，内容的真实性、准确性和合法性由</span></br>
+    <span>布者负责，istyle对此不承担任何责任!</span></br>
+    <span>如发现侵权违规问题请发邮件至xxxx@qq.com或在线留言联系删除。</span>
+</div>
+
+<script src="/js/jquery-1.11.3.min.js"></script>
+<script src="/js/stylistIndex2.js"></script>
+<script src="/js/stylistIndex.js"></script>
+<script src="/js/index.js"></script>
+<script src="/js/base.js"></script>
+</body>
+</html>

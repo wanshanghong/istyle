@@ -1,0 +1,177 @@
+html{
+    background: url(/img/stylistbg5.jpg);
+    background-size: cover;
+    height: 1200px;
+}
+.top2 a{
+    text-decoration: none;
+    color: #000000;
+}
+/*内容上半部分start*/
+.topContent{
+    width: 1000px;
+    background: url("/img/stylistbg5.jpg");
+    background-size: cover;
+    height: 300px;
+    margin-top: 100px;
+}
+.topContent img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+.topContent h5{
+    margin: 0 auto;
+    margin-top: 15px;
+}
+.topContent span{
+    margin: 0 auto;
+    margin-top: 15px;
+    display: inline-block;
+}
+.topContent .stylistBtn1{
+    float: left;
+    margin: 20px  10px 20px 400px;
+    background-color: #76cfee;
+    outline: none;
+    border: none;
+    border-radius: 10%;
+    padding: 4px;
+    width: 80px;
+    height: 35px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.topContent .stylistBtn2{
+    float: left;
+    margin: 20px  30px 20px 40px;
+    background-color: #76cfee;
+    outline: none;
+    border: none;
+    border-radius: 10%;
+    padding: 4px;
+    width: 80px;
+    height: 35px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.topContent .stylistBtn1:hover{
+    background-color: #5bc0de;
+    color: #e3f3ff;
+}
+.topContent .stylistBtn2:hover{
+    background-color: #5bc0de;
+    color: #e3f3ff;
+}
+/*内容上半部分end*/
+
+/*内容下半部分主页start*/
+.bottomContent{
+    width: 1000px;
+    height: 500px;
+}
+.bottomContent .-top{
+    width: 1000px;
+    height: 40px;
+    background-color: #fff;
+    margin-top: 20px;
+}
+.bottomContent .active{
+    border-bottom: #ffa52c solid 4px;
+    width: 60px;
+}
+.bottomContent .-top ul{
+    list-style: none;
+    cursor: pointer;
+}
+.bottomContent .-top ul li:first-child{
+    display: inline-block;
+    float: left;
+    text-align: center;
+    margin: 10px 30px 10px 410px;
+}
+.bottomContent .-top ul li:nth-child(2){
+    display: inline-block;
+    float: left;
+    text-align: center;
+    margin: 10px 50px 10px 50px;
+}
+.bottomContent .-bottom{
+    width: 1000px;
+    height:400px;
+    background-color: #fff;
+    margin-top: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.bottomContent .-bottom span{
+    float: left;
+    margin: 15px 20px;
+    display: inline-block;
+}
+.bottomContent .-bottom span.introduce{
+    width: 900px;
+    overflow-wrap: normal;
+    letter-spacing: inherit;
+}
+.bottomContent .-bottom p{
+    float: left;
+    margin: 80px 20px 50px 20px;
+    display: inline-block;
+}
+/*内容下半部分粉丝start*/
+.bottomContent .-bottomCon{
+    width: 1000px;
+}
+.-bottomCon .subscribeContent1 {
+    width: 1000px;
+    height: 150px;
+    border-bottom: 1px solid #999999;
+    margin: 0 auto;
+}
+.-bottom .-bottomCon .subscribeContent1 img {
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin: 40px 0 20px 100px;
+}
+.-bottom .-bottomCon .subscribeContent1 p {
+    float: left;
+    width: 200px;
+    margin: 40px 0 20px 20px;
+}
+.-bottomCon .subscribeContent1 span {
+    float: left;
+    display: inline-block;
+}
+.-bottomCon .subscribeContent1  button.privateChat {
+    float: left;
+    display: inline-block;
+    margin-left: 120px;
+    margin-top: 65px;
+    background-color: #76cfee;
+    outline: none;
+    border: none;
+    border-radius: 10%;
+    width: 100px;
+    height: 35px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.-bottomCon .subscribeContent1 button.subscribeOrNot {
+    float: left;
+    display: inline-block;
+    margin-left: 60px;
+    margin-top: 65px;
+    padding: 0 10px;
+    background-color: #76cfee;
+    outline: none;
+    border: none;
+    border-radius: 10%;
+    width: 100px;
+    height: 35px;
+    text-align: center;
+    color: #FFFFFF;
+}

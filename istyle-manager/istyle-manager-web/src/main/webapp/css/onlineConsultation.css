@@ -1,0 +1,103 @@
+html{
+    background: url(/img/stylistbg5.jpg);
+    background-size: cover;
+    height: 800px;
+}
+.top2 a{
+    text-decoration: none;
+    color: #000000;
+}
+.container{
+    width: 1000px;
+    height: 600px;
+    padding-top: 100px;
+}
+.container p{
+    width: 1000px;
+    text-align: center;
+    height: 34px;
+    padding-bottom: 30px;
+}
+.container p:nth-child(4){
+    width: 1000px;
+    text-align: center;
+    height: 100px;
+    padding-bottom: 30px;
+}
+.container .input1{
+    width: 300px;
+    float: right;
+    margin-right: 220px;
+    margin-left: -200px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #5bc0de;
+}
+.container .input2{
+    width: 300px;
+    float: right;
+    margin-right: 220px;
+    margin-left: -200px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #5bc0de;
+}
+.container .input3{
+     width: 300px;
+     float: right;
+     margin-right: 220px;
+     margin-left: -180px;
+     height: 100px;
+    border-radius: 5px;
+    border: 1px solid #5bc0de;
+ }
+.container .input4{
+    width: 300px;
+    float: right;
+    margin-right: 220px;
+    margin-left: -180px;
+    height: 100px;
+    border-radius: 5px;
+    border: 1px solid #5bc0de;
+}
+.container label{
+    width: 34px;
+    vertical-align: middle;
+    text-align: right;
+}
+.container img{
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+#changeheadPortrait{
+    outline: none;
+    background-color: #5bc0de;
+    border: none;
+    color: #FFFFFF;
+    padding: 8px 10px;
+    border-radius: 8px;
+    margin-right: 10px;
+    margin-left: 110px;
+}
+.container .submit{
+    outline: none;
+    background-color: #5bc0de;
+    border: none;
+    color: #FFFFFF;
+    padding: 8px 50px;
+    border-radius: 8px;
+    margin-left: 180px;
+    margin-top: 50px;
+}
+.container .submit:hover{
+    outline: none;
+    background-color: #FFFFFF;
+    border: 1px solid #3ACA7A;
+    color: #5bc0de;
+    padding: 8px 50px;
+    border-radius: 8px;
+    margin-left: 180px;
+    margin-top: 50px;
+}
