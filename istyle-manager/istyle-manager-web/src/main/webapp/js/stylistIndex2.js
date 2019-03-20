@@ -41,7 +41,7 @@ function stylistIndex() {
     let stylistId=sessionStorage.getItem('stylistId');
     let url="/userBrowse/stylist/"+stylistId;
     xhr.open('post',url);
-    xhr.setRequestHeader("Content-Type","multipart/json");
+    xhr.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken'),"stylistId":stylistId};
     xhr.send(JSON.stringify(obj));
     console.log(JSON.stringify(obj));
@@ -84,7 +84,7 @@ function stylistFan() {
     let stylistId=sessionStorage.getItem('stylistId');
     let url="/userBrowse/stylist/"+stylistId+"/showStylistFan";
     xhr.open('post',url);
-    xhr.setRequestHeader("Content-Type","multipart/json");
+    xhr.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken'),"stylistId":stylistId};
     xhr.send(JSON.stringify(obj));
     console.log(JSON.stringify(obj));
@@ -111,7 +111,7 @@ function stylistSub() {
     let stylistId=sessionStorage.getItem('stylistId');
     let url="/userBrowse/stylist/"+stylistId+"/addAttention";
     xhr.open('post',url);
-    xhr.setRequestHeader("Content-Type","multipart/json");
+    xhr.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken'),"stylistId":stylistId};
     xhr.send(JSON.stringify(obj));
     console.log(JSON.stringify(obj));
@@ -138,7 +138,7 @@ function decstylistSub() {
     let stylistId=sessionStorage.getItem('stylistId');
     let url="/userBrowse/stylist/"+stylistId+"/addAttention";
     xhr.open('post',url);
-    xhr.setRequestHeader("Content-Type","multipart/json");
+    xhr.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken'),"stylistId":stylistId};
     xhr.send(JSON.stringify(obj));
     console.log(JSON.stringify(obj));
@@ -164,7 +164,7 @@ function locationConsultation() {
     let stylistId=sessionStorage.getItem('stylistId');
     let url="/userBrowse/stylist/"+stylistId+"/ShowAdvisory";
     xhr.open('post',url);
-    xhr.setRequestHeader("Content-Type","multipart/json");
+    xhr.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken'),"stylistId":stylistId};
     xhr.send(JSON.stringify(obj));
     console.log(JSON.stringify(obj));
