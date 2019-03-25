@@ -24,7 +24,7 @@ function consultation() {
     let stylistId=sessionStorage.getItem('stylistId');
     let url="/userBrowse/stylist/"+stylistId+"/summitAdvisory";
     xhr.open('post',url);
-    xhr.setRequestHeader("Content-Type","multipart/form-data");
+    xhr.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken'),"stylistId":stylistId,"advisoryPhoto":photo,"advisoryHeight":height,"advisoryWeight":weight,"advisoryStyle":style,"advisoryDescription":question};
     xhr.send(JSON.stringify(obj));
     console.log(JSON.stringify(obj));
