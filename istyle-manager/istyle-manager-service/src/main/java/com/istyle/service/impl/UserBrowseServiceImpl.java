@@ -4,12 +4,16 @@ import com.exception.AppAuthException;
 import com.istyle.mapper.*;
 import com.istyle.pojo.*;
 import com.istyle.service.UserBrowseService;
+import com.istyle.service.util.FileUpload;
 import com.util.CastUtil;
 import com.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.*;
+
+import static org.springframework.util.StringUtils.isEmpty;
 
 /**
  * @Author: 黄文伟
@@ -28,6 +32,8 @@ public class UserBrowseServiceImpl implements UserBrowseService {
     private TbStyHousePackageMapper tbStyHousePackageMapper;
     @Autowired
     private TbUserStylistMapper tbUserStylistMapper;
+    @Autowired
+    private TbUserStylistAdvisoryMapper tbUserStylistAdvisoryMapper;
 
     /**
      * 用户浏览造型屋
@@ -139,12 +145,18 @@ public class UserBrowseServiceImpl implements UserBrowseService {
             Map<String, List> map = new HashMap<>(16);
             TbStylist stylist;
             List<TbUser> fans;
+            long fanCount;
 
             stylist = tbStylistMapper.selectPhotoNameSexWord(stylistId);
             fans = tbStylistMapper.selectFansBystylistId(stylistId);
+            fanCount = tbUserStylistMapper.selectCountById(stylistId);
+
 
             map.put("stylist", Collections.singletonList(stylist));
             map.put("fans", fans);
+            map.put("fanCount", Collections.singletonList(fanCount));
+
+            System.out.printf(fans.get(1).getUserName());
 
             return map;
         } else {
@@ -178,6 +190,26 @@ public class UserBrowseServiceImpl implements UserBrowseService {
         flag = tbUserStylistMapper.selectStatusByUserIdAndStylistId(tbUserStylist);
         if (flag == null || flag == 1) {
             throw new AppAuthException("关注失败。");
+        }
+    }
+
+    /**
+     * 用户提交咨询信息
+     * @param userStylistAdvisory
+     */
+    @Override
+    public void summitAdvisory(MultipartFile userStylistAdvisory) {
+        System.out.println(1);
+        if (!isEmpty(userStylistAdvisory)) {
+            System.out.println(2);
+            String path = "advisoryPhoto";
+            String filename = FileUpload.imgUpload(userStylistAdvisory, path);
+            System.out.println(3);
+            System.out.println("fileName:" + filename);
+/*            if (StringUtil.isNotEmpty(filename)) {
+                userStylistAdvisory.setSqlPath(path+filename);
+                tbUserStylistAdvisoryMapper.insertadvisory(userStylistAdvisory);
+            }*/
         }
     }
 }
