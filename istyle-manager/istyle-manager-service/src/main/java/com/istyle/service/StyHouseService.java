@@ -30,4 +30,11 @@ public interface StyHouseService {
      * @return styHouseName
      */
     Map afterLoginGetName(TbStyHouse styHouse);
+
+    /**
+     * 展示造型屋信息页
+     * @param styHouse
+     * @return
+     */
+    TbStyHouse showStyHouseIndex(TbStyHouse styHouse);
 }

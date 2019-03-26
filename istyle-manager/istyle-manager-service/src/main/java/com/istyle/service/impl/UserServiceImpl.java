@@ -77,7 +77,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public Map loginUser(TbUser user) {
-        Map<String, String> stokenMap = null;
+        Map<String, String> stokenMap;
 
         if (tbUserMapper.isNameAndPassword(user) != 1) {
             throw new AppAuthException("号码和密码错误");

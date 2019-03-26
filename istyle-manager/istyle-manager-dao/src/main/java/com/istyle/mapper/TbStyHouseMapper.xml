@@ -59,4 +59,10 @@
         from tb_styHouse
         where styHouseId = #{styHouseId};
     </select>
+
+    <select id="selectIndexById" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStyHouse">
+        select styHouseId, styHousePhoto, styHouseName, styHouseAddress, styHousePackage, styHouseWorkTime, styHousePhone
+        from tb_styHouse
+        where styHouseId = #{styHouseId};
+    </select>
 </mapper>
