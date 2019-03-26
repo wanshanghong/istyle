@@ -12,7 +12,7 @@ function stylistIndex() {
                         "<h5>"+info.result.tbStylist[0].stylistName+"</h5>"+
                         "<span>"+info.result.tbStylist[0].stylistWord+"</span>"+
                         "<div class=\"clear\"></div>"+
-                        "<div class=\"stylistBtn2\"></div>"+
+                        "<div class=\"stylistBtn5\"></div>"+
                         "<button onclick=\"locationConsultation()\"class=\"stylistBtn2\">咨询</button>";
                     let s="";
                     if(!info.result.isAttention){  //0是已关注，1是未关注
@@ -28,7 +28,7 @@ function stylistIndex() {
                         "<div class=\"clear\"></div>"+
                         "<span class=\"introduce\">"+info.result.tbStylist[0].stylistIntroduction+"</span>";
                     document.getElementsByClassName('topContent')[0].innerHTML=y;
-                    document.getElementsByClassName('stylistBtn2')[0].innerHTML=s;
+                    document.getElementsByClassName('stylistBtn5')[0].innerHTML=s;
                     document.getElementsByClassName('stylistindex')[0].innerHTML=z;
                 }else{
                     console.log("造型师首页展示失败");
@@ -59,7 +59,7 @@ function stylistFan() {
                     let s="";
                     s+="<span class=\"fannum\">粉丝数 "+info.result.fanCount+" </span>";
                     let y="";
-                    for (let i=0;i<info.result.fanCount.length;i++){
+                    for (let i=0;i<info.result.fanCount;i++){
                         y+="<div class=\"subscribeContent1\">"+
                             "<img src='"+info.result.fans[i].userPhoto+"'/>"+
                             "<p>"+
