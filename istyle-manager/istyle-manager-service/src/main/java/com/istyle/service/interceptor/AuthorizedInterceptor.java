@@ -43,12 +43,12 @@ public class AuthorizedInterceptor implements HandlerInterceptor {
 
         if (StringUtil.isEmpty(stoken)) {
             responseMessage(response, response.getWriter(), Response.errAuth("stoken错误，校验失败"));
-            throw new AppAuthException("校验失败");
+            throw new AppAuthException("校验失败，stoken为空,uri为："+ request.getRequestURI());
         } else {
             TbUser user = JWT.unsign(stoken, TbUser.class);
             if(user==null){
                 responseMessage(response, response.getWriter(), Response.errAuth("stoken错误，校验失败"));
-                throw new AppAuthException("校验失败");
+                throw new AppAuthException("校验失败，用户不存在");
             }
             return true;
         }

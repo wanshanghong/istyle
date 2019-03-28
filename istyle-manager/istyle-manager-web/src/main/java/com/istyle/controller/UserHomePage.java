@@ -17,7 +17,7 @@ import java.util.*;
  */
 @Controller
 @RequestMapping("/userHome")
-public class UserHomePage {
+public class    UserHomePage {
     @Autowired
     private UserService userService;
 

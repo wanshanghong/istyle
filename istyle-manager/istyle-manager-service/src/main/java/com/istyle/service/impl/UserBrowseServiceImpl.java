@@ -119,6 +119,9 @@ public class UserBrowseServiceImpl implements UserBrowseService {
             tbStylist = tbStylistMapper.selectStylistById(stylistId);
             isAttention = tbUserStylistMapper.selectStatusByUserIdAndStylistId(tbUserStylist);
 
+            System.out.println(tbStylist.getStylistWord());
+            System.out.println(tbStylist.getStylistIntoduction());
+
             if (isAttention == null) {
                 isAttention = 1;
                 map.put("isAttention", Collections.singletonList(isAttention));
