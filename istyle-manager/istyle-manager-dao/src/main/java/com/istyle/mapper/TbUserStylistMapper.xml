@@ -18,4 +18,10 @@
         tb_user_stylist(userId, stylistId, status)
         values (#{userId}, #{stylistId}, 0);
     </insert>
+
+    <select id="selectCountById" parameterType="java.lang.Long" resultType="java.lang.Long">
+        select count(*)
+        from tb_user_stylist
+        where stylistId = #{stylistId} and status = 0;
+    </select>
 </mapper>

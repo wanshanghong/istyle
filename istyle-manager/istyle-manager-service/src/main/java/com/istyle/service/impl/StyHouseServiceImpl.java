@@ -115,4 +115,12 @@ public class StyHouseServiceImpl implements StyHouseService {
             throw new AppAuthException("登陆失败，请重新登陆");
         }
     }
+
+    @Override
+    public TbStyHouse showStyHouseIndex(TbStyHouse styHouse) {
+        long styHouseId = styHouse.getStyHouseId();
+        TbStyHouse param;
+        param = styHouseMapper.selectIndexById(styHouseId);
+        return param;
+    }
 }

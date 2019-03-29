@@ -49,13 +49,19 @@
     </select>
 
     <select id="selectPhotoNameAddressPackageByPosition" parameterType="java.lang.String" resultType="com.istyle.pojo.TbStyHouse">
-        select styHousePhoto, styHouseName, styHouseAddress, styHousePackage
+        select styHouseId, styHousePhoto, styHouseName, styHouseAddress, styHousePackage
         from tb_styHouse
         where styHousePosition = #{styHousePosition};
     </select>
 
     <select id="selectNamePhotoPackagePhoneTimeWordByStyHouseId" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStyHouse">
         select styHouseName, styHousePhoto, styHouseAddress, styHousePackage, styHousePhone, styHouseWorkTime, styHouseWord
+        from tb_styHouse
+        where styHouseId = #{styHouseId};
+    </select>
+
+    <select id="selectIndexById" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStyHouse">
+        select styHouseId, styHousePhoto, styHouseName, styHouseAddress, styHousePackage, styHouseWorkTime, styHousePhone
         from tb_styHouse
         where styHouseId = #{styHouseId};
     </select>

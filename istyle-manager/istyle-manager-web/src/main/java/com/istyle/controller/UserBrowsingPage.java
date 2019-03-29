@@ -2,6 +2,7 @@ package com.istyle.controller;
 
 import com.istyle.pojo.TbStylist;
 import com.istyle.pojo.TbUser;
+import com.istyle.pojo.TbUserStylistAdvisory;
 import com.istyle.service.StylistService;
 import com.istyle.service.UserBrowseService;
 import com.istyle.service.UserService;
@@ -10,6 +11,7 @@ import com.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Map;
 
@@ -37,6 +39,7 @@ public class UserBrowsingPage {
     @RequestMapping(value = "/styHouse", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     public Response userBrowseStyHousePage(@RequestBody Map<String, String> request) {
         String position = request.get("styHousePosition");
+        System.out.println(position);
         Map temp = userBrowseService.browseStyHouse(position);
         return Response.ok(temp);
     }
@@ -49,6 +52,7 @@ public class UserBrowsingPage {
     @ResponseBody
     @RequestMapping(value = "/styHouse/{styHouseId}", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     public Response showStyHousePage(@PathVariable("styHouseId") Long styHouseId) {
+        System.out.println("zaoxingwu");
         Map param = userBrowseService.showStyHouse(styHouseId);
         return Response.ok(param);
     }
@@ -94,8 +98,22 @@ public class UserBrowsingPage {
         return Response.ok();
     }
 
-    //造型师咨询提交
+    /**
+     * 造型师咨询提交
+     * @param stylistId
+     * @param userStylistAdvisory
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/stylist/{stylistId}/summitAdvisory", method = RequestMethod.POST, produces = {"multipart/form-data;charset=UTF-8"})
+    public Response summitAdvisory(@PathVariable("stylistId") Long stylistId, @RequestParam MultipartFile userStylistAdvisory) {
+        System.out.println(4);
+/*        TbUser user = JWT.unsign(userStylistAdvisory.getStoken(), TbUser.class);*/
+        userBrowseService.summitAdvisory(userStylistAdvisory);
+//        userStylistAdvisory.setUserId(1);
 
+        return Response.ok();
+    }
     /**
      * 造型师粉丝的展示界面
      * @param stylistId

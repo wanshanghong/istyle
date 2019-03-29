@@ -4,12 +4,16 @@ import com.exception.AppAuthException;
 import com.istyle.mapper.*;
 import com.istyle.pojo.*;
 import com.istyle.service.UserBrowseService;
+import com.istyle.service.util.FileUpload;
 import com.util.CastUtil;
 import com.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.*;
+
+import static org.springframework.util.StringUtils.isEmpty;
 
 /**
  * @Author: 黄文伟
@@ -28,6 +32,8 @@ public class UserBrowseServiceImpl implements UserBrowseService {
     private TbStyHousePackageMapper tbStyHousePackageMapper;
     @Autowired
     private TbUserStylistMapper tbUserStylistMapper;
+    @Autowired
+    private TbUserStylistAdvisoryMapper tbUserStylistAdvisoryMapper;
 
     /**
      * 用户浏览造型屋
@@ -46,12 +52,17 @@ public class UserBrowseServiceImpl implements UserBrowseService {
             // 遍历造型屋，获得每个造型屋的造型师
             outer: for (int i = 0; i < styHouses.size(); i++) {
                 List<Long> stylistId = tbStyHouseStylistMapper.selectStylistIdByStyHouseId(styHouses.get(i).getStyHouseId());
-                //遍历造型师，获得每个造型师的数据
-                for (int j = 0; j < stylistId.size(); j++) {
-                    stylists = tbStylistMapper.selectPhotoAndNameById(stylistId.get(j));
-                    // 如果容器多于4个，就跳出外循环
-                    if (stylists.size() > 4) {
-                        break outer;
+                // 判断造型屋旗下的造型师数量是否为0，是则跳过内循环
+                if (stylistId.size() == 0) {
+                    i++;
+                } else {
+                    //遍历造型师，获得每个造型师的数据
+                    for (int j = 0; j < stylistId.size(); j++) {
+                        stylists.add(tbStylistMapper.selectPhotoAndNameById(stylistId.get(j)));
+                        // 如果容器多于4个，就跳出外循环
+                        if (stylists.size() > 4) {
+                            break outer;
+                        }
                     }
                 }
             }
@@ -108,6 +119,9 @@ public class UserBrowseServiceImpl implements UserBrowseService {
             tbStylist = tbStylistMapper.selectStylistById(stylistId);
             isAttention = tbUserStylistMapper.selectStatusByUserIdAndStylistId(tbUserStylist);
 
+            System.out.println(tbStylist.getStylistWord());
+            System.out.println(tbStylist.getStylistIntoduction());
+
             if (isAttention == null) {
                 isAttention = 1;
                 map.put("isAttention", Collections.singletonList(isAttention));
@@ -134,12 +148,18 @@ public class UserBrowseServiceImpl implements UserBrowseService {
             Map<String, List> map = new HashMap<>(16);
             TbStylist stylist;
             List<TbUser> fans;
+            long fanCount;
 
             stylist = tbStylistMapper.selectPhotoNameSexWord(stylistId);
             fans = tbStylistMapper.selectFansBystylistId(stylistId);
+            fanCount = tbUserStylistMapper.selectCountById(stylistId);
+
 
             map.put("stylist", Collections.singletonList(stylist));
             map.put("fans", fans);
+            map.put("fanCount", Collections.singletonList(fanCount));
+
+            System.out.printf(fans.get(1).getUserName());
 
             return map;
         } else {
@@ -173,6 +193,26 @@ public class UserBrowseServiceImpl implements UserBrowseService {
         flag = tbUserStylistMapper.selectStatusByUserIdAndStylistId(tbUserStylist);
         if (flag == null || flag == 1) {
             throw new AppAuthException("关注失败。");
+        }
+    }
+
+    /**
+     * 用户提交咨询信息
+     * @param userStylistAdvisory
+     */
+    @Override
+    public void summitAdvisory(MultipartFile userStylistAdvisory) {
+        System.out.println(1);
+        if (!isEmpty(userStylistAdvisory)) {
+            System.out.println(2);
+            String path = "advisoryPhoto";
+            String filename = FileUpload.imgUpload(userStylistAdvisory, path);
+            System.out.println(3);
+            System.out.println("fileName:" + filename);
+/*            if (StringUtil.isNotEmpty(filename)) {
+                userStylistAdvisory.setSqlPath(path+filename);
+                tbUserStylistAdvisoryMapper.insertadvisory(userStylistAdvisory);
+            }*/
         }
     }
 }

@@ -69,4 +69,11 @@ public interface TbStyHouseMapper {
      * @return
      */
     TbStyHouse selectNamePhotoPackagePhoneTimeWordByStyHouseId(Long styHouseId);
+
+    /**
+     * 根据id查询造型屋登陆页信息
+     * @param styHouseId
+     * @return
+     */
+    TbStyHouse selectIndexById(Long styHouseId);
 }

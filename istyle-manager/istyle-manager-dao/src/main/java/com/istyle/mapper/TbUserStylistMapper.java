@@ -26,4 +26,11 @@ public interface TbUserStylistMapper {
      * @param tbUserStylist
      */
     void insertStatusByUserIdAndStylistId(TbUserStylist tbUserStylist);
+
+    /**
+     * 根据造型师id和status查询关注造型师数
+     * @param stylistId
+     * @return
+     */
+    long selectCountById(long stylistId);
 }

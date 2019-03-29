@@ -1,6 +1,8 @@
 package com.istyle.service;
 
 import com.istyle.pojo.TbStylist;
+import com.istyle.pojo.TbUserStylistAdvisory;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Map;
 
@@ -45,4 +47,10 @@ public interface UserBrowseService {
      * @param stylistId
      */
     void addAttention(Long userId, Long stylistId);
+
+    /**
+     * 用户提交咨询信息
+     * @param userStylistAdvisory
+     */
+    void summitAdvisory(MultipartFile userStylistAdvisory);
 }
