@@ -10,7 +10,7 @@ function locaDetail(){
                     let salonBox="";
                         salonBox += "<div class=\"salonTopLeft\">" +
                             "<h4>"+info.result.styHouse[0].styHouseName+"</h4><br>"  +
-                            "<span style=\"color: orangered\">" +info.result.styHouse[0].styHouseEvaluation+ "人评论</span>" +
+                            "<span style=\"color: orangered\">" +info.result.styHouse[0].commentCount+ "人评论</span>" +
                             "<div style='width:500px; border:1px solid #666;'></div>"  +
                             "<span>"+info.result.styHouse[0].styHouseAddress+"</span><br>"  +
                             "<span>"+info.result.styHouse[0].styHousePackage+"</span><br>"+
