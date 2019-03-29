@@ -19,6 +19,8 @@ public class TbStyHouse {
     private String styHousePackage;
     private String styHousePhone;
     private String styHouseWorkTime;
+    // 暂时添加
+    private long commentCount;
 
     public Long getStyHouseId() {
         return styHouseId;
@@ -138,5 +140,13 @@ public class TbStyHouse {
 
     public void setStyHouseWorkTime(String styHouseWorkTime) {
         this.styHouseWorkTime = styHouseWorkTime;
+    }
+
+    public long getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(long commentCount) {
+        this.commentCount = commentCount;
     }
 }
