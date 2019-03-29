@@ -16,7 +16,7 @@ function stylistIndex() {
                         "<button onclick=\"locationConsultation()\"class=\"stylistBtn2\">咨询</button>";
                     let s="";
                     if(!info.result.isAttention){  //0是已关注，1是未关注
-                        s+="<button onclick=\"decstylistSub()\" class=\"stylistBtn1\">已关注</button>";
+                        s+="<button class=\"stylistBtn1\">已关注</button>";
                     }else{
                         s+="<button onclick=\"stylistSub()\" class=\"stylistBtn1\">关注</button>";
                     }
@@ -24,7 +24,7 @@ function stylistIndex() {
                     z+="<span>已接受咨询人数："+info.result.tbStylist[0].stylistAdvisory+"</span>"+
                         "<div class=\"clear\"></div>"+
                         "<div style=\"width:1000px; border:1px solid #666;\"></div>"+
-                        "<p>个人简介></p>"+
+                        "<p>Ta的简介></p>"+
                         "<div class=\"clear\"></div>"+
                         "<span class=\"introduce\">"+info.result.tbStylist[0].stylistIntroduction+"</span>";
                     document.getElementsByClassName('topContent')[0].innerHTML=y;
@@ -66,7 +66,6 @@ function stylistFan() {
                             "<span>"+info.result.fans[i].userName+"</span><br/>"+
                             "<span>"+info.result.fans[i].userWord+"</span>"+
                             "</p>"+
-                            "<button class='privateChat'><a href=''>私信</a></button>"+
                             "<button class='subscribeOrNot' onclick='' id='"+info.result.fans[i].userId+"'>取消关注</button>"+
                             "</div>"+
                             "<div class=\"clear\"></div>";
