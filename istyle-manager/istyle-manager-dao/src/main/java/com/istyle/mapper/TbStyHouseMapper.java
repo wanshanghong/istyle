@@ -1,6 +1,8 @@
 package com.istyle.mapper;
 
 import com.istyle.pojo.TbStyHouse;
+import com.istyle.pojo.TbStyHousePackage;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -76,4 +78,55 @@ public interface TbStyHouseMapper {
      * @return
      */
     TbStyHouse selectIndexById(Long styHouseId);
+
+    /**
+     * 更新造型屋数据
+     * @param tbStyHouse
+     */
+    void updateStyHouse(TbStyHouse tbStyHouse);
+
+    // TODO
+    /**
+     * 根据id查询造型屋所有套餐信息
+     * @param styHouseId
+     * @return
+     */
+    List<TbStyHousePackage> selectPackageList(long styHouseId);
+
+    /**
+     * 根据id查询造型屋的套餐数
+     * @param styHouseId
+     * @return
+     */
+    int selectPackageCount(long styHouseId);
+
+    /**
+     * 添加套餐
+     * @param tbStyHousePackage
+     * @return
+     */
+    int insertPackage(TbStyHousePackage tbStyHousePackage);
+
+    /**
+     * 根据id查询套餐信息
+     * @param styHouseId
+     * @param packageId
+     * @return
+     */
+    TbStyHousePackage selectPackageById(@Param("styHouseId")long styHouseId, @Param("packageId")long packageId);
+
+    /**
+     * 修改套餐信息
+     * @param tbStyHousePackage
+     * @return
+     */
+    int updatePackage(TbStyHousePackage tbStyHousePackage);
+
+    /**
+     * 删除套餐
+     * @param styHouseId
+     * @param packageId
+     * @return
+     */
+    int deletePackage(@Param("styHouseId")long styHouseId, @Param("packageId")long packageId);
 }

@@ -65,4 +65,44 @@
         from tb_styHouse
         where styHouseId = #{styHouseId};
     </select>
+
+    <update id="updateStyHouse" parameterType="com.istyle.pojo.TbStyHouse">
+        update tb_styHouse
+          set styHousePhoto=#{styHousePhoto}, styHouseName=#{styHouseName}, styHouseAddress=#{styHouseAddress}, styHousePackage=#{styHousePackage}, styHouseWorkTime=#{styHouseWorkTime}, styHousePhone=#{styHousePhone}
+          where styHouseId=#{styHouseId};
+    </update>
+
+    <select id="selectPackageList" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStyHousePackage">
+        select packageId, packageName, packagePhoto, packagePrice, packageDescription
+        from tb_styhouse_package
+        where styHouseId = #{styHouseId} and status = 1;
+    </select>
+
+    <select id="selectPackageCount" parameterType="java.lang.Long" resultType="java.lang.Integer">
+        select count(*) from tb_styhouse_package where styHouseId=#{styHouseId} and status = 1;
+    </select>
+
+    <insert id="insertPackage" parameterType="com.istyle.pojo.TbStyHousePackage">
+        insert into
+        tb_styhouse_package(styHouseId, packagePhoto, packageName, packagePrice, packageDescription, status)
+        values (#{styHouseId}, #{packagePhoto}, #{packageName}, #{packagePrice}, #{packageDescription}, 1)
+    </insert>
+
+    <select id="selectPackageById" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStyHousePackage">
+        select packageId, packageName, packagePhoto, packagePrice, packageDescription
+        from tb_styhouse_package
+        where styHouseId = #{styHouseId} and packageId=#{packageId} and status=1;
+    </select>
+
+    <update id="updatePackage" parameterType="com.istyle.pojo.TbStyHousePackage">
+        update tb_styhouse_package
+        set packageName=#{packageName}, packagePhoto=#{packagePhoto}, packagePrice=#{packagePrice}, packageDescription=#{packageDescription}
+        where styHouseId=#{styHouseId} and packageId=#{packageId};
+    </update>
+
+    <update id="deletePackage" parameterType="java.lang.Long">
+        update tb_styhouse_package
+        set status=0
+        where styHouseId=#{styHouseId} and packageId=#{packageId};
+    </update>
 </mapper>

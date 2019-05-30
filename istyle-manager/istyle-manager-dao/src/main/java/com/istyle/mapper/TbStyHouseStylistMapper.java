@@ -1,5 +1,8 @@
 package com.istyle.mapper;
 
+import com.istyle.pojo.TbStyHouseStylist;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 /**
@@ -21,4 +24,48 @@ public interface TbStyHouseStylistMapper {
      * @return count
      */
     Long selectStylistCountByStyHouseId(Long styHouseId);
+
+    /**
+     * 查询所有造型师
+     * @param styHouseId
+     * @return
+     */
+    List<TbStyHouseStylist> selectStylistList(long styHouseId);
+
+    /**
+     * 查询造型师数量
+     * @param styHouseId
+     * @return
+     */
+    long selectStylistCount(long styHouseId);
+
+    /**
+     * 根据id查询造型屋关联的造型师
+     * @param styHouseId
+     * @param stylistId
+     * @return
+     */
+    TbStyHouseStylist selectStylist(@Param("styHouseId")long styHouseId, @Param("stylistId")long stylistId);
+
+    /**
+     * 修改造型屋关联的造型师的数据
+     * @param tbStyHouseStylist
+     * @return
+     */
+    int updateStylist(TbStyHouseStylist tbStyHouseStylist);
+
+    /**
+     * 添加造型屋关联的造型师
+     * @param tbStyHouseStylist
+     * @return
+     */
+    int insertStylist(TbStyHouseStylist tbStyHouseStylist);
+
+    /**
+     * 删除造型师
+     * @param styHouseId
+     * @param stylistId
+     * @return
+     */
+    int deleteStylist(@Param("styHouseId")long styHouseId, @Param("stylistId")long stylistId);
 }
