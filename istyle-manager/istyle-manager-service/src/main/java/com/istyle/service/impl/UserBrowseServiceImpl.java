@@ -85,11 +85,15 @@ public class UserBrowseServiceImpl implements UserBrowseService {
     public Map showStyHouse(Long styHouseId) {
         if (StringUtil.isNotEmpty(styHouseId.toString())) {
             Map<String, List> map = new HashMap<>(16);
-            TbStyHouse styHouse;
+            TbStyHouse styHouse = new TbStyHouse();
             List<TbStyHousePackage> discountPackage;
+
 
             styHouse = tbStyHouseMapper.selectNamePhotoPackagePhoneTimeWordByStyHouseId(styHouseId);
             discountPackage = tbStyHousePackageMapper.selectAllPackageByStyHouseId(styHouseId);
+
+            styHouse.setCommentCount(2);
+            System.out.println("hh" +styHouse.getCommentCount());
 
             map.put("styHouse", Collections.singletonList(styHouse));
             map.put("discountPackage", discountPackage);
@@ -120,7 +124,7 @@ public class UserBrowseServiceImpl implements UserBrowseService {
             isAttention = tbUserStylistMapper.selectStatusByUserIdAndStylistId(tbUserStylist);
 
             System.out.println(tbStylist.getStylistWord());
-            System.out.println(tbStylist.getStylistIntoduction());
+            System.out.println(tbStylist.getStylistIntroduction());
 
             if (isAttention == null) {
                 isAttention = 1;

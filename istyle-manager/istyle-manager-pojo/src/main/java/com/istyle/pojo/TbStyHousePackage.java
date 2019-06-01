@@ -7,10 +7,11 @@ package com.istyle.pojo;
  */
 public class TbStyHousePackage {
     private Long packageId;
-    private Long styHoseId;
+    private Long styHouseId;
     private String packageName;
     private String packagePhoto;
     private String packagePrice;
+    private String packageDescription;
 
     public Long getPackageId() {
         return packageId;
@@ -20,12 +21,12 @@ public class TbStyHousePackage {
         this.packageId = packageId;
     }
 
-    public Long getStyHoseId() {
-        return styHoseId;
+    public Long getStyHouseId() {
+        return styHouseId;
     }
 
-    public void setStyHoseId(Long styHoseId) {
-        this.styHoseId = styHoseId;
+    public void setStyHouseId(Long styHouseId) {
+        this.styHouseId = styHouseId;
     }
 
     public String getPackageName() {
@@ -50,5 +51,13 @@ public class TbStyHousePackage {
 
     public void setPackagePrice(String packagePrice) {
         this.packagePrice = packagePrice;
+    }
+
+    public String getPackageDescription() {
+        return packageDescription;
+    }
+
+    public void setPackageDescription(String packageDescription) {
+        this.packageDescription = packageDescription;
     }
 }

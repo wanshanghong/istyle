@@ -96,11 +96,11 @@ public class TbStylist {
         this.stylistAdvisory = stylistAdvisory;
     }
 
-    public String getStylistIntoduction() {
+    public String getStylistIntroduction() {
         return stylistIntroduction;
     }
 
-    public void setStylistIntoduction(String stylistIntoduction) {
-        this.stylistIntroduction = stylistIntoduction;
+    public void setStylistIntroduction(String stylistIntroduction) {
+        this.stylistIntroduction = stylistIntroduction;
     }
 }
