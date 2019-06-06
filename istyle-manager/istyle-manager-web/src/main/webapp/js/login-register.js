@@ -424,6 +424,7 @@ document.getElementById("loginbtn").onclick = function(){
                         document.cookie=name +"="+value;
                     }
                     setCookie('stoken',data.result.stoken);
+                    setCookie('username',username.value);
                     alert("登录成功");
                     locationStyhouseHome();
                 }
@@ -448,12 +449,13 @@ document.getElementById("loginbtn").onclick = function(){
                 if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
                     var info = JSON.parse(xhr.responseText);
                     if (info.errCode === 0) {
-                        window.location.href = "/html/index.html";
+                        setCookie('styHouseId',info.result.styHouseId);
+                        window.location.href = "/html/index_salon.html";
                         alert("跳转成功");
                         let hidden=document.getElementById('beforeLogin');
                         hidden.style.display="none";
                         let appear=document.getElementsByClassName('afterLogin')[0];
-                        appear.innerHTML="欢迎"+info.result.userName+"登录istyle";
+                        appear.innerHTML="欢迎"+info.result.styHouseName+"登录istyle";
                     }else{
                         alert("跳转失败,该造型屋没有登录");
                     }
@@ -492,6 +494,7 @@ document.getElementById("loginbtn").onclick = function(){
                         document.cookie=name +"="+value;
                     }
                     setCookie('stoken',data.result.stoken);
+                    setCookie('username',username.value);
                     alert("登录成功");
                     locationStylistHome();
                 }

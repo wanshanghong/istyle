@@ -6,7 +6,7 @@
 /*纵向导航条*/
 .verticalNav .box1{
 	width: 1000px;
-	height: 890px;
+	height: 700px;
 	margin: 0 auto;
 	position: relative;
 	background: #FFFFFF;
@@ -15,7 +15,7 @@
 }
 .verticalNav .box2{
 	width: 150px;
-	height: 890px;
+	height: 700px;
 	background: #FFFFFF;
 	position: absolute;
 	top: 0;
@@ -24,7 +24,7 @@
 }
 .verticalNav .box2 ul{
 	list-style: none;
-	height: 805px;
+	height: 700px;
 }
 .verticalNav .box2>ul>span{
 	display: block;
@@ -53,7 +53,7 @@
 }
 .verticalNav .box2 .right {
 	width: 835px;
-	height: 890px;
+	height: 700px;
 	background: #fff;
 	position: absolute;
 	top: 0;
@@ -154,22 +154,13 @@
 	border-radius: 50%;
 }
 .rightBottomInformation form #changeheadPortrait{
-	display: inline-block;
-	background: #FFFFFF;
-	color: #000000;
-	float: left;
-	margin-left: 18px;
-	margin-top: 62px;
-	width: 100px;
-	/*display: block;*/
-	height: 30px;
-	font-size: 14px;
-	border-radius: 5px;
+	outline: none;
+	background-color: #5bc0de;
 	border: none;
-	transition: .5s;   /*把鼠标指针悬停在 div 元素上，它的外观会逐渐改变*/
-	cursor: pointer;
-	box-shadow: 0 0 3px #999999;
-	
+	color: #FFFFFF;
+	padding: 8px 10px;
+	border-radius: 8px;
+	margin-right: 8px;
 }
 .rightBottomInformation form .sex{
 	/*padding: 0 20px 0 10px ;*/
