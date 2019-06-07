@@ -372,9 +372,11 @@ function login1(){
     });
 }
 
-document.getElementById("loginbtn").onclick = function(){
-	check1()?login1():alert("请重新输入");
-};
+    if(document.getElementById("loginbtn")){
+        document.getElementById("loginbtn").onclick = function(){
+            check1()?login1():alert("请重新输入");
+        };
+    }
 /*用户登录成功跳转*/
     function locationUserHome(){
         let xhr=new XMLHttpRequest();
