@@ -72,7 +72,7 @@ function showInformation2(){
             }
         }
     }
-    xhr.open('post','/styHouseHome/index');
+    xhr.open('post','/styHouse/index');
     xhr.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken')};
     xhr.send(JSON.stringify(obj));
