@@ -76,6 +76,7 @@ function showInformation2(){
     xhr.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken')};
     xhr.send(JSON.stringify(obj));
+    console.log("55555555");
 }
 //我的信息编辑
 function information1(){
@@ -487,6 +488,7 @@ function updadeStylist(obj){
     }
 window.onload=function(){
     showInformation2();
+    console.log("5555555555555555");
     /* let collectBtn=document.getElementById('collectBtn');
      collectBtn.addEventListener('click',collect,false);*/
 //collectBtn.removeEventListener('click',collect,false); 这个false是阻止冒泡的意思
