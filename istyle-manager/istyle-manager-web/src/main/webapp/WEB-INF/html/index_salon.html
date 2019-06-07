@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>造型屋主页</title>
-    <link rel="stylesheet" type="text/css" href="/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/userbase.css"/>
     <link rel="stylesheet" type="text/css" href="/css/index_salon.css"/>
     <link rel="stylesheet" type="text/css" href="/css/base.css"/>
     <link rel="stylesheet" type="text/css" href="/css/login-register.css"/>
@@ -21,12 +21,12 @@
                 <img src="/img/logo1.png"/>
             </div>
             <div class="top-right">
-                <div class="myhome">
+  <!--              <div class="myhome">
                     <div class="myhometop">
                     </div>
                     <div class="mydropdown">
                     </div>
-                </div>
+                </div>-->
                 <div class=" beforeLogin">
                     <ul>
                     </ul>
@@ -67,7 +67,7 @@
                                             <p><span class="time">营业时间：周五到周六 8:00-22:00</span></p><div class="clear"></div>
                                             <p><span class="phone">联系电话：13625985542</span></p><div class="clear"></div>-->
                                         </div>
-                                        <input type="button" id="editorBtn1" onclick="editor1()" value="编辑"/>
+                                        <input type="button" id="editorBtn1" onclick="editor2()" value="编辑"/>
                                     </div>
                                     <div class="updateInfo" style="display: block">
                                         <form action="" method="post" id="form">
@@ -78,7 +78,7 @@
                                                 <input type="text" id="input1" style="float: left; margin-top: 62px; margin-left: 18px; width: 200px; height: 30px; border: none;">
                                             </p>-->
                                             <div class="clear"></div>
-                                            <div class="updateContent1">
+                                            <div id="updateContent1">
                                           <!--      <p>
                                                     <input type="button" id="changeheadPortrait" onclick="changeHead.click()" value="上传图片">
                                                     <input type="file" id="changeHead" style="display: none" onchange="input1.value=this.value" name="userPhoto">
@@ -90,7 +90,7 @@
                                                 <p><label for="address">具体地址：</label><textarea name="address" class="input2" id="address" cols="30" rows="10" placeholder="请输入你具体地址(最多25字)"></textarea></p>
                                                 <p><label for="meal">套餐简介：</label><textarea name="meal" class="input3" id="meal" cols="30" rows="10" placeholder="请输入套餐简介(最多25字)"></textarea></p>
                                             </div>
-                                            <p><input type="button" onclick="information();success();showInformation()" id="submit" value="保存"/></p>
+                                            <p><input type="button" onclick="information1();success1();showInformation2()" id="submit" value="保存"/></p>
 
                                         </form>
                                     </div>
@@ -248,11 +248,12 @@
 </div>
 
 <script src="/js/jquery-1.11.3.min.js"></script>
-<script src="/js/base.js" type="text/javascript"></script>
+<script type="text/javascript" src="/js/login-register.js"></script>
+<script src="/js/userbase.js" type="text/javascript"></script>
 <script src="/js/index_salon.js"></script>
 <script src="/js/base.js"></script>
-<script src="/js/base.js"></script>
 <script src="/js/laydate.js"></script>
+<script src="/js/index2.js"></script>
 <script>
     //执行一个laydate实例
     laydate.render({

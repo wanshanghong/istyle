@@ -60,16 +60,16 @@ html{
 /*
 修改信息start
 */
-.rightBottomInformation .updateContent1 p:first-child{
+.rightBottomInformation #updateContent1 p:first-child{
     margin-top: 100px;
 }
-.rightBottomInformation .updateContent1 p{
+.rightBottomInformation #updateContent1 p{
     width: 800px;
 }
-.rightBottomInformation .updateContent1 input:nth-child(3),.rightBottomInformation .updateContent1 input:nth-child(4),.rightBottomInformation .updateContent1 input:nth-child(5){
+.rightBottomInformation #updateContent1 input:nth-child(3),.rightBottomInformation #updateContent1 input:nth-child(4),.rightBottomInformation #updateContent1 input:nth-child(5){
     width: 250px;
 }
-.rightBottomInformation .updateContent1 span{
+.rightBottomInformation #updateContent1 span{
     margin-left: 50px;
 }
 .input1,.input4,.input5{
