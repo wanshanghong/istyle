@@ -486,7 +486,7 @@ function updadeStylist(obj){
         xhr.send(JSON.stringify(data));
     }
 window.onload=function(){
-    showInformation1();
+    showInformation2();
     /* let collectBtn=document.getElementById('collectBtn');
      collectBtn.addEventListener('click',collect,false);*/
 //collectBtn.removeEventListener('click',collect,false); 这个false是阻止冒泡的意思
