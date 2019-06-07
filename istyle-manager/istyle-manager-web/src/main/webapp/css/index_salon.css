@@ -335,7 +335,7 @@ html{
 }
 /*造型师管理中的造型师修改：*/
 #updatestylist{
-    /*display: none;*/
+    display: none;
 }
 #updatestylist .updateContent1 p:first-child{
     margin-top: 100px;
