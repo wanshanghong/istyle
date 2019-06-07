@@ -486,6 +486,7 @@ function updadeStylist(obj){
         let data={"styHouseId":styHouseId,"stylistId":stylistId};
         xhr.send(JSON.stringify(data));
     }
+
 window.onload=function(){
     showInformation2();
     console.log("5555555555555555");
