@@ -146,7 +146,7 @@ function mealPublish(){
 }
 /*套餐管理*/
 /*套餐管理中修改和展示功能的切换实现*/
-function mealEditorShow(obj) {
+function mealEditorShow(obj1) {
     let hidden=document.getElementById('showMeal');
     hidden.style.display="none";
 
@@ -181,9 +181,9 @@ function mealEditorShow(obj) {
     let url="/styHouse/"+styHouseId+"/editMessage";
     xhr.open('post',url);
     xhr.setRequestHeader("Content-Type","application/json");
-    let packageId=obj.getAttribute("id");
-    let obj1={"styHouseId":styHouseId,"packageId":packageId};
-    xhr.send(JSON.stringify(obj1));
+    let packageId=obj1.getAttribute("id");
+    let obj2={"styHouseId":styHouseId,"packageId":packageId};
+    xhr.send(JSON.stringify(obj2));
 }
 function successShow(){
     let hidden=document.getElementById('updateMeal');
