@@ -1,6 +1,6 @@
 //基本信息start
 //基本信息编辑隐藏弹出start
-function editor1() {
+function editor2() {
     let hidden=document.getElementById('showInformation');
     hidden.style.display="none";
 
@@ -22,7 +22,7 @@ function editor1() {
                         "<p><label for=\"meal\">套餐简介：</label><input type=\"text\" class=\"input\" id=\"meal\" name=\"meal\" value=\""+info.result.styHousePackage+"\" /></p>"+
                         "<p><label for=\"time\">营业时间：</label><input type=\"text\" class=\"input\" id=\"time\" name=\"time\" value=\""+info.result.styHouseWorkTime+"\" /></p>"+
                         "<p><label for=\"phone\">联系电话：</label><input type=\"text\" class=\"input\" id=\"phone\" name=\"phone\" value=\""+info.result.styHousePhone+"\" /></p>";
-                    document.getElementsByClassName('updateContent1')[0].innerHTML = showInform;
+                    document.getElementById('updateContent1').innerHTML = showInform;
                 }else{
                     alert("用户没有登录");
                 }
@@ -38,7 +38,7 @@ function editor1() {
     let obj1={"styHouseId":styHouseId};
     xhr.send(JSON.stringify(obj1));
 }
-function success(){
+function success1(){
     let hidden=document.getElementById('form');
     hidden.style.display="none";
     showInformation();
@@ -47,7 +47,7 @@ function success(){
 }
 //基本信息编辑隐藏弹出end
 //基本信息展示
-function showInformation(){
+function showInformation2(){
     let xhr=new XMLHttpRequest();
     xhr.onreadystatechange=function(){
         if (xhr.readyState===4){
@@ -78,7 +78,7 @@ function showInformation(){
     xhr.send(JSON.stringify(obj));
 }
 //我的信息编辑
-function information(){
+function information1(){
     let salonName=document.getElementById('salonName').value;
     let address=document.getElementById('address').value;
     let meal=document.getElementById('meal').value;
@@ -486,7 +486,7 @@ function updadeStylist(obj){
         xhr.send(JSON.stringify(data));
     }
 window.onload=function(){
-    showInformation();
+    showInformation1();
     /* let collectBtn=document.getElementById('collectBtn');
      collectBtn.addEventListener('click',collect,false);*/
 //collectBtn.removeEventListener('click',collect,false); 这个false是阻止冒泡的意思
