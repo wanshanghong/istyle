@@ -52,7 +52,7 @@ function editor() {
                 if (info.errCode === 0) {
 
                     let showInform = "";
-                    alert("成功渲染");
+                    //alert("成功渲染");
                     showInform += "<p><label for='nickname'>昵称：</label><input type='text' class='input' id='nickname' name='userName' value='"+info.result.userName+"'/></p>" +
                         "<p><label for='personalizedSignature'>我的签名：</label><input type='text' class='input' id='personalizedSignature' name='userWord' value='"+info.result.userWord+"'/></p>" +
                         "<p><label for='userage'>我的年龄：</label><input type='text' class='input' id='userage' name='userage' value='"+info.result.userAge+"' /></p>" +
@@ -76,7 +76,7 @@ function editor() {
             }
         }
     }
-    xhr.open('post','/userHome/updatePage');
+    xhr.open('post','userHome/updatePage');
     xhr.setRequestHeader("Content-Type","application/json");
     let data=getCookie('stoken');
     console.log(data);
@@ -120,7 +120,7 @@ function showInformation(){
             }
         }
         console.log("2");
-        xhr.open('post','/userHome/index');
+        xhr.open('post','userHome/index');
         xhr.setRequestHeader("Content-Type","application/json");
         let obj={"stoken":getCookie('stoken')};
         xhr.send(JSON.stringify(obj));
@@ -165,7 +165,7 @@ function information(){
         }
     }
     console.log("7");
-    xhr.open('post','/userHome/updateMessage');
+    xhr.open('post','userHome/updateMessage');
     xhr.setRequestHeader("Content-Type","application/json");
     console.log("8");
     /*for(var i=0; i<inputs.length-1; i++) {*/
@@ -239,7 +239,7 @@ function collect(){
                     document.getElementsByClassName('stylingDesignerIn')[0].innerHTML=designerBox;
                     document.getElementsByClassName('hairSalonIn')[0].innerHTML=salonBox;
                     document.getElementsByClassName('evaluation')[0].innerHTML=evaluateBox;
-                    alert("收藏成功");
+                    //alert("收藏成功");
                     /*console.log("succ");*/
                 }else{
                     alert("用户没有登录");
@@ -251,7 +251,7 @@ function collect(){
             }
         }
     }
-    xhr.open('post','/userHome/collection');
+    xhr.open('post','userHome/collection');
     xhr.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken')};
     xhr.send(JSON.stringify(obj));
@@ -365,7 +365,7 @@ function subscribe(){
             }
         }
     }
-    xmlhttp.open('post','/userHome/attention');
+    xmlhttp.open('post','userHome/attention');
     xmlhttp.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken')};
     xmlhttp.send(JSON.stringify(obj));
@@ -403,7 +403,7 @@ function delSubsc(obj){
         }
     }
     /*console.log("7");*/
-    xhr.open('post','/userHome/unFollow');
+    xhr.open('post','userHome/unFollow');
     xhr.setRequestHeader("Content-Type","application/json");
     /*console.log("8");*/
     let userId=obj.getAttribute("id");
@@ -477,7 +477,7 @@ function fans(){
             }
         }
     }
-    xmlhttp.open('post','/userHome/fans');
+    xmlhttp.open('post','userHome/fans');
     xmlhttp.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken')};
     xmlhttp.send(JSON.stringify(obj));
@@ -512,7 +512,7 @@ function addSubsc(obj){
         }
     }
     /*console.log("7");*/
-    xhr.open('post','/userHome/doFanFollow');
+    xhr.open('post','userHome/doFanFollow');
     xhr.setRequestHeader("Content-Type","application/json");
     /*console.log("8");*/
     let userId=obj.getAttribute("id");
@@ -522,41 +522,204 @@ function addSubsc(obj){
     /*console.log(JSON.stringify(data));*/
 }
 
-//我的预约start
-/*function myOrder(){
+//我的咨询
+function myConsultation() {
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
+                var info = JSON.parse(xhr.responseText);
+                // var info = xhr.responseText;
+                if (info.errCode === 0) {
+                    /* let styNum="";
+                     //<span class="styNum">造型师数(6)</span>
+                     styNum+="造型师数（"+info.result.stylistCount+")";*/
+                    let s = "";
+                    let list=info.result;
+                    for (let i = 0; i < list.length; i++) {
+                    	
+                    	var date = new Date(list[i].replyTime);
+                    	console.log("date[i]="+date)
+                    	var time = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' 
+                    				+ date.getDate() + ' ' + date.getHours()+ ':' + date.getMinutes() + ':' + date.getSeconds();
+                    	console.log("time="+time);
+                        s += "<div class='clear'></div>" +
+                            "<div class=\"mealContent\">" +
+                            "<img src='" + list[i].tbStylist.stylistPhoto + "'/>" +
+                            "<p>" +
+                            "<span class=\"stylistName\">" + list[i].tbStylist.stylistName + "</span><br />"+
+                            "<span class=\"orderTime\">回复咨询时间："+time+"</span>"+
+                            "</p>" +
+                            "<button class='order' onclick='locationCheckConsul(this)' id="+list[i].advisoryId+">查看咨询并回复</button>"+
+                            "</div>";
+                    }
+                    /*document.getElementsByClassName('styNum')[0].innerHTML=styNum;*/
+                    document.getElementById('showstylist').innerHTML = s;
+                } else {
+                    console.log("造型师管理展示失败");
+                }
+            } else {
+                console.log("发生错误" + xhr.status);
+            }
+        }
+    }
+    /*let stylistId=sessionStorage.getItem('stylistId');*/
+    /*let url = "/styHouse/" + styHouseId + "/stylistManager";*/
+   // xhr.open('post',"userHome/advisory");findUserAdvisory
+    xhr.open('post',"userBrowse/findUserAdvisoryByUserIdIsReturn");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    let obj = {
+        "stoken":getCookie('stoken')/*,
+          "stylistId": stylistId */
+    };
+    xhr.send(JSON.stringify(obj));
+}
+/*我的咨询跳转查看咨询*/
+function locationCheckConsul(obj1){
     let xhr=new XMLHttpRequest();
     xhr.onreadystatechange=function(){
         if (xhr.readyState===4){
-            if (xhr.status===200){
-                var info=xhr.responseText;
-
-
-                let myOrder="";
-                for (let i=0;i<info.length;i++){
-                    //<div class="box"><img src="../img/designerphoto2.jpg"/><span>XX造型师</span></div>
-                    myOrder += "<div class='box'><a href='"+info[i].myorderUrl+"'><img src='"+info[i].myorderPic+"'/><span>"+info[i].designer+"</span></a></div>";
+            if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
+                var info = JSON.parse(xhr.responseText);
+                if (info.errCode === 0) {
+                    window.location.href = "checkConsultation.html";
+                    //alert("跳转成功");
+                    let hidden=document.getElementById('beforeLogin');
+                    hidden.style.display="none";
+                    let userName=getCookie('username');
+                    let appear=document.getElementsByClassName('afterLogin')[0];
+                    appear.innerHTML="欢迎"+userName+"登录istyle";
+                }else{
+                    alert("跳转失败，该用户没有登录");
                 }
+            }else {
+                alert("发生错误"+xhr.status);
+                console.error(xhr.responseText);
+            }
+        }
+    }
+    let data=getCookie('stoken');
+    let advisoryId=obj1.getAttribute("id");
+    /*sessionStorage.setItem('advisoryId',advisoryId);*/
+    sessionStorage.setItem('advisoryId',advisoryId);
+    let obj={"stoken":data,"advisoryId":advisoryId};
+    /*xhr.open('post','userHome/replyAdvisory');*/
+    var url="userBrowse/"+advisoryId+"/findUserAdvisoryById";
+    xhr.open('post',url);
+    xhr.setRequestHeader("Content-Type","application/json");
+    
+    xhr.send(JSON.stringify(obj));
 
-                let historyOrderDesigner="";
-                for (let i=0;i<info.length;i++){
-                    //<div class="box"><img src="../img/designerphoto2.jpg"/><span>XX造型师</span></div>
-                    historyOrderDesigner += "<div class='box'><a href='"+info[i].historyDesignerUrl+"'><img src='"+info[i].designerPic+"'/><span>"+info[i].designer+"</span></a></div>";
+}
+
+//我的预约start
+function myOrder(){
+    let xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+        if (xhr.readyState===4){
+            if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
+                var info = JSON.parse(xhr.responseText);
+                if (info.errCode === 0) {
+                    let myOrderStylist = "";
+                    let list1=info.result.list1;
+                    let list2=info.result.list2;
+                    for (let i = 0; i < list2.length; i++) {
+                        myOrderStylist += "<div class='clear'></div>" +
+                            "<div class=\"mealContent\">" +
+                            "<img src='" + list2[i].tbStylist.stylistPhoto + "'/>" +
+                            "<p>" +
+                            "<span class=\"stylistName\">" + list2[i].tbStylist.stylistName + "</span><br />"+
+                            "<span class=\"orderTime\">预约时间："+list2[i].appointmentStylistTime+"</span>"+
+                            "</p>" +
+                            "<button class='order' onclick='dealOrderStylist(this)' id="+list2[i].appointmentStylistId+">取消预约</button>"+
+                            "</div>";
+                    }
+                    let myOrderMeal = "";
+                    for (let i = 0; i < list1.length; i++) {
+                        myOrderMeal += "<div class='clear'></div>" +
+                            "<div class=\"mealContent\">" +
+                            "<img src='" +list1[i].tbStyHousePackage.packagePhoto + "'/>" +
+                            "<p>" +
+                            "<span class=\"stylistName\">" + list1[i].tbStyHousePackage.packageName + "</span><br />"+
+                            "<span class=\"orderTime\">预约时间："+list1[i].appointmentTime+"</span>"+
+                            "</p>" +
+                            "<button class='order' onclick='dealOrderMeal(this)' id="+list1[i].appointmentId+">取消预约</button>"+
+                            "</div>";
+                    }
+                    document.getElementById('myOrderStylist').innerHTML=myOrderStylist;
+                    document.getElementById('myOrderMeal').innerHTML=myOrderMeal;
+                } else {
+                    console.log("我的预约展示失败");
                 }
-
-
-                document.getElementsByClassName('myOrder').innerHTML+=myOrder;
-                document.getElementsByClassName('stylingDesigner').innerHTML+=historyOrderDesigner;
-                alert("预约连接成功");
             }else {
                 alert("发生错误"+xhr.status);
             }
         }
 
     }
-    xhr.open('get','');
-    xhr.send(null);
-}*/
+    xhr.open('post',"SelectTbAppointmentByUserId");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    let obj = {
+        "stoken":getCookie('stoken')
+    };
+    xhr.send(JSON.stringify(obj));
+}
 //我的预约end
+
+/*取消造型师预约start*/
+function dealOrderStylist(obj){
+    let xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+        if (xhr.readyState===4){
+            if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
+                var info1 = JSON.parse(xhr.responseText);
+                if (!info1.errCode){
+                    alert("取消预约成功"+xhr.status);
+                    myOrder();
+                }else{
+                    console.log("取消预约失败");
+                }
+            }else{
+                console.log("发生错误"+xhr.status);
+            }
+        }
+    }
+    xhr.open('post','quxiaoAppointmentStylistByappointmentStylistId');
+    xhr.setRequestHeader("Content-Type","application/json");
+    let appointmentStylistId=obj.getAttribute("id");
+    let data={"stoken":getCookie('stoken'),"appointmentStylistId":appointmentStylistId};
+    xhr.send(JSON.stringify(data));
+}
+/*取消造型师预约end*/
+
+/*取消套餐预约start*/
+function dealOrderMeal(obj){
+    let xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+        if (xhr.readyState===4){
+            if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
+                var info1 = JSON.parse(xhr.responseText);
+                if (!info1.errCode){
+                    alert("取消预约成功"+xhr.status);
+                    myOrder();
+                }else{
+                    console.log("取消预约失败");
+                }
+            }else{
+                console.log("发生错误"+xhr.status);
+            }
+        }
+    }
+    xhr.open('post','quxiaoAppointmentPackageByappointmentId');
+    xhr.setRequestHeader("Content-Type","application/json");
+    let appointmentId=obj.getAttribute("id");
+    let data={"stoken":getCookie('stoken'),"appointmentId":appointmentId};
+    xhr.send(JSON.stringify(data));
+}
+/*取消套餐预约end*/
+
+
+
 
 
 //我的投稿start
@@ -613,7 +776,7 @@ function contribute(){
             }
         }
     }
-    xmlhttp.open('post','/userHome/submission');
+    xmlhttp.open('post','userHome/submission');
     xmlhttp.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken')};
     xmlhttp.send(JSON.stringify(obj));

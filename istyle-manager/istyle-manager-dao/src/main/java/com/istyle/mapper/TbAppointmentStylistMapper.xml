@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.istyle.mapper.TbAppointmentStylistMapper">
+<resultMap id="MyTbAppointmentStylist" type="com.istyle.pojo.TbAppointmentStylist">
+    	<!--column的值为在数据库中查询的列，property的值为返回的pojo中的属性-->
+    	<!--id配置对应主键，result配置对应属性和列名 -->
+        <id column="appointment_stylist_id" property="appointmentStylistId"></id>
+        <result column="user_id" property="userId"></result>
+	    <result column="stylist_id" property="stylistId"></result>
+	    <result column="styhouse_id" property="styhouseId"></result>
+	    <result column="appointment_stylist_time" property="appointmentStylistTime"></result>
+        <result column="appointment_stylist_state" property="appointmentStylistState"></result>
+        
+        <!--collection 配置返回pojo中的pojo，property是在返回类型中定义的pojo的属性名，javaType是映射到的pojo的路径-->
+        <collection property="tbStylist" javaType="com.istyle.pojo.TbStylist">
+        <!--id和result的配置同上-->
+            <id column="stylistId" property="stylistId"></id>
+            <result column="stylistName" property="stylistName"></result>
+            <result column="stylistPhoto" property="stylistPhoto"></result>
+            <result column="stylistWord" property="stylistWord"></result>
+             <result column="realName" property="realName"></result>
+            <result column="stylistPassword" property="stylistPassword"></result>
+            
+            <result column="stylistSex" property="stylistSex"></result>
+            <result column="stylistAge" property="stylistAge"></result>
+             <result column="stylistPhone" property="stylistPhone"></result>
+            <result column="stylistAdvisory" property="stylistAdvisory"></result>
+            <result column="stylistIntroduction" property="stylistIntroduction"></result>
+        </collection>
+     
+ </resultMap>
+ 
+ 
+<!-- * 添加造型师预约
+* @param 
+* @return Response -->
+ <insert id="InsertAppointmentStylist" parameterType="com.istyle.pojo.TbAppointmentStylist">
+	
+        <selectKey keyProperty="appointmentStylistId" resultType="java.lang.Long" order="AFTER">
+			select LAST_INSERT_ID()
+		</selectKey>
+		insert into tb_appointment_stylist (user_id,stylist_id,styhouse_id,appointment_stylist_time,appointment_stylist_state)
+		values (#{userId},#{stylistId},#{styhouseId},#{appointmentStylistTime},0)
+        
+</insert>
+ 
+ <!-- * 造型屋查询造型师预约
+* @param 
+* @return  -->
+<select id="SelectAllAppointmentStylistBystyhouseId"  resultMap="MyTbAppointmentStylist">
+ 	 select * from tb_appointment_stylist,tb_stylist 
+ 	 where styhouse_id=#{styhouseId} and stylist_id=stylistId
+ </select>
+ 
+ 
+  <!-- * 查看造型屋未处理的造型师预约
+* @param 
+* @return  -->
+<select id="SelectAllAppointmentStylistBystyhouseIdNoDeal" resultMap="MyTbAppointmentStylist" >
+ 	 select * from tb_appointment_stylist,tb_stylist
+ 	  where styhouse_id=#{styhouseId} and appointment_stylist_state=0 and stylist_id=stylistId
+</select>
+ 
+   <!-- * 查看造型屋已处理的造型师预约
+* @param 
+* @return  -->
+<select id="SelectAllAppointmentStylistBystyhouseIdIsDeal" resultMap="MyTbAppointmentStylist" >
+ 	 select * from tb_appointment_stylist,tb_stylist
+ 	  where styhouse_id=#{styhouseId} and appointment_stylist_state=1 and stylist_id=stylistId
+ </select>
+ 
+ 
+  <!-- * 查看造型屋已删除的造型师预约
+* @param 
+* @return  -->
+<select id="SelectAllAppointmentStylistBystyhouseIdIsdelete" resultMap="MyTbAppointmentStylist" >
+ 	 select * from tb_appointment_stylist,tb_stylist
+ 	  where styhouse_id=#{styhouseId} and appointment_stylist_state=2 and stylist_id=stylistId
+ </select>
+ 
+   <!-- * 用户查询造型师预约
+* @param 
+* @return  -->
+<select id="SelectAllAppointmentStylistByuserId" resultMap="MyTbAppointmentStylist" >
+ 	 select * from tb_appointment_stylist,tb_stylist
+ 	  where user_id=#{userId} and stylist_id=stylistId
+ </select>
+ 
+ <!-- * 用户查询造型师未处理预约
+* @param 
+* @return  -->
+<select id="SelectAllAppointmentStylistByuserIdnoDeal" resultMap="MyTbAppointmentStylist" >
+ 	 select * from tb_appointment_stylist,tb_stylist
+ 	  where user_id=#{userId} and appointment_stylist_state=0 and stylist_id=stylistId
+ </select>
+ 
+ <!-- * 删除造型师预约
+* @param 
+* @return Response -->
+<update id="deleteAppointmentStylist"  >
+ 	 update tb_appointment_stylist
+          set appointment_stylist_state=2
+          where appointment_stylist_id=#{appointmentStylistId};
+ </update>
+ 
+ <!-- * 处理造型师预约
+* @param 
+* @return Response -->
+<update id="dealAppointmentStylist"  >
+ 	 update tb_appointment_stylist
+          set appointment_stylist_state=1
+          where appointment_stylist_id=#{appointmentStylistId};
+ </update>
+</mapper>

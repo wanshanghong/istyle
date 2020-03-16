@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发型设计首页</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>  <!--改路径时相当于是base.css-->
+    <link rel="stylesheet" type="text/css" href="css/login-register.css"/>  <!--改路径时相当于是login-register.css-->
+    <link rel="stylesheet" href="css/hairDesign.css">
+</head>
+<body>
+<!--页头导航栏start-->
+<div class="top">
+    <div class="main">
+        <div class="topheader">
+            <div class="logo">
+                <img src="img/logo1.png"/>
+            </div>
+            <div class="top-left">
+
+                <a href="index.html"><i class="home"></i>首页</a>
+                <a href="hairDesign.html">发型设计</a>
+                <a href="" onclick="locationSalon()">造型屋</a>
+                <a href="evaluate.html">测评</a>
+            </div>
+            <div class="top-right">
+                <div class="myhome">
+                    <div class="myhometop">
+                        <a href="" onclick="locationInformation()">我的主页</a>
+                    </div>
+                </div>
+
+                <div class="main-nav beforeLogin">
+                    <ul>
+                        <!-- inser more links here -->
+                        <!--  <li><a class="cd-signin" href="javascript:void(0)">登录</a></li>
+                          <li><a class="cd-signup" href="javascript:void(0)">注册</a></li>-->
+                    </ul>
+                </div>
+                <div class="afterLogin" style="color: #FFF;"></div>
+                <div class="afterLogin2" style="color: #FFF;"></div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--页头导航栏end-->
+<div class="clear"></div>
+<div id="container" class="main">
+    <div class="left">
+        <div class="-top">
+            <ul>
+                <li class="active hairsex" id="1" onclick="locationDesign(this)">女</li>
+                <li class="hairsex" id="2" onclick="locationDesign(this)">男</li>
+            </ul>
+        </div>
+        <div class="-bottom">
+            <ul class="select">
+                <li class="select-list">
+                    <dl id="select1">
+                        <dt></dt>
+                        <dd class="select-all selected height1"><a href="javascript:;">取消选择</a></dd>
+                        <dd class="height1"><a href="javascript:;">短发</a></dd>
+                        <dd class="height1"><a href="javascript:;">及肩</a></dd>
+                        <dd class="height1"><a href="javascript:;">中长发</a></dd>
+                        <dd class="height1"><a href="javascript:;">长发</a></dd>
+                    </dl>
+                </li>
+                <li class="select-list">
+                    <dl id="select2">
+                        <dt></dt>
+                        <dd class="select-all selected curl1"><a href="javascript:;">取消选择</a></dd>
+                        <dd class="curl1"><a href="javascript:;">直发</a></dd>
+                        <dd class="curl1"><a href="javascript:;">卷发</a></dd>
+                    </dl>
+                </li>
+                <li class="select-list">
+                    <dl id="select3">
+                        <dt></dt>
+                        <dd class="select-all selected color1"><a href="javascript:;">取消选择</a></dd>
+                        <dd class="color1"><a href="javascript:;">深色</a></dd>
+                        <dd class="color1"><a href="javascript:;">浅色</a></dd>
+                    </dl>
+                </li>
+<!--                <li class="select-result">
+                    <dl>
+                        <dt>已选条件：</dt>
+                        <dd class="select-no">暂时没有选择过滤条件</dd>
+                    </dl>
+                </li>-->
+            </ul>
+            <ul class="select">
+                <li class="select-list">
+                    <dl id="select4">
+                        <dt></dt>
+                        <dd class="select-all selected height2"><a href="javascript:;">取消选择</a></dd>
+                        <dd class="height2"><a href="javascript:;">短发</a></dd>
+                        <dd class="height2"><a href="javascript:;">寸头</a></dd>
+                        <dd class="height2"><a href="javascript:;">中长发</a></dd>
+                        <dd class="height2"><a href="javascript:;">长发</a></dd>
+                    </dl>
+                </li>
+                <li class="select-list">
+                    <dl id="select5">
+                        <dt></dt>
+                        <dd class="select-all selected curl2"><a href="javascript:;">取消选择</a></dd>
+                        <dd class="curl2"><a href="javascript:;">直发</a></dd>
+                        <dd class="curl2"><a href="javascript:;">卷发</a></dd>
+                    </dl>
+                </li>
+                <li class="select-list">
+                    <dl id="select6">
+                        <dt></dt>
+                        <dd class="select-all selected color2"><a href="javascript:;">取消选择</a></dd>
+                        <dd class="color2"><a href="javascript:;">深色</a></dd>
+                        <dd class="color2"><a href="javascript:;">浅色</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="right">
+<!--        <div class="content">
+            <img src="img/hair1.jpg" alt="">
+            <span>适宜肤色</span>
+            <span>适宜脸型</span>
+        </div>
+        <div class="content">
+            <img src="img/hair2.jpg" alt="">
+            <span>适宜肤色</span>
+            <span>适宜脸型</span>
+        </div>
+        <div class="content">
+            <img src="img/hair3.jpg" alt="">
+            <span>适宜肤色</span>
+            <span>适宜脸型</span>
+        </div>
+        <div class="content">
+            <img src="img/hair4.jpg" alt="">
+            <span>适宜肤色</span>
+            <span>适宜脸型</span>
+        </div>
+        <div class="content">
+            <img src="img/hair5.jpg" alt="">
+            <span>适宜肤色</span>
+            <span>适宜脸型</span>
+        </div>
+        <div class="content">
+            <img src="img/hair6.jpg" alt="">
+            <span>适宜肤色</span>
+            <span>适宜脸型</span>
+        </div>
+        <div class="content">
+            <img src="img/hair5.jpg" alt="">
+            <span>适宜肤色</span>
+            <span>适宜脸型</span>
+        </div>
+        <div class="content">
+            <img src="img/hair6.jpg" alt="">
+            <span>适宜肤色</span>
+            <span>适宜脸型</span>
+        </div>-->
+    </div>
+</div>
+
+<a href="#" class="return" style="
+        position: fixed;
+        width: 30px;
+        height:80px;
+        top: 250px;
+        left:50px;
+        z-index: 5000;
+    ">
+    <img src="img/return.gif" alt=""/>
+</a>
+
+<div class="footer2">
+    <div class="footer-row1">
+        <a href="">关于我们 -</a>
+        <a href="">使用手册 -</a>
+        <a href="">法律声明 -</a>
+        <a href="">广告服务 -</a>
+        <a href="">联系我们 -</a>
+        <a href="">友情链接 -</a>
+        <a href="">删除或修改信息 -</a>
+        <a href="">网站地图</a>
+    </div>
+    <span>技术支持:xxxx</span>
+    <span>粤ICP备案号12020213号-1</span>
+    <span>1024商务网客服QQ:xxx</span>
+    <span>站长统计</span>
+    </br>
+    <span>免责声明:此网页并非该单位官网，而是由会员免费注册的1024商务网商铺，内容的真实性、准确性和合法性由</span></br>
+    <span>布者负责，istyle对此不承担任何责任!</span></br>
+    <span>如发现侵权违规问题请发邮件至xxxx@qq.com或在线留言联系删除。</span>
+</div>
+
+<script src="js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<!--<script src="../public/js/login-register.js"></script>-->
+<script src="js/base.js"></script>
+<script src="js/hairDesign.js"></script>
+<script src="js/index.js"></script>
+<script>
+    function locationDesign(obj1) {
+        console.log("haha");
+        let hairSex=obj1.getAttribute("id");
+        sessionStorage.setItem('hairSex',hairSex);
+        let height1 = document.getElementsByClassName('height1');
+        let hairLenght1 = null;
+        for (let i = 0; i < height1.length; i++) {
+            if (height1[i].className.indexOf('selected') > -1) {
+                hairLenght1 = i;
+                break;
+            }
+        }
+        let curl1 = document.getElementsByClassName('curl1');
+        let hairCurl1 = null;
+        for (let i = 0; i < curl1.length; i++) {
+            if (curl1[i].className.indexOf('selected') > -1) {
+                hairCurl1 = i;
+                break;
+            }
+        }
+        let color1 = document.getElementsByClassName('color1');
+        let hairColor1 = null;
+        for (let i = 0; i < color1.length; i++) {
+            if (color1[i].className.indexOf('selected') > -1) {
+                hairColor1 = i;
+                break;
+            }
+        }
+        let height2 = document.getElementsByClassName('height2');
+        let hairLenght2 = null;
+        for (let i = 0; i < height2.length; i++) {
+            if (height2[i].className.indexOf('selected') > -1) {
+                hairLenght2 = i;
+                break;
+            }
+        }
+        let curl2 = document.getElementsByClassName('curl2');
+        let hairCurl2 = null;
+        for (let i = 0; i < curl2.length; i++) {
+            if (curl2[i].className.indexOf('selected') > -1) {
+                hairCurl2 = i;
+                break;
+            }
+        }
+        let color2 = document.getElementsByClassName('color2');
+        let hairColor2 = null;
+        for (let i = 0; i < color2.length; i++) {
+            if (color2[i].className.indexOf('selected') > -1) {
+                hairColor2 = i;
+                break;
+            }
+        }
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
+                    var info = JSON.parse(xhr.responseText);
+                    if (info.errCode === 0) {
+                    	let list=info.result;
+                    	console.log("list:" +list);
+                        let s = "";
+                        for (let i = 0; i < list.length; i++) {
+                            s += "<div class='content'>" +
+                                "<img src='" + list[i].hairPhoto + "' alt=''>" +
+                                "<span>适宜肤色:" + list[i].suitSkin + "</span>" +
+                                "<span>适宜脸型:" + list[i].suitFace + "</span>" +
+                                "</div>";
+                        }
+                        document.getElementsByClassName('right')[0].innerHTML = s;
+                    } else {
+                        alert("用户没有登录");
+                    }
+                } else {
+                    console.log("发生错误" + xhr.status);
+                }
+            }
+        }
+        xhr.open('post', 'SelectHairByhairClass');
+        xhr.setRequestHeader("Content-Type", "application/json");
+        let obj = {
+            "hairSex": hairSex,
+            "hairLenght1": hairLenght1,
+            "hairCurl1": hairCurl1,
+            "hairColor1": hairColor1,
+            "hairLenght2": hairLenght2,
+            "hairCurl2": hairCurl2,
+            "hairColor2": hairColor2
+        };
+        xhr.send(JSON.stringify(obj));
+    }
+    function locationDesign2() {
+        console.log("haha");
+        let hairSex=1;
+        sessionStorage.setItem('hairSex',hairSex);
+        let height1 = document.getElementsByClassName('height1');
+        let hairLenght1 = null;
+        for (let i = 0; i < height1.length; i++) {
+            if (height1[i].className.indexOf('selected') > -1) {
+                hairLenght1 = i;
+                break;
+            }
+        }
+        let curl1 = document.getElementsByClassName('curl1');
+        let hairCurl1 = null;
+        for (let i = 0; i < curl1.length; i++) {
+            if (curl1[i].className.indexOf('selected') > -1) {
+                hairCurl1 = i;
+                break;
+            }
+        }
+        let color1 = document.getElementsByClassName('color1');
+        let hairColor1 = null;
+        for (let i = 0; i < color1.length; i++) {
+            if (color1[i].className.indexOf('selected') > -1) {
+                hairColor1 = i;
+                break;
+            }
+        }
+        let height2 = document.getElementsByClassName('height2');
+        let hairLenght2 = null;
+        for (let i = 0; i < height2.length; i++) {
+            if (height2[i].className.indexOf('selected') > -1) {
+                hairLenght2 = i;
+                break;
+            }
+        }
+        let curl2 = document.getElementsByClassName('curl2');
+        let hairCurl2 = null;
+        for (let i = 0; i < curl2.length; i++) {
+            if (curl2[i].className.indexOf('selected') > -1) {
+                hairCurl2 = i;
+                break;
+            }
+        }
+        let color2 = document.getElementsByClassName('color2');
+        let hairColor2 = null;
+        for (let i = 0; i < color2.length; i++) {
+            if (color2[i].className.indexOf('selected') > -1) {
+                hairColor2 = i;
+                break;
+            }
+        }
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
+                    var info = JSON.parse(xhr.responseText);
+                    if (info.errCode === 0) {
+                    	let list=info.result;
+                    	console.log("list:" +list);
+                        let s = "";
+                        for (let i = 0; i < list.length; i++) {
+                            s += "<div class='content'>" +
+                                "<img src='" + list[i].hairPhoto + "' alt=''>" +
+                                "<span>适宜肤色:" + list[i].suitSkin + "</span>" +
+                                "<span>适宜脸型:" + list[i].suitFace + "</span>" +
+                                "</div>";
+                        }
+                        document.getElementsByClassName('right')[0].innerHTML = s;
+                    } else {
+                        alert("用户没有登录");
+                    }
+                } else {
+                    console.log("发生错误" + xhr.status);
+                }
+            }
+        }
+        xhr.open('post', 'SelectHairByhairClass');
+        xhr.setRequestHeader("Content-Type", "application/json");
+        let obj = {
+            "hairSex": hairSex,
+            "hairLenght1": hairLenght1,
+            "hairCurl1": hairCurl1,
+            "hairColor1": hairColor1,
+            "hairLenght2": hairLenght2,
+            "hairCurl2": hairCurl2,
+            "hairColor2": hairColor2
+        };
+        xhr.send(JSON.stringify(obj));
+    }
+    window.onload=function(){
+        locationDesign2();
+    };
+</script>
+</body>
+</html>

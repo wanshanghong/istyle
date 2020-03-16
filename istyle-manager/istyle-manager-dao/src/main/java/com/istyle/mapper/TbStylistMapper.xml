@@ -89,4 +89,11 @@
         from tb_stylist
         where stylistId = #{stylistId};
     </select>
+    
+	<!-- 查询造型师的信息数据 -->
+    <select id="selectTbStylistByStylistId" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStylist">
+        select *
+        from tb_stylist
+        where stylistId = #{stylistId};
+    </select>
 </mapper>

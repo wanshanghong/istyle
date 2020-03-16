@@ -4,8 +4,8 @@
     xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd"
     version="1.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd
-                        http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd">
+    xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd
+                        http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd">
 
     <portlet>
         <description>Write here a short description about your portlet.</description>
@@ -22,8 +22,12 @@
         <supported-locale>en</supported-locale>
 
         <portlet-info>
-            <subName>Put the portlet subName here</subName>
-            <short-subName>Portlet Short Title</short-subName>
+            <!-- <subName>Put the portlet subName here</subName> -->
+            <!-- <short-subName>Portlet Short Title</short-subName> -->
+            
+            <title>Put the portlet subName here</title>
+            <short-title>Portlet Short Title</short-title>
+            
             <keywords>put keywords here</keywords>
         </portlet-info>
     </portlet>

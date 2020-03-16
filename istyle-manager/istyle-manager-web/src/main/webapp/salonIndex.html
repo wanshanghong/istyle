@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>造型屋首页</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>  <!--改路径时相当于是base.css-->
+    <link rel="stylesheet" type="text/css" href="css/login-register.css"/>  <!--改路径时相当于是login-register.css-->
+    <link rel="stylesheet" href="css/salonIndex.css">
+</head>
+<body onload="selesctAddress2()">
+<!--页头导航栏start-->
+<div class="top">
+    <div class="main">
+        <div class="topheader">
+            <div class="logo">
+                <img src="img/logo1.png"/>
+            </div>
+            <div class="top-left">
+
+                <a href="index.html"><i class="home"></i>首页</a>
+                <a href="hairDesign.html">发型设计</a>
+                <button href="" onclick="locationSalon()" style="border: none; background: none; color: white;">造型屋</button>
+                <a href="evaluate.html">测评</a>
+            </div>
+            <div class="top-right">
+                <div class="myhome">
+                    <div class="myhometop">
+                       <!--  <a href="" onclick="locationInformation()">我的主页</a> -->
+                       <button onclick="locationInformation()" style="border: none; background: none; color: white;">我的主页</button>
+                    </div>
+                </div>
+
+                <div class="main-nav beforeLogin">
+                    <ul>
+                        <!-- inser more links here -->
+                        <!--<li><a class="cd-signin" href="javascript:void(0)">登录</a></li>
+                        <li><a class="cd-signup" href="javascript:void(0)">注册</a></li>-->
+                    </ul>
+                </div>
+                <div class="afterLogin" style="color: #FFF;"></div>
+                <div class="afterLogin2" style="color: #FFF;"></div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--页头导航栏end-->
+<div class="clear"></div>
+<div id="container" class="main">
+    <div style="float:left;margin-top: 50px; margin-left: 20px">
+        <select class="form-control" id="cmbProvince" name="cmbProvince" ></select>
+        <select class="form-control" id="cmbCity" name="cmbCity" ></select>
+        <select class="form-control" id="cmbArea" name="cmbArea" onclick="selesctAddress()"></select>
+    </div>
+    <div class="clear"></div>
+    <div style="float:left;margin-top: 30px; margin-left: 20px"><h5>周边热门发型屋推荐</h5></div>
+    <div class="clear"></div>
+
+    <div class="salonIndex">
+        <!--<div class="box1">
+            <img src="img/salaonpho1.jpg"/>
+            <div class="box1_1">
+                <h5>BIG STAR大明星造型（东平店）</h5><br />
+                <span class="address">地址：东平桥东惠城区东平坡路57号二楼</span><br />
+                <span class="package">BIG STAR大明星洗剪吹单人套餐35元，BIG STAR大明星韩国进口美发单人套餐196元</span><br/>
+                <a href="">查看详情>></a><button style="float: right;color: #FF0000;border: 1px solid #000000;outline: none;background-color:#FFFFFF;padding: 2px;margin: 18px">预约发型师</button>
+            </div>
+        </div>
+        <div class="box1">
+            <img src="img/salaonpho1.jpg"/>
+            <div class="box1_1">
+                <h5>BIG STAR大明星造型（东平店）</h5><br />
+                <span class="address">地址：东平桥东惠城区东平坡路57号二楼</span><br />
+                <span class="package">BIG STAR大明星洗剪吹单人套餐35元，BIG STAR大明星韩国进口美发单人套餐196元</span><br/>
+                <a href="">查看详情>></a><button style="float: right;color: #FF0000;border: 1px solid #000000;outline: none;background-color:#FFFFFF;padding: 2px;margin: 18px">预约发型师</button>
+            </div>
+        </div>
+        <div class="box1">
+            <img src="img/salaonpho1.jpg"/>
+            <div class="box1_1">
+                <h5>BIG STAR大明星造型（东平店）</h5><br />
+                <span class="address">地址：东平桥东惠城区东平坡路57号二楼</span><br />
+                <span class="package">BIG STAR大明星洗剪吹单人套餐35元，BIG STAR大明星韩国进口美发单人套餐196元</span><br/>
+                <a href="">查看详情>></a><button style="float: right;color: #FF0000;border: 1px solid #000000;outline: none;background-color:#FFFFFF;padding: 2px;margin: 18px">预约发型师</button>
+            </div>
+        </div>
+        <div class="box1">
+            <img src="img/salaonpho1.jpg"/>
+            <div class="box1_1">
+                <h5>BIG STAR大明星造型（东平店）</h5><br />
+                <span class="address">地址：东平桥东惠城区东平坡路57号二楼</span><br />
+                <span class="package">BIG STAR大明星洗剪吹单人套餐35元，BIG STAR大明星韩国进口美发单人套餐196元</span><br/>
+                <a href="">查看详情>></a><button style="float: right;color: #FF0000;border: 1px solid #000000;outline: none;background-color:#FFFFFF;padding: 2px;margin: 18px">预约发型师</button>
+            </div>
+        </div>
+        <div class="box1">
+            <img src="../我的主页/img/salaonpho1.jpg"/>
+            <div class="box1_1">
+                <h5>BIG STAR大明星造型（东平店）</h5><br />
+                <span class="address">地址：东平桥东惠城区东平坡路57号二楼</span><br />
+                <span class="package">BIG STAR大明星洗剪吹单人套餐35元，BIG STAR大明星韩国进口美发单人套餐196元</span><br/>
+                <a href="">查看详情>></a><button style="float: right;color: #FF0000;border: 1px solid #000000;outline: none;background-color:#FFFFFF;padding: 2px;margin: 18px">预约发型师</button>
+            </div>
+        </div>
+        <div class="box1">
+            <img src="../我的主页/img/salaonpho1.jpg"/>
+            <div class="box1_1">
+                <h5>BIG STAR大明星造型（东平店）</h5><br />
+                <span class="address">地址：东平桥东惠城区东平坡路57号二楼</span><br />
+                <span class="package">BIG STAR大明星洗剪吹单人套餐35元，BIG STAR大明星韩国进口美发单人套餐196元</span><br/>
+                <a href="">查看详情>></a><button style="float: right;color: #FF0000;border: 1px solid #000000;outline: none;background-color:#FFFFFF;padding: 2px;margin: 18px">预约发型师</button>
+            </div>
+        </div>
+        <div class="box1">
+            <img src="../我的主页/img/salaonpho1.jpg"/>
+            <div class="box1_1">
+                <h5>BIG STAR大明星造型（东平店）</h5><br />
+                <span class="address">地址：东平桥东惠城区东平坡路57号二楼</span><br />
+                <span class="package">BIG STAR大明星洗剪吹单人套餐35元，BIG STAR大明星韩国进口美发单人套餐196元</span><br/>
+                <a href="">查看详情>></a><button style="float: right;color: #FF0000;border: 1px solid #000000;outline: none;background-color:#FFFFFF;padding: 2px;margin: 18px">预约发型师</button>
+            </div>
+        </div>-->
+    </div>
+
+    <div class="stylist">
+        <h5>热门造型师</h5>
+        <div class="clear"></div>
+        <div class="stylistAdd">
+<!--            <div class="box2" style="width: 120px; height: 120px;background:url('img/stylistBackground.png') center;">
+                <img src="../我的主页/img/headphoto.png"/>
+                <div class="box2_2">
+                    <span><b>福祸</b></span>
+                    <span>Lv20</span>
+                </div>
+            </div>
+            <div class="box2" style="width: 120px; height: 120px;background:url('img/stylistBackground.png') center;">
+                <img src="../我的主页/img/salaonpho1.jpg"/>
+                <div class="box2_2">
+                    <span><b>what the</b></span>
+                    <span>Lv20</span>
+                </div>
+            </div>
+            <div class="box2" style="width: 120px; height: 120px;background:url('img/stylistBackground.png') center;">
+                <img src="../我的主页/img/headphoto.png"/>
+                <div class="box2_2">
+                    <span><b>福祸</b></span>
+                    <span>Lv20</span>
+                </div>
+            </div>
+            <div class="box2" style="width: 120px; height: 120px;background:url('img/stylistBackground.png') center;">
+                <img src="../我的主页/img/headphoto.png"/>
+                <div class="box2_2">
+                    <span><b>福祸</b></span>
+                    <span>Lv20</span>
+                </div>
+            </div>-->
+        </div>
+
+    </div>
+</div>
+
+
+<a href="#" class="return" style="
+        position: fixed;
+        width: 30px;
+        height:80px;
+        top: 250px;
+        left:50px;
+        z-index: 5000;
+    ">
+    <img src="img/return.gif" alt=""/>
+</a>
+
+<div class="footer2">
+    <div class="footer-row1">
+        <a href="">关于我们 -</a>
+        <a href="">使用手册 -</a>
+        <a href="">法律声明 -</a>
+        <a href="">广告服务 -</a>
+        <a href="">联系我们 -</a>
+        <a href="">友情链接 -</a>
+        <a href="">删除或修改信息 -</a>
+        <a href="">网站地图</a>
+    </div>
+    <span>技术支持:xxxx</span>
+    <span>粤ICP备案号12020213号-1</span>
+    <span>1024商务网客服QQ:xxx</span>
+    <span>站长统计</span>
+    </br>
+    <span>免责声明:此网页并非该单位官网，而是由会员免费注册的1024商务网商铺，内容的真实性、准确性和合法性由</span></br>
+    <span>布者负责，istyle对此不承担任何责任!</span></br>
+    <span>如发现侵权违规问题请发邮件至xxxx@qq.com或在线留言联系删除。</span>
+</div>
+
+
+
+<script src="js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/city.js"></script>
+<!--<script src="js/login-register.js"></script>-->
+<script src="js/base.js"></script>
+<script src="js/salonIndex.js"></script>
+<script src="js/index.js"></script>
+<!--<script src="js/index2.js"></script>-->
+<!--<script src="js/userIndex.js"></script>-->
+<!--<script src="js/salonDetail.js"></script>-->
+<script>
+    /*地址选择控件*/
+    $(document).ready(function(){
+        addressInit('cmbProvince', 'cmbCity', 'cmbArea');
+        selesctAddress2();
+    });
+</script>
+</body>
+</html>

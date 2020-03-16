@@ -1,15 +1,24 @@
+
 package com.istyle.controller;
 
-import com.istyle.pojo.*;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.istyle.pojo.TbStyHouse;
+import com.istyle.pojo.TbStylist;
+import com.istyle.pojo.TbUser;
+import com.istyle.service.StyHouseService;
+import com.istyle.service.StylistService;
 import com.istyle.service.UserService;
 import com.util.CastUtil;
 import com.util.JWT;
 import com.util.Response;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.*;
 
 /**
  * 我的主页
@@ -20,6 +29,10 @@ import java.util.*;
 public class    UserHomePage {
     @Autowired
     private UserService userService;
+    @Autowired
+    private StylistService stylistService;
+    @Autowired
+    private StyHouseService styHouseService;
 
     /**
      * 我的主页跳转至我的信息
@@ -29,9 +42,27 @@ public class    UserHomePage {
     @ResponseBody
     @RequestMapping(value="/index", method= RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     public Response userHomePage(@RequestBody Map<String, String> request) {
+    	
+    	String req=request.get("stoken");
         TbUser user = JWT.unsign(request.get("stoken"), TbUser.class);
-        TbUser param = userService.selectUserByUserId(user);
-        return Response.ok(param);
+        if(user!=null){
+        	TbUser param = userService.selectUserByUserId(user);
+        	System.out.println("param.toString()"+param.toString());
+            return Response.ok(param);
+        }
+        TbStylist tbStylist = JWT.unsign(request.get("stoken"), TbStylist.class);
+        if(tbStylist!=null){
+        	TbStylist param=stylistService.selectTbStylistByStylistId(tbStylist);
+        	System.out.println("param.toString()"+param.toString());
+            return Response.ok(param);
+        }
+        TbStyHouse tbStyHouse = JWT.unsign(request.get("stoken"), TbStyHouse.class);
+        if(tbStyHouse!=null){
+        	TbStyHouse param=styHouseService.selectTbStyHouseBystyHouseId(tbStyHouse);
+        	System.out.println("param.toString()"+param.toString());
+            return Response.ok(param);
+        }
+        return Response.ok(null);
     }
 
     /**

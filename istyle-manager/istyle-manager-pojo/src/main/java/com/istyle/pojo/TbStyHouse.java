@@ -149,4 +149,14 @@ public class TbStyHouse {
     public void setCommentCount(long commentCount) {
         this.commentCount = commentCount;
     }
+
+	@Override
+	public String toString() {
+		return "TbStyHouse [styHouseId=" + styHouseId + ", styHouseName=" + styHouseName + ", styHouseWord="
+				+ styHouseWord + ", styHousePhoto=" + styHousePhoto + ", styHousePosition=" + styHousePosition
+				+ ", styHouseAccount=" + styHouseAccount + ", styHousePassword=" + styHousePassword + ", headName="
+				+ headName + ", headId=" + headId + ", headPhone=" + headPhone + ", styHouseStatus=" + styHouseStatus
+				+ ", styHouseAddress=" + styHouseAddress + ", styHousePackage=" + styHousePackage + ", styHousePhone="
+				+ styHousePhone + ", styHouseWorkTime=" + styHouseWorkTime + ", commentCount=" + commentCount + "]";
+	}
 }

@@ -1,5 +1,5 @@
 html{
-    background: url(/img/userIndexbackground.jpg);
+    background: url(../img/userIndexbackground.jpg);
     background-size: cover;
 }
 /*滚动条样式*/
@@ -118,7 +118,7 @@ html{
     margin-right: 8px;
 }
 .rightBottomCollect .updateContent1 p:first-child{
-    margin-top: 200px;
+    margin-top: 80px;
 }
 .rightBottomCollect .updateContent1 p{
     width: 800px;
@@ -204,11 +204,11 @@ html{
     display: none;
 }
 #updateMeal .updateContent1 p:first-child{
-    margin-top: 200px;
+    margin-top: 50px;
 }
 #updateMeal .updateContent1 p{
     width: 800px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 #updateMeal .updateContent1 input:nth-child(3),.rightBottomInformation .updateContent1 input:nth-child(4),.rightBottomInformation .updateContent1 input:nth-child(5){
     width: 250px;
@@ -248,11 +248,11 @@ html{
     margin-right: 8px;
 }
 .rightBottomMyfan .updateContent1 p:first-child{
-    margin-top: 180px;
+    margin-top: 50px;
 }
 .rightBottomMyfan .updateContent1 p{
     width: 800px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 .rightBottomMyfan .updateContent1 input:nth-child(3),.rightBottomInformation .updateContent1 input:nth-child(4),.rightBottomInformation .updateContent1 input:nth-child(5){
     width: 250px;
@@ -338,11 +338,11 @@ html{
     display: none;
 }
 #updatestylist .updateContent1 p:first-child{
-    margin-top: 100px;
+    margin-top: 30px;
 }
 #updatestylist .updateContent1 p{
     width: 780px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     margin-right: 100px;
 }
 #updatestylist .updateContent1 input:nth-child(1),#updatestylist .updateContent1 input:nth-child(2){

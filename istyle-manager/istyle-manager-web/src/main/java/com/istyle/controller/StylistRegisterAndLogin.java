@@ -40,6 +40,7 @@ public class StylistRegisterAndLogin {
     @ResponseBody
     @RequestMapping(value = "/stylistLogin", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     public Response stylistLogin(@RequestBody TbStylist stylist) {
+    	System.out.println("stylist:"+stylist.toString());
         Map param = stylistService.stylistLogin(stylist);
         return Response.ok(param);
     }

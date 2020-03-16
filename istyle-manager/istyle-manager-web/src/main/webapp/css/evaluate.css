@@ -1,0 +1,77 @@
+html{
+    background: url(../video/bg2.jpg);
+    background-size: cover;
+}
+
+a {
+     text-decoration: none;
+     color: #fff;
+ }
+
+#wrapper {
+    margin: 0 auto;
+    width: 1200px;
+    text-align: center;
+}
+#wrapper p {
+    float: left;
+    font-family: helvetica;
+    font-weight: bold;
+    font-size: 15px;
+    color: #FFFFFF;
+    height: 15px;
+    width: 500px;
+    margin: 5px 0 100px 20px ;
+    text-align: left;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+#wrapper .box{
+    width: 500px;
+    height: 320px;
+    float: left;
+    margin: 20px 20px 20px 60px;
+}
+
+/*轮播*/
+.teaching-video{
+    padding-top:50px;
+    /*padding-bottom:50px;*/
+}
+.teaching-video {
+    margin:20px auto 10px;
+}
+.teaching-video .tea-video-h1{
+    font-size:30px;
+    color:#ef7700;
+    height:50px;
+    line-height:30px;
+}
+.teaching-video .tea-video-h3{
+    font-size:16px;
+    color:#666666;
+}
+.teaching-video .tea-video-cont{
+    margin-bottom:50px;
+}
+.teaching-video li{list-style: none;}
+.video{width:1200px;height:500px;margin:0 auto;overflow: hidden;zoom:1;background: url(../video/bg2.jpg) center center no-repeat;background-size: 100% 100%;border-radius: 2%;}
+.video>div{float: left;height: 400px;vertical-align: middle;margin-top: 50px;}
+.video>div:first-child {width: 5%;background: url(../video/向左.png) center center no-repeat;}
+.video>div:last-child {width: 5%;background: url(../video/向右.png) center center no-repeat;}
+.video>div:nth-of-type(2){width: 90%;}
+.video ul{position: relative;}
+.video li{transition: all .6s; position: absolute;background: url(../video/stylistbg4.jpg) center center no-repeat;background-size: 100% 100%;}
+/*.video li>div{padding: 1% 1% 4%;}*/
+.video li video{width:100%;height:100%;}
+.video li h3{text-align: center;margin-top: 2px;color: #1766d7;}
+/*			.video li:nth-of-type(1) video{background: url(img/userIndexbackground.jpg) no-repeat;background-size: cover;}
+			.video li:nth-of-type(2) video{background: url(img/stylistbg4.jpg) no-repeat;background-size: cover;}
+			.video li:nth-of-type(3) video{background: url(img/stylistbg4.jpg) no-repeat;background-size: cover;}
+			.video li:nth-of-type(4) video{background: url(img/stylistbg4.jpg) no-repeat;background-size: cover;}
+			.video li:nth-of-type(5) video{background: url(img/stylistbg4.jpg) no-repeat;background-size: cover;}*/
+.video1{width: 200px;height: 100px; top: 143px;left: 0; z-index: 1;}/*创建5个播放框初始位置类，可自行更改*/
+.video2{width: 400px;height: 200px; top: 86px;left: 90px; z-index: 2;}
+.video3{width: 700px;height: 350px; top: 0px;left: 190px; z-index: 3;}
+.video4{width: 400px;height: 200px; top: 86px;left: 590px; z-index: 2;}
+.video5{width: 200px;height: 100px; top: 143px;left: 880px; z-index: 1;}

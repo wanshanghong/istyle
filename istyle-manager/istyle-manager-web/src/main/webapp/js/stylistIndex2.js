@@ -39,7 +39,7 @@ function stylistIndex() {
         }
     }
     let stylistId=sessionStorage.getItem('stylistId');
-    let url="/userBrowse/stylist/"+stylistId;
+    let url="userBrowse/stylist/"+stylistId;
     xhr.open('post',url);
     xhr.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken'),"stylistId":stylistId};
@@ -81,7 +81,7 @@ function stylistFan() {
         }
     }
     let stylistId=sessionStorage.getItem('stylistId');
-    let url="/userBrowse/stylist/"+stylistId+"/showStylistFan";
+    let url="userBrowse/stylist/"+stylistId+"/showStylistFan";
     xhr.open('post',url);
     xhr.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken'),"stylistId":stylistId};
@@ -108,7 +108,7 @@ function stylistSub() {
         }
     }
     let stylistId=sessionStorage.getItem('stylistId');
-    let url="/userBrowse/stylist/"+stylistId+"/addAttention";
+    let url="userBrowse/stylist/"+stylistId+"/addAttention";
     xhr.open('post',url);
     xhr.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken'),"stylistId":stylistId};
@@ -135,7 +135,7 @@ function decstylistSub() {
         }
     }
     let stylistId=sessionStorage.getItem('stylistId');
-    let url="/userBrowse/stylist/"+stylistId+"/addAttention";
+    let url="userBrowse/stylist/"+stylistId+"/addAttention";
     xhr.open('post',url);
     xhr.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken'),"stylistId":stylistId};
@@ -152,6 +152,7 @@ function locationConsultation() {
                 var info = JSON.parse(xhr.responseText);
                 if (info.errCode === 0){
                     console.log("咨询跳转成功"+xhr.status);
+                    window.location.href = "onlineConsultation.html";
                 }else{
                     console.log("咨询跳转失败");
                 }
@@ -161,7 +162,7 @@ function locationConsultation() {
         }
     }
     let stylistId=sessionStorage.getItem('stylistId');
-    let url="/userBrowse/stylist/"+stylistId+"/ShowAdvisory";
+    let url="userBrowse/stylist/"+stylistId+"/ShowAdvisory";
     xhr.open('post',url);
     xhr.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken'),"stylistId":stylistId};

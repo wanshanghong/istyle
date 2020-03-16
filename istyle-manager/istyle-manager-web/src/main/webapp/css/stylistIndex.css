@@ -1,5 +1,5 @@
 html{
-    background: url(/img/stylistbg5.jpg);
+    background: url(../img/stylistbg5.jpg);
     background-size: cover;
     height: 1200px;
 }
@@ -10,7 +10,7 @@ html{
 /*内容上半部分start*/
 .topContent{
     width: 1000px;
-    background: url("/img/stylistbg5.jpg");
+    background: url("../img/stylistbg5.jpg");
     background-size: cover;
     height: 300px;
     margin-top: 100px;

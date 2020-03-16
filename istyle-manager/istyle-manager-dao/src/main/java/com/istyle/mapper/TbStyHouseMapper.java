@@ -2,6 +2,8 @@ package com.istyle.mapper;
 
 import com.istyle.pojo.TbStyHouse;
 import com.istyle.pojo.TbStyHousePackage;
+import com.istyle.pojo.TbStyHouseStylist;
+
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -83,7 +85,7 @@ public interface TbStyHouseMapper {
      * 更新造型屋数据
      * @param tbStyHouse
      */
-    void updateStyHouse(TbStyHouse tbStyHouse);
+    public boolean updateStyHouse(TbStyHouse tbStyHouse);
 
     // TODO
     /**
@@ -129,4 +131,11 @@ public interface TbStyHouseMapper {
      * @return
      */
     int deletePackage(@Param("styHouseId")long styHouseId, @Param("packageId")long packageId);
+    
+    /**
+     * 查找造型屋信息
+     * @param styHouseId
+     * @return
+     */
+    public TbStyHouse selectTbStyHouseBystyHouseId(long styHouseId);
 }

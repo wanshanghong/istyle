@@ -1,9 +1,219 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.istyle.mapper.TbUserStylistAdvisoryMapper">
+<resultMap id="mymap" type="com.istyle.pojo.TbUserStylistAdvisory">
+    	<!--column的值为在数据库中查询的列，property的值为返回的pojo中的属性-->
+    	<!--id配置对应主键，result配置对应属性和列名 -->
+        <id column="advisoryId" property="advisoryId"></id>
+        <result column="advisoryPhoto" property="advisoryPhoto"></result>
+        <result column="advisoryHeight" property="advisoryHeight"></result>
+	    <result column="advisoryWeight" property="advisoryWeight"></result>
+	    <result column="advisoryStyle" property="advisoryStyle"></result>
+	    <result column="advisoryDescription" property="advisoryDescription"></result>
+	    <result column="putTime" property="putTime"></result>
+	    <result column="isReply" property="isReply"></result>
+	    <result column="replyMessage" property="replyMessage"></result>
+	    <result column="replyTime" property="replyTime"></result>
+	    <result column="replyPhoto" property="replyPhoto"></result>
+	    <result column="styHouseURL" property="styHouseURL"></result>
+	   
+        
+        <!--collection 配置返回pojo中的pojo，property是在返回类型中定义的pojo的属性名，javaType是映射到的pojo的路径-->
+        <collection property="tbUser" javaType="com.istyle.pojo.TbUser">
+        <!--id和result的配置同上-->
+            <id column="userId" property="userId"></id>
+            <result column="userName" property="userName"></result>
+            <result column="userPassword" property="userPassword"></result>
+            <result column="userPhone" property="userPhone"></result>
+             <result column="userSex" property="userSex"></result>
+            <result column="userAge" property="userAge"></result>
+            <result column="userWord" property="userWord"></result>
+             <result column="userPhoto" property="userPhoto"></result>
+            <result column="count" property="count"></result>
+            <result column="usersState" property="usersState"></result>
+        </collection>
+        <collection property="tbStylist" javaType="com.istyle.pojo.TbStylist">
+            <id column="stylistId" property="stylistId"></id>
+            <result column="stylistName" property="stylistName"></result>
+            <result column="stylistPhoto" property="stylistPhoto"></result>
+            <result column="stylistWord" property="stylistWord"></result>
+            <result column="realName" property="realName"></result>
+            <result column="stylistPassword" property="stylistPassword"></result>
+            <result column="stylistSex" property="stylistSex"></result>
+            <result column="stylistAge" property="stylistAge"></result>
+            <result column="stylistPhone" property="stylistPhone"></result>
+            <result column="stylistAdvisory" property="stylistAdvisory"></result>
+            <result column="stylistIntroduction" property="stylistIntroduction"></result>
+        </collection>
+ </resultMap>
+    <!-- 
+      private long id;
+    private String advisoryPhoto;
+    private String advisoryHeight;
+    private String advisoryWeight;
+    private String advisoryStyle;
+    private String advisoryDescription;
+    private Date putTime;
+    private int isReturn;
+    private String retureContext;
+    private Date returnTime;
+    private TbStylist tbStylist;
+
+	private TbUser tbUser; -->
+
+    
     <insert id="insertadvisory" parameterType="com.istyle.pojo.TbUserStylistAdvisory">
-        insert into
-        tb_user_stylist_advisory(userId, stylistId, advisoryPhoto, advisoryHeight, advisoryWeight, advisoryStyle, advisoryDescription)
-        values (#{userId}, #{stylistId}, #{sqlPath}, #{advisoryHeight}, #{advisoryWeight}, #{advisoryStyle}, #{advisoryDescription});
-    </insert>
+	
+        <selectKey keyProperty="advisoryId" resultType="java.lang.Long" order="AFTER">
+			select LAST_INSERT_ID()
+		</selectKey>
+		insert into tb_user_stylist_advisory(stylistId,userId,advisoryPhoto,advisoryHeight,advisoryWeight,
+				advisoryStyle,advisoryDescription,putTime,isReply)
+		values (#{tbStylist.stylistId},#{tbUser.userId},#{advisoryPhoto},#{advisoryHeight},#{advisoryWeight},
+				#{advisoryStyle},#{advisoryDescription},#{putTime},#{isReply})
+        
+	</insert>
+
+	<!-- 
+     * 用户查询所有咨询
+     * @param userId
+     */ -->
+	<select id="findUserAdvisoryByUserId" 
+		resultMap="mymap">
+		select * from 
+		tb_user_stylist_advisory
+        LEFT JOIN tb_stylist ON tb_user_stylist_advisory.stylistId = tb_stylist.stylistId
+        LEFT JOIN tb_user ON tb_user_stylist_advisory.userId = tb_user.userId 
+		 where tb_user_stylist_advisory.userId=#{tbUser.userId}
+	</select>
+    
+    <!--
+     * 用户查询已回复咨询
+     * @param userId
+     */ -->
+	<select id="findUserAdvisoryByUserIdIsReturn" 
+		resultMap="mymap">
+		select * from 
+		tb_user_stylist_advisory 
+		LEFT JOIN tb_stylist ON tb_user_stylist_advisory.stylistId = tb_stylist.stylistId
+		LEFT JOIN tb_user ON tb_user_stylist_advisory.userId = tb_user.userId 
+		where tb_user_stylist_advisory.userId=#{tbUser.userId} and isReply=1
+	</select>
+	
+	<!--
+     * 用户查询未回复咨询
+     * @param userId
+     */ -->
+	<select id="findUserAdvisoryByUserIdNoReturn" 
+		resultMap="mymap">
+		select * from 
+		tb_user_stylist_advisory
+		LEFT JOIN tb_stylist ON tb_user_stylist_advisory.stylistId = tb_stylist.stylistId
+		LEFT JOIN tb_user ON tb_user_stylist_advisory.userId = tb_user.userId 
+		where tb_user_stylist_advisory.userId=#{tbUser.userId} and isReply=0
+	</select>
+	
+    
+    
+    <!-- 
+     * 造型师查询所有咨询
+     * @param stylistId
+     */ -->
+	<select id="findUserAdvisoryByStylistId" 
+		resultMap="mymap">
+		select * from 
+		tb_user_stylist_advisory
+		LEFT JOIN tb_stylist ON tb_user_stylist_advisory.stylistId = tb_stylist.stylistId 
+		LEFT JOIN tb_user ON tb_user_stylist_advisory.userId = tb_user.userId 
+		where tb_user_stylist_advisory.stylistId=#{tbStylist.stylistId}
+	</select>
+    
+    <!--
+     * 造型师查询已回复咨询
+     * @param stylistId
+     */ -->
+	<select id="findUserAdvisoryByStylistIdIsReturn" 
+		resultMap="mymap">
+		select * from 
+		tb_user_stylist_advisory
+		LEFT JOIN tb_stylist ON tb_user_stylist_advisory.stylistId = tb_stylist.stylistId 
+		LEFT JOIN tb_user ON tb_user_stylist_advisory.userId = tb_user.userId 
+		where tb_user_stylist_advisory.stylistId=#{tbStylist.stylistId} and isReply=1
+	</select>
+	
+	<!--
+     * 造型师查询未回复咨询
+     * @param stylistId
+     */ -->
+	<select id="findUserAdvisoryByStylistIdNoReturn" 
+		resultMap="mymap">
+		select * from 
+		tb_user_stylist_advisory
+		LEFT JOIN tb_stylist ON tb_user_stylist_advisory.stylistId = tb_stylist.stylistId 
+		LEFT JOIN tb_user ON tb_user_stylist_advisory.userId = tb_user.userId 
+		
+		where tb_user_stylist_advisory.stylistId=#{tbStylist.stylistId} and isReply=0
+	</select>
+	
+	<!--
+     * 用户查询指定的造型师回复咨询 或 造型师查询指定的用户回复咨询
+     * @param userId stylistId
+     */ -->
+	<select id="findUserAdvisoryByUserIdAndStylistId" 
+		resultMap="mymap">
+		select * from 
+		tb_user_stylist_advisory
+		LEFT JOIN tb_stylist ON tb_user_stylist_advisory.stylistId = tb_stylist.stylistId 
+		LEFT JOIN tb_user ON tb_user_stylist_advisory.userId = tb_user.userId 
+		where userId=#{tbUser.userId} and stylistId=#{tbStylist.stylistId}
+	</select>
+	
+	<!--
+     * 用户查询指定的造型师未回复咨询 或 造型师查询指定的用户回复咨询
+     * @param userId stylistId
+     */ -->
+	<select id="findUserAdvisoryUserIdAndStylistIdIsReturn" 
+		resultMap="mymap">
+		select * from 
+		tb_user_stylist_advisory 
+		LEFT JOIN tb_stylist ON tb_user_stylist_advisory.stylistId = tb_stylist.stylistId
+		LEFT JOIN tb_user ON tb_user_stylist_advisory.userId = tb_user.userId 
+		where tb_user_stylist_advisory.userId=#{tbUser.userId} and stylistId=#{tbStylist.stylistId} and isReply=0
+	</select>
+	
+	<!--
+     * 用户查询指定的造型师已回复咨询 或 造型师查询指定的用户回复咨询
+     * @param userId stylistId
+     */ -->
+	<select id="findUserAdvisoryByUserIdAndStylistIdNoReturn" 
+		resultMap="mymap">
+		select * from 
+		tb_user_stylist_advisory
+		LEFT JOIN tb_stylist ON tb_user_stylist_advisory.stylistId = tb_stylist.stylistId
+		LEFT JOIN tb_user ON tb_user_stylist_advisory.userId = tb_user.userId 
+		where tb_user_stylist_advisory.userId=#{tbUser.userId} and stylistId=#{tbStylist.stylistId} and isReply=1
+	</select>
+	
+	<!--
+     * 通过ID查找咨询
+     * @param id
+     */ -->
+	<select id="findUserAdvisoryById" 
+		resultMap="mymap">
+		select * from 
+		tb_user_stylist_advisory
+		LEFT JOIN tb_stylist ON tb_user_stylist_advisory.stylistId = tb_stylist.stylistId
+		LEFT JOIN tb_user ON tb_user_stylist_advisory.userId = tb_user.userId 
+		where advisoryId=#{advisoryId}
+	</select>
+	
+	<!-- 造型师回复咨询
+     * @param TbUserStylistAdvisory
+     * @return  -->
+	<update id="updateAdvisoryByadvisoryId">
+		 update tb_user_stylist_advisory
+        set isReply=1,replyMessage=#{replyMessage},replyTime=#{replyTime},replyPhoto=#{replyPhoto},styHouseURL=#{styHouseURL}
+        where advisoryId=#{advisoryId}
+	
+	</update>
 </mapper>

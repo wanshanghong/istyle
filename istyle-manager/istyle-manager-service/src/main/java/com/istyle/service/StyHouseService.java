@@ -51,7 +51,7 @@ public interface StyHouseService {
      * 编辑造型屋数据
      * @param tbStyHouse
      */
-    void updateEditMessage(TbStyHouse tbStyHouse);
+    public boolean updateEditMessage(TbStyHouse tbStyHouse);
 
     /**
      * 造型屋套餐管理展示接口
@@ -121,4 +121,12 @@ public interface StyHouseService {
      * @return
      */
     boolean deleteStylist(TbStyHouseStylist tbStyHouseStylist);
+    
+    
+    /**
+     * 查找造型屋信息
+     * @param tbStyHouseStylist
+     * @return
+     */
+    public TbStyHouse selectTbStyHouseBystyHouseId(TbStyHouse tbStyHouse);
 }

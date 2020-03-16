@@ -68,4 +68,6 @@ public interface TbStyHouseStylistMapper {
      * @return
      */
     int deleteStylist(@Param("styHouseId")long styHouseId, @Param("stylistId")long stylistId);
+    
+    
 }

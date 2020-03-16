@@ -1,19 +1,34 @@
 package com.istyle.service.impl;
 
+import static org.springframework.util.StringUtils.isEmpty;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.exception.AppAuthException;
-import com.istyle.mapper.*;
-import com.istyle.pojo.*;
+import com.istyle.mapper.TbStyHouseMapper;
+import com.istyle.mapper.TbStyHousePackageMapper;
+import com.istyle.mapper.TbStyHouseStylistMapper;
+import com.istyle.mapper.TbStylistMapper;
+import com.istyle.mapper.TbUserStylistAdvisoryMapper;
+import com.istyle.mapper.TbUserStylistMapper;
+import com.istyle.pojo.TbStyHouse;
+import com.istyle.pojo.TbStyHousePackage;
+import com.istyle.pojo.TbStyHouseStylist;
+import com.istyle.pojo.TbStylist;
+import com.istyle.pojo.TbUser;
+import com.istyle.pojo.TbUserStylist;
+import com.istyle.pojo.TbUserStylistAdvisory;
 import com.istyle.service.UserBrowseService;
 import com.istyle.service.util.FileUpload;
 import com.util.CastUtil;
 import com.util.StringUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.util.*;
-
-import static org.springframework.util.StringUtils.isEmpty;
 
 /**
  * @Author: 黄文伟
@@ -94,9 +109,13 @@ public class UserBrowseServiceImpl implements UserBrowseService {
 
             styHouse.setCommentCount(2);
             System.out.println("hh" +styHouse.getCommentCount());
-
+            
+            List<TbStyHouseStylist> tbStyHouseStylist=tbStyHouseStylistMapper.selectStylistList(styHouseId);
+            System.out.println("tbStyHouseStylist:" +tbStyHouseStylist);
+            
             map.put("styHouse", Collections.singletonList(styHouse));
             map.put("discountPackage", discountPackage);
+            map.put("tbStyHouseStylist", tbStyHouseStylist);
 
             return map;
         } else {
@@ -205,18 +224,87 @@ public class UserBrowseServiceImpl implements UserBrowseService {
      * @param userStylistAdvisory
      */
     @Override
-    public void summitAdvisory(MultipartFile userStylistAdvisory) {
-        System.out.println(1);
-        if (!isEmpty(userStylistAdvisory)) {
-            System.out.println(2);
-            String path = "advisoryPhoto";
-            String filename = FileUpload.imgUpload(userStylistAdvisory, path);
-            System.out.println(3);
-            System.out.println("fileName:" + filename);
-/*            if (StringUtil.isNotEmpty(filename)) {
-                userStylistAdvisory.setSqlPath(path+filename);
-                tbUserStylistAdvisoryMapper.insertadvisory(userStylistAdvisory);
-            }*/
-        }
+    public boolean summitAdvisory(TbUserStylistAdvisory tbUserStylistAdvisory) {
+    	return tbUserStylistAdvisoryMapper.insertadvisory(tbUserStylistAdvisory);
+    }
+    
+    /**
+     * 查询用户所有咨询
+     * @param userId
+     */
+    public List<TbUserStylistAdvisory> findUserAdvisoryByUserId(long userId){
+    	return tbUserStylistAdvisoryMapper.findUserAdvisoryByUserId(userId);
+    }
+    
+    /**
+     * 用户查询已回复咨询
+     * @param userId
+     */
+    public List<TbUserStylistAdvisory> findUserAdvisoryByUserIdIsReturn(long userId){
+    	return tbUserStylistAdvisoryMapper.findUserAdvisoryByUserIdIsReturn(userId);
+    }
+    
+	/**
+	 * 用户查询未回复咨询
+	 * @param userId
+	 */
+	public List<TbUserStylistAdvisory> findUserAdvisoryByUserIdNoReturn(long userId){
+		return tbUserStylistAdvisoryMapper.findUserAdvisoryByUserIdNoReturn(userId);
+	}
+	
+	/**
+     * 造型师查询所有咨询
+     * @param stylistId
+     */
+    public List<TbUserStylistAdvisory> findUserAdvisoryByStylistId(long stylistId){
+    	return tbUserStylistAdvisoryMapper.findUserAdvisoryByStylistId(stylistId);
+    }
+    
+	/**
+     * 造型师查询已回复咨询
+     * @param userId
+     */
+    public List<TbUserStylistAdvisory> findUserAdvisoryByStylistIdIsReturn(long stylistId){
+    	return tbUserStylistAdvisoryMapper.findUserAdvisoryByStylistIdIsReturn(stylistId);
+    }
+    
+    /**
+     * 造型师查询未回复咨询
+     * @param userId
+     */
+    public List<TbUserStylistAdvisory> findUserAdvisoryByStylistIdNoReturn(long stylistId){
+    	return tbUserStylistAdvisoryMapper.findUserAdvisoryByStylistIdNoReturn(stylistId);
+    }
+		
+	/**
+     * 用户查询指定的造型师回复咨询 或 造型师查询指定的用户回复咨询
+     * @param userId
+     */
+	 public List<TbUserStylistAdvisory> findUserAdvisoryByUserIdAndStylistId(long userId,long stylistId){
+		 return tbUserStylistAdvisoryMapper.findUserAdvisoryByUserIdAndStylistId(userId,stylistId);
+	 }
+	 
+	/**
+     * 用户查询指定的造型师未回复咨询 或 造型师查询指定的用户未回复咨询
+     * @param userId stylistId
+     */
+    public List<TbUserStylistAdvisory> findUserAdvisoryUserIdAndStylistIdIsReturn(long userId,long stylistId){
+    	return tbUserStylistAdvisoryMapper.findUserAdvisoryUserIdAndStylistIdIsReturn(userId,stylistId);
+    }
+    
+	/**
+     * 用户查询指定的造型师已回复咨询 或 造型师查询指定的用户已回复咨询
+     * @param userId stylistId
+     */
+    public List<TbUserStylistAdvisory> findUserAdvisoryByUserIdAndStylistIdNoReturn(long userId,long stylistId){
+    	return tbUserStylistAdvisoryMapper.findUserAdvisoryByUserIdAndStylistIdNoReturn(userId,stylistId);
+    }
+    
+    /**
+     * 通过ID查询咨询
+     * @param id
+     */
+    public TbUserStylistAdvisory findUserAdvisoryById(long advisoryId){
+    	return tbUserStylistAdvisoryMapper.findUserAdvisoryById(advisoryId);
     }
 }

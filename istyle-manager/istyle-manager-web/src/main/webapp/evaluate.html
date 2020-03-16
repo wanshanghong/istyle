@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=0.8,maximum-scale=1.5,user-scalable=no">
+    <title>测评详情页</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css"/> <!--改路径时相当于是base.css-->
+    <link rel="stylesheet" type="text/css" href="css/login-register.css"/>  <!--改路径时相当于是login-register.css-->
+    <link rel="stylesheet" href="css/evaluate.css">
+    <link href="css/shake.css" rel="stylesheet" media="all">
+</head>
+<body>
+<!--页头-->
+<div class="top">
+    <div class="main">
+        <div class="topheader">
+            <div class="logo">
+                <img src="img/logo1.png"/>
+            </div>
+            <div class="top-left">
+
+                <a href="index.html"><i class="home"></i>首页</a>
+                <a href="hairDesign.html">发型设计</a>
+                <a href="javascript:;" onclick="locationSalon()">造型屋</a>
+                <a href="evaluate.html">测评</a>
+            </div>
+            <div class="top-right">
+                <div class="myhome">
+                    <div class="myhometop">
+                        <a href="" onclick="locationInformation()">我的主页</a>
+                    </div>
+                </div>
+
+                <div class="main-nav beforeLogin">
+                    <ul>
+                        <!-- inser more links here -->
+                        <!--  <li><a class="cd-signin" href="javascript:void(0)">登录</a></li>
+                          <li><a class="cd-signup" href="javascript:void(0)">注册</a></li>-->
+                    </ul>
+                </div>
+                <div class="afterLogin" style="color: #FFF;"></div>
+                <div class="afterLogin2" style="color: #FFF;"></div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clear"></div>
+
+
+<div class="teaching-video">
+    <div class="tea-video-cont">
+        <div class="video">
+            <div></div>
+            <div>
+                <ul>
+                    <li class="video1"><div><video title="10分钟快速出门妆容减龄又可爱美妆教程" controls loop><source src="video/10分钟快速出门妆容减龄又可爱美妆教程-_标清.mp4">您的浏览器不支持HTML5视频播放，请升级浏览器。</video><h3></h3></div></li>
+                    <li class="video2"><div><video title="Ta说购了-网红润发精油测评,%20亲测护发精油居然效果惊人!" controls loop><source src="video/Ta说购了-网红润发精油测评,%20亲测护发精油居然效果惊人!-_标清.mp4">您的浏览器不支持HTML5视频播放，请升级浏览器。</video><h3></h3></div></li>
+                    <li class="video3"><div><video title="你每天都在用的护肤品真的适合你么？史上超全水乳套装测评！" controls loop><source src="video/你每天都在用的护肤品真的适合你么？史上超全水乳套装测评！-_标清.mp4">您的浏览器不支持HTML5视频播放，请升级浏览器。</video><h3></h3></div></li>
+                    <li class="video4"><div><video title="潮流穿搭：如何买到LV秀款包？测评两款LV最新秀款包包、软饼包、圆筒包" controls loop><source src="video/潮流穿搭：如何买到LV秀款包？测评两款LV最新秀款包包、软饼包、圆筒包-_标清.mp4">您的浏览器不支持HTML5视频播放，请升级浏览器。</video><h3></h3></div></li>
+                    <li class="video5"><div><video title="美妆教程：Pony教你画都市丽人妆容，气场十足！" controls loop><source src="video/美妆教程：Pony教你画都市丽人妆容，气场十足！-_标清.mp4">您的浏览器不支持HTML5视频播放，请升级浏览器。</video><h3></h3></div></li>
+                </ul>
+            </div>
+            <div></div>
+        </div>
+    </div>
+</div>
+
+<div id="wrapper" class="main">
+    <div class="box">
+        <video class="shake shake-slow" asrc="video/大嘴博士测评平价护肤品，拯救“贫民窟”女孩！-_标清.mp4" controls width="500px" height="300px"></video>
+        <p>大嘴博士测评平价护肤品，拯救“贫民窟”女孩！</p>
+    </div>
+    <div class="box">
+        <video class="shake shake-slow" asrc="video/张雨绮推荐的护肤品开箱测评!-_标清.mp4" controls width="500px" height="300px"></video>
+        <p>张雨绮推荐的护肤品开箱测评!</p>
+    </div>
+    <div class="box">
+        <video class="shake shake-slow" asrc="video/初春黛珂单色眼影测评教程,%20手残画也能出超美眼妆-_标清.mp4" controls width="500px" height="300px"></video>
+        <p>初春黛珂单色眼影测评教程,%20手残画也能出超美眼妆</p>
+    </div>
+    <div class="box">
+        <video class="shake shake-slow" asrc="video/旧衣穿出新鲜感%20%20%20创意穿搭教程%20%20颠覆你的时尚观-_标清.mp4" controls width="500px" height="300px"></video>
+        <p>旧衣穿出新鲜感-创意穿搭教程-颠覆你的时尚观</p>
+    </div>
+    <div class="box">
+        <video class="shake shake-slow" asrc="video/穿搭教程：学会这些穿搭小知识，做整条街最靓的仔-_标清.mp4" controls width="500px" height="300px"></video>
+        <p>穿搭教程：学会这些穿搭小知识，做整条街最靓的仔</p>
+    </div>
+    <div class="box">
+        <video class="shake shake-slow" asrc="video/贵妇娇兰护肤品全套测评来咯-_标清.mp4" controls width="500px" height="300px"></video>
+        <p>贵妇娇兰护肤品全套测评来咯</p>
+    </div>
+    <div class="box">
+        <video class="shake shake-slow" asrc="video/[AskWenWen] DIY染色调色美发教程 奶奶灰 金发教程-_标清.mp4" controls width="500px" height="300px"></video>
+        <p>[AskWenWen] DIY染色调色美发教程 奶奶灰 金发教程</p>
+    </div>
+    <div class="box">
+        <video class="shake shake-slow" asrc="video/4套初春大衣穿搭教程，简约风时尚%20大方，很适合逛街%20回头率很高-_标清.mp4" controls width="500px" height="300px"></video>
+        <p>4套初春大衣穿搭教程，简约风时尚大方，很适合逛街回头率很高</p>
+    </div>
+    <div class="box">
+        <video class="shake shake-slow" asrc="video/兰蔻塑颜全套护肤品大测评-_标清.mp4" controls width="500px" height="300px"></video>
+        <p>兰蔻塑颜全套护肤品大测评</p>
+    </div>
+    <div class="box">
+        <video class="shake shake-slow" asrc="video/国外时尚美妆：小姐姐的时尚美发教程，是不是很漂亮-_标清.mp4" controls width="500px" height="300px"></video>
+        <p>国外时尚美妆：小姐姐的时尚美发教程，是不是很漂亮</p>
+    </div>
+    <div class="box">
+        <video class="shake shake-slow" asrc="video/国货大理石眼影盘测评+教程分享-_标清.mp4" controls width="500px" height="300px"></video>
+        <p>国货大理石眼影盘测评+教程分享</p>
+    </div>
+    <div class="box">
+        <video class="shake shake-slow" asrc="video/平价风衣测评合集%20-%20九套风衣穿搭%20-%20秋冬必备单品%20-%20严重踩雷单品拔草%20【不辣不辣】-_标清.mp4" controls width="500px" height="300px"></video>
+        <p>平价风衣测评合集-九套风衣穿搭-秋冬必备单品-严重踩雷单品拔草【不辣不辣】</p>
+    </div>
+    <div class="box">
+        <video class="shake shake-slow" asrc="video/开学季的护肤品开箱测评-_标清.mp4" controls width="500px" height="300px"></video>
+        <p>开学季的护肤品开箱测评</p>
+    </div>
+    <div class="box">
+        <video class="shake shake-slow" asrc="video/张雨绮推荐的护肤品开箱测评!-_标清.mp4" controls width="500px" height="300px"></video>
+        <p>张雨绮推荐的护肤品开箱测评!</p>
+    </div>
+    <div class="box">
+        <video class="shake shake-slow" asrc="video/护发素能代替甘油做泥吗？做的泥区别在哪，测评有答案，无硼砂-_标清.mp4" controls width="500px" height="300px"></video>
+        <p>护发素能代替甘油做泥吗？做的泥区别在哪，测评有答案，无硼砂</p>
+    </div>
+    <div class="box">
+        <video class="shake shake-slow" asrc="video/本末测评：1万和49的风衣有啥区别？清华和北服小姐姐教你穿搭！-_标清.mp4" controls width="500px" height="300px"></video>
+        <p>本末测评：1万和49的风衣有啥区别？清华和北服小姐姐教你穿搭！</p>
+    </div>
+    <div class="box">
+        <video class="shake shake-slow" asrc="video/潮流穿搭：春季时尚穿搭教程，微胖女生也可以穿出女神范儿-_标清.mp4" controls width="500px" height="300px"></video>
+        <p>潮流穿搭：春季时尚穿搭教程，微胖女生也可以穿出女神范儿</p>
+    </div>
+    <div class="box">
+        <video class="shake shake-slow" asrc="video/美发教程_夏日编发-_标清.mp4" controls width="500px" height="300px"></video>
+        <p>美发教程---夏日编发</p>
+    </div>
+</div>
+
+<a href="#" class="return" style="
+        position: fixed;
+        width: 30px;
+        height:80px;
+        top: 250px;
+        left:50px;
+        z-index: 5000;
+    ">
+    <img src="img/return.gif" alt=""/>
+</a>
+
+<div class="clear"></div>
+<div class="footer2">
+    <div class="footer-row1">
+        <a href="">关于我们 -</a>
+        <a href="">使用手册 -</a>
+        <a href="">法律声明 -</a>
+        <a href="">广告服务 -</a>
+        <a href="">联系我们 -</a>
+        <a href="">友情链接 -</a>
+        <a href="">删除或修改信息 -</a>
+        <a href="">网站地图</a>
+    </div>
+    <span>技术支持:xxxx</span>
+    <span>粤ICP备案号12020213号-1</span>
+    <span>1024商务网客服QQ:xxx</span>
+    <span>站长统计</span>
+    </br>
+    <span>免责声明:此网页并非该单位官网，而是由会员免费注册的1024商务网商铺，内容的真实性、准确性和合法性由</span></br>
+    <span>布者负责，istyle对此不承担任何责任!</span></br>
+    <span>如发现侵权违规问题请发邮件至xxxx@qq.com或在线留言联系删除。</span>
+</div>
+
+<script src="js/evaluate.js"></script>
+<!--<script src="../public/js/login-register.js"></script>-->
+<script src="js/base.js"></script>
+<script src="js/index.js"></script>
+<script src="js/userIndex.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var click=0;
+        var right=0;      //解决第一次右边点击没反应
+        $('.video>div:first-child').click(function(){    //当点击左边按钮
+            for(var i=0; i<5; i++){
+                document.getElementsByTagName('video')[i].pause();}
+            click+=1;
+            if(click>=6)click=1;
+            right=1;
+            $('.video li:nth-of-type('+(((click+0)<=5) ? (click+0) : (click+0-5))+')').attr('class','video5');
+            $('.video li:nth-of-type('+(((click+1)<=5) ? (click+1) : (click+1-5))+')').attr('class','video1');
+            $('.video li:nth-of-type('+(((click+2)<=5) ? (click+2) : (click+2-5))+')').attr('class','video2');
+            $('.video li:nth-of-type('+(((click+3)<=5) ? (click+3) : (click+3-5))+')').attr('class','video3');
+            $('.video li:nth-of-type('+(((click+4)<=5) ? (click+4) : (click+4-5))+')').attr('class','video4');
+        })
+        $('.video>div:last-child').click(function(){  //当点击右边按钮
+            for(var i=0; i<5; i++){
+                document.getElementsByTagName('video')[i].pause();}
+            click-=1;
+            if(click<=0)click=5;
+            if(!right)click=4;  //解决第一次右边点击没反应
+            right=1;
+            $('.video li:nth-of-type('+(((click+0)<=5) ? (click+0) : (click+0-5))+')').attr('class','video5');
+            $('.video li:nth-of-type('+(((click+1)<=5) ? (click+1) : (click+1-5))+')').attr('class','video1');
+            $('.video li:nth-of-type('+(((click+2)<=5) ? (click+2) : (click+2-5))+')').attr('class','video2');
+            $('.video li:nth-of-type('+(((click+3)<=5) ? (click+3) : (click+3-5))+')').attr('class','video3');
+            $('.video li:nth-of-type('+(((click+4)<=5) ? (click+4) : (click+4-5))+')').attr('class','video4');
+        })
+    })
+</script>
+</body>
+</html>

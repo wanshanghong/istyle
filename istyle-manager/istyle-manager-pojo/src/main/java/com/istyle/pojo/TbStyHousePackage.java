@@ -21,7 +21,14 @@ public class TbStyHousePackage {
         this.packageId = packageId;
     }
 
-    public Long getStyHouseId() {
+    @Override
+	public String toString() {
+		return "TbStyHousePackage [packageId=" + packageId + ", styHouseId=" + styHouseId + ", packageName="
+				+ packageName + ", packagePhoto=" + packagePhoto + ", packagePrice=" + packagePrice
+				+ ", packageDescription=" + packageDescription + "]";
+	}
+
+	public Long getStyHouseId() {
         return styHouseId;
     }
 

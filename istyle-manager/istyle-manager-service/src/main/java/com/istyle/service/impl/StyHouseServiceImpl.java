@@ -8,6 +8,7 @@ import com.istyle.pojo.TbStyHouse;
 import com.istyle.pojo.TbStyHousePackage;
 import com.istyle.pojo.TbStyHouseStylist;
 import com.istyle.service.StyHouseService;
+import com.util.CastUtil;
 import com.util.JWT;
 import com.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +66,7 @@ public class StyHouseServiceImpl implements StyHouseService {
             throw new AppUnknownException("造型屋注册失败");
         }
     }
+    
 
     @Override
     public Map styHouseLogin(TbStyHouse styHouse) {
@@ -138,12 +140,12 @@ public class StyHouseServiceImpl implements StyHouseService {
     }
 
     @Override
-    public void updateEditMessage(TbStyHouse tbStyHouse) {
+    public boolean updateEditMessage(TbStyHouse tbStyHouse) {
         if (tbStyHouse == null) {
             throw new AppAuthException("更新失败");
         }
 
-        styHouseMapper.updateStyHouse(tbStyHouse);
+        return styHouseMapper.updateStyHouse(tbStyHouse);
     }
 
     @Override
@@ -283,5 +285,21 @@ public class StyHouseServiceImpl implements StyHouseService {
         } else {
             return false;
         }
+    }
+    /**
+     * 查找造型屋信息
+     * @param tbStyHouseStylist
+     * @return
+     */
+    public TbStyHouse selectTbStyHouseBystyHouseId(TbStyHouse tbStyHouse){
+    	 if (StringUtil.isNotEmpty(CastUtil.castString(tbStyHouse))) {
+             long styHouseId = tbStyHouse.getStyHouseId();
+             tbStyHouse = styHouseMapper.selectTbStyHouseBystyHouseId(styHouseId);
+             return tbStyHouse;
+         }
+         else {
+             throw new AppAuthException("在我的信息展示时，发现用户id为空，操作错误。");
+         }
+    	
     }
 }

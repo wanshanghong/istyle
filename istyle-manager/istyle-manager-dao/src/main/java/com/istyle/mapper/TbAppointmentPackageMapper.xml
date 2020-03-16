@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.istyle.mapper.TbAppointmentPackageMapper">
+<resultMap id="MyTbAppointmentPackage" type="com.istyle.pojo.TbAppointmentPackage">
+    	<!--column的值为在数据库中查询的列，property的值为返回的pojo中的属性-->
+    	<!--id配置对应主键，result配置对应属性和列名 -->
+        <id column="appointment_id" property="appointmentId"></id>
+        <result column="user_id" property="UserId"></result>
+	    <result column="package_id" property="packageId"></result>
+	    <result column="styhouse_id" property="styhouseId"></result>
+	    <result column="appointment_time" property="appointmentTime"></result>
+        <result column="appointmen_state" property="appointmenState"></result>
+        <result column="appointmen_pay" property="appointmenPay"></result>
+        
+        <!--collection 配置返回pojo中的pojo，property是在返回类型中定义的pojo的属性名，javaType是映射到的pojo的路径-->
+        <collection property="tbStyHousePackage" javaType="com.istyle.pojo.TbStyHousePackage">
+        <!--id和result的配置同上-->
+            <id column="packageId" property="packageId"></id>
+            <result column="styHouseId" property="styHouseId"></result>
+            <result column="packageName" property="packageName"></result>
+            <result column="packagePhoto" property="packagePhoto"></result>
+             <result column="packagePrice" property="packagePrice"></result>
+            <result column="packageDescription" property="packageDescription"></result>
+        </collection>
+ </resultMap>
+ 
+ 
+<!-- * 添加套餐预约
+* @param 
+* @return Response -->
+ <insert id="InsertTbAppointmentPackage" parameterType="com.istyle.pojo.TbAppointmentPackage">
+	
+        <selectKey keyProperty="appointmentId" resultType="java.lang.Long" order="AFTER">
+			select LAST_INSERT_ID()
+		</selectKey>
+		insert into tb_appointment_package (user_id,package_id,styhouse_id,appointment_time,appointmen_state,appointmen_pay)
+		values (#{UserId},#{packageId},#{styhouseId},#{appointmentTime},0,0)
+        
+	</insert>
+ 
+ <!-- * 查看造型屋的套餐预约
+* @param 
+* @return  -->
+<select id="SelectTbAppointmentAllPackageBystyhouseId"  resultMap="MyTbAppointmentPackage">
+ 	 select * from tb_appointment_package,tb_styhouse_package
+ 	 where styhouse_id=#{styhouseId} and package_id=packageId
+ </select>
+ 
+ 
+  <!-- * 查看造型屋未处理的套餐预约
+* @param 
+* @return  -->
+<select id="SelectTbAppointmentPackageBystyhouseIdNoDeal" resultMap="MyTbAppointmentPackage" >
+ 	 select * from tb_appointment_package,tb_styhouse_package
+ 	  where styhouse_id=#{styhouseId} and appointmen_state=0  and package_id=packageId
+ </select>
+ 
+   <!-- * 查看造型屋已处理的套餐预约
+* @param 
+* @return  -->
+<select id="SelectTbAppointmentPackageBystyhouseIdIsDeal" resultMap="MyTbAppointmentPackage" >
+ 	 select * from tb_appointment_package,tb_styhouse_package
+ 	  where styhouse_id=#{styhouseId} and appointmen_state=1  and package_id=packageId
+ </select>
+ 
+  <!-- * 删除套餐预约
+* @param 
+* @return Response -->
+<update id="deleteTbAppointmentPackage"  >
+ 	 update tb_appointment_package
+          set appointmen_state=2
+          where appointment_id=#{appointmentId}
+ </update>
+ 
+ <!-- * 用户查看的套餐预约
+* @param 
+* @return  -->
+<select id="SelectTbAppointmentAllPackageByUserId"  resultMap="MyTbAppointmentPackage">
+ 	 select * from tb_appointment_package,tb_styhouse_package
+ 	  where user_id=#{UserId} and package_id=packageId
+ </select>
+ 
+ 
+ <!-- * 用户查看未处理套餐预约
+* @param 
+* @return  -->
+<select id="SelectTbAppointmentPackageByUserIdNoDeal" resultMap="MyTbAppointmentPackage" >
+ 	 select * from tb_appointment_package,tb_styhouse_package
+ 	  where user_id=#{UserId} and appointmen_state=0 and package_id=packageId
+ </select>
+ 
+   <!-- * 用户查看已处理的套餐预约
+* @param
+* @return  -->
+<select id="SelectTbAppointmentPackageByUserIdIsDeal" resultMap="MyTbAppointmentPackage" >
+ 	 select * from tb_appointment_package,tb_styhouse_package
+ 	  where user_id=#{UserId} and appointmen_state=1 and package_id=packageId
+ </select>
+ 
+</mapper>

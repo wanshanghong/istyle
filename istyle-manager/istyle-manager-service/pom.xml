@@ -49,4 +49,6 @@
             <artifactId>spring-context-support</artifactId>
         </dependency>
     </dependencies>
+    <groupId>com.istyle</groupId>
+    <version>1.0-SNAPSHOT</version>
 </project>

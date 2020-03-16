@@ -40,6 +40,7 @@ public class StyHouseRegisterAndLogin {
     @ResponseBody
     @RequestMapping(value = "/styHouseLogin", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     public Response styHouseLogin(@RequestBody TbStyHouse styHouse) {
+    	System.out.println("styHouse:"+styHouse.toString());
         Map param = styHouseService.styHouseLogin(styHouse);
         return Response.ok(param);
     }

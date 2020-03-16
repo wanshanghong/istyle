@@ -3,18 +3,18 @@
 <mapper namespace="com.istyle.mapper.TbStyHouseStylistMapper">
     <select id="selectStylistIdByStyHouseId" parameterType="java.lang.Long" resultType="java.lang.Long">
         select stylistId
-        from tb_styHouse_stylist
+        from tb_styhouse_stylist
         where styHouseId = #{styHouseId};
     </select>
 
     <select id="selectStylistCountByStyHouseId" parameterType="java.lang.Long" resultType="java.lang.Long">
         select COUNT(*)
-        from tb_styHouse_stylist
+        from tb_styhouse_stylist
         where styHouseId = #{styHouseId};
     </select>
 
     <select id="selectStylistList" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStyHouseStylist">
-        select stylistId, stylistName, stylistPhoto, maxNumber, reservationTime
+        select *
         from tb_styhouse_stylist
         where styHouseId = #{styHouseId} and status=1;
     </select>
@@ -26,21 +26,21 @@
     </select>
 
     <select id="selectStylist" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStyHouseStylist">
-        select stylistId, stylistName, stylistPhoto, maxNumber, reservationTime
+        select *
         from tb_styhouse_stylist
         where styHouseId = #{styHouseId} and stylistId = #{stylistId} and status=1;
     </select>
 
     <update id="updateStylist" parameterType="com.istyle.pojo.TbStyHouseStylist">
         update tb_styhouse_stylist
-        set stylistName=#{stylistName}, stylistPhoto=#{stylistPhoto}, maxNumber=#{maxNumber}, reservationTime=#{reservationTime}
+        set stylistName=#{stylistName}, stylistPhoto=#{stylistPhoto}, maxNumber=#{maxNumber}, reservationTime=#{reservationTime},stylistIntroduction=#{stylistIntroduction}
         where styHouseId=#{styHouseId} and stylistId=#{stylistId};
     </update>
-
+    
     <insert id="insertStylist" parameterType="com.istyle.pojo.TbStyHouseStylist">
         insert into
-        tb_styhouse_stylist(stylistPhoto, stylistName, maxNumber, reservationTime, status)
-        values (#{stylistPhoto}, #{stylistName}, #{maxNumber}, #{reservationTime}, 1)
+        tb_styhouse_stylist(stylistId,styHouseId,stylistPhoto, stylistName,stylistIntroduction, maxNumber, reservationTime, status)
+        values (#{stylistId},#{styHouseId},#{stylistPhoto}, #{stylistName},#{stylistIntroduction}, #{maxNumber}, #{reservationTime}, 1)
     </insert>
 
     <update id="deleteStylist" parameterType="com.istyle.pojo.TbStyHouseStylist">
@@ -48,4 +48,6 @@
         set status=0
         where styHouseId=#{styHouseId} and stylistId=#{stylistId};
     </update>
+    
+    
 </mapper>

@@ -1,6 +1,3 @@
-
-
-
 //跳转用户主页
 function locationInformation(){
     let xhr=new XMLHttpRequest();
@@ -12,8 +9,9 @@ function locationInformation(){
                 let info = JSON.parse(xhr.responseText);
 
                 if (info.errCode === 0) {
-                    window.location.href = "/html/userIndex.html";
-                    alert("跳转成功");
+                    /*window.location.href = "/html/userIndex.html";*/
+                	window.location.href = "userIndex.html";
+                    //alert("跳转成功");
                 }else{
                     alert("用户没有登录");
                 }
@@ -22,13 +20,15 @@ function locationInformation(){
             }
         }
     }
-    xhr.open('post','/userHome/index');
+    xhr.open('post','userHome/index');
     xhr.setRequestHeader("Content-Type","application/json");
     let data=getCookie('stoken');
     console.log(data);
     let obj={"stoken":data};
     xhr.send(JSON.stringify(obj));
 }
+
+
 //跳转造型屋
 function locationSalon(){
     /* 地址三级联动的取值*/
@@ -52,8 +52,9 @@ function locationSalon(){
             if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
                 let info = JSON.parse(xhr.responseText);
                 if (info.errCode === 0) {
-                    window.location.href = "/html/salonIndex.html";
-                    alert("跳转成功");
+                    /*window.location.href = "/html/salonIndex.html";*/
+                	window.location.href = "salonIndex.html";
+                    //alert("跳转成功");
                 }else{
                     alert("用户没有登录");
                 }
@@ -62,7 +63,7 @@ function locationSalon(){
             }
         }
     }
-    xhr.open('post','/userBrowse/styHouse');
+    xhr.open('post','userBrowse/styHouse');
     xhr.setRequestHeader("Content-Type","application/json");
     let obj={"stoken":getCookie('stoken'),"styHousePosition":"上海市辖区黄浦区"};
     console.log("先");

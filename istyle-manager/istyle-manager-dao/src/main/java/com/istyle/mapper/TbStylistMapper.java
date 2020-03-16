@@ -92,4 +92,12 @@ public interface TbStylistMapper {
      * @return
      */
     List<TbUser> selectFansBystylistId(Long stylistId);
+    
+    
+    /**
+     * 查询造型师的信息数据
+     * @param TbStylist 用户数据，包括stylistId
+     * @return TbStylist
+     */
+    public TbStylist selectTbStylistByStylistId(long stylistId);
 }

@@ -349,7 +349,7 @@ function login1(){
     let obj={"userPhone":username.value,"userPassword":password.value};
     $.ajax({
         type:"POST",
-        url:"/userLogin",
+        url:"userLogin",
         contentType:'application/json;charset=utf-8',
         data:JSON.stringify(obj),
         dataType:"json",
@@ -385,8 +385,8 @@ function login1(){
                         if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
                             let info = JSON.parse(xhr.responseText);
                             if (info.errCode === 0) {
-                        window.location.href = "/html/index.html";
-                        alert("跳转首页成功");
+                        window.location.href = "index.html";
+                        //alert("跳转首页成功");
 /*                      document.getElementsByClassName('beforeLogin')[0].style.display='none';
                         document.getElementsByClassName('afterLogin')[0].innerHTML="欢迎"+info.result.userName+"登录istyle";*/
                     }else{
@@ -398,7 +398,7 @@ function login1(){
                 }
             }
         }
-        xhr.open('post','/afterUserLogin');
+        xhr.open('post','afterUserLogin');
         xhr.setRequestHeader("Content-Type","application/json");
         let data=getCookie('stoken');
         console.log(data);
@@ -414,7 +414,7 @@ function login1(){
         let obj={"styHouseAccount":username.value,"styHousePassword":password.value};
         $.ajax({
             type:"POST",
-            url:"/styHouseLogin",
+            url:"styHouseLogin",
             contentType:'application/json;charset=utf-8',
             data:JSON.stringify(obj),
             dataType:"json",
@@ -452,8 +452,8 @@ function login1(){
                     var info = JSON.parse(xhr.responseText);
                     if (info.errCode === 0) {
                         setCookie('styHouseId',info.result.styHouseId);
-                        window.location.href = "/html/index_salon.html";
-                        alert("跳转成功");
+                        window.location.href = "index_salon.html";
+                        //alert("跳转成功");
                         let hidden=document.getElementById('beforeLogin');
                         hidden.style.display="none";
                         let appear=document.getElementsByClassName('afterLogin')[0];
@@ -467,7 +467,7 @@ function login1(){
                 }
             }
         }
-        xhr.open('post','/afterStyHouseLogin');
+        xhr.open('post','afterStyHouseLogin');
         xhr.setRequestHeader("Content-Type","application/json");
         let data=getCookie('stoken');
         console.log(data);
@@ -484,7 +484,7 @@ function login1(){
         let obj={"stylistPhone":username.value,"stylistPassword":password.value};
         $.ajax({
             type:"POST",
-            url:"/stylistLogin",
+            url:"stylistLogin",
             contentType:'application/json;charset=utf-8',
             data:JSON.stringify(obj),
             dataType:"json",
@@ -521,8 +521,8 @@ function login1(){
                 if (xhr.status>=200 && xhr.status<300 || xhr.status===304){
                     var info = JSON.parse(xhr.responseText);
                     if (info.errCode === 0) {
-                        window.location.href = "/html/index.html";
-                        alert("跳转成功");
+                        window.location.href = "index_stylist.html";
+                        //alert("跳转成功");
                         let hidden=document.getElementById('beforeLogin');
                         hidden.style.display="none";
                         let appear=document.getElementsByClassName('afterLogin')[0];
@@ -536,7 +536,7 @@ function login1(){
                 }
             }
         }
-        xhr.open('post','/afterStylistLogin');
+        xhr.open('post','afterStylistLogin');
         xhr.setRequestHeader("Content-Type","application/json");
         let data=getCookie('stoken');
         console.log(data);
@@ -556,7 +556,7 @@ function login1(){
         let age = document.getElementById("age");
         $.ajax({
             type:"POST",
-            url:"/userRegister",
+            url:"userRegister",
             contentType:'application/json;charset=utf-8',
             data:JSON.stringify(
                 {
@@ -619,7 +619,7 @@ document.getElementById("registerbtn").onclick = function(){
         let headPhone=document.getElementById('tel2');
         $.ajax({
             type:"POST",
-            url:"/styHouseRegister",
+            url:"styHouseRegister",
             contentType:'application/json;charset=utf-8',
             data:JSON.stringify(
                 {
@@ -661,7 +661,7 @@ document.getElementById("registerbtn").onclick = function(){
         let stylistPhone = document.getElementById("tel3");
         $.ajax({
             type:"POST",
-            url:"/stylistRegister",
+            url:"stylistRegister",
             contentType:'application/json;charset=utf-8',
             data:JSON.stringify(
                 {

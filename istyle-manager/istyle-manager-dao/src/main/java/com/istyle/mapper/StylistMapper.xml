@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.istyle.mapper.StylistMapper">
+<resultMap id="MyTbStyHouseStylist" type="com.istyle.pojo.TbStyHouseStylist">
+    	<!--column的值为在数据库中查询的列，property的值为返回的pojo中的属性-->
+    	<!--id配置对应主键，result配置对应属性和列名 -->
+        <id column="id" property="id"></id>
+	    <result column="name" property="stylistName"></result><!-- 别名name -->
+	    <result column="photo" property="stylistPhoto"></result><!-- 别名photo -->
+	     <result column="introduction" property="stylistIntroduction"></result><!-- 别名introduction -->
+        <result column="maxNumber" property="maxNumber"></result>
+        <result column="reservationTime" property="reservationTime"></result>
+	    <result column="status" property="status"></result>
+
+        <!--collection 配置返回pojo中的pojo，property是在返回类型中定义的pojo的属性名，javaType是映射到的pojo的路径-->
+        <collection property="tbStyHouse" javaType="com.istyle.pojo.TbStyHouse">
+        <!--id和result的配置同上-->
+            <id column="styHouseId" property="styHouseId"></id>
+            <result column="styHouseName" property="styHouseName"></result>
+            <result column="styHouseWord" property="styHouseWord"></result>
+            <result column="styHousePhoto" property="styHousePhoto"></result>
+             <result column="styHousePosition" property="styHousePosition"></result>
+            <result column="styHouseAccount" property="styHouseAccount"></result>
+            <result column="styHousePassword" property="styHousePassword"></result>
+             <result column="headName" property="headName"></result>
+            <result column="headId" property="headId"></result>
+            <result column="headPhone" property="headPhone"></result>
+            <result column="styHouseStatus" property="styHouseStatus"></result>
+             <result column="styHouseAddress" property="styHouseAddress"></result>
+            <result column="styHousePackage" property="styHousePackage"></result>
+            <result column="styHouseWorkTime" property="styHouseWorkTime"></result>
+             <result column="styHousePhone" property="styHousePhone"></result>
+        </collection>
+        
+        <collection property="tbStylist" javaType="com.istyle.pojo.TbStylist">
+            <id column="stylistId" property="stylistId"></id>
+            <result column="stylistName" property="stylistName"></result>
+            <result column="stylistPhoto" property="stylistPhoto"></result>
+            <result column="stylistWord" property="stylistWord"></result>
+            <result column="realName" property="realName"></result>
+            <result column="stylistPassword" property="stylistPassword"></result>
+            <result column="stylistSex" property="stylistSex"></result>
+            <result column="stylistAge" property="stylistAge"></result>
+            <result column="stylistPhone" property="stylistPhone"></result>
+            <result column="stylistAdvisory" property="stylistAdvisory"></result>
+            <result column="stylistIntroduction" property="stylistIntroduction"></result>
+        </collection>
+ </resultMap>
+ 
+ <select id="SelectTbStyHouseStylistBystylistId" parameterType="java.lang.Long" resultMap="MyTbStyHouseStylist">
+ 	select tb_stylist.*,tb_styhouse.*,tb_styhouse_stylist.stylistName as name,tb_styhouse_stylist.stylistPhoto as photo,
+ 			tb_styhouse_stylist.stylistIntroduction as introduction,
+ 			tb_styhouse_stylist.id,tb_styhouse_stylist.maxNumber,tb_styhouse_stylist.reservationTime,tb_styhouse_stylist.status
+ 	from tb_stylist, tb_styhouse_stylist,tb_styhouse
+ 	where  tb_styhouse_stylist.stylistId=#{stylistId} and tb_styhouse_stylist.styHouseId=tb_styhouse.styHouseId and
+ 			tb_styhouse_stylist.stylistId=tb_stylist.stylistId
+ </select>
+ 
+<!-- * 更新造型师
+* @param 
+* @return Response -->
+<update id="updateStylistMessage1" parameterType="com.istyle.pojo.TbStylist" >
+ 	 update tb_stylist
+          set stylistName=#{stylistName}, stylistIntroduction=#{stylistIntroduction}, 
+          stylistPhone=#{stylistPhone} ,stylistPhoto=#{stylistPhoto}
+          where stylistId=#{stylistId};
+ </update>
+ 
+ <!-- * 更新造型师
+* @param 
+* @return Response -->
+<update id="updateStylistMessage2" parameterType="com.istyle.pojo.TbStyHouseStylist" >
+ 	 update tb_styhouse_stylist
+     set styHouseId=#{styHouseId} where stylistId=#{stylistId};
+ </update>
+ 
+</mapper>

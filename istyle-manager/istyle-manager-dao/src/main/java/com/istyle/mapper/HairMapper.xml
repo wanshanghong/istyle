@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.istyle.mapper.HairMapper">
+<resultMap id="TbHairMap" type="com.istyle.pojo.TbHair">
+    	<!--column的值为在数据库中查询的列，property的值为返回的pojo中的属性-->
+    	<!--id配置对应主键，result配置对应属性和列名 -->
+    
+        <id column="hair_id" property="hairId"></id>
+	    <result column="hair_sex" property="hairSex"></result><!-- 别名name -->
+	    <result column="hair_lenght" property="hairLenght"></result><!-- 别名photo -->
+	     <result column="hair_curl" property="hairCurl"></result><!-- 别名introduction -->
+        <result column="hair_color" property="hairColor"></result>
+        <result column="hair_photo" property="hairPhoto"></result>
+	    <result column="suit_skin" property="suitSkin"></result>
+	    <result column="suit_face" property="suitFace"></result>
+</resultMap>
+
+
+	<select id="SelectAllHair" resultType="com.istyle.pojo.TbHair">
+			select * from tb_hair
+	</select>
+	<select id="SelectHairByHairClass" parameterType="com.istyle.pojo.TbHair" resultMap="TbHairMap" >
+			
+			select * from tb_hair where hair_sex = #{hairSex}
+				<if test="hairLenght gt 0" >
+            		and hair_lenght=#{hairLenght}
+		        </if>
+		        <if test="hairCurl gt 0">
+		            and hair_curl=#{hairCurl}
+		        </if>
+		        <if test="hairColor gt 0">
+		            and hair_color=#{hairColor}
+		        </if>
+			
+	</select>
+</mapper>

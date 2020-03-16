@@ -44,30 +44,30 @@
 
     <select id="selectStyHouseNameById" parameterType="java.lang.Long" resultType="java.lang.String">
         select styHouseName
-        from tb_styHouse
+        from tb_styhouse
         where styHouseId = #{styHouseId};
     </select>
 
     <select id="selectPhotoNameAddressPackageByPosition" parameterType="java.lang.String" resultType="com.istyle.pojo.TbStyHouse">
         select styHouseId, styHousePhoto, styHouseName, styHouseAddress, styHousePackage
-        from tb_styHouse
+        from tb_styhouse
         where styHousePosition = #{styHousePosition};
     </select>
 
     <select id="selectNamePhotoPackagePhoneTimeWordByStyHouseId" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStyHouse">
         select styHouseName, styHousePhoto, styHouseAddress, styHousePackage, styHousePhone, styHouseWorkTime, styHouseWord
-        from tb_styHouse
+        from tb_styhouse
         where styHouseId = #{styHouseId};
     </select>
 
     <select id="selectIndexById" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStyHouse">
         select styHouseId, styHousePhoto, styHouseName, styHouseAddress, styHousePackage, styHouseWorkTime, styHousePhone
-        from tb_styHouse
+        from tb_styhouse
         where styHouseId = #{styHouseId};
     </select>
 
     <update id="updateStyHouse" parameterType="com.istyle.pojo.TbStyHouse">
-        update tb_styHouse
+        update tb_styhouse
           set styHousePhoto=#{styHousePhoto}, styHouseName=#{styHouseName}, styHouseAddress=#{styHouseAddress}, styHousePackage=#{styHousePackage}, styHouseWorkTime=#{styHouseWorkTime}, styHousePhone=#{styHousePhone}
           where styHouseId=#{styHouseId};
     </update>
@@ -89,7 +89,7 @@
     </insert>
 
     <select id="selectPackageById" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStyHousePackage">
-        select packageId, packageName, packagePhoto, packagePrice, packageDescription
+        select packageId, styHouseId,packageName, packagePhoto, packagePrice, packageDescription
         from tb_styhouse_package
         where styHouseId = #{styHouseId} and packageId=#{packageId} and status=1;
     </select>
@@ -105,4 +105,12 @@
         set status=0
         where styHouseId=#{styHouseId} and packageId=#{packageId};
     </update>
+    
+    
+      <!-- 查找造型屋信息 -->
+     <select id="selectTbStyHouseStylistById" parameterType="java.lang.Long" resultType="com.istyle.pojo.TbStyHouse">
+        select *
+        from tb_styhouse
+        where styHouseId = #{styHouseId}
+    </select>
 </mapper>

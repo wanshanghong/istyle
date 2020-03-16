@@ -1,5 +1,5 @@
 html{
-    background: url(/img/userIndexbackground.jpg);
+    background: url(../img/userIndexbackground.jpg);
     background-size: cover;
 }
 
@@ -97,6 +97,102 @@ border-radius: 1%;
     padding: 5px;
 }
 /*造型屋详情页的套餐部分end*/
+.salonMeal1{
+    width: 1000px;
+    height: 500px;
+    background-color: #FFFFFF;
+    margin-top: 20px;
+    border-radius: 1%;
+    /*overflow-y: scroll;*/
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.salonMeal1::-webkit-scrollbar { width:10px; height:2px; background:#ccc; border-radius:10px;/*外层轨道*/}
+.salonMeal1::-webkit-scrollbar-thumb{ display:block; width:6px; margin:0 auto; border-radius: 2px; background:#999999;/*内层轨道*/}
+.salonMeal1 .mealContent{
+    width: 1000px;
+    height: 150px;
+    border-bottom: 1px solid #999999;
+    margin: 0 auto;
+}
+.salonMeal1 img {
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin: 40px 0 20px 100px;
+}
+.salonMeal1 p {
+    float: left;
+    width: 350px;
+    margin: 40px 50px 0 50px;
+}
+.salonMeal1 span {
+    float: left;
+    margin: 10px;
+}
+.salonMeal1 button.order {
+    float: left;
+    display: inline-block;
+    margin-left: 40px;
+    margin-top: 65px;
+    color: #FFFFFF;
+    background-color: #FF9800;
+    border: none;
+    border-radius: 5%;
+    padding: 5px;
+}
+.salonMeal1 button#order {
+    float: left;
+    display: inline-block;
+    margin-left: 40px;
+    margin-top: 65px;
+    color: #FFFFFF;
+    background-color: #FF9800;
+    border: none;
+    border-radius: 5%;
+    padding: 5px;
+}
+#updateSalonStylist p{
+    float: left;
+    width: 350px;
+    margin: 100px 50px 0 50px;
+}
+#updateSalonStylist .order{
+    float: left;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    width: 150px;
+    margin-left: 350px;
+    margin-top: 20px;
+    color: #FFFFFF;
+    background-color: #FF9800;
+    border: none;
+    border-radius: 5%;
+}
+#updateSalonMeal .order{
+    float: left;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    width: 150px;
+    margin-left: 350px;
+    margin-top: 20px;
+    color: #FFFFFF;
+    background-color: #FF9800;
+    border: none;
+    border-radius: 5%;
+}
+
+#updateSalonMeal p{
+    float: left;
+    width: 350px;
+    margin: 100px 50px 0 50px;
+}
+
+/*造型屋详情页的造型师部分start*/
+
+/*造型屋详情页的造型师部分end*/
 
 /*造型屋详情页的评论部分start*/
 .salonComment{
